@@ -23,13 +23,7 @@
 #----------------------------------------------------------------------------
 # Use the C++11 standard. 
 #----------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-# For now we still have some old cmake systems ...
-if( CMAKE_VERSION VERSION_LESS 3.1.3 )
-	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
-endif()
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
 
 #----------------------------------------------------------------------------
 # Compile flags
@@ -45,7 +39,7 @@ if( CMAKE_HOST_APPLE AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang" )
 	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++" )
 endif()
 if( CMAKE_CXX_COMPILER_ID STREQUAL "Clang" )
-	set( CMAKE_CXX_FLAGS "-Wno-braced-scalar-init " )
+	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-braced-scalar-init " )
 endif()
 
 #----------------------------------------------------------------------------
