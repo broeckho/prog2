@@ -44,7 +44,6 @@ Thumbs.db
 #----------------
 # CMake-generated stuff
 #----------------
-Makefile
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
