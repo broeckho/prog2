@@ -1,0 +1,26 @@
+As it stands now, the content of directories vdv_basics and vdv_traits is
+based on source code of Vandevoorde and Josuttis's book entitled 
+''C++ Templates: The Complete Guide'' by Addison-Wesley.
+  
+Some changes have been effected. The programs are built using CMake i.o. make.
+A few very minor changes were made in the sources (sometimes to appease the 
+compiler, sometimes to include a main program to demonstrate a feature). 
+Also I modified the coding style somewhat to make it easier to include 
+some of the code in the course notes.
+ 
+The copyright statement by Vandevoorde and Josuttis on the sources 
+still applies. It states:
+
+/* The following code example is taken from the book
+ * "C++ Templates - The Complete Guide"
+ * by David Vandevoorde and Nicolai M. Josuttis, Addison-Wesley, 2002
+ *
+ * (C) Copyright David Vandevoorde and Nicolai M. Josuttis 2002.
+ * Permission to copy, use, modify, sell and distribute this software
+ * is granted provided this copyright notice appears in all copies.
+ * This software is provided "as is" without express or implied
+ * warranty, and with no claim as to its suitability for any purpose.
+ */
+
+Because some of the examples get included in my course notes, I have eliminated 
+the copyright statement it from the individual files in favor of this file.

@@ -1,0 +1,666 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{pxfonts}
+\usepackage{hyperref}
+\usepackage{paralist}
+\author{Jonathan Van der Cruysse, Jan Broeckhove \\ Universiteit Antwerpen}
+\title{Linking and resolving references}
+
+\newcommand{\C}{C}
+\newcommand{\Cpp}{C++}
+\newcommand{\CCpp}{\C/\Cpp}
+\newcommand{\gcc}{\texttt{gcc}}
+\newcommand{\gXX}{\texttt{g++}}
+\newcommand{\clang}{\texttt{clang}}
+\newcommand{\clangXX}{\texttt{clang++}}
+\newcommand{\llvm}{LLVM}
+\newcommand{\gnu}{GNU}
+\newcommand{\gnumake}{\gnu{} \texttt{make}}
+\newcommand{\cmake}{CMake}
+\newcommand{\listobjsymbols}{\texttt{nm}}
+\newcommand{\Cppfilt}{\texttt{c++filt}}
+\newcommand{\manpageref}[1]{\texttt{man #1}}
+\newcommand{\CC}{\clang{}}
+\newcommand{\CXX}{\clangXX{}}
+\newcommand{\syslinker}{\texttt{ld}}
+\newcommand{\gdb}{\texttt{gdb}}
+\newcommand{\lldb}{\texttt{lldb}}
+\newcommand{\labelname}[1]{\texttt{#1}}
+\newcommand{\functionname}[1]{\labelname{#1}}
+\newcommand{\filename}[1]{\texttt{#1}}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	escapeinside={(*}{*)},          % if you want to add LaTeX within your code
+	frame=tb,
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{gray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{red},     % string literal style
+	tabsize=4,	                   % sets default tabsize to 4 spaces
+	caption=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinelanguage
+	[x64]{Assembler}     % add a "x64" dialect of Assembler
+	[x86masm]{Assembler} % based on the "x86masm" dialect
+	% with these extra keywords:
+	{morekeywords={CDQE,CQO,CMPSQ,CMPXCHG16B,JRCXZ,LODSQ,MOVSXD, %
+			POPFQ,PUSHFQ,SCASQ,STOSQ,IRETQ,RDTSCP,SWAPGS, %
+			rax,rdx,rcx,rbx,rsi,rdi,rsp,rbp, %
+			r8,r8d,r8w,r8b,r9,r9d,r9w,r9b}} % etc.
+	
+\begin{document}
+	
+\maketitle
+
+\section{Introduction}
+
+When instructed to compile a \emph{translation unit} (that is, a \CCpp{} source file) the compiler will process all declarations and definitions in that file, without relating them to some outside context. The output of this step is either a source code file in \emph{assembly language,} or an \emph{object file.} 
+
+\emph{Object files} are files that contain binary machine code; \emph{assembly language} is textual machine code, and is much easier to read than a raw stream of instruction bytes. An \emph{assembler} can be used to convert an assembly language file to an object file, and a \emph{disassembler} converts object files back into assembly language. 
+
+Most modern production-quality compilers are configured to do many things at once by default: pre-processing, compilation, assembling and linking. But there's usually a switch or two that lets us control which steps are performed, and which are not. 
+
+This document will use \CC{} for compiling \C{} files, \CXX{} for compiling \Cpp{} files, and the GNU binutils for pretty much everything else. \clang{} and \clangXX{} are available for many operating systems, including Linux, Windows and Mac OS X. Alternatively, you can use \gcc{} and \gXX{}, which are present by default on most Linux distributions. 
+
+A caveat: turning source code into an executable is a complex process that is dependent on lots of things, including, but not limited to: the processor's instruction set architecture, the operating system, the calling convention, the compiler, and the compiler's flags. Two unrelated computers may produce completely different output, so you shouldn't feel alarmed if your toolchain doesn't produce the exact same output as mine at times.  
+
+\section{Compiling a \C{} file: \texttt{example.c}}
+
+Before we can run the linker, we need to compile all source files. Let's start off by familiarizing ourselves with some basic compiler options. 
+
+Here's the source file that we'll be working with for now. We're starting off with \C{} source code because linking and compilation is more complicated for \Cpp{} files. More on that in section \ref{sec:linking-cpp}.
+
+\lstinputlisting[language=C,caption=\filename{example.c}]{../../../main/cpp/linking/example.c}
+
+Did you notice that there's no \functionname{main} function, and that there are no \texttt{\#include}s? Good. That's because we're trying to keep this example as simple as possible. Let's try to compile \filename{example.c}. On my machine, \CC{} outputs the following:
+
+\begin{lstlisting}[caption=output for \texttt{clang example.c},label=lst:clang-muladd]
+$ clang example.c
+/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../x86_64-linux-gnu/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+\end{lstlisting}
+
+Well, that's an ugly error message. \CC{} means well, though. It's just trying to tell us that we forgot to add a function called \functionname{main}. Without one, \CC{} can't possibly hope to produce an \emph{executable,} which it tries to do by default.
+
+Fortunately, we don't \emph{really} need a \functionname{main} function, because we're not looking to produce an \emph{executable} yet. We just want to compile a single file of \C{} code and produce an \emph{object file} or perhaps a \emph{assembly language} file. For now, the output is not going to be an executable: it clould not be, actually, because the source input file is simply a function definition. We have not provided code that could be turned into something executable.
+
+The executable will be produced later on produced by the linking step. At present, we'd like to omit the linking step, and have \CC{} stick to its core task, which is compiling translation units. And that, \CC{} can do. We're just going to have to be a little more specific.
+
+\subsection{Compiling to assembly language}
+
+For starters, let's ask \CC{} to emit assembly language for \filename{example.c}. 
+\ \\
+\begin{lstlisting}[caption=compiling \filename{example.c} to assembly language]
+$ clang example.c -S -Os -masm=intel -o example.s
+\end{lstlisting}
+\ \\
+Let's briefly go over the compiler's flags.
+
+\begin{compactitem}
+	
+	\item \texttt{-S} instructs \CC{} to produce assembly language.
+	
+	\item \texttt{-Os} tells \CC{} to optimize its output for size, which makes reading the assembly code slightly more bearable. In this case, we mostly want the optimizer to elide function prologues and epilogues, which can only obscure the compiled function body.  
+	
+	\item \texttt{-masm=intel} makes \CC{} emit \texttt{x86} or \texttt{amd64} assembly language in the Intel dialect, which I find to be more intuitive than the AT\&T dialect that \CC{} uses by default. If you're not using an Intel or AMD CPU, then you can simply omit this option.
+	
+	\item \texttt{-o example.s} requests that \CC{} write its output to \filename{example.s}.
+	
+\end{compactitem}
+
+\noindent If you happen to be working on a machine that uses the \texttt{amd64} (a.k.a.\ 64-bit \texttt{x86} or \texttt{x86\_64}) instruction set architecture, then you'll get a \filename{example.s} file that looks more or less like this. \\\
+\lstset{language=[x64]Assembler}
+\begin{lstlisting}[caption=\texttt{example.s},label=lst:example.s]
+	.text
+	.intel_syntax noprefix
+	.file	"example.c"
+	.globl	muladd
+	.type	muladd,@function
+muladd:                                 # @muladd
+	.cfi_startproc
+# BB#0:
+	imul	edi, esi
+	lea	eax, [rdi + rdx]
+	ret
+.Lfunc_end0:
+	.size	muladd, .Lfunc_end0-muladd
+	.cfi_endproc
+	
+	.ident	"clang version 3.8.0-2ubuntu4 (tags/RELEASE_380/final)"
+	.section	".note.GNU-stack","",@progbits
+\end{lstlisting}
+\lstset{language=}
+\ \\
+This is not an assembly language tutorial, so let's limit ourselves to a brief look at the important bits for the sake of completeness.
+
+\begin{itemize}
+	
+	\item Line 6, and lines 9 to 11 contain an assembly version of the \functionname{muladd} function we defined in \filename{example.c}. Line 6 contains a label that defines \functionname{muladd}, line 9 performs a multiplication, line 10 performs an addition, and line 11 returns control to the caller. 
+	
+	\item Lines 4 and 5 state that label \functionname{muladd} is a \emph{global symbol,} and that \functionname{muladd} is a \emph{function,} respectively. This is valuable information to the linker, which we'll get to soon.
+	
+	\item The \texttt{.text} directive on line 1 starts the text section, which contains machine instructions. 
+\end{itemize}
+
+And that's about all there is to it. Almost everything else is metadata.
+
+\subsection{Compiling to an object file}
+
+You probably already know that CPUs don't consume textual assembly language. They execute binary machine instructions. To build an executable file, we'll have to convert assembly language to machine language. Note that we can't actually create an executable from \filename{example.c} or \filename{example.s}, but we can do the next best thing, which is to produce an object file.
+
+Object files are the binary equivalent to assembly language code. Unsurprisingly, they contain machine instructions instead of assembly language. But they also contain pretty much everything else that was in the assembly language file. In our case, that's the \texttt{.text} section, the \functionname{muladd} label, and the metadata directives. This will be elaborated on in section \ref{sec:examining-symbols}.
+
+We now have two ways to construct an object file. The first is to use the \emph{assembler} to translate the assembly language (content of  \filename{example.s}) into binary code (content of \filename{example.o}). The invocation of the assembler tool \emph{as} is straightforward.
+\ \\
+\begin{lstlisting}[caption=assembling \filename{example.s}]
+$ as example.s -o example.o
+\end{lstlisting}
+\ \\
+\noindent Alternatively, we can have the compiler take care of assembling its output for us. This option is generally preferred, because it's simpler and less error-prone. Moreover, modern compilers like \clang{} have integrated assemblers. When an integrated assembler is used, the compiler doesn't have to print textual assembly language, and the assembler doesn't have to parse the compiler's output. So there's a potential performance advantage over using an external assembler, too. 
+
+The following command creates an object file directly, without the unnecessary assembly detour. Note the \texttt{-c} flag, which instructs \CC{} to produce an object file (as opposed to an executable).\\
+
+\begin{lstlisting}[caption=compiling \filename{example.c} to an object file]
+$ clang example.c -c -Os -o example.o
+\end{lstlisting}
+
+\subsection{Linking \C{} files}
+
+We now have an object file -- \filename{example.o} -- but we can't turn that into an executable, because we don't have a \emph{whole program:} a program where every declaration has a definition. To be precise, only those declarations that are actually used need to have a definition. Additionally, a \emph{whole program} must be a true \emph{program:} it must have an entry point. That is a point in the code where control can be handed over to by the loader to effectively start executing the binary program code. In our case, what have to do is create a new \C{} file that defines a function called \functionname{main}. 
+
+So let's write some \C{} code that includes a \functionname{main} function. And, while we're at it, we can use our brand new \functionname{muladd} function in that \functionname{main} function.\\
+
+\lstinputlisting[language=C,title=\filename{muladd-main.c}]{../../../main/cpp/linking/muladd-main.c}
+\ \\
+\noindent Note that, just like \filename{example.c}, \filename{muladd-main.c} alone is \emph{not} a whole program: function \functionname{muladd} is declared, but not defined in \filename{muladd-main.c}. As before, we can compile \filename{muladd-main.c} to an object file.\\
+
+\begin{lstlisting}[caption=compiling \filename{muladd-main.c} to an object file]
+$ clang muladd-main.c -c -Os -o muladd-main.o
+\end{lstlisting}
+\ \\
+Now we have two object files: \filename{example.o} and \filename{muladd-main.o}. But what we really wanted was an executable file, which is the sum of the information in both files: \functionname{main} is defined in \filename{muladd-main.o}, and \functionname{muladd} is defined in \filename{example.o}. What we need now, is a tool to link those two files together: a \emph{linker.} 
+
+On Unix-based systems, the system linker program \syslinker{} can be used to link object files into executables. Let's see if we can link \filename{muladd-main.o} and \filename{example.o}.
+
+\begin{lstlisting}[caption=output for \texttt{ld example.o muladd-main.o},label=lst:ld-muladd-muladd-main]
+$ ld example.o muladd-main.o
+ld: warning: cannot find entry symbol _start; defaulting to 00000000004000b0
+muladd-main.o: In function `main':
+muladd-main.c:(.text+0x21): undefined reference to `printf'
+\end{lstlisting}
+
+That failed spectacularly, because we still don't have a whole program: \functionname{printf} is \emph{declared} in \filename{stdio.h}, but not \emph{defined.} In fact, \functionname{printf} is defined by the \C{} standard library. We have to link our object files with the system's standard C library (located in some system directory and having \emph{libc} in it's name) in order to produce an executable.
+
+The good news is that \CC{} will do that for us. Just type \CC{} instead of \syslinker{}, and it'll run the system linker for us with all the right options. \\
+
+\begin{lstlisting}[caption=linking \filename{example.o} and \filename{muladd-main.o}]
+$ clang example.o muladd-main.o -o myprog
+\end{lstlisting}
+\ \\
+\noindent This yields an executable called which we'll call \filename{myprog} (if you do not provide a name, it defaults to \emph{a.out}). Go ahead and run it.\\
+
+\begin{lstlisting}[caption=output for \texttt{myprog}]
+$ ./myprog 
+2 * 5 + 3 = 13 
+\end{lstlisting}
+
+\subsection{Separate compilation}
+
+Compiling each translation unit individually, and then linking them all together, is called \emph{separate compilation.}
+
+For our simple example, we could just as easily have invoked \CC{} once: the command below will produce an equivalent binary with far less effort to the programmer.\\
+
+\begin{lstlisting}[caption=compiling and linking \filename{example.c} and \filename{muladd-main.c} directly]
+$ clang example.c muladd-main.c -Os -o a.out
+\end{lstlisting}
+\ \\
+Note that the call above will still perform separate compilation under the hood: the source files will be compiled individually, and then linked together. If you are ever in doubt about the exact workings of \clang{} or \gcc{}, then you can always use the \texttt{-\#\#\#} flag. If \texttt{-\#\#\#} is passed, then the compiler won't actually compile anything. Instead, it will explain which commands it would run to process the input files. 
+
+Be prepared for verbose output, though. \clang{} and \gcc{} use lots of options by default, and they'll list them all if you use \texttt{-\#\#\#}. I've taken the liberty of eliding everything but the most essential parts from \CC{}'s output below, in the interest of brevity and readability.\\
+
+\begin{lstlisting}[caption=filtered output for \texttt{clang -\#\#\#}]
+$ clang example.c muladd-main.c -o a.out -###
+clang version 3.8.0-2ubuntu4 (tags/RELEASE_380/final)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+"/usr/lib/llvm-3.8/bin/clang" "-cc1" (*...*) "-o" "/tmp/example-14e39f.o" "-x" "c" "example.c"
+"/usr/lib/llvm-3.8/bin/clang" "-cc1" (*...*) "-o" "/tmp/muladd-main-3a96b0.o" "-x" "c" "muladd-main.c"
+"/usr/bin/ld" (*...*) "/tmp/example-14e39f.o" "/tmp/muladd-main-3a96b0.o" (*...*)
+\end{lstlisting}
+\ \\
+As you can see, \CC{} first calls itself twice -- once for each input file -- and then calls \syslinker{} to link \CC{}'s output into an executable.
+
+\subsubsection{Taking advantage of separate compilation}
+
+There is merit to understanding separate compilation. Compiling many \CCpp{} translation units can take a long time -- just try building a project that has lots of source files -- and big projects often consist of multiple programs that share a large amount of translation units. In that case, one can take advantage of separate compilation.
+
+For example, suppose that \filename{example.c} was used not by one, but by two programs. Naively calling the compiler once for each input program will compile \filename{example.c} \emph{twice.}\\
+
+\begin{lstlisting}[caption=compiling and linking twice]
+$ clang example.c muladd-main.c -o a.out
+$ clang example.c muladd-main2.c -o a2.out
+\end{lstlisting}
+
+We don't have to compile \filename{example.c} twice, though. We can compile it once, emit an object file, and then link that object file with the other source files twice. That is exactly what the commands below do.\\
+
+\begin{lstlisting}[caption=compiling once and linking twice]
+$ clang example.c -c -o example.o
+$ clang example.o muladd-main.c -o a.out
+$ clang example.o muladd-main2.c -o a2.out
+\end{lstlisting}
+
+Moreover, separate compilation can also be helpful when \emph{incremental} changes are made: not all source files have to be re-compiled when only some of them are changed. Only the affected files need to be re-compiled. Then, the program is linked again, combining the old and new object files.
+
+Naively invoking the compiler on a list of source files will not recognize or re-use unchanged object files, and can be unnecessarily slow when incremental changes are made. It is almost always more efficient to exercise more fine-grained control over the compilation and linking process.
+
+\subsubsection{Build tools}
+
+Efficiently managing the compilation and linking process of tens or hundreds of source files can be a bit of a kludge.
+
+Fortunately, the process can be automated by using a \emph{build tool}, such as \gnumake{} or \cmake{}. The former requires more manual configuration, the latter will automatically generate a Makefile as input to \gnumake{}.
+
+These tools may take some effort to set up initially, but once that is over, they can speed up the edit-compile-debug cycle significantly. Moreover, the build tool configuration file are usually less platform dependent and easier to maintain than explicit scripts detailing all the build steps.
+
+\section{How linkers operate}
+
+Intuitively, one can think of a linker as a program that ``concatenates'' multiple object files: the sections of machine code they contain are quite literally merged by joining them end-to-end.
+
+However, linkers are also responsible for making sure that code which originated from different object files can interact properly. This can be achieved by \emph{patching} specific parts of the machine code.
+
+Before we examine how linkers patch machine code, we should take a look at the underlying reason for this patching process, which is rooted in assembly language.
+
+\subsection{Labels and branches}
+
+The basic tool for control-flow transfer in assembly language is the \emph{branch} or \emph{jump:} when a machine encounters a branch or jump instruction, it may transfer control to another instruction at an address which is specified by the branch or jump instruction.
+
+To make writing assembly language easier, assemblers offer a feature called \emph{labels:} user-defined names that are given to specific instructions. These names can then be used as the target of branch or jump instructions, and so transfer control to the instruction associated with the label.
+
+Consider the following pseudo-assembly.\\
+
+\begin{lstlisting}[caption=pseudo-assembly example: input,label=lst:asm-labels]
+    jump lbl
+    ...
+lbl: 
+    add r1, r2, r3
+\end{lstlisting}
+
+\noindent It's important to note that labels are nothing more than syntactic sugar for specific addresses. When the assembler is instructed to assemble the code into an object file or executable, it will have to translate \texttt{jump lbl} as a jump instruction that transfers control to an \emph{address,} rather than a \emph{label.} 
+
+This is usually implemented by introducing two distinct passes. The first pass assembles instructions into machine code. Branch or jump instructions that transfer control to a label are replaced by instructions that transfer control to some arbitrary address, typically 0. 
+
+Instructions that took a label are remembered by the assembler and so are the addresses of instructions that are marked with labels. After applying the first pass, our hypothetical assembly code will look like this:\\
+
+\begin{lstlisting}[caption=pseudo-assembly example: after first pass]
+0x10: jump 0            # target was "lbl"
+...   ...
+0xf3: add r1, r2, r3    # label was "lbl"
+\end{lstlisting}
+
+The second pass resolves the references to labels. It revisits all branch and jump instructions that referred to a label and replaces their branch and jump targets by the explicit address of this label. Label addresses are known at this point, because the assembler has traversed the entire file. 
+
+After patching the machine instructions, our example will look like the listing below. Note that no trace of label \labelname{lbl} is left at this point. Only a jump to an address remains.\\
+
+\begin{lstlisting}[caption=pseudo-assembly example: after second pass]
+0x10: jump 0xf3
+...   ...
+0xf3: add r1, r2, r3
+\end{lstlisting}
+
+\subsection{Symbols and relocations}
+
+The technique described in the previous section relies on two assumptions.
+
+\begin{itemize}
+	\item All labels that in use, are defined somewhere.
+	\item The definition of a label can be found in the same file as its users.
+\end{itemize}
+
+We obviously can't compromise on the first requirement. The user must always define a label if it is used.
+
+The second requirement, on the other hand, is violated by \CCpp{}'s separate compilation. \CCpp{} functions and globals are tagged by labels when they are compiled to assembly language, as can indeed be observed on line 6 of listing \ref{lst:example.s} (see page \pageref{lst:example.s}).
+
+The second requirement must be relaxed to enable separate compilation. This can be achieved by delaying the second pass from the previous section. Labels are preserved as \emph{symbols} in the object file, and references to those labels are preserved as \emph{relocation records} in the \emph{relocation table}. 
+
+\emph{Symbols} are addresses that are relative to the start of the section in which they are defined. \emph{Relocation records} are pairs of symbols and pointers into the object code (specified a range of bytes) to the addresses that must be patched of fixed up to refer to the explicit, final address associated with the symbol. 
+
+Each object file contains various sections such as code, data, etc. When the linker runs, it first concatenates all sections of the same type and then assign final, run time addresses to each section and the symbols defined in that section. Next the linker will use the relocation table to resolve all references to symbols by binding them to run time addresses.
+
+\subsubsection{A pseudo-assembly example}
+
+Suppose that the example from listing \ref{lst:asm-labels} was split across two files: \filename{user.s} uses label \labelname{lbl}, \filename{declaration.s} declares it.\\
+
+\begin{lstlisting}[caption=separately assembled pseudo-assembly example,label=lst:asm-symbols]
+# user.s
+.globl lbl
+.text
+    jump lbl
+    ...
+# =============
+# declaration.s
+.globl lbl
+.text
+lbl: 
+    add r1, r2, r3
+    ...
+\end{lstlisting}
+
+In the listing above, the \texttt{.globl lbl} directives tell the assembler to retain \labelname{lbl} as a  \emph{global} or \emph{public} symbol. Such symbols can be referred to from other object files. The \texttt{.globl} directive is also present in \CC{}'s output, which can be observed on line 4 of listing \ref{lst:example.s}.
+
+The assembler will also replace \texttt{jump lbl} by \texttt{jump 0}, and include a relocation record that tells the linker to replace that \texttt{0} by the eventual run time address of symbol \labelname{lbl}. 
+
+The linker runs, it will notice that \filename{user.o} contains an \emph{undefined} external reference to the symbol \labelname{lbl}, and that \filename{declaration.o} \emph{defines} \labelname{lbl}. It will react to this situation by matching both \labelname{lbl} symbols, and patching the \texttt{jump 0} instruction to refer to \labelname{lbl}'s run time address in the concatenated executable.
+
+When a symbol cannot be resolved, i.e. it is \emph{undefined} in all object files that refer to it, the linker will issue an error. Listings \ref{lst:clang-muladd} and \ref{lst:ld-muladd-muladd-main} are examples of these dreaded linker errors. 
+
+Sometimes a symbol can be multiply defined, e.g. when you have used the same function name in two different source files, both containing a definition of the function. Some linkers will flag this as an error, others will issue a warning and then use the last definition that they have encountered to resolve references to the function. Some linkers have flags to specify a strategy with respect to this situation.
+
+\subsection{Examining symbols}
+\label{sec:examining-symbols}
+
+The \listobjsymbols{} tool can be used to list symbols from object files. Let's try that out on the \filename{example.o} file from our previous example.To get additional details about \texttt{example.o}'s symbols, \texttt{--format=sysv} can be used instead of \texttt{--format=bsd}.\\
+
+\begin{lstlisting}[caption=listing all symbols in \filename{example.o}]
+$ nm example.o --format=bsd
+0000000000000000 T muladd
+\end{lstlisting}
+
+This table tells us that \filename{example.o} contains exactly one symbol: \labelname{muladd}. The two most important bits of information about \labelname{muladd} is that it is located at offset 0, and that its \emph{class} is `T'. Every symbol has a class, which tells the linker a little bit more about what kind of symbol it is dealing with. According to \manpageref{\listobjsymbols{}}, class `T' means that ``the symbol is in the text (code) section.'' 
+
+We can also analyze \texttt{muladd-main.o}.\\
+
+\begin{lstlisting}[caption=listing all symbols in \filename{muladd-main.o}]
+$ nm muladd-main.o --format=bsd
+0000000000000000 T main
+U muladd
+U printf
+\end{lstlisting}
+
+As one might expect from analogy with \filename{example.o}'s symbol table, \filename{muladd-main.o} defines \labelname{main} in the text section. Interestingly, \filename{muladd-main.o} also defines two symbols with class `U'. This is the class of undefined symbols, and both \labelname{muladd} and \labelname{printf} are indeed defined elsewhere. The linker will unify these undefined symbols with `T' symbols from \filename{example.o} and the \C{} standard library, respectively.
+
+\section{Linking \Cpp{} code}
+\label{sec:linking-cpp}
+
+\Cpp{} adds complexity to \C{} in many respects; the link phase is no exception in this regard. In this section, we'll take a brief look at two \Cpp{} implementation details: \emph{name mangling} and \emph{weak symbols}.
+
+\subsection{Name mangling}
+
+\emph{Function overloading} is a \Cpp{} feature that \C{} lacks. In a nutshell,\emph{function overloading} is the ability to create multiple methods of the same name with different call signatures. Calls to an overloaded function will run a specific implementation of that function appropriate to the context of the call, allowing one function name to be associated with different tasks depending on the calling context.
+
+\emph{Function overloading} often proves itself to be a useful language feature, but linkers resolve references based on symbol names. So compiling the source file below, \emph{as if it were \C{} code,} would yield a compiler error if it were a single source file because the \labelname{muladd} gets redefined. If, still working \emph{as if it were \C{} code,}, it is separated into two source files then the compiler accepts this (it does not know about the redefinition because each translation unit gets compiled separately). But, even if the compiler doesn't mind, the the linker does. It will tell us -- in an error message -- that the label \labelname{muladd} is defined more than once.\\
+
+\lstinputlisting[language=C++,caption=\filename{overloading}]{../../../main/cpp/linking/overloading.cpp}
+
+Enter \Cpp{} and \emph{name mangling.} Instead of creating two symbols named \labelname{muladd}, the \Cpp{} compiler will create two different symbols based on the \emph{signatures} of the \labelname{muladd} functions in \filename{overloading.cpp}. Let's see which symbol names \clangXX{} generates.\\
+
+\begin{lstlisting}[caption=mangled names]
+$ clang++ overloading.cpp -c -o overloading.o
+$ nm overloading.o --format=bsd
+0000000000000020 T _Z6muladdddd
+0000000000000000 T _Z6muladdiii
+\end{lstlisting}
+
+The mangled names can be dissected as follows: \texttt{\_Z} is a common prefix for all mangled names, \texttt{6} denotes the number of characters in identifier \functionname{muladd} and \texttt{ddd} identifies a function that has three parameters of type \texttt{double}. Analogously, \texttt{iii} means that a function has three \texttt{int} parameters.
+
+We don't have to demangle names manually, though. The \Cppfilt{} tool converts mangled names back into \Cpp{} function signatures.\\
+
+\begin{lstlisting}[caption=using \Cppfilt{}]
+$ c++filt _Z6muladdddd _Z6muladdiii
+muladd(double, double, double)
+muladd(int, int, int)
+\end{lstlisting}
+
+As usual with \CCpp{}, mangled names are both compiler-specific and platform-specific. No specific name mangling scheme is mandated by the \Cpp{} standard, so other compilers can and will produce entirely different symbol names. On Linux, \clangXX{} uses the same name mangling scheme as \gXX{}. On Windows, \clangXX{} uses the Visual \Cpp{} name mangling for compatibility.
+
+Name mangling stays in the background most of the time. It is entirely invisible during successful builds, but some linkers may report mangled names instead of function signatures in their error messages.
+
+Though name mangling is requisite to function overloading, it's usefulness extends beyond that. Consider a situation in which you build an executable and link multiple libraries that refer to one another. Assume a function signature gets changed in one of these libraries and the library is recompiled. All references to the function in the other libraries now have a mismatch between the actual arguments to the function provided in the calling context and the formal parameters expected by the call. A \C{} linker will not detect this and the result will be program crashes or, worse still, erroneous output. A \Cpp{} linker will flag this as an error because the name mangled symbol referred to in the calling context does not match the name mangled symbol in the recompiled library and an ''unresolved symbol'' situation ensues.
+
+\subsection{Weak symbols}
+
+Traditionally, \C{} code requires that every declaration can be matched to \emph{exactly one} definition. \Cpp{} relaxes this rule to support a few language constructs. The first such language construct is \emph{templates.} 
+
+\subsubsection{Template instantiations}
+
+Templates definitions are often included in headers, so that every translation unit that instantiates a template definition will have its own copy of the template's body. 
+
+Thus, to make the \texttt{\#include}-based template instantiation model viable, the linker must allow duplicate definitions. This can be accomplished by marking template instantiations \emph{weak symbols.} 
+
+Whenever the linker encounters more than one definition for a \emph{weak symbol,} it just picks one based on the assumption that these definitions are \emph{semantically equivalent,} and makes all references to that symbol point to this arbitrarily chosen definition.
+
+Weak symbols can be observed by explicitly instantiating a template, and then running \listobjsymbols{} on the resulting object file. Consider the template definition below.\\
+
+\lstinputlisting[language=C++,caption=\filename{template.cpp},label=lst:template]{../../../main/cpp/linking/template.cpp}
+
+We can now compile \filename{template.cpp} and list its symbols. Note the \texttt{--demangle} flag, which makes \listobjsymbols{} apply \Cppfilt{} to symbol names. This is especially useful for mangled template instance names, which are even harder to read than regular mangled names.\\
+
+\begin{lstlisting}[caption=compiling and listing all symbol names in \filename{template.o}]
+$ clang++ template.cpp -c -o template.o
+$ nm template.o --format=bsd
+0000000000000000 W _Z6muladdIiET_S0_S0_S0_
+$ nm template.o --format=bsd --demangle
+0000000000000000 W int muladd<int>(int, int, int)
+\end{lstlisting}
+
+As was expected, symbol \labelname{\_Z6muladdIiET\_S0\_S0\_S0\_} has class `W', which makes it a weak symbol.
+
+\subsubsection{\texttt{inline} and member functions}
+
+Functions that are annotated with the \texttt{inline} keyword also have weak linkage. Member functions defined within a class definition are implicitly inline. An example of both has been included below.\\
+
+\lstinputlisting[language=C++,caption=\filename{inline-functions.cpp}]{../../../main/cpp/linking/inline-functions.cpp}
+
+Verifying that \functionname{MulAddHelpers::muladd} and \functionname{muladd} are compiled as weak symbols is left as an exercise to the reader.
+
+Inline functions and templates have similar use-cases. They both allow for the creation of header-only libraries, and make it easier for the compiler to create highly optimized code. 
+
+Inline functions can be used to guide optimization. Compilers that encounter a call to a small function defined in the current translation unit -- as is the case with inline functions -- may apply the \emph{inlining} optimization: it replaces the call by a copy of the function's body. Hence the name and keyword `inline.' Note, however, that \texttt{inline} will not, in any way, \emph{force} the compiler to perform the inlining optimization -- it merely \emph{enables} the compiler to do so, if it so pleases. 
+
+That being said, modern compilers are often able to inline functions across translation units, at link-time. This particular type of optimization -- \emph{link-time optimization} -- at least partially obsoletes an advantage of inline functions; it is no longer necessary to make functions inline from a performance perspective, provided that the build process is set-up correctly. 
+
+The takeaway here is that greater performance gains can be accomplished by updating the build process to use link-time optimization. Use inline functions when an \texttt{\#include}-based compilation model makes sense, or for truly tiny functions that would otherwise have been implemented as preprocessor macros, and stick to normal functions otherwise.
+
+\subsubsection{The perils of weak symbols}
+
+Weak symbols enable a number of features, but they are brittle. A careless or malicious programmer can abuse weak linkage to produce programs whose meaning depends entirely on the linker's inner mechanisms.
+
+Linkers cannot verify whether two weak symbols are equivalent; they cannot issue an error or warning when two semantically distinct versions of a weak symbol are provided. So linkers pick exactly one definition of a weak symbol when multiple definitions are available.  
+
+The following example illustrates this. Suppose that we have two \Cpp{} source files -- \filename{incompatible-template.cpp} and \filename{template-main.cpp} -- in addition to \filename{template.cpp} from listing \ref{lst:template}. Their definitions are given below.\\
+
+\lstinputlisting[language=C++,caption=\filename{incompatible-template.cpp}]{../../../main/cpp/linking/incompatible-template.cpp}
+
+\lstinputlisting[language=C++,caption=\filename{template-main.cpp}]{../../../main/cpp/linking/template-main.cpp}
+
+Compiling and linking \filename{template-main.cpp}, \filename{incompatible-template.cpp} and \filename{template.cpp} is illegal according to \Cpp{}'s \emph{one definition rule,} but present-day compilers and linkers fail to diagnose the problem, even when all conventional warnings have been enabled. 
+
+The resulting executable's behavior is entirely undefined, and may depend on trivial parameters, such as the order of command-line arguments. I observed the following on my machine.\\
+
+\begin{lstlisting}[caption=undefined behavior due to weak linkage]
+$ clang++ template-main.cpp template.cpp incompatible-template.cpp -o a.out -Wall -Wextra -pedantic
+$ ./a.out
+5
+$ clang++ template-main.cpp incompatible-template.cpp template.cpp -o a.out -Wall -Wextra -pedantic
+$ ./a.out
+6
+\end{lstlisting}
+
+This above is clearly a pathological example, but incompatible weak symbol definitions can also arise from different preprocessor macro expansions in templates or inline functions defined in included header files. 
+
+
+
+\section{Debugging programs}
+
+Finding bugs in programs is often hard. One approach is to strategically insert statements that print information about the program's state. This is often called \functionname{printf} debugging, due to the use of the \functionname{printf} function in C.
+
+Anyone who has used this technique knows that it's not ideal. Inserting a print statement requires the program to be compiled and linked. It often takes many edit-build-run cycles to get the placement of those print statements right.
+
+There is a much better way to debug programs. \emph{Debuggers} are programs that will help you find bugs by suspending running programs, and examining their state. Unlike \texttt{printf} debugging, with the debugger-based technique there is no need to modify source text. Ionly requires only special build options.
+
+\subsection{Emitting debug information}
+
+To debug programs, a debugger relies on special \emph{debug information:} extra data that relates the compiled version of the program to its source code. Compilers are able to generate this debug information, and place it in the object files they produce. The information is then copied into the executable by the linker.
+
+When the debugger runs, it will look for debug information, and use that to tie the machine instructions it executes back to the source code statements.
+
+Getting \CC{} to produce debug information isn't all that hard. All it takes is the \texttt{-g} flag. Alternatively, you can use the \texttt{-g3} flag, which includes extra information such as macro definitions.\footnote{Consult the \gcc{} docs for more information about \clang{}/\gcc{} debug information options: \url{https://gcc.gnu.org/onlinedocs/gcc/Debugging-Options.html}}
+
+Let's compile \filename{template-main.cpp} and \filename{incompatible-template.cpp} with debug information. \\
+
+\begin{lstlisting}[caption=compiling with debug information]
+$ clang++ template-main.cpp incompatible-template.cpp -O0 -g -o a.out
+\end{lstlisting}
+
+Note that we used the \texttt{-O0} optimization level. This disables all non-essential compiler optimizations, which may make the debugging experience less frustrating. Compiler optimizations can sometimes twist the program's structure in unexpected ways, and you don't want to deal with the compiler's shenanigans when you're trying to debug some code.
+
+If \texttt{-O0} degrades performance too much, then you can probably get away with \texttt{-O1} or even \texttt{-O2}. If you're using \gcc{}, then you should use \gcc{}'s special debugging optimization level: \texttt{-Og}.\footnote{Documentation on \gcc{}'s optimization options can be found at \url{https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html}} Try to avoid aggressive optimizations (\texttt{-O3}) when debugging, though. They can be pretty invasive.
+
+\subsection{Using \gdb{}, the \gnu{} debugger}
+
+We now have an executable with debug information, which means we can now use a debugger to examine it. We'll be using the \gnu{} debugger (\gdb{}), a popular command-line debugger. Let's launch \gdb{} for executable a.out.\\ 
+
+\begin{lstlisting}[caption=running \gdb{}]
+$ gdb a.out
+... (the sexy legal bit) ...
+Reading symbols from a.out...done.
+(gdb)
+\end{lstlisting}
+
+We can now start issuing commands. \gdb{} ships with an incredible variety of commands, so let's just go over the basic ones.
+
+The simplest command is \functionname{run}, which will start \filename{a.out}. Most commands in \gdb{} can be abbreviated, and \functionname{r} is short for \functionname{run}.\\
+
+\begin{lstlisting}[caption=running \filename{a.out} in \gdb{}]
+(gdb) run
+Starting program: ..../gobelijn/main/cpp/linking/a.out 
+6
+[Inferior 1 (process 9017) exited normally]
+(gdb) r
+Starting program: .../gobelijn/main/cpp/linking/a.out 
+6
+[Inferior 1 (process 9137) exited normally]
+\end{lstlisting}
+
+As you might imagine, the \functionname{run} command isn't very exciting on its own. Running a program is hardly a novel concept, but we can pair the \functionname{run} command with other commands. For example, \functionname{break} can be used to ask \gdb{} to suspend the program's execution at a so-called \emph{breakpoint.} Let's insert a breakpoint on the first statement in the \functionname{main} function, and then run \filename{a.out} again.\\
+
+\begin{lstlisting}[caption={running \filename{a.out} in \gdb{}, with a breakpoint}]
+(gdb) break main
+Breakpoint 1 at 0x4008d7: file template-main.cpp, line 8.
+(gdb) r
+Starting program: .../gobelijn/main/cpp/linking/a.out 
+
+Breakpoint 1, main () at template-main.cpp:8
+8	    std::cout << muladd<int>(1, 2, 3) << std::endl;
+\end{lstlisting}
+
+The program has been suspended at the breakpoint, which presents us with an ideal opportunity to order \gdb{} around for a bit. We'll use three elementary commands, which often prove themselves useful when debugging a program: \functionname{list}, \functionname{print} and \functionname{backtrace}.
+
+\functionname{list} can be used to take a peek at the source code in the vicinity of the breakpoint the program is currently paused on.\\
+
+\begin{lstlisting}[caption={using \functionname{list} to print relevant source code}]
+(gdb) list
+3	template<typename T>
+4	T muladd(T a, T b, T c);
+5	
+6	int main()
+7	{
+8	    std::cout << muladd<int>(1, 2, 3) << std::endl;
+9	}
+\end{lstlisting}
+
+\noindent \functionname{print} evaluates an expression, and prints the result. We can use it to run \functionname{muladd<int>} without having to continue the program's execution.\\
+
+\begin{lstlisting}[caption={using the \functionname{print} command}]
+(gdb) print muladd<int>(1, 2, 3)
+$1 = 6
+(gdb) print 1 * 2 + 3
+$2 = 5
+\end{lstlisting}
+
+\noindent \gdb{} tells us that \functionname{muladd<int>(1, 2, 3)} evaluates to \texttt{6}, but we expect it to evaluate to \texttt{5}. To find out more about what's going on in \functionname{muladd}, we should set another breakpoint, and then resume \filename{a.out}'s execution with \functionname{continue} (abbreviated form: \texttt{c}).\\
+
+\begin{lstlisting}[caption={adding another breakpoint}]
+(gdb) break muladd<int>
+Breakpoint 2 at 0x4008ad: file incompatible-template.cpp, line 6.
+(gdb) c
+Continuing.
+
+Breakpoint 2, muladd<int> (a=1, b=2, c=3) at incompatible-template.cpp:6
+6	    return a + b + c;
+\end{lstlisting}
+
+It seems that we have uncovered the source of the ``bug:'' the definition of \functionname{muladd} in \filename{incompatible-template.cpp} simply adds its operands together. 
+
+We're more or less done debugging the program now. We'll first use the \functionname{backtrace} command to print a stack trace, and then let the program run to completion. \gdb{} can be closed by pressing the Ctrl+D keys, or by using the \functionname{quit} command, which can be abbreviated as \functionname{q}.\\
+
+\begin{lstlisting}[caption={running \functionname{backtrace}, followed by \functionname{c} and \functionname{q}}]
+(gdb) backtrace
+#0  muladd<int> (a=1, b=2, c=3) at incompatible-template.cpp:6
+#1  0x00000000004008dc in main () at template-main.cpp:8
+(gdb) c
+Continuing.
+6
+[Inferior 1 (process 9676) exited normally]
+(gdb) q
+\end{lstlisting}
+
+\subsection{Other debuggers}
+
+\gdb{} is a great debugger, but it is not the only wonderful debugging tool out there. There's no shortage of compelling alternatives, such as \lldb{} and the Visual Studio debugger. These two will be discussed briefly now.
+
+\subsubsection{\lldb{}, the \llvm{} debugger}
+
+\lldb{}\footnote{\lldb{} home page: http://lldb.llvm.org/} describes itself as a ``next generation, high-performance debugger,'' but it's mostly used as a clean-slate re-imagining of \gdb{}. It features a command-line interface with a highly regular set of commands that have clearly-defined, predictable behavior. Some \gdb{} commands can have bizarre behavior for complex programs, and \lldb{} tries to keep the magic to a minimum.
+
+In the end, whether you pick \gdb{} or \lldb{} is mostly a matter of taste, especially from a user's perspective. Both debuggers are definitely worth trying.\footnote{An \lldb{} tutorial for \gdb{} users can be found at \url{http://lldb.llvm.org/tutorial.html}}
+
+\subsubsection{Visual Studio's debugger}
+
+Windows users who have installed Visual Studio can use the integrated debugger to squash bugs in their code. This debugger is wrapped in a user-friendly GUI, and that makes it a lot easier to set breakpoints in Visual Studio than in \gdb{} or \lldb{}, and variables can be inspected by hovering over them with the mouse pointer. 
+
+On the other hand, \gdb{} and \lldb{} have rich sets of commands, which the Visual Studio debugger lacks. There's a bit of an expressiveness/intuitive\-ness trade-off between debuggers.
+
+Furthermore, the Visual Studio debugger is not unique. Other \CCpp{} IDEs tend to offer similar debugging tools, though the Visual Studio debugging workflow is often touted as the best of its kind. That being said, whether you find any of this to be the case or not is entirely up to you. Some programmers prefer console-based debuggers, others prefer IDEs.
+
+\section{Wrapping up}
+
+Hopefully this document has given you at least a passing understanding of how linking works, and how the linker and compiler interact. 
+
+To summarize:
+
+\begin{itemize}
+	
+	\item Turning source files into an executable may seem simple at first, but it is often a daunting task that must be carefully managed. Build systems such as \gnumake{} and \cmake{} often prove themselves to be invaluable tools when dealing with the complexity of compiling and linking a medium-sized or large program.
+	
+	\item Missing definitions are only detected at link-time due to \CCpp{}'s separate compilation paradigm. The linker errors that ensue can be notoriously hard to understand, and a solid understanding of how linking works can prove invaluable when diagnosing these problems.
+	
+	\item \Cpp{} language features that are implemented by weak linkage can ease the process of developing complex, high-performance applications, but special care must be taken to avoid conflicting definitions. 
+	
+	\item Debuggers are awesome tools, and there's a great line-up of debuggers out there: \gdb{}, \lldb{} and the Visual Studio debugger are all production-quality tools. Familiarize yourself with at least one of them.
+	
+\end{itemize}
+
+The source code for all \CCpp{} files referred to in this document can be found in the \texttt{main/cpp/linking} folder of the public \href{https://bitbucket.org/comp/gobelijn}{Gobelijn repository}.
+
+\end{document}

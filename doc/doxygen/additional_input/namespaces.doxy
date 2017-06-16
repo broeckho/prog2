@@ -1,0 +1,26 @@
+/*!
+ \file
+ \brief Doxygen documentation on namespaces.
+ 
+ \author J. Broeckhove, 2011 UA/CoMP
+ 
+ \namespace UA_CoMP
+ 	 	 \brief Namespace Comp groups all code developed by the CoMP group.
+
+ \namespace UA_CoMP::Clock
+ 	 	 \brief Clock and timing code.
+
+ \namespace UA_CoMP::Misc
+ 	 	 \brief Legacy miscellaneous code.
+
+ \namespace UA_CoMP::Num
+ 	 	 \brief Numerical code.
+ 
+ \namespace UA_CoMP::Num::QuadTests
+ 	 	 \brief Test code for quadrature code.
+ 	 	 	 	 
+ \namespace ODemo
+		\brief Demonstrates features of object behavior w.r.t. essential operators,
+		aggregation and association, polymorphism, abstract classes, and interfaces.
+
+ */

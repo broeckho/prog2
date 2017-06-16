@@ -1,0 +1,71 @@
+#--------------
+# Generic stuff
+#--------------
+*.cache
+*.Debug
+*.o
+*.orig
+*.out
+*.Release
+
+#-----------------------------
+# Editor backup and lock files
+#-----------------------------
+*~
+.\#*
+*.bak
+
+#------------------------------------
+# Local make config & build directory
+#-----------------------------------
+/MakeLocalConfig
+build*
+.cproject
+.project
+.settings
+.idea
+cmake-build-*
+
+#----------------
+# Random OS stuff
+#----------------
+.DS_Store
+Thumbs.db
+._*
+.directory
+
+#----------------
+# LaTeX build stuff
+#----------------
+*.synctex.gz
+*.log
+*.aux
+
+#----------------
+# CMake-generated stuff
+#----------------
+Makefile
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+run_cmake.sh
+CPackConfig.cmake
+CPackSourceConfig.cmake
+
+#----------------
+# Doxygen stuff
+#----------------
+doc/doxygen/Doxyfile
+doc/doxygen/html
+doc/doxygen/latex
+doc/doxygen/tex
+
+#----------------
+# g3log stuff
+#----------------
+main/resources/lib/g3log/g3log-FATAL-*
+main/resources/lib/g3log/*.so
+
+#-------------------------
+

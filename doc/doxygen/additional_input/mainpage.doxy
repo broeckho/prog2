@@ -1,0 +1,111 @@
+/*!
+ \file
+ \brief Placeholder for mainpage of doxygen documentation.
+
+ \mainpage Gobelijn Project v1.0
+ 
+ \section Background
+ \htmlonly
+ Gobelijn is a project by the  
+ <a href="http://www.comp.ua.ac.be/"> Computational Modeling and Programming (CoMP)</a> group <br>
+ of the <a href="http://www.ua.ac.be/"> University of Antwerp</a>.  The aim is  to
+ develop C++ code and a project structure <br>for our programming courses.	 
+ \endhtmlonly
+
+ \section Guidelines
+ 	 The project follows a number of guidelines:
+ 	 \li The directory layout follows the Maven convention, adapted for C++.
+ 	 \li CMake is used to build programs, libraries, etc.
+ 	 \li Eclipse (CDT) is used as an integrated development environment.
+ 	 \li API documentation is generated with Doxygen.
+	 \li For \subpage coco we follow (to some extent) Herb Sutter's guidelines.
+
+ \section Documentation
+	 These web pages constitute the developer documentation for
+	 the Gobelijn project.
+	 \li User documentation still needs to written
+	 \li Installation documentation still needs to be written
+	 \li Developer documentation is generated using the doxygen tool
+
+ \section License
+	 Gobelijn is free software: you can redistribute it and/or modify
+	 it under the terms of the
+	 <br> GNU General Public License as published by
+	 the Free Software Foundation,
+	 <br> either version 3 of the License, or (at your option) any later version.
+
+	 Gobelijn is distributed in the hope that it will be useful,
+	 but without any warranty, without
+	 <br> even the implied warranty of
+	 merchantability or fitness for a particular purpose.
+	 <br> See the GNU General Public License for more details.
+
+	 A copy of the GNU General Public License can be found in the
+	 file NOTICE.txt in the root
+	 <br> directory of the project.
+	 A copy of the <a href="http://www.gnu.org/licenses/gpl.html">license text</a>
+	 is also available
+	 at the
+	 <a href="http://www.gnu.org/licenses/">GNU web site</a>,
+	 <br> where you will also find
+	 background information on GNU software licenses.
+ */
+
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+
+/*! \page coco Code Conventions
+
+ We use the approach to code convention and formatting proposed in 
+ Herb Sutter's "C++ Coding Standards", Guideline 0.
+
+ Basically, this guideline suggests not to be overly picky in regard 
+ to which convention you follow, but to be consistent in applying the 
+ one you choose. And to always remember that a convention is used to 
+ make code more readable. It is not a goal in itself.
+  
+ \section Formatting
+ 	 For indentation, line breaking, brace positioning (i.e. the formatting) 
+ 	 we follow Kernighan&Ritchie with some exceptions. They taht for class, 
+ 	 method and function definitions we put the brace on the next line. 
+ 	 For indentation (to quote As Sutter): indent to show structure. So, if 
+ 	 you feel that the style does not do a good job at a particular point in 
+ 	 the code, overrule it to make the indentation express the structure better.
+ 
+\section Naming
+ Below we refer to the CamelCase name construction. This means 
+ that in multipart names each new part is started with a upper case. 
+ If the name is all upper case or all lower case,
+ and then you use underscores to separate the parts. 
+	\li Classes, class methods, functions, typedef or namespace names start with an
+		upper case. The name "main" is the unavoidable exception.
+	\li Names for variables, class data members, function parameters, etc. 
+		must be all lower case. Start names for data member with a "m_" prefix
+		and for static data member names with a "g_".
+	
+ Try avoiding the use of macros (except for conditional compilation), 
+ but if you are going to use them, they must always be all upper case.
+
+ \section Commenting
+ 	 The commenting style has to be consistent with doxygen usage. We expect a 
+ 	 header with a brief description at least for each file and at least a brief 
+ 	 description for each class. As for the rest: do not write comments that 
+ 	 duplicate what the code expresses; write comment that shed some light on 
+ 	 the rationale.
+
+ \section Files 
+ 	 Generally, we adhere to the Java convention that puts a class in a like-named 
+ 	 file. That makes it easy to find things. For C++ that means a header (.h) and 
+ 	 implementation (.cpp) file with the class name.
+ 
+ */
+
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+
+
+
+
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+

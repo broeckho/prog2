@@ -1,0 +1,220 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{newpxtext}
+\usepackage{newpxmath}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{sectsty}
+\newcommand{\cod}[1]{{\color{red!60!black}\texttt{#1}}}
+\frenchspacing
+
+\title{Getting started with CMake}
+%\sectionfont{\color{red!60!black}}
+\begin{document}
+  \date{}
+  \maketitle
+  \vspace{-2cm}
+  \section{What is CMake?}
+  CMake is a powerful cross-platform tool for building and testing software, 
+  using simple \textit{platform} and \textit{compiler independent} 
+  configuration files. It can generate \textit{makefiles} for many platforms, 
+  including Unix, OS X, Windows and Cygwin, or even Microsoft Visual Studio 
+  project and solution files. CMake has good support for hierarchically 
+  structured software projects, and applications that depend on many libraries.
+  
+  A typical CMake feature is support for \textit{out-of-place builds}.
+  Typically, \cod{make} produces object files and executables in the same  
+  location as the source code: an \textit{in-place build}. The ``CMake way'' is 
+  to produce these files in a separate directory: for example, 
+  \cod{my-project/src/} contains the source code and 
+  \cod{my-project/target/} contains the build output. That way, multiple 
+  builds can live alongside the source code.
+  
+  \lstset{language=Python,
+    columns=flexible,
+    showstringspaces=false,
+    basicstyle=\ttfamily\color{red!60!black},
+    commentstyle=\rmfamily\color{orange!60!gray},
+    keywordstyle=\ttfamily,
+    framerule=2.5pt,
+    rulecolor=\color{red!60!black!33!white},
+    frame=l}
+  \section{A simple example}
+  This section gives a very simple example of a CMake project and its
+  configuration files. To see it in action, try:
+  
+  \begin{lstlisting}
+  cd gobelijn/doc/tex/cmake/Pong
+  mkdir build && cd build
+  cmake .. && make && make test
+  \end{lstlisting}
+  
+  Pretend I'm making a simple Pong game in the directory \cod{Pong/}. Its 
+  source 
+  code is in \cod{Pong/src/}, and a library I wrote (and my game relies on)
+  is in \cod{Pong/src/PhysicsLib/}.
+  
+  I've put a file called 
+  \cod{CMakeLists.txt} in that last directory --- this is CMake's version of 
+  a \cod{Makefile}. For this library, it consists of one line:
+  \begin{lstlisting}
+  add_library(Physics gravity.cpp)
+  \end{lstlisting}
+  This is our first example of a CMake command. It adds a library to our 
+  project, called \cod{Physics}, and tells CMake to build it from the 
+  specified source files (\cod{gravity.cpp}).
+  
+  One level up, in \cod{Pong/src/}, I've put another \cod{CMakeLists.txt} 
+  file. Do you 
+  notice the hierarchy here? Every directory in a project can have its own 
+  build instructions, usually tying the subdirectories' build steps together.
+  This time, the instructions are a bit more complicated.
+  \begin{lstlisting}
+  # Add an executable called "Pong".
+  add_executable(Pong game.cpp logic.cpp)
+  
+  # Link to our Physics library.
+  add_subdirectory(PhysicsLib)
+  include_directories(PhysicsLib)
+  target_link_libraries(Pong Physics)
+  \end{lstlisting}
+  What's new here? First of all, lines starting with \cod{\#} are comments. 
+  Next, we have \cod{add\_executable}: this is just like 
+  \cod{add\_library}, but defines an \textit{executable} called 
+  \cod{Pong}, instead.
+  
+  Then, my game is linked to my library using these three commands:
+  \begin{itemize}
+    \item  \cod{add\_subdirectory()} adds the 
+    \cod{Physics/} directory to the build. This means the 
+    \cod{CMakeLists.txt} file I've put in there will be processed.
+    \item  \cod{include\_directories()} instructs the compiler to 
+    search the given path(s) for include files (so that \cod{game.cpp} can, 
+    for example, \cod{\#include "gravity.hpp"}.)
+    \item \cod{target\_link\_libraries()} links a \textit{target} (an 
+    executable or 
+    library defined in \cod{CMakeLists.txt}; here our game, 
+    \cod{Pong}) to one or more libraries (here, \cod{Physics}).
+  \end{itemize}
+  That's it for \cod{src/}. \pagebreak
+  
+  On the top level, in \cod{Pong/}, we write our project-wide 
+  \cod{CMakeLists.txt} file:
+  
+  \begin{lstlisting}
+  cmake_minimum_required(VERSION 3.2)
+  
+  # Use the C++11 standard.
+  set(CMAKE_CXX_STANDARD 11)  # (a)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)  # (b)
+  set(CMAKE_CXX_EXTENSIONS OFF)  # (c)
+  
+  project(Pong)
+  add_subdirectory(src)
+  
+  # ...
+  \end{lstlisting}
+  
+  The \cod{cmake\_minimum\_required()} command will warn users of CMake 
+  versions older than the one specified that their version is not 
+  supported. At the time of writing (September 2016), version 3.2 is readily 
+  available everywhere, and has plenty of useful new features. If you set it to
+  an older version, make sure to test if your project actually builds on it.
+  
+  The following three lines demonstrate one of those new features: they 
+  \textbf{(a)}~tell CMake we're using the C++11 standard, \textbf{(b)}~tell it 
+  falling back to C++98 on old compilers is not an option, and
+  \textbf{(c)}~make sure \cod{g++} uses \cod{-std=c++11} and not 
+  \cod{-std=gnu++11} 
+  (no compiler-specific voodoo).
+  
+  The \cod{project()} command declares this directory as the root of our 
+  \cod{Pong} project, and finally, we point CMake to our source code folder.
+  
+  \section{Tests using CMake}
+  There's a final bit to our project's \cod{CMakeLists.txt} file I haven't 
+  explained yet: it defines a single test. CMake ships with a testing tool 
+  called CTest, and operating it from within a CMake configuration file is 
+  pretty easy.
+  
+  \begin{lstlisting}
+  # ...
+  
+  # Make sure our Pong game is set on planet Earth.
+  enable_testing()
+  add_test(NAME on_earth COMMAND Pong)
+  set_tests_properties(on_earth PROPERTIES
+  PASS_REGULAR_EXPRESSION "g = 9\.80665")
+  \end{lstlisting}
+  
+  First, the \cod{enable\_testing()} command is used to enable tests for this 
+  directory and below. The \cod{add\_test()} command adds a new test, given a 
+  name for this test and a command to execute (with optional arguments).
+  
+  By 
+  default, a test passes if and only if executing its command yields an exit 
+  status of 0. The \cod{set\_tests\_properties()} command overrides this 
+  behavior: 
+  here, the \cod{on\_earth} test expects the program output to match a certain 
+  regular expression.
+  
+  \section{Miscellaneous commands}
+  Here are some assorted useful commands that might help you out when writing 
+  your own CMake build scripts.
+  
+  \begin{itemize}
+    \item Don't repeat yourself: the \cod{set} command allows you to define 
+    your own variables, which you can interpolate into later commands. 
+    Here's an example:
+  \begin{lstlisting}
+  set(SOURCE_FILES flour.cpp milk.cpp eggs.cpp)
+  add_executable(Crepes ${SOURCE_FILES})
+  \end{lstlisting}
+    \item You can add user-configurable flags to your build process using the 
+    \cod{option()} command:
+  \begin{lstlisting}
+  option(SUGAR "Coat the crepes in sugar." OFF)
+  \end{lstlisting}
+    Users can then run, say, \cod{cmake -DSUGAR=ON ..} to enable the option.
+    
+    \item To check the value of such an option (or any variable) in a CMake 
+    build script, use:
+  \begin{lstlisting}
+  if(SUGAR)
+    # Commands go here.
+  elseif(...) # Optional.
+    # More commands.
+  else() # Also optional.
+    # Final commands.
+  endif()
+  \end{lstlisting}
+  \pagebreak
+  
+  \item When the build process gets complicated, it can be nice to keep track 
+  of where you are. The \cod{message} command simply displays whatever message 
+  you 
+  pass it. You can specify a message type:
+  \begin{lstlisting}
+  message("This message is really important.")
+  message(STATUS "Detected a 32-bit fridge.")
+  message(WARNING "Out of milk; using soy milk instead.")
+  message(FATAL_ERROR "Everything is on fire!")
+  \end{lstlisting}
+  A \cod{STATUS} message goes to \cod{stdout}, the others go to 
+  \cod{stderr}.  
+  \end{itemize}
+  \section{Further resources}
+  The Gobelijn project uses CMake extensively, and might be a useful source of 
+  inspiration when structuring your own CMake-reliant software. The official 
+  CMake documentation page at 
+  \href{https://cmake.org/documentation/}{\cod{https://cmake.org/documentation/}}
+  contains reference documentation, training materials, and a list of 
+  frequently asked questions (FAQ).
+\end{document}

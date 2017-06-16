@@ -1,0 +1,71 @@
+#############################################################################
+#  This file is part of the gobelijn software.
+#  Gobelijn is free software: you can redistribute it and/or modify it
+#  under the terms of the GNU General Public License as published by the
+#  Free Software Foundation, either version 3 of the License, or any later
+#  version. Gobelijn is distributed in the hope that it will be useful, but
+#  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+#  or FITNESS FOR A PARTICULAR PURPOSE.
+#  See the GNU General Public License for details. You should have received
+#  a copy of the GNU General Public License along with the software. If not,
+#  see <http://www.gnu.org/licenses/>.
+#
+#  Copyright 2016, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#
+#############################################################################
+
+#============================================================================
+# Build / install / smoke test:
+#============================================================================
+foreach( EXEC	conversion-operator
+                explicit
+                friend-input-operator
+                functor-state
+                lambda-by-reference 
+                lambda-by-value
+                lambda-modules  
+                lambda-set  
+                overloading-member-vs-non-member)
+
+	add_executable( ${EXEC}	${EXEC}.cpp )
+	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
+	add_test( NAME ${EXEC}  
+			COMMAND  ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/${EXEC} )
+			
+endforeach()
+
+add_executable(call-operator 
+		    call-operator/plotter.cpp 
+		    call-operator/main.cpp 
+		    call-operator/polynomial.cpp
+)
+
+add_executable(friend-function-factory 
+		    friend-function-factory/main.cpp 
+		    friend-function-factory/Factory.cpp 
+		    friend-function-factory/Factory.h 
+		    friend-function-factory/Object.h
+)
+
+add_executable(functor-info 
+            functor-info/distance.cpp 
+            functor-info/main.cpp
+)
+
+add_executable(lambda-functor lambda-functor/main.cpp)
+add_executable(functor-lambda lambda-functor/main.cpp)
+target_compile_options(functor-lambda PUBLIC "-DUSE_FUNCTOR")
+
+foreach( EXEC	call-operator
+                friend-function-factory
+                functor-info
+                lambda-functor
+                functor-lambda )
+
+	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
+	add_test( NAME ${EXEC}  
+			COMMAND  ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/${EXEC} )
+			
+endforeach()
+
+#############################################################################
