@@ -118,7 +118,7 @@ distclean clean:
 	$(CMAKE) -E remove_directory $(BUILD_DIR)
 	$(CMAKE) -E remove_directory cmake-build-debug
 
-test installcheck: install_test
+test installcheck:
 	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) run_ctest
 	
 format:
