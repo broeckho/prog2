@@ -77,7 +77,10 @@ before_install:
   # This needs to be done because we want to override Travis's definitions of CC and CXX that lead to old Ubuntu-packaged compilers
   - export CXX="$CXX_COMPILER_NAME" CC="$CC_COMPILER_NAME"
 
-script:
-  - PARALLEL_MAKE=-j2 make install
-  - make test
+jobs:
+  include:
+    - stage: build_and_install
+      script: PARALLEL_MAKE=-j2 make install
+    - stage: test
+      script: make test
  

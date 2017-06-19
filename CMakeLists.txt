@@ -68,6 +68,8 @@ message( STATUS "------> CMAKE_SYSTEM                : ${CMAKE_SYSTEM} "        
 message( STATUS "------> CMAKE_SYSTEM_VERSION        : ${CMAKE_SYSTEM_VERSION} "      )
 message( STATUS "------> CMAKE_SYSTEM_PROCESSOR      : ${CMAKE_SYSTEM_PROCESSOR} "    )
 message( STATUS "------> CMAKE_VERSION               : ${CMAKE_VERSION} "             )
+#
+message( STATUS " " )
 message( STATUS "------> CMAKE_BUILD_TYPE            : ${CMAKE_BUILD_TYPE} "          )
 message( STATUS "------> CMAKE_BINARY_DIR            : ${CMAKE_BINARY_DIR} "          )
 message( STATUS "------> CMAKE_INSTALL_PREFIX        : ${CMAKE_INSTALL_PREFIX}"       )
@@ -81,6 +83,11 @@ endif()
 if( CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug$" )
 	message( STATUS "------> CMAKE_CXX_FLAGS_DEBUG       : ${CMAKE_CXX_FLAGS_DEBUG}"   )
 endif()
+#
+message( STATUS " " )
+message( STATUS "------> Boost_VERSION               : ${Boost_VERSION} "             )
+message( STATUS "------> Boost_INCLUDE_DIRS          : ${Boost_INCLUDE_DIRS} "        )
+message( STATUS "------> Boost_Libraries             : ${Boost_Libraries} "           )
 #
 message( STATUS "" )
 message( STATUS "Report complete." )
