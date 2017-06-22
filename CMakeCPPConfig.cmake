@@ -72,5 +72,6 @@ set( G3LOG_LIBRARIES_STATIC		g3logger-static) #lib_activeobject)
 #----------------------------------------------------------------------------
 set( BUILD_SHARED_LIBS 	    ON 	 )
 set( CMAKE_INSTALL_RPATH    ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_LOCATION} )
+SET( CMAKE_INSTALL_RPATH_USE_LINK_PATH   TRUE )
 
 #############################################################################

@@ -85,9 +85,10 @@ if( CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug$" )
 endif()
 #
 message( STATUS " " )
+message( STATUS "------> Boost_FOUND                 : ${Boost_FOUND} "               )
 message( STATUS "------> Boost_VERSION               : ${Boost_VERSION} "             )
 message( STATUS "------> Boost_INCLUDE_DIRS          : ${Boost_INCLUDE_DIRS} "        )
-message( STATUS "------> Boost_Libraries             : ${Boost_Libraries} "           )
+message( STATUS "------> Boost_LIBRARIES             : ${Boost_LIBRARIES} "           )
 #
 message( STATUS "" )
 message( STATUS "Report complete." )
