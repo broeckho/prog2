@@ -66,6 +66,9 @@ endif
 ifneq ($(CMAKE_INSTALL_PREFIX),)
 	CMAKE_ARGS += -DCMAKE_INSTALL_PREFIX:PATH=$(CMAKE_INSTALL_PREFIX)
 endif
+ifneq ($(GOBELIJN_BOOST_ROOT),)
+	CMAKE_ARGS += -DGOBELIJN_BOOST_ROOT:PATH=$(GOBELIJN_BOOST_ROOT)
+endif
 ifneq ($(GOBELIJN_INCLUDE_DOC),)
 	CMAKE_ARGS += -DGOBELIJN_INCLUDE_DOC:BOOL=$(GOBELIJN_INCLUDE_DOC)
 endif
@@ -88,12 +91,16 @@ help:
 	@ $(CMAKE) -E echo "    "
 	@ $(CMAKE) -E echo " Current macro values are (cmake will use an appropriate"
 	@ $(CMAKE) -E echo " default for any macro that has not been set):"
+	@ $(CMAKE) -E echo " "
 	@ $(CMAKE) -E echo "   BUILD_DIR                 : " $(BUILD_DIR)
+	@ $(CMAKE) -E echo " "
 	@ $(CMAKE) -E echo "   CMAKE_GENERATOR           : " $(CMAKE_GENERATOR)
 	@ $(CMAKE) -E echo "   CMAKE_BUILD_TYPE          : " $(CMAKE_BUILD_TYPE)
 	@ $(CMAKE) -E echo "   CMAKE_CXX_COMPILER        : " $(CMAKE_CXX_COMPILER)
 	@ $(CMAKE) -E echo "   CMAKE_CXX_FLAGS           : " $(CMAKE_CXX_FLAGS)
+	@ $(CMAKE) -E echo " "
 	@ $(CMAKE) -E echo "   CMAKE_INSTALL_PREFIX      : " $(CMAKE_INSTALL_PREFIX)
+	@ $(CMAKE) -E echo "   GOBELIJN_BOOST_ROOT       : " $(GOBELIJN_BOOST_ROOT)
 	@ $(CMAKE) -E echo "   GOBELIJN_INCLUDE_DOC      : " $(GOBELIJN_INCLUDE_DOC)
 	@ $(CMAKE) -E echo "   GOBELIJN_VERBOSE_TESTING  : " $(GOBELIJN_VERBOSE_TESTING)
 	@ $(CMAKE) -E echo " "

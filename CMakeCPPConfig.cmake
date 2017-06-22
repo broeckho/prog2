@@ -48,6 +48,14 @@ endif()
 set( LIBS   ${LIBS}   m )
 
 #----------------------------------------------------------------------------
+# Boost
+#----------------------------------------------------------------------------
+set(BOOST_ROOT ${GOBELIJN_BOOST_ROOT})
+find_package( Boost COMPONENTS filesystem thread date_time system REQUIRED )
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS} )
+set( LIBS   ${LIBS} ${Boost_LIBRARIES} )
+
+#----------------------------------------------------------------------------
 # TCLAP Library (command line processing)
 #----------------------------------------------------------------------------
 include_directories( ${CMAKE_HOME_DIRECTORY}/main/resources/lib/tclap/include )

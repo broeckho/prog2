@@ -3,21 +3,18 @@
 # but see also at:
 # https://genbattle.bitbucket.io/blog/2016/01/17/c++-travis-ci/?
  
-
 # We are dealing with a C++ project.
 language: cpp
 
 # Use Ubuntu 14.04.5 LTS (Trusty Tahr) instead of Ubuntu 12.04.5 LTS (Precise Pangolin)
 dist: trusty
-sudo: required
 
-# We're going to need cmake etc. for all configurations
+# We're going to need boost for all configurations
 addons:
   apt:
     sources: &default_sources
       - ubuntu-toolchain-r-test
     packages: &default_packages
-      - cmake
       - libboost-all-dev
 
 matrix:

@@ -1,8 +1,7 @@
 #============================================================================
 # Build & install :
 #============================================================================
-# Only build this example if the boost libraries can be found.
-find_package(Boost 1.58.0)
+# Only build this example if the boost libraries have been found.
 if( Boost_FOUND )
 
 	set( EXEC abstract-factory )
