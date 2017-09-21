@@ -18,7 +18,7 @@
 #------------------------------------
 # Local make config & build directory
 #-----------------------------------
-/MakeLocalConfig
+/CMakeLocalConfig.cmake
 build/
 .cproject
 .project

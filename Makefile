@@ -1,5 +1,5 @@
 #############################################################################
-#  This file is part of the gobelijn software.
+#  This file is part of the software project.
 #  Gobelijn is free software: you can redistribute it and/or modify it
 #  under the terms of the GNU General Public License as published by the
 #  Free Software Foundation, either version 3 of the License, or any later
@@ -14,36 +14,24 @@
 #
 #############################################################################
 #
-#	Meta makefile calls cmake to do the heavy lifting. It first
-#	includes the file MakeLocalConfig (if it exists) for local
-#	configuration. If no such file exists the defaults below apply.
-#	This file is tracked by the mercurial repository so do not
-#	change this for personal customization. That should be done in
-#	the file MakeLocalConfig.
+#	Meta makefile calls cmake to do the heavy lifting.
 #
 #############################################################################
 
 #============================================================================
-#   Load MakeLocalConfig (if it exists) to override defaults below
+#   Configuring Make invocations.
 #============================================================================
 MAKEFLAGS   += --no-print-directory
-
-MakeLocalConfig = $(wildcard MakeLocalConfig)
-#ifeq ($(MakeLocalConfig),MakeLocalConfig)
-#	include MakeLocalConfig
-#endif
+ifeq ($(PARALLEL_MAKE),)
+	PARALLEL_MAKE = -j4
+endif
 
 #============================================================================
-# 	CMake command
+# 	CMake command for Mac OSX or *nix
 #============================================================================
 ifeq ($(CMAKE),)
 	CMAKE = cmake
 endif
-
-#============================================================================
-#   Platform info: Mac, Linux/UNIX
-#============================================================================
-# Compiling for Mac OSX or *nix
 ifeq ($(CMAKE_GENERATOR),)
 	CMAKE_GENERATOR = "Unix Makefiles"
 endif
@@ -91,6 +79,8 @@ help:
 	@ $(CMAKE) -E echo "    "
 	@ $(CMAKE) -E echo " Current macro values are (cmake will use an appropriate"
 	@ $(CMAKE) -E echo " default for any macro that has not been set):"
+	@ $(CMAKE) -E echo " "
+	@ $(CMAKE) -E echo "   PARALLEL_MAKE             : " $(PARALLEL_MAKE)
 	@ $(CMAKE) -E echo " "
 	@ $(CMAKE) -E echo "   BUILD_DIR                 : " $(BUILD_DIR)
 	@ $(CMAKE) -E echo " "
