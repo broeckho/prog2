@@ -21,19 +21,17 @@
 #============================================================================
 # User defined options:
 #============================================================================
-option( GOBELIJN_INCLUDE_DOC 
-	"Exclude site directory from build and install."  OFF )
-option( GOBELIJN_VERBOSE_TESTING  
-	"Run tests in verbose mode."  OFF )
+set_if_null( GOBELIJN_INCLUDE_DOC         OFF )
+set_if_null( GOBELIJN_VERBOSE_TESTING     OFF )
 
 #============================================================================
 # Install sub-directory definitions
 #============================================================================
-set( BIN_INSTALL_LOCATION	    bin     )
-set( LIB_INSTALL_LOCATION	    lib     )
-set( INCLUDE_INSTALL_LOCATION   include )
-set( DATA_INSTALL_LOCATION	    data    )
-set( DOC_INSTALL_LOCATION	    doc     )
-set( TESTS_INSTALL_LOCATION	    tests   )
+set_if_null( BIN_INSTALL_LOCATION	    bin     )
+set_if_null( LIB_INSTALL_LOCATION	    lib     )
+set_if_null( INCLUDE_INSTALL_LOCATION   include )
+set_if_null( DATA_INSTALL_LOCATION	    data    )
+set_if_null( DOC_INSTALL_LOCATION	    doc     )
+set_if_null( TESTS_INSTALL_LOCATION	    tests   )
 
 #############################################################################

@@ -29,9 +29,9 @@
 MAKEFLAGS   += --no-print-directory
 
 MakeLocalConfig = $(wildcard MakeLocalConfig)
-ifeq ($(MakeLocalConfig),MakeLocalConfig)
-	include MakeLocalConfig
-endif
+#ifeq ($(MakeLocalConfig),MakeLocalConfig)
+#	include MakeLocalConfig
+#endif
 
 #============================================================================
 # 	CMake command

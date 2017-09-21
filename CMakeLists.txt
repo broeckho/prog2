@@ -17,22 +17,16 @@
 #  CMakeLists.txt for the whole project.
 #
 #############################################################################
+
+#============================================================================
+# Configuring Make and local settings for project.
+#============================================================================
 cmake_minimum_required(VERSION 2.8)
+include( CMakeCMakeConfig.cmake )
+include( CMakeLocalConfig.cmake OPTIONAL )
 
 #============================================================================
-# CMAKE_BUILD_TYPE: provide default build type:
-#============================================================================
-set( CMAKE_BUILD_TYPE "Release"
-	CACHE STRING "Build type: None Debug Release RelWithDebInfo MinSizeRel." )
-
-#============================================================================
-# CMAKE_INSTALL_PREFIX: install directory definitions:
-#============================================================================
-set( CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed" 
-	CACHE PATH "Prefix prepended to install directories" )
- 
-#============================================================================
-# Project name:
+# Project name.
 #============================================================================
 project( gobelijn )
 if( CMAKE_VERSION VERSION_GREATER 3 )
@@ -40,10 +34,25 @@ if( CMAKE_VERSION VERSION_GREATER 3 )
 endif()
 
 #============================================================================
-# Configuration for CMake, this build and C++ compile & link.
+# Defaults for user defined options.
 #============================================================================
-include( CMakeCMakeConfig.cmake )
-include( CMakeBuildConfig.cmake )
+set_if_null( GOBELIJN_INCLUDE_DOC         OFF )
+set_if_null( GOBELIJN_VERBOSE_TESTING     OFF )
+
+#============================================================================
+# Install directory definitions.
+#============================================================================
+#set_if_null( CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed")
+set_if_null( BIN_INSTALL_LOCATION	    bin     )
+set_if_null( LIB_INSTALL_LOCATION	    lib     )
+set_if_null( INCLUDE_INSTALL_LOCATION   include )
+set_if_null( DATA_INSTALL_LOCATION	    data    )
+set_if_null( DOC_INSTALL_LOCATION	    doc     )
+set_if_null( TESTS_INSTALL_LOCATION	    tests   )
+
+#============================================================================
+# Configuration C++ compile & link deferred to separate file.
+#============================================================================
 include( CMakeCPPConfig.cmake )
 
 #============================================================================
