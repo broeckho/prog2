@@ -17,37 +17,37 @@
 #============================================================================
 # api_doc
 #============================================================================
-find_package( Doxygen )
+find_package(Doxygen)
 
-if( DOXYGEN_FOUND ) 
+if(DOXYGEN_FOUND)
 
 	#=== dot tool ===
 	if( DOXYGEN_DOT_FOUND )
-		set( DOXY_HAVE_DOT YES )
+		set(DOXY_HAVE_DOT YES)
 	else()
-		set( DOXY_HAVE_DOT NO )
+		set(DOXY_HAVE_DOT NO)
 	endif()
     
 	#=== setup ===          
-	set( DOXY_HTML_DIR  ${CMAKE_BINARY_DIR}/${DOC_INSTALL_LOCATION}/reference_doc_html )
-	file( MAKE_DIRECTORY ${DOXY_HTML_DIR} )
-	configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.cmake.in 
-		${CMAKE_CURRENT_BINARY_DIR}/Doxyfile) 
+	set(DOXY_HTML_DIR  ${CMAKE_BINARY_DIR}/docs/reference_doc_html)
+	file(MAKE_DIRECTORY ${DOXY_HTML_DIR})
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/GobelijnLogo.png DESTINATION ${DOXY_HTML_DIR})
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mainpage.doxy.in    ${CMAKE_CURRENT_BINARY_DIR}/mainpage.doxy)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/namespaces.doxy.in  ${CMAKE_CURRENT_BINARY_DIR}/namespaces.doxy)
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.cmake.in   ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
     
 	#=== target ===
-	add_custom_target( api_doc ALL     ${DOXYGEN_EXECUTABLE} Doxyfile )
+	add_custom_target(doc ALL ${DOXYGEN_EXECUTABLE} Doxyfile)
 
     #=== install ===
 	# need to install image files though
-	install(DIRECTORY      ${DOXY_HTML_DIR}
-	       DESTINATION     ${DOC_INSTALL_LOCATION} )
-	install(FILES          ReferenceManual.html
-	       DESTINATION     ${DOC_INSTALL_LOCATION} )
+	install(DIRECTORY ${DOXY_HTML_DIR} DESTINATION ${DOC_INSTALL_LOCATION})
+	install(FILES reference_doc.html DESTINATION ${DOC_INSTALL_LOCATION})
 	
 	#=== unset ===
 	unset( DOXY_HAVE_DOT )
    	unset( DOXY_HTML_DIR )
     
-endif( DOXYGEN_FOUND )
+endif(DOXYGEN_FOUND)
 
 #############################################################################

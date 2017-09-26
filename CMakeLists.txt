@@ -22,84 +22,101 @@
 # Configuring Make and local settings for project.
 #============================================================================
 cmake_minimum_required(VERSION 2.8)
-include( CMakeCMakeConfig.cmake )
-include( CMakeLocalConfig.cmake OPTIONAL )
+include(CMakeCMakeConfig.cmake)
+include(CMakeLocalConfig.cmake OPTIONAL)
 
 #============================================================================
 # Project name.
 #============================================================================
-project( gobelijn )
-if( CMAKE_VERSION VERSION_GREATER 3 )
+project(gobelijn)
+if(CMAKE_VERSION VERSION_GREATER 3)
 	cmake_policy(SET CMP0042 NEW)
 endif()
 
 #============================================================================
+# Git revision status.
+#============================================================================
+find_package(Git QUIET)
+if(GIT_FOUND)
+    GIT_WC_INFO(${CMAKE_SOURCE_DIR} GOBELIJN)
+else()
+    # This is done to eliminate blank output of undefined CMake variables.
+    set(GIT_FOUND FALSE)
+    set(GOBELIJN_WC_REVISION_HASH      "0000000")
+    set(GOBELIJN_WC_LAST_CHANGED_DATE  "0000 0000 0000")
+endif()
+#============================================================================
 # Defaults for user defined options.
 #============================================================================
-set_if_null( GOBELIJN_INCLUDE_DOC         OFF )
-set_if_null( GOBELIJN_VERBOSE_TESTING     OFF )
+set_if_null(GOBELIJN_INCLUDE_DOC         OFF)
+set_if_null(GOBELIJN_VERBOSE_TESTING     OFF)
 
 #============================================================================
 # Install directory definitions.
 #============================================================================
-#set_if_null( CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed")
-set_if_null( BIN_INSTALL_LOCATION	    bin     )
-set_if_null( LIB_INSTALL_LOCATION	    lib     )
-set_if_null( INCLUDE_INSTALL_LOCATION   include )
-set_if_null( DATA_INSTALL_LOCATION	    data    )
-set_if_null( DOC_INSTALL_LOCATION	    doc     )
-set_if_null( TESTS_INSTALL_LOCATION	    tests   )
+#set_if_null(CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed")
+set_if_null(BIN_INSTALL_LOCATION	    bin   )
+set_if_null(LIB_INSTALL_LOCATION	    lib   )
+set_if_null(INCLUDE_INSTALL_LOCATION   include)
+set_if_null(DATA_INSTALL_LOCATION	    data  )
+set_if_null(DOC_INSTALL_LOCATION	    doc   )
+set_if_null(TESTS_INSTALL_LOCATION	    tests )
 
 #============================================================================
 # Configuration C++ compile & link deferred to separate file.
 #============================================================================
-include( CMakeCPPConfig.cmake )
+include(CMakeCPPConfig.cmake)
 
 #============================================================================
 # Add subdirs (excluding doc dir avoids building doc in development):
 #============================================================================
-add_subdirectory( main )
-add_subdirectory( test )
-if( GOBELIJN_INCLUDE_DOC )
-	add_subdirectory( doc )
+add_subdirectory(main)
+add_subdirectory(test)
+if(GOBELIJN_INCLUDE_DOC)
+	add_subdirectory(doc)
 endif()
 
 #============================================================================
 # Overview report:
 #============================================================================
-message( STATUS " " )
-message( STATUS "------> Settings and options: " )
-message( STATUS "------> GOBELIJN_INCLUDE_DOC        : ${GOBELIJN_INCLUDE_DOC} "      )
-message( STATUS "------> GOBELIJN_VERBOSE_TESTING    : ${GOBELIJN_VERBOSE_TESTING} "  )
-#
-message( STATUS " " )
-message( STATUS "------> CMAKE_SYSTEM                : ${CMAKE_SYSTEM} "              )
-message( STATUS "------> CMAKE_SYSTEM_VERSION        : ${CMAKE_SYSTEM_VERSION} "      )
-message( STATUS "------> CMAKE_SYSTEM_PROCESSOR      : ${CMAKE_SYSTEM_PROCESSOR} "    )
-message( STATUS "------> CMAKE_VERSION               : ${CMAKE_VERSION} "             )
-#
-message( STATUS " " )
-message( STATUS "------> CMAKE_BUILD_TYPE            : ${CMAKE_BUILD_TYPE} "          )
-message( STATUS "------> CMAKE_BINARY_DIR            : ${CMAKE_BINARY_DIR} "          )
-message( STATUS "------> CMAKE_INSTALL_PREFIX        : ${CMAKE_INSTALL_PREFIX}"       )
-message( STATUS "------> CMAKE_CXX_COMPILER          : ${CMAKE_CXX_COMPILER}"         )
-message( STATUS "------> CMAKE_CXX_COMPILER_ID       : ${CMAKE_CXX_COMPILER_ID}"      )
-message( STATUS "------> CMAKE_CXX_COMPILER_VERSION  : ${CMAKE_CXX_COMPILER_VERSION}" )
-message( STATUS "------> CMAKE_CXX_FLAGS             : ${CMAKE_CXX_FLAGS}"            )
-if( CMAKE_BUILD_TYPE MATCHES "^[Rr]elease$" )
-	message( STATUS "------> CMAKE_CXX_FLAGS_RELEASE     : ${CMAKE_CXX_FLAGS_RELEASE}" )
+message(STATUS " ")
+if ( GIT_FOUND )
+    message(STATUS "------> Git revision id: ${GOBELIJN_WC_REVISION_HASH} "       )
+    message(STATUS "------> Git commit date: ${GOBELIJN_WC_LAST_CHANGED_DATE} "   )
+    message(STATUS " "  )
 endif()
-if( CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug$" )
-	message( STATUS "------> CMAKE_CXX_FLAGS_DEBUG       : ${CMAKE_CXX_FLAGS_DEBUG}"   )
+message(STATUS "------> Settings and options: ")
+message(STATUS "------> GOBELIJN_INCLUDE_DOC        : ${GOBELIJN_INCLUDE_DOC} "     )
+message(STATUS "------> GOBELIJN_VERBOSE_TESTING    : ${GOBELIJN_VERBOSE_TESTING} " )
+#
+message(STATUS " ")
+message(STATUS "------> CMAKE_SYSTEM                : ${CMAKE_SYSTEM} "             )
+message(STATUS "------> CMAKE_SYSTEM_VERSION        : ${CMAKE_SYSTEM_VERSION} "     )
+message(STATUS "------> CMAKE_SYSTEM_PROCESSOR      : ${CMAKE_SYSTEM_PROCESSOR} "   )
+message(STATUS "------> CMAKE_VERSION               : ${CMAKE_VERSION} "            )
+#
+message(STATUS " ")
+message(STATUS "------> CMAKE_BUILD_TYPE            : ${CMAKE_BUILD_TYPE} "         )
+message(STATUS "------> CMAKE_BINARY_DIR            : ${CMAKE_BINARY_DIR} "         )
+message(STATUS "------> CMAKE_INSTALL_PREFIX        : ${CMAKE_INSTALL_PREFIX}"      )
+message(STATUS "------> CMAKE_CXX_COMPILER          : ${CMAKE_CXX_COMPILER}"        )
+message(STATUS "------> CMAKE_CXX_COMPILER_ID       : ${CMAKE_CXX_COMPILER_ID}"     )
+message(STATUS "------> CMAKE_CXX_COMPILER_VERSION  : ${CMAKE_CXX_COMPILER_VERSION}")
+message(STATUS "------> CMAKE_CXX_FLAGS             : ${CMAKE_CXX_FLAGS}"           )
+if(CMAKE_BUILD_TYPE MATCHES "^[Rr]elease$")
+	message(STATUS "------> CMAKE_CXX_FLAGS_RELEASE     : ${CMAKE_CXX_FLAGS_RELEASE}")
+endif()
+if(CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug$")
+	message(STATUS "------> CMAKE_CXX_FLAGS_DEBUG       : ${CMAKE_CXX_FLAGS_DEBUG}"  )
 endif()
 #
-message( STATUS " " )
-message( STATUS "------> Boost_FOUND                 : ${Boost_FOUND} "               )
-message( STATUS "------> Boost_VERSION               : ${Boost_VERSION} "             )
-message( STATUS "------> Boost_INCLUDE_DIRS          : ${Boost_INCLUDE_DIRS} "        )
-message( STATUS "------> Boost_LIBRARIES             : ${Boost_LIBRARIES} "           )
+message(STATUS " ")
+message(STATUS "------> Boost_FOUND                 : ${Boost_FOUND} "              )
+message(STATUS "------> Boost_VERSION               : ${Boost_VERSION} "            )
+message(STATUS "------> Boost_INCLUDE_DIRS          : ${Boost_INCLUDE_DIRS} "       )
+message(STATUS "------> Boost_LIBRARIES             : ${Boost_LIBRARIES} "          )
 #
-message( STATUS "" )
-message( STATUS "Report complete." )
+message(STATUS "")
+message(STATUS "Report complete.")
 
 #############################################################################

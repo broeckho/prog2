@@ -113,7 +113,6 @@ install_test: install_main
 
 distclean clean:
 	$(CMAKE) -E remove_directory $(BUILD_DIR)
-	$(CMAKE) -E remove_directory cmake-build-debug
 
 test installcheck: install_test
 	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) run_ctest

@@ -28,10 +28,20 @@ set(CMAKE_ENABLE_COMPILE_COMMANDS       ON)
 enable_testing()
 
 #============================================================================
-# Override system default for cmake_install_prefix.
+# Override system defaults.
 #============================================================================
 set(CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed"
         CACHE PATH "Install prefix path.")
+set(CMAKE_BUILD_TYPE          "Release"
+        CACHE STRING "Build type: None Debug Release RelWithDebInfo MinSizeRel.")
+
+#============================================================================
+# Introduce Gobelijn specific variables.
+#============================================================================
+set(GOBELIJN_INCLUDE_DOC  FALSE
+        CACHE BOOL "Include building of documentation.")
+set(GOBELIJN_VERBOSE_TESTING  TRUE
+        CACHE BOOL "Run tests in verbose mode.")
 
 #============================================================================
 # Additional CMake modules.

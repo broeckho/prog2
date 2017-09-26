@@ -17,7 +17,8 @@
 #============================================================================
 # Add subdirs:
 #============================================================================
-add_subdirectory( doxygen )
-add_subdirectory( tex     )
+message("In doc:   ${GOBELIJN_INCLUDE_DOC}")
+add_subdirectory(doxygen)
+add_subdirectory(tex)
 
 #############################################################################

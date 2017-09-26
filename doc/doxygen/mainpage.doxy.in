@@ -2,12 +2,14 @@
  \file
  \brief Placeholder for mainpage of doxygen documentation.
 
- \mainpage Gobelijn Project v1.0
- 
+ \mainpage Gobelijn Project
+
+ <br><b>Documentation based on Gobelijn revision ${GOBELIJN_WC_REVISION} of ${GOBELIJN_WC_LAST_CHANGED_DATE}</b></br>
+ <hr/>
+
  \section Background
  \htmlonly
- Gobelijn is a project by the  
- <a href="http://www.comp.ua.ac.be/"> Computational Modeling and Programming (CoMP)</a> group <br>
+ Gobelijn is a project by the Computational Modeling and Programming (CoMP) group <br>
  of the <a href="http://www.ua.ac.be/"> University of Antwerp</a>.  The aim is  to
  develop C++ code and a project structure <br>for our programming courses.	 
  \endhtmlonly
@@ -16,7 +18,6 @@
  	 The project follows a number of guidelines:
  	 \li The directory layout follows the Maven convention, adapted for C++.
  	 \li CMake is used to build programs, libraries, etc.
- 	 \li Eclipse (CDT) is used as an integrated development environment.
  	 \li API documentation is generated with Doxygen.
 	 \li For \subpage coco we follow (to some extent) Herb Sutter's guidelines.
 
