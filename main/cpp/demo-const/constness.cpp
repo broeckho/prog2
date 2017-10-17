@@ -17,9 +17,9 @@ using namespace std;
 class Test
 {
 public:
-	Test(int val) : i(val) {}
+	explicit Test(int val) : i(val) {}
 
-	Test(const Test& that) : i(that.i) {}
+	Test(const Test& that) =default;
 
 	// Test& operator=(const Test & that) {
 	// 	int * var = const_cast<int*>(&i);
@@ -35,10 +35,10 @@ private:
 
 int main()
 {
-	Test t(3);
 	Test b(2);
 	cout << "b.i = " << b.getValue() << "\n";
 
+	// Test t(3);
 	// b = t;	       // !!!!!! assignment zonder custom assignment operator
 	// zal
 	// een compile error geven

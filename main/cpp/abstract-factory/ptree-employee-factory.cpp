@@ -19,11 +19,6 @@
 
 #include "ptree-employee-factory.h"
 
-#include <boost/property_tree/ptree.hpp>
-#include <string>
-
-#include "employee.h"
-
 namespace AbstractFactory {
 /**
  * Instructs this factory to create a value.

@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
 	const int a = 3;
-	int* b = const_cast<int*>(&a);
+	auto b = const_cast<int*>(&a);
 	*b = 5;
 	cout << "Value of a: " << a << endl;
 	cout << "Value of *b: " << *b << endl;

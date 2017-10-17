@@ -37,11 +37,9 @@
 
 #include "constant-factory.h"
 #include "employee.h"
-#include "factory.h"
 #include "ptree-employee-factory.h"
 #include "stdin-employee-factory.h"
 
-#include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <iostream>
 

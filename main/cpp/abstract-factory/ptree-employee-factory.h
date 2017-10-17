@@ -34,10 +34,10 @@ public:
 	 * Creates a factory that analyzes the given property tree, and
 	 * uses it to construct an employee instance.
 	 */
-	PtreeEmployeeFactory(const boost::property_tree::ptree& ptree) : m_ptree(ptree) {}
+	explicit PtreeEmployeeFactory(const boost::property_tree::ptree& ptree) : m_ptree(ptree) {}
 
 	/// Instructs this factory to create a value.
-	virtual Employee Create() override final;
+	Employee Create() final;
 
 	/// The Boost property tree key for the employees' names.
 	static constexpr const char* EmployeeNameKey = "Name";

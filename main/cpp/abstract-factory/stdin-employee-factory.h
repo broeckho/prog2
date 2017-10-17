@@ -30,6 +30,6 @@ class StdinEmployeeFactory : public Factory<Employee>
 {
 public:
 	/// Instructs this factory to create a value.
-	virtual Employee Create() override final;
+	Employee Create() final;
 };
 }

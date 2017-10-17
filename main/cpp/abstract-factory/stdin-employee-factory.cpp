@@ -18,10 +18,8 @@
  */
 
 #include "stdin-employee-factory.h"
-#include "employee.h"
 
 #include <iostream>
-#include <string>
 
 namespace AbstractFactory {
 /**
