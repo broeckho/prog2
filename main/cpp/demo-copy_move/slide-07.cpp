@@ -1,5 +1,4 @@
 #include <iostream>
-#include <utility>
 
 using namespace std;
 
@@ -8,7 +7,7 @@ class X
 public:
 	X() { cout << "'Constructor'" << endl; }
 	X(const X& o) { cout << "'Copy'" << endl; }
-	X(X&& o) { cout << "'Move'" << endl; }
+	X(X&& o) noexcept { cout << "'Move'" << endl; }
 };
 
 int main()

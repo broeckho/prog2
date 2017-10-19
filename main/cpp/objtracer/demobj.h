@@ -17,4 +17,3 @@
 #include "objtracer/Vehicle.h"
 #include "objtracer/WaterVehicle.h"
 #include "objtracer/Wheel.h"
-

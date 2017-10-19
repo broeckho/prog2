@@ -19,7 +19,7 @@ class Test
 public:
 	explicit Test(int val) : i(val) {}
 
-	Test(const Test& that) =default;
+	Test(const Test& that) = default;
 
 	// Test& operator=(const Test & that) {
 	// 	int * var = const_cast<int*>(&i);

@@ -3,7 +3,7 @@
 class Integer
 {
 public:
-	Integer(int value) : value(value){};
+	explicit Integer(int value) : value(value){};
 
 	// As Member function
 	Integer operator*(const Integer& other)

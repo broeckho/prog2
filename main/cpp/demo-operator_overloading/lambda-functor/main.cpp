@@ -4,9 +4,32 @@ using std::cout;
 using std::endl;
 
 #ifdef USE_FUNCTOR
-#include "../../demo-operator_overloading/lambda-functor/functor-lambda.cpp"
+class Lambda1
+{
+public:
+	Lambda1(int& counter) : counter(counter) {}
+	int operator()(int x)
+	{
+		int val = counter + x;
+		counter++;
+		return val;
+	}
+
+private:
+	int& counter;
+};
+
+Lambda1 makeCountingAdder(int& counter) { return Lambda1(counter); }
 #else
-#include "../../demo-operator_overloading/lambda-functor/lambda-functor.cpp"
+std::function<int(int)> makeCountingAdder(int& counter)
+{
+	return [&counter](int x) -> int {
+		int val = counter + x;
+		counter++;
+		return val;
+	};
+}
+
 #endif
 
 int main()

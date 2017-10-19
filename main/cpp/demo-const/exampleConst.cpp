@@ -11,7 +11,7 @@
 class A
 {
 public:
-	A() =default;
+	A() = default;
 
 	void f() const { std::cout << "Using f() const: value i = " << i << std::endl; }
 

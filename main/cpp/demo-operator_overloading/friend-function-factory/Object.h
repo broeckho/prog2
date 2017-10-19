@@ -1,10 +1,4 @@
-//
-// Created by thomas on 13/11/2016.
-//
-
-#ifndef PROJECT_OBJECT_H
-#define PROJECT_OBJECT_H
-
+#pragma once
 #include "../../demo-operator_overloading/friend-function-factory/Factory.h"
 
 class Object
@@ -15,8 +9,6 @@ public:
 	int printID() const { return id; }
 
 private:
-	Object(int id) : id{id} {} // Private constructor.
+	explicit Object(int id) : id{id} {} // Private constructor.
 	const int id;
 };
-
-#endif // PROJECT_OBJECT_H

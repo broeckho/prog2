@@ -3,9 +3,9 @@
 class Integer
 {
 public:
-	Integer(int value) : value(value){};
+	explicit Integer(int value) : value(value){};
 	// Conversion operator, we can use this to convert to built in type
-	operator int() const { return value; }
+	explicit operator int() const { return value; }
 
 private:
 	int value = 0;

@@ -5,11 +5,10 @@
 #include <vector>
 
 template <typename T>
-
 class Polynomial
 {
 public:
-	Polynomial(const std::vector<T>& vect) : vect(vect) {}
+	explicit Polynomial(const std::vector<T>& vect) : vect(vect) {}
 	T operator()(const T& x);
 	Polynomial<T> operator+(const Polynomial<T>& x) const;
 	Polynomial<T> operator*(const Polynomial<T>& x) const;
@@ -19,7 +18,7 @@ public:
 	T horner(const T& x) const;
 
 protected:
-	Polynomial() {}
+	Polynomial() = default;
 	std::vector<T> vect;
 };
 
