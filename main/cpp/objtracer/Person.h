@@ -41,5 +41,6 @@ public:
 private:
 	std::string m_name;
 };
-}
+
+} // end_of_namespace
 

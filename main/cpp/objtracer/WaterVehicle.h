@@ -34,7 +34,7 @@ public:
 	~WaterVehicle() override;
 
 	/// Pure virtual method for motion.
-	virtual void move(double speed, std::vector<double> direction) override = 0;
+	void move(double speed, std::vector<double> direction) override = 0;
 
 	/// Start sinking, even if you are already sinking.
 	void start_sinking();
@@ -49,5 +49,5 @@ private:
 	bool m_sinking;
 };
 
-} // namespace ODemo
+} // end_of_namespace
 

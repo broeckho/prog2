@@ -41,7 +41,7 @@ PassengerRoadVehicle::PassengerRoadVehicle(const PassengerRoadVehicle& ori)
  * @exception			None.
  */
 PassengerRoadVehicle::PassengerRoadVehicle(PassengerRoadVehicle&& ori) noexcept
-    : RoadVehicle(std::move(ori)), m_capacity(std::move(ori.m_capacity)), m_free(std::move(ori.m_free))
+    : RoadVehicle(std::move(ori)), m_capacity(ori.m_capacity), m_free(ori.m_free)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -74,8 +74,8 @@ PassengerRoadVehicle& PassengerRoadVehicle::operator=(PassengerRoadVehicle&& rhs
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
 		RoadVehicle::operator=(rhs);
-		m_capacity = std::move(rhs.m_capacity);
-		m_free = std::move(rhs.m_free);
+		m_capacity = rhs.m_capacity;
+		m_free = rhs.m_free;
 	}
 	return *this;
 }

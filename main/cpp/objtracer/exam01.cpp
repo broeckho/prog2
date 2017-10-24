@@ -21,7 +21,7 @@ void func(Vehicle* p)
 	COMP_MISC_FUNCTION_TRACER;
 	p->get_info();
 }
-void funcBis(Vehicle& b)
+void funcBis(const Vehicle& b)
 {
 	COMP_MISC_FUNCTION_TRACER;
 	b.get_info();

@@ -35,7 +35,7 @@ SailBoat::SailBoat(const SailBoat& ori) : WaterVehicle(ori), m_name(ori.m_name),
  * @param		ori		Original to be moved.
  * @exception			None.
  */
-SailBoat::SailBoat(SailBoat&& ori) noexcept : WaterVehicle(std::move(ori)), m_name(ori.m_name), m_sails_up(ori.m_sails_up)
+SailBoat::SailBoat(SailBoat&& ori) noexcept : WaterVehicle(std::move(ori)), m_name(std::move(ori.m_name)), m_sails_up(ori.m_sails_up)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -69,7 +69,7 @@ SailBoat& SailBoat::operator=(SailBoat&& rhs) noexcept
 	if (this != &rhs) {
 		WaterVehicle::operator=(rhs);
 		m_name = std::move(rhs.m_name);
-		m_sails_up = std::move(rhs.m_sails_up);
+		m_sails_up = rhs.m_sails_up;
 	}
 	return *this;
 }
@@ -90,8 +90,8 @@ void SailBoat::move(double speed, vector<double> direction)
 	COMP_MISC_MEMBER_TRACER;
 	m_sails_up = true;
 	cout << "Sailboat is moving with speed " << speed << " in direction" << endl;
-	for (unsigned int i = 0; i < direction.size(); i++) {
-		cout << direction[i] << endl;
+	for (auto&& d : direction) {
+		cout << d << endl;
 	}
 }
 

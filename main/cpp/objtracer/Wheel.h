@@ -45,5 +45,5 @@ private:
 	bool m_rotating;
 };
 
-} // namespace ODemo
+} // end_of_namespace
 

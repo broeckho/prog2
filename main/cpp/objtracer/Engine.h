@@ -44,5 +44,5 @@ private:
 	bool m_running;
 };
 
-} // end_of_namespace_MotorcycleDemo
+} // end_of_namespace
 

@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_BICYCLE_H
-#define INC_GOBELIJN_OBJTRACER_BICYCLE_H
+#pragma once
 /**
  * @file
  * Header for Bicycle class.
@@ -57,6 +56,6 @@ private:
 	std::string m_model;
 	std::string m_color;
 };
-}
 
-#endif // end-of-include-guard
+} // end_of_namespace
+

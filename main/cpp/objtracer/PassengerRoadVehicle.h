@@ -31,7 +31,7 @@ public:
 	PassengerRoadVehicle& operator=(PassengerRoadVehicle&& rhs) noexcept;
 
 	/// Destructor.
-	virtual ~PassengerRoadVehicle();
+	~PassengerRoadVehicle() override;
 
 	/// Take an additional passenger on board, if possible.
 	bool add_passenger();
@@ -46,11 +46,12 @@ public:
 	int get_free() const;
 
 	/// Display identification info.
-	virtual void get_info() const;
+	void get_info() const override;
 
 private:
 	int m_capacity;
 	int m_free;
 };
-}
+
+} // end_of_namespace
 

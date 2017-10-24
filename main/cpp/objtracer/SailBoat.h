@@ -43,5 +43,6 @@ private:
 	std::string m_name;
 	bool m_sails_up;
 };
-}
+
+} // end_of_namespace
 

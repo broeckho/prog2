@@ -40,4 +40,5 @@ public:
 	/// Display identification info.
 	void get_info() const override;
 };
-}
+
+} // end_of_namespace
