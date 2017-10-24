@@ -14,26 +14,7 @@ using std::string;
  * Parameterized constructor of a Person.
  * @param name The name of the person
  */
-Person::Person(std::string name) : m_name(name) { COMP_MISC_MEMBER_TRACER; }
-
-/**
- * Copy-constructor constructor of a Person is private.
- * (cloning people doesn't work as of now)
- */
-Person::Person(const Person& ori) : m_name(ori.m_name) { COMP_MISC_MEMBER_TRACER; }
-
-/**
- * Assignment operator of a Person is private.
- * (cloning people doesn't work as of now)
- */
-Person& Person::operator=(const Person& rhs)
-{
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		m_name = rhs.m_name;
-	}
-	return *this;
-}
+Person::Person(std::string name) : m_name(std::move(name)) { COMP_MISC_MEMBER_TRACER; }
 
 /**
  * Destructor of a person

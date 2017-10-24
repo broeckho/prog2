@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_BODY_H
-#define INC_GOBELIJN_OBJTRACER_BODY_H
+#pragma once
 /**
  * @file
  * Header for Bicycle class.
@@ -16,23 +15,22 @@ class Body
 {
 public:
 	/// Constructor.
-	Body(std::string color = "blue");
+	explicit Body(std::string color = "blue");
 
 	/// Copy constructor
 	Body(Body const& ori);
 
 	/// Move constructor
-	Body(Body&& ori);
+	Body(Body&& ori) noexcept;
 
 	/// Copy assingment
 	Body& operator=(Body const& rhs);
 
 	/// Move assingment
-	Body& operator=(Body&& rhs);
+	Body& operator=(Body&& rhs) noexcept;
 
 private:
 	std::string m_color;
 };
 }
 
-#endif // end-of-include-guard

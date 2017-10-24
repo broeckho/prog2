@@ -7,18 +7,17 @@
 #include "Body.h"
 #include "tracer/tracer.h"
 #include <iostream>
-#include <utility>
 
 namespace ODemo {
 using namespace std;
 
-Body::Body(std::string color) : m_color(color) { COMP_MISC_MEMBER_TRACER; }
+Body::Body(std::string color) : m_color(std::move(color)) { COMP_MISC_MEMBER_TRACER; }
 
 /// Copy constructor
 Body::Body(Body const& ori) : m_color(ori.m_color) { COMP_MISC_MEMBER_TRACER; }
 
 /// Move constructor
-Body::Body(Body&& ori) : m_color(std::move(ori.m_color)) { COMP_MISC_MEMBER_TRACER; }
+Body::Body(Body&& ori) noexcept : m_color(std::move(ori.m_color)) { COMP_MISC_MEMBER_TRACER; }
 
 /// Copy assignment
 Body& Body::operator=(Body const& rhs)
@@ -31,13 +30,11 @@ Body& Body::operator=(Body const& rhs)
 }
 
 /// Move assignment
-Body& Body::operator=(Body&& rhs)
+Body& Body::operator=(Body&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
 		m_color = std::move(rhs.m_color);
-
-		// Leave the argument in an indeterminate state.
 		rhs.m_color = nullptr;
 	}
 	return *this;

@@ -40,7 +40,7 @@ PassengerRoadVehicle::PassengerRoadVehicle(const PassengerRoadVehicle& ori)
  * @param		ori		Original to be copied.
  * @exception			None.
  */
-PassengerRoadVehicle::PassengerRoadVehicle(PassengerRoadVehicle&& ori)
+PassengerRoadVehicle::PassengerRoadVehicle(PassengerRoadVehicle&& ori) noexcept
     : RoadVehicle(std::move(ori)), m_capacity(std::move(ori.m_capacity)), m_free(std::move(ori.m_free))
 {
 	COMP_MISC_MEMBER_TRACER;
@@ -69,7 +69,7 @@ PassengerRoadVehicle& PassengerRoadVehicle::operator=(const PassengerRoadVehicle
  * @param		rhs		Right hand side in assignment.
  * @exception			None.
  */
-PassengerRoadVehicle& PassengerRoadVehicle::operator=(PassengerRoadVehicle&& rhs)
+PassengerRoadVehicle& PassengerRoadVehicle::operator=(PassengerRoadVehicle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {

@@ -7,14 +7,12 @@
 
 #include "objtracer/Unicycle.h"
 #include "tracer/tracer.h"
-#include <memory>
-#include <string>
 
 namespace ODemo {
 using std::string;
 
 /// straight initialization
-Unicycle::Unicycle(double size) : m_wheel(size), m_speed(0.0), m_direction(0.0) { COMP_MISC_MEMBER_TRACER; }
+Unicycle::Unicycle() : m_wheel(), m_speed(0.0), m_direction(0.0) { COMP_MISC_MEMBER_TRACER; }
 
 /// Perform a deep copy of the engine and a shallow copy of the owner
 Unicycle::Unicycle(Unicycle const& ori) : m_wheel(ori.m_wheel), m_speed(ori.m_speed), m_direction(ori.m_direction)
@@ -23,8 +21,8 @@ Unicycle::Unicycle(Unicycle const& ori) : m_wheel(ori.m_wheel), m_speed(ori.m_sp
 }
 
 /// Perform a deep copy of the engine and a shallow copy of the owner
-Unicycle::Unicycle(Unicycle&& ori)
-    : m_wheel(std::move(ori.m_wheel)), m_speed(std::move(ori.m_speed)), m_direction(std::move(ori.m_direction))
+Unicycle::Unicycle(Unicycle&& ori) noexcept
+    : m_wheel(std::move(ori.m_wheel)), m_speed(ori.m_speed), m_direction(ori.m_direction)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -42,13 +40,13 @@ Unicycle& Unicycle::operator=(const Unicycle& rhs)
 }
 
 /// Move constructor does what the synthesize constructor would do..
-Unicycle& Unicycle::operator=(Unicycle&& rhs)
+Unicycle& Unicycle::operator=(Unicycle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
 		m_wheel = std::move(rhs.m_wheel);
-		m_speed = std::move(rhs.m_speed);
-		m_direction = std::move(rhs.m_direction);
+		m_speed = rhs.m_speed;
+		m_direction = rhs.m_direction;
 	}
 	return *this;
 }
@@ -77,13 +75,6 @@ void Unicycle::turn(double degrees)
 	if (m_speed > 0.0) {
 		m_direction += degrees;
 	}
-}
-
-///
-double Unicycle::getSpeed() const
-{
-	COMP_MISC_MEMBER_TRACER;
-	return m_speed;
 }
 
 } // end_of_namespace ODemo

@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_ROADVEHICLE_H
-#define INC_GOBELIJN_OBJTRACER_ROADVEHICLE_H
+#pragma once
 /**
  * @file
  * Header for the RoadVehicle class.
@@ -24,23 +23,21 @@ public:
 	RoadVehicle(const RoadVehicle& ori);
 
 	/// Move constructor.
-	RoadVehicle(RoadVehicle&& ori);
+	RoadVehicle(RoadVehicle&& ori) noexcept;
 
 	/// Copy assignment operator.
 	RoadVehicle& operator=(const RoadVehicle& rhs);
 
 	/// Move assignment operator.
-	RoadVehicle& operator=(RoadVehicle&& rhs);
+	RoadVehicle& operator=(RoadVehicle&& rhs) noexcept;
 
 	/// Destructor.
-	virtual ~RoadVehicle();
+	~RoadVehicle() override;
 
 	/// Motion of the vehicle.
-	virtual void move(double speed, std::vector<double> direction);
+	void move(double speed, std::vector<double> direction) override;
 
 	/// Display identification info.
-	virtual void get_info() const;
+	void get_info() const override;
 };
 }
-
-#endif // end-of-include-guard

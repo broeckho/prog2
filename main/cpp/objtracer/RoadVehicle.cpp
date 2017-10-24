@@ -33,7 +33,7 @@ RoadVehicle::RoadVehicle(const RoadVehicle& ori) : LandVehicle(ori) { COMP_MISC_
  * @param		ori		Original to be moved.
  * @exception			None.
  */
-RoadVehicle::RoadVehicle(RoadVehicle&& ori) : LandVehicle(std::move(ori)) { COMP_MISC_MEMBER_TRACER; }
+RoadVehicle::RoadVehicle(RoadVehicle&& ori) noexcept : LandVehicle(std::move(ori)) { COMP_MISC_MEMBER_TRACER; }
 
 /**
  * Copy assignment has a guard against self-assignment.
@@ -56,7 +56,7 @@ RoadVehicle& RoadVehicle::operator=(const RoadVehicle& rhs)
  * @param		rhs		Right hand side in assignment.
  * @exception			None.
  */
-RoadVehicle& RoadVehicle::operator=(RoadVehicle&& rhs)
+RoadVehicle& RoadVehicle::operator=(RoadVehicle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
@@ -80,8 +80,8 @@ void RoadVehicle::move(double speed, vector<double> direction)
 {
 	COMP_MISC_MEMBER_TRACER;
 	cout << "RoadVehicle is moving with speed " << speed << " in direction" << endl;
-	for (unsigned int i = 0; i < direction.size(); i++) {
-		cout << direction[i] << endl;
+	for (auto&& d: direction) {
+		cout << d << endl;
 	}
 }
 

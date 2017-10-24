@@ -7,9 +7,6 @@
 #include "demos.h"
 #include "objtracer/Motorcycle.h"
 #include "tracer/tracer.h"
-#include <exception>
-#include <iostream>
-#include <memory>
 
 using namespace std;
 using namespace ODemo;
@@ -18,6 +15,7 @@ namespace {
 void f1(Motorcycle b)
 {
 	COMP_MISC_FUNCTION_TRACER;
+	b.halt();
 	b.getSpeed();
 }
 void f2(Motorcycle& b)

@@ -7,10 +7,10 @@
 #include "demos.h"
 #include "objtracer/demobj.h"
 #include "tracer/tracer.h"
-#include <exception>
 #include <iostream>
-#include <vector>
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "TemplateArgumentsIssues"
 using namespace ODemo;
 using std::cout;
 using std::endl;
@@ -42,7 +42,7 @@ int vbasics()
 	m2.get_info();
 
 	COMP_MISC_LOG_TRACER(" statement: Bicycle* m3Ptr = new Bicycle(m2);");
-	Bicycle* m3Ptr = new Bicycle(m2);
+	auto m3Ptr = new Bicycle(m2);
 
 	COMP_MISC_LOG_TRACER(" statement: m3Ptr->displayInfo()");
 	m3Ptr->get_info();
@@ -90,3 +90,5 @@ int vbasics()
 	COMP_MISC_LOG_TRACER(" statement: return 0;");
 	return 0;
 }
+
+#pragma clang diagnostic pop

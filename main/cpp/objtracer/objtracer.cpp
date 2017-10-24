@@ -7,16 +7,8 @@
 #include "demos.h"
 #include "tclap/CmdLine.h"
 #include "util/Exception.h"
-#include <exception>
-#include <functional>
 #include <g3log/g3log.hpp>
 #include <g3log/logworker.hpp>
-#include <iomanip>
-#include <ios>
-#include <iostream>
-#include <map>
-#include <memory>
-#include <string>
 
 using namespace std;
 using UA_CoMP::Util::Exception;
@@ -51,7 +43,7 @@ int main(int argc, char* argv[])
 		// Initialize logging library .
 		//----------------------------------------------------------------------
 		string logPath("/tmp");
-		if (getenv("G3LOG_log_dir") != NULL) {
+		if (getenv("G3LOG_log_dir") != nullptr) {
 			logPath = *getenv("G3LOG_log_dir");
 		}
 		std::unique_ptr<g3::LogWorker> g3log{g3::LogWorker::createLogWorker()};
@@ -73,7 +65,7 @@ int main(int argc, char* argv[])
 		//----------------------------------------------------------------------
 		TCLAP::CmdLine cmd("Driver for object tracer demos", ' ', "1.0");
 		TCLAP::ValueArg<string> exec_arg("", "exec", "Demo to execute", false, "", "string", cmd);
-		cmd.parse(argc, argv);
+		cmd.parse(argc, static_cast<const char * const *>(argv));
 
 		LOG(INFO) << "Starting main program ...";
 

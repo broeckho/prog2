@@ -6,7 +6,6 @@
 
 #include "demobj.h"
 #include "demos.h"
-#include "objtracer/demobj.h"
 #include "tracer/tracer.h"
 #include <iostream>
 

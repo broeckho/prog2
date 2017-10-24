@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_VEHICLE_H
-#define INC_GOBELIJN_OBJTRACER_VEHICLE_H
+#pragma once
 /**
  * @file
  * Header for the Vehicle class.
@@ -17,7 +16,7 @@ class Vehicle
 {
 public:
 	/// Destructor.
-	virtual ~Vehicle();
+	virtual ~Vehicle() =default;
 
 	/// Motion of vehicle.
 	virtual void move(double speed, std::vector<double> direction) = 0;
@@ -27,4 +26,3 @@ public:
 };
 }
 
-#endif // end-of-include-guard

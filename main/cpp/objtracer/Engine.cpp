@@ -6,7 +6,6 @@
 
 #include "objtracer/Engine.h"
 #include "tracer/tracer.h"
-#include <utility>
 
 namespace ODemo {
 
@@ -17,7 +16,7 @@ Engine::Engine(double power) : m_power(power), m_running(false) { COMP_MISC_MEMB
 Engine::Engine(Engine const& ori) : m_power(ori.m_power), m_running(ori.m_running) { COMP_MISC_MEMBER_TRACER; }
 
 ///
-Engine::Engine(Engine&& ori) : m_power(std::move(ori.m_power)), m_running(std::move(ori.m_running))
+Engine::Engine(Engine&& ori) noexcept : m_power(ori.m_power), m_running(ori.m_running)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -34,12 +33,12 @@ Engine& Engine::operator=(const Engine& rhs)
 }
 
 ///
-Engine& Engine::operator=(Engine&& rhs)
+Engine& Engine::operator=(Engine&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
-		m_power = std::move(rhs.m_power);
-		m_running = std::move(rhs.m_running);
+		m_power = rhs.m_power;
+		m_running = rhs.m_running;
 
 		// Leave the argument in an indeterminate state.
 		rhs.m_power = 0.0;
@@ -74,13 +73,6 @@ bool Engine::is_running() const
 {
 	COMP_MISC_MEMBER_TRACER;
 	return m_running;
-}
-
-///
-double Engine::get_power() const
-{
-	COMP_MISC_MEMBER_TRACER;
-	return m_power;
 }
 
 } // end_of_namespace

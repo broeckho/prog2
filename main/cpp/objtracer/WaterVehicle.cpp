@@ -33,7 +33,7 @@ WaterVehicle::WaterVehicle(const WaterVehicle& ori) : Vehicle(ori), m_sinking(or
  * @return				None.
  * @exception			None.
  */
-WaterVehicle::WaterVehicle(WaterVehicle&& ori) : Vehicle(ori), m_sinking(std::move(ori.m_sinking))
+WaterVehicle::WaterVehicle(WaterVehicle&& ori) noexcept : Vehicle(ori), m_sinking(ori.m_sinking)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -60,12 +60,12 @@ WaterVehicle& WaterVehicle::operator=(const WaterVehicle& rhs)
  * @param		rhs		Right hand side in assignment.
  * @exception			None.
  */
-WaterVehicle& WaterVehicle::operator=(WaterVehicle&& rhs)
+WaterVehicle& WaterVehicle::operator=(WaterVehicle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
 		Vehicle::operator=(rhs);
-		m_sinking = std::move(rhs.m_sinking);
+		m_sinking = rhs.m_sinking;
 	}
 	return *this;
 }

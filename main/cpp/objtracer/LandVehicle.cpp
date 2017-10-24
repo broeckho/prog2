@@ -33,7 +33,7 @@ LandVehicle::LandVehicle(const LandVehicle& ori) : Vehicle(ori) { COMP_MISC_MEMB
  * @param		ori		Original to be moved.
  * @exception			None.
  */
-LandVehicle::LandVehicle(LandVehicle&& ori) : Vehicle(std::move(ori)) { COMP_MISC_MEMBER_TRACER; }
+LandVehicle::LandVehicle(LandVehicle&& ori) noexcept : Vehicle(ori) { COMP_MISC_MEMBER_TRACER; }
 
 /**
  * Copy assignment operator for LandVehicle.
@@ -56,7 +56,7 @@ LandVehicle& LandVehicle::operator=(const LandVehicle& rhs)
  * @param		rhs		Right hand side in assignment.
  * @exception			None.
  */
-LandVehicle& LandVehicle::operator=(LandVehicle&& rhs)
+LandVehicle& LandVehicle::operator=(LandVehicle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {

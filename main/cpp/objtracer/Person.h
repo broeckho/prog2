@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_PERSON_H_
-#define INC_GOBELIJN_OBJTRACER_PERSON_H_
+#pragma once
 /**
  * @file
  * Header for the class Person.
@@ -19,7 +18,19 @@ class Person
 {
 public:
 	/// Constructor initializes the name of the person.
-	Person(std::string name);
+	explicit Person(std::string name);
+
+	/// Disallow copy-construction of people:
+	Person(const Person&) =delete;
+
+	/// Disallow move-construction of people:
+	Person(Person&&) =delete;
+
+	/// Disallow copy-assignmentof people:
+	Person& operator=(const Person&) =delete;
+
+	/// Disallow move-assignment of people:
+	Person& operator=(Person&&) =delete;
 
 	/// Destructor.
 	virtual ~Person();
@@ -28,15 +39,7 @@ public:
 	std::string get_name() const;
 
 private:
-	/// Disallow copy-construction and move-construction of people:
-	Person(const Person&);
-	Person(Person&&);
-	/// Disallow copy-assignment and move-assignment of people:
-	Person& operator=(const Person&);
-	Person& operator=(Person&&);
-
 	std::string m_name;
 };
 }
 
-#endif // end-of-include-guard

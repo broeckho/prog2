@@ -9,10 +9,6 @@
 #include "demos.h"
 #include "objtracer/demobj.h"
 #include "tracer/tracer.h"
-#include <exception>
-#include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 using namespace ODemo;
@@ -66,18 +62,17 @@ int vpoly()
 	COMP_MISC_LOG_TRACER(">>>> statement: displayBis(b1);");
 	displayBis(b1);
 
-	COMP_MISC_LOG_TRACER(">>>> statement: RoadVehicle* rv2Ptr = new RoadVehicle();");
-	RoadVehicle* rv2Ptr = new RoadVehicle();
+	COMP_MISC_LOG_TRACER(">>>> statement: auto rv2Ptr = new RoadVehicle();");
+	auto rv2Ptr = new RoadVehicle();
 
 	COMP_MISC_LOG_TRACER(" statement: Bicycle* m1Ptr = &m1;");
 	Bicycle* m1Ptr = &m1;
 
-	COMP_MISC_LOG_TRACER(" statement: PassengerRoadVehicle* prv2Ptr = new "
-			     "PassengerRoadVehicle(10);");
-	PassengerRoadVehicle* prv2Ptr = new PassengerRoadVehicle(10);
+	COMP_MISC_LOG_TRACER(" statement: auto prv2Ptr = new PassengerRoadVehicle(10);");
+	auto prv2Ptr = new PassengerRoadVehicle(10);
 
 	COMP_MISC_LOG_TRACER(">>>> statement: SailBoat* b1Ptr = &b1;");
-	SailBoat* b1Ptr = &b1;
+	auto b1Ptr = &b1;
 
 	COMP_MISC_LOG_TRACER(">>>> statement: display(rv2Ptr);");
 	display(rv2Ptr);

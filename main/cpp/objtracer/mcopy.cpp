@@ -7,10 +7,6 @@
 #include "demos.h"
 #include "objtracer/demobj.h"
 #include "tracer/tracer.h"
-#include <exception>
-#include <iostream>
-#include <memory>
-#include <string>
 
 using namespace std;
 using namespace ODemo;
@@ -28,16 +24,16 @@ int mcopy()
 	shared_ptr<Engine> e1Ptr(new Engine(100));
 
 	COMP_MISC_LOG_TRACER(" statement: Person* p1Ptr = new Person(\"Owner 1\");");
-	Person* p1Ptr = new Person("Owner 1");
+	auto p1Ptr = new Person("Owner 1");
 
 	COMP_MISC_LOG_TRACER(" statement: Motorcycle* m1Ptr = new Motorcycle(e1Ptr, p1Ptr);");
-	Motorcycle* m1Ptr = new Motorcycle(e1Ptr, p1Ptr);
+	auto m1Ptr = new Motorcycle(e1Ptr, p1Ptr);
 
 	COMP_MISC_LOG_TRACER(" statement: m1Ptr->startEngine();");
 	m1Ptr->startEngine();
 
 	COMP_MISC_LOG_TRACER(" statement: Motorcycle* m2Ptr = new Motorcycle(*m1Ptr);");
-	Motorcycle* m2Ptr = new Motorcycle(*m1Ptr);
+	auto m2Ptr = new Motorcycle(*m1Ptr);
 
 	COMP_MISC_LOG_TRACER(" statement: Motorcycle m3(shared_ptr<Engine>(new Engine(77)));");
 	Motorcycle m3(shared_ptr<Engine>(new Engine(77)));

@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_WHEEL_H
-#define INC_GOBELIJN_OBJTRACER_WHEEL_H
+#pragma once
 /**
  * @file
  * Header for the Wheel class used to demo object aggregation features.
@@ -15,19 +14,19 @@ class Wheel
 {
 public:
 	/// Default constructor.
-	Wheel(double size = 1.0e0);
+	Wheel();
 
 	/// Copy constructor.
 	Wheel(const Wheel& ori);
 
 	/// Move constructor.
-	Wheel(Wheel&& ori);
+	Wheel(Wheel&& ori) noexcept;
 
 	/// Copy assignment operator.
 	Wheel& operator=(const Wheel& rhs);
 
 	/// Move assignment operator.
-	Wheel& operator=(Wheel&& rhs);
+	Wheel& operator=(Wheel&& rhs) noexcept;
 
 	/// destructor.
 	~Wheel();
@@ -48,4 +47,3 @@ private:
 
 } // namespace ODemo
 
-#endif // end-of-include-guard

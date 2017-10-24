@@ -19,10 +19,10 @@
 #============================================================================
 set( LIB	demobj )
 set( SRC 	
-		Bicycle.cpp Body.cpp Engine.cpp FreightRoadVehicle.cpp LandVehicle.cpp
+		Bicycle.cpp Body.cpp Engine.cpp LandVehicle.cpp
 		Motorcycle.cpp PassengerRoadVehicle.cpp Person.cpp 
 		RoadVehicle.cpp SailBoat.cpp Unicycle.cpp 
-		Vehicle.cpp WaterVehicle.cpp Wheel.cpp )
+		WaterVehicle.cpp Wheel.cpp )
 #----------------------
 include_directories( ${LOG_SRC} )
 add_library( ${LIB}        ${SRC}  )
@@ -38,7 +38,7 @@ install( TARGETS ${LIB} LIBRARY
                 DESTINATION 	${LIB_INSTALL_LOCATION}
                 PERMISSIONS 	OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ )	 
 install( FILES 
-		Bicycle.h demobj.h Engine.h FreightRoadVehicle.h
+		Bicycle.h demobj.h Engine.h
 		LandVehicle.h Motorcycle.h 
 		PassengerRoadVehicle.h
 		Person.h RoadVehicle.h SailBoat.h Vehicle.h 

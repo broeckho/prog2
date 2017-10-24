@@ -11,25 +11,22 @@
 class A
 {
 public:
-	A() = default;
+	A(int i) : m_i(i) {};
 
-	void f() const { std::cout << "Using f() const: value i = " << i << std::endl; }
+	void f() const { std::cout << "Using f() const: value i = " << m_i << std::endl; }
 
-	void f()
-	{
-		i++;
-		std::cout << "Using f(): value i = " << i << std::endl;
-	}
+	void f() { std::cout << "Using f(): value i = " << ++m_i << std::endl; }
 
-	int i = 0;
+private:
+	int m_i = 0;
 };
 
 int main()
 {
-	A a;
+	A a(1);
 	a.f();
 
-	const A b;
+	const A b(1);
 	b.f();
 	return 0;
 }

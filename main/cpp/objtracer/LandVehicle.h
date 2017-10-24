@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_LANDVEHICLE_H
-#define INC_GOBELIJN_OBJTRACER_LANDVEHICLE_H
+#pragma once
 /**
  * @file
  * Header for the LandVehicle class.
@@ -22,23 +21,22 @@ public:
 	LandVehicle(const LandVehicle& ori);
 
 	/// Move constructor.
-	LandVehicle(LandVehicle&& ori);
+	LandVehicle(LandVehicle&& ori) noexcept;
 
 	/// Copy assignment.
 	LandVehicle& operator=(const LandVehicle& rhs);
 
 	/// Move assignment.
-	LandVehicle& operator=(LandVehicle&& rhs);
+	LandVehicle& operator=(LandVehicle&& rhs) noexcept;
 
 	/// Destructor.
-	virtual ~LandVehicle();
+	~LandVehicle() override;
 
 	/// Pure virtual function: motion for the LandVehicle.
-	virtual void move(double speed, std::vector<double> direction) = 0;
+	void move(double speed, std::vector<double> direction) override =0 ;
 
 	/// Displa identification info.
-	virtual void get_info() const;
+	void get_info() const override;
 };
 }
 
-#endif // end-of-include-guard

@@ -8,8 +8,6 @@
 #include "objtracer/Motorcycle.h"
 #include "tracer/tracer.h"
 #include "util/Exception.h"
-#include <memory>
-#include <string>
 
 namespace ODemo {
 
@@ -55,7 +53,7 @@ Motorcycle::Motorcycle(Motorcycle const& ori)
 }
 
 /// Move constructor
-Motorcycle::Motorcycle(Motorcycle&& ori)
+Motorcycle::Motorcycle(Motorcycle&& ori) noexcept
     : m_engine(std::move(ori.m_engine)), m_body(std::move(ori.m_body)), m_owner(ori.m_owner),
       m_wheels(std::move(ori.m_wheels)), m_speed(ori.m_speed), m_direction(ori.m_direction)
 {
@@ -88,7 +86,7 @@ Motorcycle& Motorcycle::operator=(Motorcycle const& rhs)
 }
 
 /// Move assignment.
-Motorcycle& Motorcycle::operator=(Motorcycle&& rhs)
+Motorcycle& Motorcycle::operator=(Motorcycle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
@@ -116,7 +114,7 @@ Motorcycle::~Motorcycle() { COMP_MISC_MEMBER_TRACER; }
 void Motorcycle::startEngine()
 {
 	COMP_MISC_MEMBER_TRACER;
-	if (m_engine == 0) {
+	if (m_engine == nullptr) {
 		throw Exception("Motorcycle::startEngine> Motorcycle without engine cannot start !");
 	}
 	if (!m_engine->is_running()) {
@@ -129,7 +127,7 @@ void Motorcycle::startEngine()
 void Motorcycle::stopEngine()
 {
 	COMP_MISC_MEMBER_TRACER;
-	if (m_engine == 0) {
+	if (m_engine == nullptr) {
 		throw Exception("Motorcycle without engine cannot stop !");
 	}
 	if (m_engine->is_running()) {
@@ -144,7 +142,7 @@ void Motorcycle::stopEngine()
 void Motorcycle::accelerate(double speed)
 {
 	COMP_MISC_MEMBER_TRACER;
-	if (m_engine == 0) {
+	if (m_engine == nullptr) {
 		throw Exception("Motorcycle without engine cannot accelerate !");
 	}
 	if (m_engine->is_running() & (m_speed < speed)) {
@@ -156,7 +154,7 @@ void Motorcycle::accelerate(double speed)
 void Motorcycle::brake(double speed)
 {
 	COMP_MISC_MEMBER_TRACER;
-	if (m_engine == 0) {
+	if (m_engine == nullptr) {
 		throw Exception("Motorcycle without engine cannot brake !");
 	}
 	if (m_engine->is_running() & (m_speed > speed)) {
@@ -191,7 +189,7 @@ double Motorcycle::getSpeed() const
 bool Motorcycle::is_running() const
 {
 	COMP_MISC_MEMBER_TRACER;
-	if (m_engine == 0) {
+	if (m_engine == nullptr) {
 		throw Exception("Motorcycle without engine cannot run !");
 	}
 	return m_engine->is_running();

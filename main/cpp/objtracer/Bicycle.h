@@ -27,16 +27,16 @@ public:
 	Bicycle(const Bicycle& ori);
 
 	/// Move constructor.
-	Bicycle(Bicycle&& ori);
+	Bicycle(Bicycle&& ori) noexcept ;
 
 	/// Copy assignment.
 	Bicycle& operator=(const Bicycle& rhs);
 
 	/// Move assignment.
-	Bicycle& operator=(Bicycle&& rhs);
+	Bicycle& operator=(Bicycle&& rhs) noexcept ;
 
 	/// Destructor.
-	virtual ~Bicycle();
+	~Bicycle() override;
 
 	/// Return the model of the bike.
 	std::string getModel() const;
@@ -51,7 +51,7 @@ public:
 	void setColor(std::string color);
 
 	/// Display info on model and color of the bike.
-	virtual void get_info() const;
+	void get_info() const override ;
 
 private:
 	std::string m_model;

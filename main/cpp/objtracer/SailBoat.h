@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_SAILBOAT_H
-#define INC_GOBELIJN_OBJTRACER_SAILBOAT_H
+#pragma once
 /**
  * @file
  * Header for the SailBoat class.
@@ -17,28 +16,28 @@ class SailBoat : public WaterVehicle
 {
 public:
 	/// Parametrized constructor initializes the name of the boat.
-	SailBoat(std::string name);
+	explicit SailBoat(std::string name);
 
 	/// Copy constructor.
 	SailBoat(const SailBoat& ori);
 
 	/// Move constructor.
-	SailBoat(SailBoat&& ori);
+	SailBoat(SailBoat&& ori)  noexcept ;
 
 	/// Copy assignment.
 	SailBoat& operator=(const SailBoat& rhs);
 
 	/// Move assignment.
-	SailBoat& operator=(SailBoat&& rhs);
+	SailBoat& operator=(SailBoat&& rhs) noexcept;
 
 	/// Destructor.
-	virtual ~SailBoat();
+	~SailBoat() override ;
 
 	/// Sailboat motion.
-	virtual void move(double speed, std::vector<double> direction);
+	void move(double speed, std::vector<double> direction) override;
 
 	/// Display identification info.
-	virtual void get_info() const;
+	void get_info() const override;
 
 private:
 	std::string m_name;
@@ -46,4 +45,3 @@ private:
 };
 }
 
-#endif // end-of-include-guard

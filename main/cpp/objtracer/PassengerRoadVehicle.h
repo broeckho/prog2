@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_PASSENGERROADVEHICLE_H
-#define INC_GOBELIJN_OBJTRACER_PASSENGERROADVEHICLE_H
+#pragma once
 /**
  * @file
  * Header for PassengerRoadVehicle class.
@@ -17,19 +16,19 @@ class PassengerRoadVehicle : public RoadVehicle
 {
 public:
 	/// Parametrized constructor, initializes number of seats.
-	PassengerRoadVehicle(int numSeats);
+	explicit PassengerRoadVehicle(int numSeats);
 
 	/// Copy constructor.
 	PassengerRoadVehicle(PassengerRoadVehicle const& ori);
 
 	/// Move constructor.
-	PassengerRoadVehicle(PassengerRoadVehicle&& ori);
+	PassengerRoadVehicle(PassengerRoadVehicle&& ori) noexcept;
 
 	/// Copy assignment.
 	PassengerRoadVehicle& operator=(PassengerRoadVehicle const& rhs);
 
 	/// Move assignment.
-	PassengerRoadVehicle& operator=(PassengerRoadVehicle&& rhs);
+	PassengerRoadVehicle& operator=(PassengerRoadVehicle&& rhs) noexcept;
 
 	/// Destructor.
 	virtual ~PassengerRoadVehicle();
@@ -55,4 +54,3 @@ private:
 };
 }
 
-#endif // end-of-include-guard

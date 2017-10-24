@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_UNICYCLE_H
-#define INC_GOBELIJN_OBJTRACER_UNICYCLE_H
+#pragma once
 /**
  * @file
  * Header for the Unicycle class.
@@ -16,19 +15,19 @@ class Unicycle
 {
 public:
 	/// Default constructor does not initialize association with engine and owner.
-	Unicycle(double wheel_size = 1.0e0);
+	Unicycle();
 
 	/// Copy constructor.
 	Unicycle(const Unicycle& ori);
 
 	/// Move constructor.
-	Unicycle(Unicycle&& ori);
+	Unicycle(Unicycle&& ori) noexcept;
 
 	/// Copy assignment
 	Unicycle& operator=(const Unicycle& rhs);
 
 	/// Copy assignment
-	Unicycle& operator=(Unicycle&& rhs);
+	Unicycle& operator=(Unicycle&& rhs) noexcept;
 
 	/// Destructor.
 	~Unicycle();
@@ -42,12 +41,6 @@ public:
 	// Turn with given number of degrees.
 	void turn(double degrees);
 
-	/// Return current speed.
-	double getSpeed() const;
-
-	/// Indicates whether engine is running or not.
-	bool is_running() const;
-
 private:
 	Wheel m_wheel;
 	double m_speed;
@@ -56,4 +49,3 @@ private:
 
 } // end_of_namespace
 
-#endif // end-of-include-guard

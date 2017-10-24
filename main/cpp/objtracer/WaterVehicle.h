@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_WATERVEHICLE_H
-#define INC_GOBELIJN_OBJTRACER_WATERVEHICLE_H
+#pragma once
 /**
  * @file
  * Header for the WaterVehicle class.
@@ -23,19 +22,19 @@ public:
 	WaterVehicle(const WaterVehicle& ori);
 
 	/// Move constructor.
-	WaterVehicle(WaterVehicle&& ori);
+	WaterVehicle(WaterVehicle&& ori) noexcept;
 
 	/// Copy assignment.
 	WaterVehicle& operator=(const WaterVehicle& rhs);
 
 	/// Move assignment.
-	WaterVehicle& operator=(WaterVehicle&& rhs);
+	WaterVehicle& operator=(WaterVehicle&& rhs) noexcept;
 
 	/// Destructor.
-	virtual ~WaterVehicle();
+	~WaterVehicle() override;
 
 	/// Pure virtual method for motion.
-	virtual void move(double speed, std::vector<double> direction) = 0;
+	virtual void move(double speed, std::vector<double> direction) override = 0;
 
 	/// Start sinking, even if you are already sinking.
 	void start_sinking();
@@ -44,7 +43,7 @@ public:
 	void stop_sinking();
 
 	/// Display identification info.
-	virtual void get_info() const;
+	void get_info() const override;
 
 private:
 	bool m_sinking;
@@ -52,4 +51,3 @@ private:
 
 } // namespace ODemo
 
-#endif // end-of-include-guard

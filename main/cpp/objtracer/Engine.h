@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_ENGINE_H
-#define INC_GOBELIJN_OBJTRACER_ENGINE_H
+#pragma once
 /**
  * @file
  * Header for the Engine class used to demo object aggregation features.
@@ -14,19 +13,19 @@ class Engine
 {
 public:
 	/// Constructor initializes the power, is_running status set to false.
-	Engine(double power);
+	explicit Engine(double power);
 
 	/// Copy constructor.
 	Engine(const Engine& ori);
 
 	/// Move constructor.
-	Engine(Engine&& ori);
+	Engine(Engine&& ori) noexcept;
 
 	/// Copy assignment.
 	Engine& operator=(const Engine& rhs);
 
 	/// Move assignment.
-	Engine& operator=(Engine&& rhs);
+	Engine& operator=(Engine&& rhs) noexcept;
 
 	/// Destructor does not do a thing.
 	~Engine();
@@ -40,9 +39,6 @@ public:
 	/// Indicates whether engine is running or not.
 	bool is_running() const;
 
-	/// Returns the power of this engine.
-	double get_power() const;
-
 private:
 	double m_power;
 	bool m_running;
@@ -50,4 +46,3 @@ private:
 
 } // end_of_namespace_MotorcycleDemo
 
-#endif // end-of-include-guard

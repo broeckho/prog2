@@ -18,7 +18,7 @@ using std::vector;
  * @return			None.
  * @exception		None.
  */
-SailBoat::SailBoat(string name) : WaterVehicle(), m_name(name), m_sails_up(false) { COMP_MISC_MEMBER_TRACER; }
+SailBoat::SailBoat(string name) : WaterVehicle(), m_name(std::move(name)), m_sails_up(false) { COMP_MISC_MEMBER_TRACER; }
 
 /**
  * @return				None.
@@ -35,7 +35,7 @@ SailBoat::SailBoat(const SailBoat& ori) : WaterVehicle(ori), m_name(ori.m_name),
  * @param		ori		Original to be moved.
  * @exception			None.
  */
-SailBoat::SailBoat(SailBoat&& ori) : WaterVehicle(ori), m_name(ori.m_name), m_sails_up(ori.m_sails_up)
+SailBoat::SailBoat(SailBoat&& ori) noexcept : WaterVehicle(std::move(ori)), m_name(ori.m_name), m_sails_up(ori.m_sails_up)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -63,7 +63,7 @@ SailBoat& SailBoat::operator=(const SailBoat& rhs)
  * @param		rhs		Right hand side in assignment.
  * @exception			None.
  */
-SailBoat& SailBoat::operator=(SailBoat&& rhs)
+SailBoat& SailBoat::operator=(SailBoat&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {

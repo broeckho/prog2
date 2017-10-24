@@ -25,7 +25,7 @@ Bicycle::Bicycle() : PassengerRoadVehicle(2), m_model("Unknown model"), m_color(
  * @param       model       Initializes model of motorcycle.
  * @param       color       Initializes color of motorcycle.
  */
-Bicycle::Bicycle(std::string model, std::string color) : PassengerRoadVehicle(2), m_model(model), m_color(color)
+Bicycle::Bicycle(std::string model, std::string color) : PassengerRoadVehicle(2), m_model(std::move(model)), m_color(std::move(color))
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -43,7 +43,7 @@ Bicycle::Bicycle(const Bicycle& ori) : PassengerRoadVehicle(ori), m_model(ori.m_
  * @return			None.
  * @param		ori	Original to be moved.
  */
-Bicycle::Bicycle(Bicycle&& ori)
+Bicycle::Bicycle(Bicycle&& ori) noexcept
     : PassengerRoadVehicle(std::move(ori)), m_model(std::move(ori.m_model)), m_color(std::move(ori.m_color))
 {
 	COMP_MISC_MEMBER_TRACER;
@@ -70,7 +70,7 @@ Bicycle& Bicycle::operator=(const Bicycle& rhs)
  * @return                      None.
  * @param               rhs     Right hand side in assignment.
  */
-Bicycle& Bicycle::operator=(Bicycle&& rhs)
+Bicycle& Bicycle::operator=(Bicycle&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
@@ -116,7 +116,7 @@ string Bicycle::getColor() const
 void Bicycle::setModel(string model)
 {
 	COMP_MISC_MEMBER_TRACER;
-	m_model = model;
+	m_model = std::move(model);
 }
 
 /**
@@ -126,7 +126,7 @@ void Bicycle::setModel(string model)
 void Bicycle::setColor(string color)
 {
 	COMP_MISC_MEMBER_TRACER;
-	m_color = color;
+	m_color = std::move(color);
 }
 
 /**

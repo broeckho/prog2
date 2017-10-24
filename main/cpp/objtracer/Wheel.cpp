@@ -6,7 +6,6 @@
 
 #include "Wheel.h"
 #include "tracer/tracer.h"
-#include <string>
 
 namespace ODemo {
 using std::string;
@@ -14,7 +13,7 @@ using std::string;
 /**
  * @return                  None.
  */
-Wheel::Wheel(double size) : m_speed(0.0), m_rotating(false) { COMP_MISC_MEMBER_TRACER; }
+Wheel::Wheel() : m_speed(0.0), m_rotating(false) { COMP_MISC_MEMBER_TRACER; }
 
 /**
  * @param          ori      Original to be copied.
@@ -26,7 +25,7 @@ Wheel::Wheel(const Wheel& ori) : m_speed(ori.m_speed), m_rotating(ori.m_rotating
  * @param          ori      Original to be moved.
  * @return                  None.
  */
-Wheel::Wheel(Wheel&& ori) : m_speed(std::move(ori.m_speed)), m_rotating(std::move(ori.m_rotating))
+Wheel::Wheel(Wheel&& ori) noexcept: m_speed(ori.m_speed), m_rotating(ori.m_rotating)
 {
 	COMP_MISC_MEMBER_TRACER;
 }
@@ -51,12 +50,12 @@ Wheel& Wheel::operator=(Wheel const& rhs)
  * @param          rhs      Right hand side in assignment.
  * @return                  None.
  */
-Wheel& Wheel::operator=(Wheel&& rhs)
+Wheel& Wheel::operator=(Wheel&& rhs) noexcept
 {
 	COMP_MISC_MEMBER_TRACER;
 	if (this != &rhs) {
-		m_speed = std::move(rhs.m_speed);
-		m_rotating = std::move(rhs.m_rotating);
+		m_speed = rhs.m_speed;
+		m_rotating = rhs.m_rotating;
 	}
 	return *this;
 }

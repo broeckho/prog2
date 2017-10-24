@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_OBJTRACER_MOTORCYCLE_H
-#define INC_GOBELIJN_OBJTRACER_MOTORCYCLE_H
+#pragma once
 /**
  * @file
  * Header for the Motorcycle class.
@@ -24,7 +23,7 @@ public:
 	Motorcycle();
 
 	/// Constructor initializes association with engine only.
-	Motorcycle(std::shared_ptr<Engine> const& enginePtr);
+	explicit Motorcycle(std::shared_ptr<Engine> const& enginePtr);
 
 	/// Constructor initializes association with engine and owner.
 	Motorcycle(std::shared_ptr<Engine> const& enginePtr, Person const* ownerPtr);
@@ -33,13 +32,13 @@ public:
 	Motorcycle(Motorcycle const& ori);
 
 	/// Move constructor.
-	Motorcycle(Motorcycle&& ori);
+	Motorcycle(Motorcycle&& ori) noexcept ;
 
 	/// Copy assignment
 	Motorcycle& operator=(Motorcycle const& rhs);
 
 	/// Move assignment
-	Motorcycle& operator=(Motorcycle&& rhs);
+	Motorcycle& operator=(Motorcycle&& rhs) noexcept ;
 
 	/// Destructor.
 	~Motorcycle();
@@ -91,4 +90,3 @@ private:
 
 } // end_of_namespace
 
-#endif // end-of-include-guard
