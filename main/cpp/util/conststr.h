@@ -25,21 +25,21 @@
 class conststr
 {
 public:
-	template <std::size_t N>
-	constexpr conststr(const char (&a)[N]) : m_p(a), m_size(N - 1)
-	{
-	}
+        template <std::size_t N>
+        constexpr conststr(const char (&a)[N]) : m_p(a), m_size(N - 1)
+        {
+        }
 
-	// constexpr functions signal errors by throwing exceptions from operator ?:
-	constexpr char operator[](std::size_t n) const { return n < m_size ? m_p[n] : throw std::out_of_range(""); }
+        // constexpr functions signal errors by throwing exceptions from operator ?:
+        constexpr char operator[](std::size_t n) const { return n < m_size ? m_p[n] : throw std::out_of_range(""); }
 
-	constexpr std::size_t size() const { return m_size; }
+        constexpr std::size_t size() const { return m_size; }
 
-	std::string to_string() const { return m_p; }
+        std::string to_string() const { return m_p; }
 
 private:
-	const char* m_p;
-	std::size_t m_size;
+        const char* m_p;
+        std::size_t m_size;
 };
 
 #endif

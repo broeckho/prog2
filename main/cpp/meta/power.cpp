@@ -24,21 +24,21 @@
 template <int N>
 struct power
 {
-	static int constexpr value = 2 * power<N - 1>::value;
+        static int constexpr value = 2 * power<N - 1>::value;
 };
 
 /** Ends recursive instantiation */
 template <>
 struct power<0>
 {
-	static int constexpr value = 1;
+        static int constexpr value = 1;
 };
 
 int main()
 {
-	int p = power<6>::value;
-	int a[power<2>::value] = {0, 0, 0, 0};
-	std::cout << p << "  " << a[0] << std::endl;
-	return 0;
+        int p = power<6>::value;
+        int a[power<2>::value] = {0, 0, 0, 0};
+        std::cout << p << "  " << a[0] << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

@@ -29,7 +29,7 @@
 #include <functional>
 
 
-#if !(defined(__PRETTY_FUNCTION__))
+#if !defined(__GNUC__)
 #define __PRETTY_FUNCTION__   __FUNCTION__
 #endif
 

@@ -5,8 +5,6 @@
  */
 
 #include "tracer/TracerOutput.h"
-#include <sstream>
-#include <string>
 
 namespace UA_CoMP {
 namespace Misc {
@@ -23,15 +21,15 @@ LogSeverity TracerOutput::g_severity = INFO;
 ///
 void TracerOutput::log(string const& msg, LogSeverity severity)
 {
-	if (is_output_on()) {
-		ostringstream os;
-		for (unsigned int i = 0; i < g_indent; ++i) {
-			os << "     ";
-		}
-		os << msg;
-		LOG(severity) << os.str();
-	}
+        if (is_output_on()) {
+                ostringstream os;
+                for (unsigned int i = 0; i < g_indent; ++i) {
+                        os << "     ";
+                }
+                os << msg;
+                LOG(severity) << os.str();
+        }
 }
 
-} // end of namespace Misc
-} // end of namespace UA_CoMP
+} // end of namespace
+} // end of namespace

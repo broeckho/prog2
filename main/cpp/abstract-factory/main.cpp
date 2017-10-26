@@ -51,9 +51,9 @@ using namespace AbstractFactory;
  */
 void printEmployee(const Employee& employee)
 {
-	std::cout << "name: " << employee.Name << std::endl
-		  << "department: " << employee.DepartmentName << std::endl
-		  << "salary: " << employee.Salary << std::endl;
+        std::cout << "name: " << employee.Name << std::endl
+                  << "department: " << employee.DepartmentName << std::endl
+                  << "salary: " << employee.Salary << std::endl;
 }
 
 /**
@@ -67,40 +67,40 @@ void printEmployee(Factory<Employee>& factory) { printEmployee(factory.Create())
  */
 boost::property_tree::ptree toPtree(const Employee& employee)
 {
-	boost::property_tree::ptree result;
-	result.put(PtreeEmployeeFactory::EmployeeNameKey, employee.Name);
-	result.put(PtreeEmployeeFactory::EmployeeDepartmentNameKey, employee.DepartmentName);
-	result.put(PtreeEmployeeFactory::EmployeeSalaryKey, employee.Salary);
-	return result;
+        boost::property_tree::ptree result;
+        result.put(PtreeEmployeeFactory::EmployeeNameKey, employee.Name);
+        result.put(PtreeEmployeeFactory::EmployeeDepartmentNameKey, employee.DepartmentName);
+        result.put(PtreeEmployeeFactory::EmployeeSalaryKey, employee.Salary);
+        return result;
 }
 
 int main()
 {
-	// Create a constant employee.
-	std::cout << "Predefined employee:" << std::endl;
+        // Create a constant employee.
+        std::cout << "Predefined employee:" << std::endl;
 
-	Employee constEmployee;
-	constEmployee.Name = "John Doe";
-	constEmployee.DepartmentName = "IT";
-	constEmployee.Salary = 2500;
+        Employee constEmployee;
+        constEmployee.Name = "John Doe";
+        constEmployee.DepartmentName = "IT";
+        constEmployee.Salary = 2500;
 
-	ConstantFactory<Employee> constFactory(constEmployee);
-	printEmployee(constFactory);
+        ConstantFactory<Employee> constFactory(constEmployee);
+        printEmployee(constFactory);
 
-	// Create an employee from standard input.
-	std::cout << "Build your own employee:" << std::endl;
-	StdinEmployeeFactory stdinFactory;
-	auto userEmployee = stdinFactory.Create();
-	printEmployee(userEmployee);
+        // Create an employee from standard input.
+        std::cout << "Build your own employee:" << std::endl;
+        StdinEmployeeFactory stdinFactory;
+        auto userEmployee = stdinFactory.Create();
+        printEmployee(userEmployee);
 
-	// Now, we'll read an employee from an XML file. To keep things simple,
-	// we'll just serialize the employee the user just described, write it
-	// to disk as XML, and then read that again.
+        // Now, we'll read an employee from an XML file. To keep things simple,
+        // we'll just serialize the employee the user just described, write it
+        // to disk as XML, and then read that again.
 
-	std::cout << "XML employee:" << std::endl;
-	boost::property_tree::xml_parser::write_xml("tmp_config.xml", toPtree(userEmployee));
-	boost::property_tree::ptree pt;
-	boost::property_tree::xml_parser::read_xml("tmp_config.xml", pt);
-	PtreeEmployeeFactory ptreeFactory(pt);
-	printEmployee(ptreeFactory);
+        std::cout << "XML employee:" << std::endl;
+        boost::property_tree::xml_parser::write_xml("tmp_config.xml", toPtree(userEmployee));
+        boost::property_tree::ptree pt;
+        boost::property_tree::xml_parser::read_xml("tmp_config.xml", pt);
+        PtreeEmployeeFactory ptreeFactory(pt);
+        printEmployee(ptreeFactory);
 }

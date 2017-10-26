@@ -21,25 +21,24 @@
 #include "../stldemo_1/RandInt.h"
 #include "../stldemo_1/Range.h"
 #include <algorithm>
-#include <iostream>
 #include <map>
 #include <vector>
 
 template <typename It>
 std::map<typename It::value_type, unsigned int> freq(It first, It last)
 {
-	std::map<typename It::value_type, unsigned int> m;
-	for (It it = first; it != last; ++it) {
-		m[*it]++;
-	}
-	return m;
+        std::map<typename It::value_type, unsigned int> m;
+        for (It it = first; it != last; ++it) {
+                m[*it]++;
+        }
+        return m;
 }
 
 int main()
 {
-	std::vector<int> v(20);
-	std::generate(v.begin(), v.end(), RandInt(2, 10));
-	std::cout << make_range(v) << std::endl << make_range(freq(v.begin(), v.end())) << std::endl;
-	return 0;
+        std::vector<int> v(20);
+        std::generate(v.begin(), v.end(), RandInt(2, 10));
+        std::cout << make_range(v) << std::endl << make_range(freq(v.begin(), v.end())) << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

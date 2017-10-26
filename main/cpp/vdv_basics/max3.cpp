@@ -11,18 +11,18 @@
 template <typename T>
 inline T* const& max(T* const& a, T* const& b)
 {
-	return *a < *b ? b : a;
+        return *a < *b ? b : a;
 }
 
 int main()
 {
-	int a = 7;
-	int b = 42;
-	::max(a, b);
-	int* p1 = &b;
-	int* p2 = &a;
-	::max(p1, p2);
+        int a = 7;
+        int b = 42;
+        ::max(a, b);
+        int* p1 = &b;
+        int* p2 = &a;
+        ::max(p1, p2);
 
-	return 0;
+        return 0;
 }
 // END_SNIPPET{FullSource}

@@ -22,19 +22,18 @@
 #include "../stldemo_1/Range.h"
 #include <algorithm>
 #include <iomanip>
-#include <iostream>
 #include <list>
 
 int main()
 {
-	std::list<int> c(15);
-	RandInt r(7, c.size());
-	std::generate(c.begin(), c.end(), r);
-	std::cout << make_range(c) << std::endl;
-	std::list<int>::iterator it1 = find(c.begin(), c.end(), 14);
-	std::list<int>::iterator it2 = find(it1, c.end(), 13);
-	std::list<int>::iterator it3 = find(it1, it2, 11);
-	std::cout << std::boolalpha << (it3 != it2) << std::endl;
-	return 0;
+        std::list<int> c(15);
+        RandInt r(7, c.size());
+        std::generate(c.begin(), c.end(), r);
+        std::cout << make_range(c) << std::endl;
+        std::list<int>::iterator it1 = find(c.begin(), c.end(), 14);
+        std::list<int>::iterator it2 = find(it1, c.end(), 13);
+        std::list<int>::iterator it3 = find(it1, it2, 11);
+        std::cout << std::boolalpha << (it3 != it2) << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

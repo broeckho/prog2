@@ -46,68 +46,68 @@ struct BadFunctionCallType
 template <typename S>
 struct BadFunctionCallType<std::function<S>>
 {
-	typedef std::bad_function_call type;
+        typedef std::bad_function_call type;
 };
 
 template <typename S>
 struct BadFunctionCallType<boost::function<S>>
 {
-	typedef boost::bad_function_call type;
+        typedef boost::bad_function_call type;
 };
 
 template <typename S, template <typename> class F = std::function>
 class FunctionMap
 {
 public:
-	// Type of function stored in the map.
-	typedef F<S> FunctionType;
+        // Type of function stored in the map.
+        typedef F<S> FunctionType;
 
-	// Type of bad_function_call exception
-	typedef typename BadFunctionCallType<FunctionType>::type BadFunctionCallType;
+        // Type of bad_function_call exception
+        typedef typename BadFunctionCallType<FunctionType>::type BadFunctionCallType;
 
 private:
-	///
-	typedef std::map<const std::string, const FunctionType> MapType;
+        ///
+        typedef std::map<const std::string, const FunctionType> MapType;
 
 public:
-	/// Construct an empty map.
-	FunctionMap() {}
+        /// Construct an empty map.
+        FunctionMap() {}
 
-	/// Construct map from initializer_list.
-	FunctionMap(std::initializer_list<typename MapType::value_type> l) : m_map(l) {}
+        /// Construct map from initializer_list.
+        FunctionMap(std::initializer_list<typename MapType::value_type> l) : m_map(l) {}
 
-	/// Return function for given name.
-	FunctionType Get(const std::string& name) const
-	{
-		return (m_map.count(name) != 0) ? m_map.at(name) : FunctionType();
-	}
+        /// Return function for given name.
+        FunctionType Get(const std::string& name) const
+        {
+                return (m_map.count(name) != 0) ? m_map.at(name) : FunctionType();
+        }
 
-	/// Check validity.
-	bool IsValid(const std::string& name) const { return (m_map.count(name) != 0) && (m_map.at(name)); }
+        /// Check validity.
+        bool IsValid(const std::string& name) const { return (m_map.count(name) != 0) && (m_map.at(name)); }
 
-	/// Register.
-	bool Register(const std::string& name, const FunctionType& f)
-	{
-		bool status = false;
-		if ((m_map.count(name) == 0) && (f)) {
-			m_map.insert(make_pair(name, f));
-			status = true;
-		}
-		return status;
-	}
+        /// Register.
+        bool Register(const std::string& name, const FunctionType& f)
+        {
+                bool status = false;
+                if ((m_map.count(name) == 0) && (f)) {
+                        m_map.insert(make_pair(name, f));
+                        status = true;
+                }
+                return status;
+        }
 
-	/// List.
-	std::list<std::string> List() const
-	{
-		std::list<std::string> l;
-		for (const auto& e : m_map) {
-			l.push_back(e.first);
-		}
-		return l;
-	}
+        /// List.
+        std::list<std::string> List() const
+        {
+                std::list<std::string> l;
+                for (const auto& e : m_map) {
+                        l.push_back(e.first);
+                }
+                return l;
+        }
 
 private:
-	MapType m_map;
+        MapType m_map;
 };
 
 } // namespace Util

@@ -43,11 +43,11 @@ RoadVehicle::RoadVehicle(RoadVehicle&& ori) noexcept : LandVehicle(std::move(ori
  */
 RoadVehicle& RoadVehicle::operator=(const RoadVehicle& rhs)
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		LandVehicle::operator=(rhs);
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                LandVehicle::operator=(rhs);
+        }
+        return *this;
 }
 
 /**
@@ -58,11 +58,11 @@ RoadVehicle& RoadVehicle::operator=(const RoadVehicle& rhs)
  */
 RoadVehicle& RoadVehicle::operator=(RoadVehicle&& rhs) noexcept
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		LandVehicle::operator=(rhs);
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                LandVehicle::operator=(rhs);
+        }
+        return *this;
 }
 
 /**
@@ -78,11 +78,11 @@ RoadVehicle::~RoadVehicle() { COMP_MISC_MEMBER_TRACER; }
  */
 void RoadVehicle::move(double speed, vector<double> direction)
 {
-	COMP_MISC_MEMBER_TRACER;
-	cout << "RoadVehicle is moving with speed " << speed << " in direction" << endl;
-	for (auto&& d: direction) {
-		cout << d << endl;
-	}
+        COMP_MISC_MEMBER_TRACER;
+        cout << "RoadVehicle is moving with speed " << speed << " in direction" << endl;
+        for (auto&& d : direction) {
+                cout << d << endl;
+        }
 }
 
 /**
@@ -91,8 +91,8 @@ void RoadVehicle::move(double speed, vector<double> direction)
  */
 void RoadVehicle::get_info() const
 {
-	COMP_MISC_MEMBER_TRACER;
-	LandVehicle::get_info();
-	cout << "I'm a generic Road vehicle" << endl;
+        COMP_MISC_MEMBER_TRACER;
+        LandVehicle::get_info();
+        cout << "I'm a generic Road vehicle" << endl;
 }
 }

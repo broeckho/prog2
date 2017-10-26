@@ -1,5 +1,4 @@
-#ifndef INC_GOBELIJN_MISC_H
-#define INC_GOBELIJN_MISC_H
+#pragma once
 /**
  * @file
  * Comprehensive include file for all tracer classes.
@@ -11,4 +10,3 @@
 #include "tracer/MemberTracer.h"
 #include "tracer/TracerOutput.h"
 
-#endif // end-of-include-guard

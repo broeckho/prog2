@@ -24,9 +24,9 @@ using namespace Pimpl;
 
 int main()
 {
-	// Create a memory pool, and use it to round-trip an integer.
-	MemoryPool pool(sizeof(int));
-	int* ptr = pool.Allocate<int>();
-	*ptr = 10;
-	std::cout << *ptr << std::endl;
+        // Create a memory pool, and use it to round-trip an integer.
+        MemoryPool pool(sizeof(int));
+        int* ptr = pool.Allocate<int>();
+        *ptr = 10;
+        std::cout << *ptr << std::endl;
 }

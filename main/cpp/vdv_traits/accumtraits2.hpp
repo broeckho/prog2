@@ -14,35 +14,35 @@ template <>
 class AccumulationTraits<char>
 {
 public:
-	typedef int AccT;
+        typedef int AccT;
 };
 
 template <>
 class AccumulationTraits<short>
 {
 public:
-	typedef int AccT;
+        typedef int AccT;
 };
 
 template <>
 class AccumulationTraits<int>
 {
 public:
-	typedef long AccT;
+        typedef long AccT;
 };
 
 template <>
 class AccumulationTraits<unsigned int>
 {
 public:
-	typedef unsigned long AccT;
+        typedef unsigned long AccT;
 };
 
 template <>
 class AccumulationTraits<float>
 {
 public:
-	typedef double AccT;
+        typedef double AccT;
 };
 
 #endif // INC_TRAITS_ACCUMTRAITS2_HPP

@@ -25,25 +25,25 @@
 template <typename C>
 typename C::value_type sum(C const& c)
 {
-	typename C::value_type val = typename C::value_type();
-	for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
-		val += *it;
-	}
-	return val;
+        typename C::value_type val = typename C::value_type();
+        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+                val += *it;
+        }
+        return val;
 }
 
 int main()
 {
-	std::vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
-	std::cout << make_range(v) << " sum: " << sum(v) << std::endl;
-	std::list<double> l;
-	l.push_back(1);
-	l.push_back(2);
-	l.push_back(3);
-	std::cout << make_range(l) << " sum: " << sum(l) << std::endl;
-	return 0;
+        std::vector<int> v;
+        v.push_back(1);
+        v.push_back(2);
+        v.push_back(3);
+        std::cout << make_range(v) << " sum: " << sum(v) << std::endl;
+        std::list<double> l;
+        l.push_back(1);
+        l.push_back(2);
+        l.push_back(3);
+        std::cout << make_range(l) << " sum: " << sum(l) << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

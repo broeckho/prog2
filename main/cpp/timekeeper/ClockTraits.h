@@ -35,20 +35,20 @@ template <typename C = ClockCLib, typename D = typename C::duration>
 class ClockTraits
 {
 public:
-	/// Type for clock.
-	using Clock = C;
+        /// Type for clock.
+        using Clock = C;
 
-	/// Stopwatch to measure time durations.
-	using Stopwatch = UA_CoMP::Timekeeper::Stopwatch<C>;
+        /// Stopwatch to measure time durations.
+        using Stopwatch = UA_CoMP::Timekeeper::Stopwatch<C>;
 
-	/// Type for time duration units.
-	using Duration = D;
+        /// Type for time duration units.
+        using Duration = D;
 
-	/// Records with cumulative timing info.
-	using CumulativeRecords = UA_CoMP::Timekeeper::CumulativeRecords<D>;
+        /// Records with cumulative timing info.
+        using CumulativeRecords = UA_CoMP::Timekeeper::CumulativeRecords<D>;
 
-	/// Records with timing info.
-	using Records = UA_CoMP::Timekeeper::Records<D>;
+        /// Records with timing info.
+        using Records = UA_CoMP::Timekeeper::Records<D>;
 };
 
 } // namespace Timekeeper

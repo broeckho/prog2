@@ -32,8 +32,8 @@ namespace Container {
  */
 template <typename T>
 using ConstCircularIterator = Impl_::CircularIterator<T, typename std::add_const<typename T::value_type>::type,
-						      typename std::add_const<typename T::value_type>::type*,
-						      typename std::add_const<typename T::value_type>::type&>;
+                                                      typename std::add_const<typename T::value_type>::type*,
+                                                      typename std::add_const<typename T::value_type>::type&>;
 
 /**
  * Helper produces const circular iterator whose range
@@ -44,7 +44,7 @@ using ConstCircularIterator = Impl_::CircularIterator<T, typename std::add_const
 template <typename T>
 ConstCircularIterator<typename T::const_iterator> make_const_circular(const T& c)
 {
-	return ConstCircularIterator<typename T::const_iterator>(std::begin(c), std::end(c), std::begin(c));
+        return ConstCircularIterator<typename T::const_iterator>(std::begin(c), std::end(c), std::begin(c));
 }
 
 /**
@@ -56,7 +56,7 @@ ConstCircularIterator<typename T::const_iterator> make_const_circular(const T& c
 template <typename T>
 ConstCircularIterator<typename T::const_iterator> make_const_circular(const T& c, typename T::const_iterator i)
 {
-	return ConstCircularIterator<typename T::const_iterator>(std::begin(c), std::end(c), i);
+        return ConstCircularIterator<typename T::const_iterator>(std::begin(c), std::end(c), i);
 }
 
 /**
@@ -69,7 +69,7 @@ ConstCircularIterator<typename T::const_iterator> make_const_circular(const T& c
 template <typename T>
 ConstCircularIterator<T> make_const_circular(T b, T e, T i)
 {
-	return ConstCircularIterator<T>(b, e, i);
+        return ConstCircularIterator<T>(b, e, i);
 }
 
 /**
@@ -81,7 +81,7 @@ ConstCircularIterator<T> make_const_circular(T b, T e, T i)
 template <typename T>
 ConstCircularIterator<T> make_const_circular(T b, T e)
 {
-	return ConstCircularIterator<T>(b, e, b);
+        return ConstCircularIterator<T>(b, e, b);
 }
 
 /**
@@ -93,8 +93,8 @@ ConstCircularIterator<T> make_const_circular(T b, T e)
 template <typename T>
 ConstCircularIterator<T> next(ConstCircularIterator<T> c)
 {
-	ConstCircularIterator<T> tmp(c);
-	return ++tmp;
+        ConstCircularIterator<T> tmp(c);
+        return ++tmp;
 }
 
 /**
@@ -106,8 +106,8 @@ ConstCircularIterator<T> next(ConstCircularIterator<T> c)
 template <typename T>
 ConstCircularIterator<T> prev(ConstCircularIterator<T> c)
 {
-	ConstCircularIterator<T> tmp(c);
-	return --tmp;
+        ConstCircularIterator<T> tmp(c);
+        return --tmp;
 }
 }
 }

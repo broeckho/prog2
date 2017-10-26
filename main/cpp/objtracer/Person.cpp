@@ -26,7 +26,7 @@ Person::~Person() { COMP_MISC_MEMBER_TRACER; }
  */
 string Person::get_name() const
 {
-	COMP_MISC_MEMBER_TRACER;
-	return m_name;
+        COMP_MISC_MEMBER_TRACER;
+        return m_name;
 }
 }

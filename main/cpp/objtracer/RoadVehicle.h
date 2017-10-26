@@ -16,29 +16,29 @@ namespace ODemo {
 class RoadVehicle : public LandVehicle
 {
 public:
-	/// Default constructor.
-	RoadVehicle();
+        /// Default constructor.
+        RoadVehicle();
 
-	/// Copy constructor.
-	RoadVehicle(const RoadVehicle& ori);
+        /// Copy constructor.
+        RoadVehicle(const RoadVehicle& ori);
 
-	/// Move constructor.
-	RoadVehicle(RoadVehicle&& ori) noexcept;
+        /// Move constructor.
+        RoadVehicle(RoadVehicle&& ori) noexcept;
 
-	/// Copy assignment operator.
-	RoadVehicle& operator=(const RoadVehicle& rhs);
+        /// Copy assignment operator.
+        RoadVehicle& operator=(const RoadVehicle& rhs);
 
-	/// Move assignment operator.
-	RoadVehicle& operator=(RoadVehicle&& rhs) noexcept;
+        /// Move assignment operator.
+        RoadVehicle& operator=(RoadVehicle&& rhs) noexcept;
 
-	/// Destructor.
-	~RoadVehicle() override;
+        /// Destructor.
+        ~RoadVehicle() override;
 
-	/// Motion of the vehicle.
-	void move(double speed, std::vector<double> direction) override;
+        /// Motion of the vehicle.
+        void move(double speed, std::vector<double> direction) override;
 
-	/// Display identification info.
-	void get_info() const override;
+        /// Display identification info.
+        void get_info() const override;
 };
 
 } // end_of_namespace

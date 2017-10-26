@@ -14,16 +14,16 @@ template <typename T, typename Policy = SumPolicy, typename Traits = Accumulatio
 class Accum
 {
 public:
-	typedef typename Traits::type AccT;
-	static AccT accum(T const* beg, T const* end)
-	{
-		AccT total = Traits::zero();
-		while (beg != end) {
-			Policy::accumulate(total, *beg);
-			++beg;
-		}
-		return total;
-	}
+        typedef typename Traits::type AccT;
+        static AccT accum(T const* beg, T const* end)
+        {
+                AccT total = Traits::zero();
+                while (beg != end) {
+                        Policy::accumulate(total, *beg);
+                        ++beg;
+                }
+                return total;
+        }
 };
 
 #endif // INC_TRAITS_ACCUM6_HPP

@@ -3,7 +3,7 @@
 
 int main()
 {
-	Distance d(11, 10);
-	std::cout << d(1, 5) << std::endl;
-	return 0;
+        Distance d(11, 10);
+        std::cout << d(1, 5) << std::endl;
+        return 0;
 }

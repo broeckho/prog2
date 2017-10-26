@@ -28,14 +28,14 @@
 class RandInt
 {
 public:
-	/// Initialize seed and ranfe of generator.
-	RandInt(unsigned int seed, unsigned int range) : fSeed(seed), fRange(range) { std::srand(fSeed); }
-	/// return random int within  range.
-	int operator()() { return rand() % fRange; }
+        /// Initialize seed and ranfe of generator.
+        RandInt(unsigned int seed, unsigned int range) : fSeed(seed), fRange(range) { std::srand(fSeed); }
+        /// return random int within  range.
+        int operator()() { return rand() % fRange; }
 
 private:
-	int fSeed;
-	int fRange;
+        int fSeed;
+        int fRange;
 };
 // END_SNIPPET{FullSource}
 

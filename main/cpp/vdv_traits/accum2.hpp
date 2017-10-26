@@ -12,14 +12,14 @@
 template <typename T>
 inline typename AccumulationTraits<T>::AccT accum(T const* beg, T const* end)
 {
-	typedef typename AccumulationTraits<T>::AccT AccT;
+        typedef typename AccumulationTraits<T>::AccT AccT;
 
-	AccT total = AccT();
-	while (beg != end) {
-		total += *beg;
-		++beg;
-	}
-	return total;
+        AccT total = AccT();
+        while (beg != end) {
+                total += *beg;
+                ++beg;
+        }
+        return total;
 }
 
 #endif // ACCUM_HPP

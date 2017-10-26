@@ -23,20 +23,20 @@
 template <typename T1, typename T2, bool b = (sizeof(T1) < sizeof(T2))>
 struct smaller_select
 {
-	using type = T1;
+        using type = T1;
 };
 
 /// Specialization for bool==false.
 template <typename T1, typename T2>
 struct smaller_select<T1, T2, false>
 {
-	using type = T2;
+        using type = T2;
 };
 
 int main()
 {
-	smaller_select<float, long int>::type haha = 0;
-	std::cout << haha << std::endl;
-	return 0;
+        smaller_select<float, long int>::type haha = 0;
+        std::cout << haha << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

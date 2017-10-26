@@ -37,146 +37,146 @@ template <typename T, typename V, typename P = V*, typename R = V&>
 class CircularIterator : public std::iterator<std::bidirectional_iterator_tag, V, typename T::difference_type, P, R>
 {
 public:
-	// ==================================================================
-	// Member types (in addition to those introduced by the std::iterator
-	// base class (i.e. value_type, difference_type, pointer, reference,
-	// iterator_category).
-	// ==================================================================
-	using type = CircularIterator<T, V, P, R>;
-	using base_type = T;
+        // ==================================================================
+        // Member types (in addition to those introduced by the std::iterator
+        // base class (i.e. value_type, difference_type, pointer, reference,
+        // iterator_category).
+        // ==================================================================
+        using type = CircularIterator<T, V, P, R>;
+        using base_type = T;
 
-	/**
-	 * Constructor requires range and start value.
-	 * @param  b      begin iterator of the range
-	 * @param  e      end iterator of the range
-	 * @param  i      start iterator of circular sequencing
-	 */
-	CircularIterator(base_type b, base_type e, base_type i) : m_begin(b), m_end(e), m_it(i) {}
+        /**
+         * Constructor requires range and start value.
+         * @param  b      begin iterator of the range
+         * @param  e      end iterator of the range
+         * @param  i      start iterator of circular sequencing
+         */
+        CircularIterator(base_type b, base_type e, base_type i) : m_begin(b), m_end(e), m_it(i) {}
 
-	/**
-	 * Return underlying base type iterator.
-	 * @return  current value of iterator
-	 */
-	base_type get() const { return m_it; }
+        /**
+         * Return underlying base type iterator.
+         * @return  current value of iterator
+         */
+        base_type get() const { return m_it; }
 
-	/**
-	 * Conversion to return iterator to its base type.
-	 * @return  current value of iterator
-	 */
-	explicit operator base_type() const { return m_it; }
+        /**
+         * Conversion to return iterator to its base type.
+         * @return  current value of iterator
+         */
+        explicit operator base_type() const { return m_it; }
 
-	/**
-	 * Assignment operator from base type to circularized iterator.
-	 * @return  reference to iterator
-	 */
-	type& operator=(const base_type& i)
-	{
-		m_it = i;
-		return *this;
-	}
+        /**
+         * Assignment operator from base type to circularized iterator.
+         * @return  reference to iterator
+         */
+        type& operator=(const base_type& i)
+        {
+                m_it = i;
+                return *this;
+        }
 
-	/**
-	 * Dereferencing operator.
-	 * @ return  reference (const / non-const depending on template
-	 *           parameters) to value pointed to by iterator.
-	 */
-	typename type::reference operator*() const { return (*m_it); }
+        /**
+         * Dereferencing operator.
+         * @ return  reference (const / non-const depending on template
+         *           parameters) to value pointed to by iterator.
+         */
+        typename type::reference operator*() const { return (*m_it); }
 
-	/**
-	 * Structure dereferencing operator.
-	 * @return  pointer (const / non-const depending on template
-	 *          parameters) to value pointed to by iterator.
-	 */
-	typename type::pointer operator->() const { return &(operator*()); }
+        /**
+         * Structure dereferencing operator.
+         * @return  pointer (const / non-const depending on template
+         *          parameters) to value pointed to by iterator.
+         */
+        typename type::pointer operator->() const { return &(operator*()); }
 
-	/**
-	 * Pre-increment operator works circularly: at the end of
-	 * the range it jumps back to the beginning and keeps going.
-	 * @return  iterator after (circular) increment
-	 */
-	type& operator++()
-	{
-		++m_it;
-		if (m_it == m_end) {
-			m_it = m_begin;
-		}
-		return (*this);
-	}
+        /**
+         * Pre-increment operator works circularly: at the end of
+         * the range it jumps back to the beginning and keeps going.
+         * @return  iterator after (circular) increment
+         */
+        type& operator++()
+        {
+                ++m_it;
+                if (m_it == m_end) {
+                        m_it = m_begin;
+                }
+                return (*this);
+        }
 
-	/**
-	 * Post-increment operator works circularly: at the end of
-	 * the range it jumps back to the beginning and keeps going.
-	 * @return  iterator before (circular) increment
-	 */
-	type operator++(int)
-	{
-		type t(*this);
-		++(*this);
-		return t;
-	}
+        /**
+         * Post-increment operator works circularly: at the end of
+         * the range it jumps back to the beginning and keeps going.
+         * @return  iterator before (circular) increment
+         */
+        type operator++(int)
+        {
+                type t(*this);
+                ++(*this);
+                return t;
+        }
 
-	/**
-	 * Pre-decrement operator works circularly: at the beginning
-	 * of the range it jumps to the end and keeps going.
-	 * @return  iterator after (circular) decrement
-	 */
-	type& operator--()
-	{
-		if (m_it == m_begin) {
-			m_it = m_end;
-		}
-		--m_it;
-		return (*this);
-	}
+        /**
+         * Pre-decrement operator works circularly: at the beginning
+         * of the range it jumps to the end and keeps going.
+         * @return  iterator after (circular) decrement
+         */
+        type& operator--()
+        {
+                if (m_it == m_begin) {
+                        m_it = m_end;
+                }
+                --m_it;
+                return (*this);
+        }
 
-	/**
-	 * Post-decrement operator works circularly: at the beginning
-	 * of the range it jumps to the end and keeps going.
-	 * @return  iterator before (circular) decrement
-	 */
-	type operator--(int)
-	{
-		type t(*this);
-		--(*this);
-		return t;
-	}
+        /**
+         * Post-decrement operator works circularly: at the beginning
+         * of the range it jumps to the end and keeps going.
+         * @return  iterator before (circular) decrement
+         */
+        type operator--(int)
+        {
+                type t(*this);
+                --(*this);
+                return t;
+        }
 
-	/**
-	 * Equality test of the pointing iterator only,
-	 * not of the range iterators.
-	 * @param  rhs     circular iterator to compare with.
-	 * @return         true iff current positions iterators coincide
-	 */
-	bool operator==(const type& rhs) const { return (m_it == rhs.m_it); }
+        /**
+         * Equality test of the pointing iterator only,
+         * not of the range iterators.
+         * @param  rhs     circular iterator to compare with.
+         * @return         true iff current positions iterators coincide
+         */
+        bool operator==(const type& rhs) const { return (m_it == rhs.m_it); }
 
-	/**
-	 * Equality test of the pointing iterator only,
-	 * not of the range iterators.
-	 * @param  rhs     circular iterator to compare with.
-	 * @return         true iff current positions iterators coincide
-	 */
-	bool operator==(const base_type& rhs) const { return (m_it == rhs); }
+        /**
+         * Equality test of the pointing iterator only,
+         * not of the range iterators.
+         * @param  rhs     circular iterator to compare with.
+         * @return         true iff current positions iterators coincide
+         */
+        bool operator==(const base_type& rhs) const { return (m_it == rhs); }
 
-	/**
-	 * Inequality test of the pointing iterator only,
-	 * not of the range iterators.
-	 * @param  rhs     circular iterator to compare with.
-	 * @return         true iff current positions iterators coincide
-	 */
-	bool operator!=(const type& rhs) const { return !operator==(rhs); }
+        /**
+         * Inequality test of the pointing iterator only,
+         * not of the range iterators.
+         * @param  rhs     circular iterator to compare with.
+         * @return         true iff current positions iterators coincide
+         */
+        bool operator!=(const type& rhs) const { return !operator==(rhs); }
 
-	/**
-	 * Inequality test of the pointing iterator only,
-	 * not of the range iterators.
-	 * @param  rhs     circular iterator to compare with.
-	 * @return         true iff current positions iterators coincide
-	 */
-	bool operator!=(const base_type& rhs) const { return !operator==(rhs); }
+        /**
+         * Inequality test of the pointing iterator only,
+         * not of the range iterators.
+         * @param  rhs     circular iterator to compare with.
+         * @return         true iff current positions iterators coincide
+         */
+        bool operator!=(const base_type& rhs) const { return !operator==(rhs); }
 
 protected:
-	base_type m_begin;
-	base_type m_end;
-	base_type m_it;
+        base_type m_begin;
+        base_type m_end;
+        base_type m_it;
 };
 }
 }

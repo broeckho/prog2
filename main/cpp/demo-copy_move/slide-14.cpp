@@ -4,22 +4,22 @@ using namespace std;
 
 struct C
 {
-	C() = default;
+        C() = default;
 
-	// De copy-constructor heeft zichtbaar effect
-	C(const C&) noexcept { cout << "Hello World!" << endl; }
+        // De copy-constructor heeft zichtbaar effect
+        C(const C&) noexcept { cout << "Hello World!" << endl; }
 };
 
 void f()
 {
-	C c;
-	throw C(c);
+        C c;
+        throw C(c);
 }
 
 int main()
 {
-	try {
-		f();
-	} catch (C& c) {
-	}
+        try {
+                f();
+        } catch (C& c) {
+        }
 }

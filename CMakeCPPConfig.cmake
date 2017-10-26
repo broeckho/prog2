@@ -23,14 +23,14 @@
 #----------------------------------------------------------------------------
 # Use the C++11 standard. 
 #----------------------------------------------------------------------------
-set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 #----------------------------------------------------------------------------
 # Compile flags
 #----------------------------------------------------------------------------
-set( CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" )
-set( CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG} -O0"   )
-include_directories( ${CMAKE_HOME_DIRECTORY}/main/cpp )
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+set(CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+include_directories(${CMAKE_HOME_DIRECTORY}/main/cpp)
 
 #----------------------------------------------------------------------------
 # Platform dependent compile flags

@@ -21,14 +21,14 @@ namespace Num {
 class OnViolationThrow
 {
 public:
-	/** Checks and throws iff condition is violated, otherwise return true. */
-	static bool check(bool b)
-	{
-		if (b == false) {
-			throw std::runtime_error("Cellcount violation in AdaptiveQuadrature");
-		}
-		return b;
-	}
+        /** Checks and throws iff condition is violated, otherwise return true. */
+        static bool check(bool b)
+        {
+                if (b == false) {
+                        throw std::runtime_error("Cellcount violation in AdaptiveQuadrature");
+                }
+                return b;
+        }
 };
 
 /**
@@ -38,8 +38,8 @@ public:
 class OnViolationReturn
 {
 public:
-	/** Checks but goes on in any case. */
-	static bool check(bool b) { return b; }
+        /** Checks but goes on in any case. */
+        static bool check(bool b) { return b; }
 };
 
 /**
@@ -48,13 +48,13 @@ public:
 class OnViolationExit
 {
 public:
-	static bool check(bool b)
-	{
-		if (b == false) {
-			exit(EXIT_FAILURE);
-		}
-		return b;
-	}
+        static bool check(bool b)
+        {
+                if (b == false) {
+                        exit(EXIT_FAILURE);
+                }
+                return b;
+        }
 };
 
 } // end-of-namespace-Num

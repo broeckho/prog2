@@ -8,8 +8,8 @@
 
 int main()
 {
-	double ice = 3.0;
-	print_typeof(ice);
+        double ice = 3.0;
+        print_typeof(ice);
 
-	return 0;
+        return 0;
 }

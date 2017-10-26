@@ -5,24 +5,24 @@ using namespace std;
 class Integer
 {
 public:
-	Integer(int i) : m_value(i) {}
-	int getValue() const { return m_value; };
+        Integer(int i) : m_value(i) {}
+        int getValue() const { return m_value; };
 
 private:
-	friend ostream& operator<<(ostream& os, const Integer& integer);
+        friend ostream& operator<<(ostream& os, const Integer& integer);
 
 private:
-	int m_value;
+        int m_value;
 };
 
 ostream& operator<<(ostream& os, const Integer& integer)
 {
-	os << integer.m_value;
-	return os;
+        os << integer.m_value;
+        return os;
 }
 
 int main()
 {
-	const Integer i{5};
-	cout << "Integer is: " << i << endl;
+        const Integer i{5};
+        cout << "Integer is: " << i << endl;
 }

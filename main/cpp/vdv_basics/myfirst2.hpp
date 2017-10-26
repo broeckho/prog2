@@ -16,7 +16,7 @@ void print_typeof(T const&);
 template <typename T>
 void print_typeof(T const& x)
 {
-	std::cout << typeid(x).name() << std::endl;
+        std::cout << typeid(x).name() << std::endl;
 }
 
 #endif // INC_BASICS_MYFIRST2_HPP

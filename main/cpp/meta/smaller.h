@@ -1,5 +1,4 @@
-#ifndef INC_META_SMALLER_HPP
-#define INC_META_SMALLER_HPP
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -28,8 +27,6 @@
 template <typename T1, typename T2>
 struct smaller
 {
-	using type = typename select<T1, T2, (sizeof(T1) < sizeof(T2))>::type;
+        using type = typename select<T1, T2, (sizeof(T1) < sizeof(T2))>::type;
 };
 // END_SNIPPET{FullSource}
-
-#endif // include guard

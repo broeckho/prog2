@@ -17,12 +17,12 @@ using std::function;
 */
 double abs_diff(double b, double e, double h, function<double(double)> f1, function<double(double)> f2)
 {
-	double maxDiff = 0.0;
-	for (double x = b; x < e; x += h) {
-		double const temp = std::fabs(f1(x) - f2(x));
-		maxDiff = (temp > maxDiff ? temp : maxDiff);
-	}
-	return maxDiff;
+        double maxDiff = 0.0;
+        for (double x = b; x < e; x += h) {
+                double const temp = std::fabs(f1(x) - f2(x));
+                maxDiff = (temp > maxDiff ? temp : maxDiff);
+        }
+        return maxDiff;
 }
 
 } // end-of-namespace-Num

@@ -12,9 +12,9 @@ class Object;
 class Factory
 {
 public:
-	Object operator()(); // Maakt een Object aan.
+        Object operator()(); // Maakt een Object aan.
 private:
-	std::vector<int> createdObjectIds; // Houdt ID's van gegenereerde objecten bij.
+        std::vector<int> createdObjectIds; // Houdt ID's van gegenereerde objecten bij.
 };
 
 #endif // PROJECT_FACTORY_H

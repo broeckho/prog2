@@ -13,13 +13,13 @@ template <typename T, typename ALLOC = std::allocator<T>, template <typename, ty
 class Stack
 {
 private:
-	CONT<T, ALLOC> elems;
+        CONT<T, ALLOC> elems;
 
 public:
-	void push(T const&);
-	void pop();
-	T top() const;
-	bool empty() const { return elems.empty(); }
+        void push(T const&);
+        void pop();
+        T top() const;
+        bool empty() const { return elems.empty(); }
 };
 
 #endif // INC_BASICS_STACK7DECL_HPP

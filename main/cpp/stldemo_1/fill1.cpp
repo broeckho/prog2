@@ -19,25 +19,23 @@
 
 // BEGIN_SNIPPET{FullSource}
 #include "../stldemo_1/Range.h"
-#include <cstdlib>
-#include <iostream>
 #include <vector>
 
 template <typename C>
 void simpleRandInit(C& c, unsigned int seed)
 {
-	std::srand(seed);
-	typename C::size_type size = c.size();
-	for (typename C::iterator it = c.begin(); it != c.end(); ++it) {
-		*it = static_cast<typename C::value_type>(rand() % size);
-	}
+        std::srand(seed);
+        typename C::size_type size = c.size();
+        for (typename C::iterator it = c.begin(); it != c.end(); ++it) {
+                *it = static_cast<typename C::value_type>(rand() % size);
+        }
 }
 
 int main()
 {
-	std::vector<double> v(10);
-	simpleRandInit(v, 3);
-	std::cout << make_range(v) << std::endl;
-	return 0;
+        std::vector<double> v(10);
+        simpleRandInit(v, 3);
+        std::cout << make_range(v) << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

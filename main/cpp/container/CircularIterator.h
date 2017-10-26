@@ -41,7 +41,7 @@ using CircularIterator = Impl_::CircularIterator<T, typename T::value_type>;
 template <typename T>
 CircularIterator<typename T::iterator> make_circular(T& c)
 {
-	return CircularIterator<typename T::iterator>(std::begin(c), std::end(c), std::begin(c));
+        return CircularIterator<typename T::iterator>(std::begin(c), std::end(c), std::begin(c));
 }
 
 /**
@@ -53,7 +53,7 @@ CircularIterator<typename T::iterator> make_circular(T& c)
 template <typename T>
 CircularIterator<typename T::iterator> make_circular(T& c, typename T::iterator i)
 {
-	return CircularIterator<typename T::iterator>(std::begin(c), std::end(c), i);
+        return CircularIterator<typename T::iterator>(std::begin(c), std::end(c), i);
 }
 
 /**
@@ -66,7 +66,7 @@ CircularIterator<typename T::iterator> make_circular(T& c, typename T::iterator 
 template <typename T>
 CircularIterator<T> make_circular(T b, T e, T i)
 {
-	return CircularIterator<T>(b, e, i);
+        return CircularIterator<T>(b, e, i);
 }
 
 /**
@@ -78,7 +78,7 @@ CircularIterator<T> make_circular(T b, T e, T i)
 template <typename T>
 CircularIterator<T> make_circular(T b, T e)
 {
-	return CircularIterator<T>(b, e, b);
+        return CircularIterator<T>(b, e, b);
 }
 
 /**
@@ -90,8 +90,8 @@ CircularIterator<T> make_circular(T b, T e)
 template <typename T>
 CircularIterator<T> next(CircularIterator<T> i)
 {
-	CircularIterator<T> tmp(i);
-	return ++tmp;
+        CircularIterator<T> tmp(i);
+        return ++tmp;
 }
 
 /**
@@ -103,8 +103,8 @@ CircularIterator<T> next(CircularIterator<T> i)
 template <typename T>
 CircularIterator<T> prev(CircularIterator<T> i)
 {
-	CircularIterator<T> tmp(i);
-	return --tmp;
+        CircularIterator<T> tmp(i);
+        return --tmp;
 }
 }
 }

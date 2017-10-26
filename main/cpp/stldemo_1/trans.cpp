@@ -21,7 +21,6 @@
 #include "../stldemo_1/RandInt.h"
 #include "../stldemo_1/Range.h"
 #include <algorithm>
-#include <iostream>
 #include <list>
 #include <vector>
 
@@ -34,34 +33,34 @@ namespace {
 class Incrementor
 {
 public:
-	Incrementor(unsigned int n) : fNum(n) {}
+        Incrementor(unsigned int n) : fNum(n) {}
 
-	template <typename T>
-	T operator()(T t)
-	{
-		for (unsigned int i = 1; i <= fNum; i++) {
-			t++;
-		}
-		return t;
-	}
+        template <typename T>
+        T operator()(T t)
+        {
+                for (unsigned int i = 1; i <= fNum; i++) {
+                        t++;
+                }
+                return t;
+        }
 
 private:
-	unsigned int fNum;
+        unsigned int fNum;
 };
 
 } // end-of-anonymous namespace
 
 int main()
 {
-	std::vector<int> v(8);
-	std::list<int> l(8);
-	generate(v.begin(), v.end(), RandInt(3, v.size()));
-	// Out of place transform
-	transform(v.begin(), v.end(), l.begin(), Incrementor(2));
-	std::cout << make_range(v) << std::endl << make_range(l) << std::endl;
-	// In place transform
-	transform(v.begin(), v.end(), v.begin(), Incrementor(5));
-	std::cout << make_range(v) << std::endl;
-	return 0;
+        std::vector<int> v(8);
+        std::list<int> l(8);
+        generate(v.begin(), v.end(), RandInt(3, v.size()));
+        // Out of place transform
+        transform(v.begin(), v.end(), l.begin(), Incrementor(2));
+        std::cout << make_range(v) << std::endl << make_range(l) << std::endl;
+        // In place transform
+        transform(v.begin(), v.end(), v.begin(), Incrementor(5));
+        std::cout << make_range(v) << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

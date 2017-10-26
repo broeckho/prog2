@@ -30,47 +30,47 @@ namespace Pimpl {
 class MemoryPool
 {
 public:
-	// Delete the usual constructors/assignment operators.
-	MemoryPool() = delete;
-	MemoryPool(const MemoryPool&) = delete;
-	MemoryPool(MemoryPool&&) = delete;
-	MemoryPool& operator=(const MemoryPool&) = delete;
-	MemoryPool& operator=(MemoryPool&&) = delete;
+        // Delete the usual constructors/assignment operators.
+        MemoryPool() = delete;
+        MemoryPool(const MemoryPool&) = delete;
+        MemoryPool(MemoryPool&&) = delete;
+        MemoryPool& operator=(const MemoryPool&) = delete;
+        MemoryPool& operator=(MemoryPool&&) = delete;
 
-	/**
-	 * Creates a memory pool that can allocate at least as many bytes
-	 * as specified by the given capacity.
-	 */
-	MemoryPool(size_t capacity);
+        /**
+         * Creates a memory pool that can allocate at least as many bytes
+         * as specified by the given capacity.
+         */
+        MemoryPool(size_t capacity);
 
-	/**
-	 * Frees this memory pool's resources, if any.
-	 */
-	~MemoryPool();
+        /**
+         * Frees this memory pool's resources, if any.
+         */
+        ~MemoryPool();
 
-	/**
-	 * Allocates a region of memory that is 'size * sizeof(T)' of bytes
-	 * in size. It fits exactly 'size' instances of 'T'.
-	 */
-	template <typename T>
-	T* Allocate(size_t size = 1)
-	{
-		return reinterpret_cast<T*>(AllocateMemory(size * sizeof(T)));
-	}
+        /**
+         * Allocates a region of memory that is 'size * sizeof(T)' of bytes
+         * in size. It fits exactly 'size' instances of 'T'.
+         */
+        template <typename T>
+        T* Allocate(size_t size = 1)
+        {
+                return reinterpret_cast<T*>(AllocateMemory(size * sizeof(T)));
+        }
 
 private:
-	/**
-	 * Allocates a region of memory that is the given number of bytes
-	 * in size.
-	 */
-	char* AllocateMemory(size_t size);
+        /**
+         * Allocates a region of memory that is the given number of bytes
+         * in size.
+         */
+        char* AllocateMemory(size_t size);
 
-	// MemoryPoolImpl is declared, but not defined here.
-	struct MemoryPoolImpl;
+        // MemoryPoolImpl is declared, but not defined here.
+        struct MemoryPoolImpl;
 
-	// Fortunately, we don't need a definition to create a pointer to
-	// MemoryPoolImpl, so that's exactly what we'll do.
-	std::unique_ptr<MemoryPoolImpl> m_impl;
+        // Fortunately, we don't need a definition to create a pointer to
+        // MemoryPoolImpl, so that's exactly what we'll do.
+        std::unique_ptr<MemoryPoolImpl> m_impl;
 };
 
 } // end of namespace

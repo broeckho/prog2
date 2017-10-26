@@ -27,51 +27,51 @@ using namespace std;
 template <class Tuple, std::size_t N>
 struct TuplePrinter
 {
-	static void print(const Tuple& t)
-	{
-		cout << "\n\t ----> \n\t N = " << N << "  ; " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
-		TuplePrinter<Tuple, N - 1>::print(t);
-		cout << ", " << std::get<N - 1>(t);
-	}
+        static void print(const Tuple& t)
+        {
+                cout << "\n\t ----> \n\t N = " << N << "  ; " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
+                TuplePrinter<Tuple, N - 1>::print(t);
+                cout << ", " << std::get<N - 1>(t);
+        }
 };
 
 // Helper function to print a tuple of size 1; ends recursion on N.
 template <class Tuple>
 struct TuplePrinter<Tuple, 1>
 {
-	static void print(const Tuple& t)
-	{
-		cout << "\n\t ----> \n\t N = 1 "
-		     << "  ; " << __PRETTY_FUNCTION__ << "\n\t <----- \n"
-		     << endl;
-		cout << std::get<0>(t);
-	}
+        static void print(const Tuple& t)
+        {
+                cout << "\n\t ----> \n\t N = 1 "
+                     << "  ; " << __PRETTY_FUNCTION__ << "\n\t <----- \n"
+                     << endl;
+                cout << std::get<0>(t);
+        }
 };
 
 // Tuple printer.
 template <class... Args>
 void print(const std::tuple<Args...>& t)
 {
-	cout << "(";
-	TuplePrinter<decltype(t), sizeof...(Args)>::print(t);
-	cout << ")\n";
+        cout << "(";
+        TuplePrinter<decltype(t), sizeof...(Args)>::print(t);
+        cout << ")\n";
 }
 
 // Demo.
 int main()
 {
-	const auto t1 = make_tuple(6, 3.14, 'a', "haha!");
-	cout << "\nFirst tuple: " << endl;
-	print(t1);
+        const auto t1 = make_tuple(6, 3.14, 'a', "haha!");
+        cout << "\nFirst tuple: " << endl;
+        print(t1);
 
-	const auto t2 = make_tuple(string("7.4"), string("aaa"));
-	cout << "\nSecond tuple: " << endl;
-	print(t2);
+        const auto t2 = make_tuple(string("7.4"), string("aaa"));
+        cout << "\nSecond tuple: " << endl;
+        print(t2);
 
-	// BUT THIS DOES NOT WORK!
-	// const auto t3 = make_tuple(t1, t2);
-	// cout << "\nThird tuple: " << endl;
-	// print(t3);
+        // BUT THIS DOES NOT WORK!
+        // const auto t3 = make_tuple(t1, t2);
+        // cout << "\nThird tuple: " << endl;
+        // print(t3);
 
-	return 0;
+        return 0;
 }

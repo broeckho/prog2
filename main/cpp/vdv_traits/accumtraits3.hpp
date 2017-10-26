@@ -14,24 +14,24 @@ template <>
 class AccumulationTraits<char>
 {
 public:
-	typedef int AccT;
-	static AccT const zero = 0;
+        typedef int AccT;
+        static AccT const zero = 0;
 };
 
 template <>
 class AccumulationTraits<short>
 {
 public:
-	typedef int AccT;
-	static AccT const zero = 0;
+        typedef int AccT;
+        static AccT const zero = 0;
 };
 
 template <>
 class AccumulationTraits<int>
 {
 public:
-	using AccT = long;
-	static AccT constexpr zero = 0;
+        using AccT = long;
+        static AccT constexpr zero = 0;
 };
 
 #endif // INC_TRAITS_ACCUMTRAITS3_HPP

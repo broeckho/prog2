@@ -26,24 +26,24 @@ using namespace std;
 template <typename T>
 T Adder(T v)
 {
-	cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
+        cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
 
-	return v;
+        return v;
 }
 
 // Varyadic template.
 template <typename T, typename... Args>
 T Adder(T first, Args... args)
 {
-	cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
+        cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
 
-	return first + Adder(args...);
+        return first + Adder(args...);
 }
 
 // Demo.
 int main()
 {
-	cout << Adder(1, 2, 3, 4) << endl;
-	cout << Adder(2, 1.3, 1U, 2.0e2) << endl;
-	cout << Adder(string("haha"), string("hihi"), string("hoho")) << endl;
+        cout << Adder(1, 2, 3, 4) << endl;
+        cout << Adder(2, 1.3, 1U, 2.0e2) << endl;
+        cout << Adder(string("haha"), string("hihi"), string("hoho")) << endl;
 }

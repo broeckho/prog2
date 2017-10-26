@@ -22,7 +22,7 @@ template <typename Ta, typename Tb>
 class IfThenElse<true, Ta, Tb>
 {
 public:
-	typedef Ta ResultT;
+        typedef Ta ResultT;
 };
 
 /**
@@ -33,7 +33,7 @@ template <typename Ta, typename Tb>
 class IfThenElse<false, Ta, Tb>
 {
 public:
-	typedef Tb ResultT;
+        typedef Tb ResultT;
 };
 
 #endif // INC_TRAITS_IFTHENELSE_HPP

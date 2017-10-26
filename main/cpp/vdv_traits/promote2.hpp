@@ -14,7 +14,7 @@ template <typename T>
 class Promotion<T, T>
 {
 public:
-	typedef T ResultT;
+        typedef T ResultT;
 };
 
 #endif // INC_TRAITS_PROMOTE2_HPP

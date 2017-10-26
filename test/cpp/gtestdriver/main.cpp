@@ -27,13 +27,13 @@ using UA_CoMP::Util::Exception;
 
 int main(int argc, char** argv)
 {
-	int exit_status = EXIT_SUCCESS;
-	try {
-		::testing::InitGoogleTest(&argc, argv);
-		return RUN_ALL_TESTS();
-	} catch (Exception& e) {
-		cerr << "Exception caught: " << e.what() << endl << ">>>>> Aborting VirtualLeaf2" << endl;
-		exit_status = EXIT_FAILURE;
-	}
-	return exit_status;
+        int exit_status = EXIT_SUCCESS;
+        try {
+                ::testing::InitGoogleTest(&argc, argv);
+                return RUN_ALL_TESTS();
+        } catch (Exception& e) {
+                cerr << "Exception caught: " << e.what() << endl << ">>>>> Aborting VirtualLeaf2" << endl;
+                exit_status = EXIT_FAILURE;
+        }
+        return exit_status;
 }

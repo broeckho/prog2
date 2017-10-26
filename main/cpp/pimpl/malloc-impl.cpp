@@ -29,9 +29,9 @@ namespace Pimpl {
  */
 struct MemoryPool::MemoryPoolImpl
 {
-	// Remembers all pointers that have been allocated, so we can
-	// deallocate them when the MemoryPool is destroyed.
-	std::vector<void*> pointers;
+        // Remembers all pointers that have been allocated, so we can
+        // deallocate them when the MemoryPool is destroyed.
+        std::vector<void*> pointers;
 };
 
 /**
@@ -44,9 +44,9 @@ MemoryPool::MemoryPool(size_t) : m_impl(new MemoryPoolImpl()) {}
  */
 MemoryPool::~MemoryPool()
 {
-	// Deallocate all pointers.
-	for (auto ptr : m_impl->pointers)
-		std::free(ptr);
+        // Deallocate all pointers.
+        for (auto ptr : m_impl->pointers)
+                std::free(ptr);
 }
 
 /**
@@ -55,8 +55,8 @@ MemoryPool::~MemoryPool()
  */
 char* MemoryPool::AllocateMemory(size_t size)
 {
-	void* ptr = std::malloc(size);
-	m_impl->pointers.push_back(ptr);
-	return reinterpret_cast<char*>(ptr);
+        void* ptr = std::malloc(size);
+        m_impl->pointers.push_back(ptr);
+        return reinterpret_cast<char*>(ptr);
 }
 }

@@ -30,27 +30,27 @@ namespace AbstractFactory {
 class PtreeEmployeeFactory : public Factory<Employee>
 {
 public:
-	/**
-	 * Creates a factory that analyzes the given property tree, and
-	 * uses it to construct an employee instance.
-	 */
-	explicit PtreeEmployeeFactory(const boost::property_tree::ptree& ptree) : m_ptree(ptree) {}
+        /**
+         * Creates a factory that analyzes the given property tree, and
+         * uses it to construct an employee instance.
+         */
+        explicit PtreeEmployeeFactory(const boost::property_tree::ptree& ptree) : m_ptree(ptree) {}
 
-	/// Instructs this factory to create a value.
-	Employee Create() final;
+        /// Instructs this factory to create a value.
+        Employee Create() final;
 
-	/// The Boost property tree key for the employees' names.
-	static constexpr const char* EmployeeNameKey = "Name";
+        /// The Boost property tree key for the employees' names.
+        static constexpr const char* EmployeeNameKey = "Name";
 
-	/// The Boost property tree key for the employees' department names.
-	static constexpr const char* EmployeeDepartmentNameKey = "DepartmentName";
+        /// The Boost property tree key for the employees' department names.
+        static constexpr const char* EmployeeDepartmentNameKey = "DepartmentName";
 
-	/// The Boost property tree key for the employees' salaries.
+        /// The Boost property tree key for the employees' salaries.
 
-	///
-	static constexpr const char* EmployeeSalaryKey = "Salary";
+        ///
+        static constexpr const char* EmployeeSalaryKey = "Salary";
 
 private:
-	boost::property_tree::ptree m_ptree;
+        boost::property_tree::ptree m_ptree;
 };
 }

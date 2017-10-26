@@ -25,10 +25,7 @@ Wheel::Wheel(const Wheel& ori) : m_speed(ori.m_speed), m_rotating(ori.m_rotating
  * @param          ori      Original to be moved.
  * @return                  None.
  */
-Wheel::Wheel(Wheel&& ori) noexcept: m_speed(ori.m_speed), m_rotating(ori.m_rotating)
-{
-	COMP_MISC_MEMBER_TRACER;
-}
+Wheel::Wheel(Wheel&& ori) noexcept : m_speed(ori.m_speed), m_rotating(ori.m_rotating) { COMP_MISC_MEMBER_TRACER; }
 
 /**
  * Copy assignment operator has a guard against self-assignment.
@@ -37,12 +34,12 @@ Wheel::Wheel(Wheel&& ori) noexcept: m_speed(ori.m_speed), m_rotating(ori.m_rotat
  */
 Wheel& Wheel::operator=(Wheel const& rhs)
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		m_speed = rhs.m_speed;
-		m_rotating = rhs.m_rotating;
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                m_speed = rhs.m_speed;
+                m_rotating = rhs.m_rotating;
+        }
+        return *this;
 }
 
 /**
@@ -52,12 +49,12 @@ Wheel& Wheel::operator=(Wheel const& rhs)
  */
 Wheel& Wheel::operator=(Wheel&& rhs) noexcept
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		m_speed = rhs.m_speed;
-		m_rotating = rhs.m_rotating;
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                m_speed = rhs.m_speed;
+                m_rotating = rhs.m_rotating;
+        }
+        return *this;
 }
 
 /**
@@ -71,10 +68,10 @@ Wheel::~Wheel() { COMP_MISC_MEMBER_TRACER; }
  */
 void Wheel::start()
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (!m_rotating) {
-		m_rotating = true;
-	}
+        COMP_MISC_MEMBER_TRACER;
+        if (!m_rotating) {
+                m_rotating = true;
+        }
 }
 
 /**
@@ -82,10 +79,10 @@ void Wheel::start()
  */
 void Wheel::stop()
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (m_rotating) {
-		m_rotating = false;
-	}
+        COMP_MISC_MEMBER_TRACER;
+        if (m_rotating) {
+                m_rotating = false;
+        }
 }
 
 /**
@@ -93,8 +90,8 @@ void Wheel::stop()
  */
 bool Wheel::is_rotating() const
 {
-	COMP_MISC_MEMBER_TRACER;
-	return m_rotating;
+        COMP_MISC_MEMBER_TRACER;
+        return m_rotating;
 }
 
 } // end of namespace ODemo

@@ -4,11 +4,11 @@
 class Object
 {
 public:
-	friend Object Factory::operator()();
+        friend Object Factory::operator()();
 
-	int printID() const { return id; }
+        int printID() const { return id; }
 
 private:
-	explicit Object(int id) : id{id} {} // Private constructor.
-	const int id;
+        explicit Object(int id) : id{id} {} // Private constructor.
+        const int id;
 };

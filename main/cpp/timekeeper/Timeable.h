@@ -34,24 +34,24 @@ template <typename C = ClockCLib, typename D = C::duration>
 class Timeable
 {
 public:
-	/// Type for time duration units.
-	using Duration = D;
+        /// Type for time duration units.
+        using Duration = D;
 
-	/// Records with timing info.
-	using Timings = UA_CoMP::Timekeeper::CumulativeRecords<D>;
+        /// Records with timing info.
+        using Timings = UA_CoMP::Timekeeper::CumulativeRecords<D>;
 
-	/// Type for clock.
-	using Clock = C;
+        /// Type for clock.
+        using Clock = C;
 
-	/// Clock used to obtain timing info.
-	using Stopwatch = UA_CoMP::Clock::Stopwatch<C>;
+        /// Clock used to obtain timing info.
+        using Stopwatch = UA_CoMP::Clock::Stopwatch<C>;
 
 public:
-	/// Destructor virtual for polymorphic class.
-	virtual ~Timeable() {}
+        /// Destructor virtual for polymorphic class.
+        virtual ~Timeable() {}
 
-	/// Timings in duration units specified above.
-	virtual TimingsType GetTimings() const = 0;
+        /// Timings in duration units specified above.
+        virtual TimingsType GetTimings() const = 0;
 };
 
 } // namespace Timekeeper

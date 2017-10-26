@@ -17,32 +17,32 @@ using namespace std;
 class Test
 {
 public:
-	explicit Test(int val) : i(val) {}
+        explicit Test(int val) : i(val) {}
 
-	Test(const Test& that) = default;
+        Test(const Test& that) = default;
 
-	// Test& operator=(const Test & that) {
-	// 	int * var = const_cast<int*>(&i);
-	// 	*var = that.i;
-	// 	return *this;
-	// }
+        // Test& operator=(const Test & that) {
+        // 	int * var = const_cast<int*>(&i);
+        // 	*var = that.i;
+        // 	return *this;
+        // }
 
-	int getValue() const { return i; }
+        int getValue() const { return i; }
 
 private:
-	const int i; // const data member verwijderd impliciete assignment operator
+        const int i; // const data member verwijderd impliciete assignment operator
 };
 
 int main()
 {
-	Test b(2);
-	cout << "b.i = " << b.getValue() << "\n";
+        Test b(2);
+        cout << "b.i = " << b.getValue() << "\n";
 
-	// Test t(3);
-	// b = t;	       // !!!!!! assignment zonder custom assignment operator
-	// zal
-	// een compile error geven
+        // Test t(3);
+        // b = t;	       // !!!!!! assignment zonder custom assignment operator
+        // zal
+        // een compile error geven
 
-	cout << "b.i = " << b.getValue() << "\n";
-	return 0;
+        cout << "b.i = " << b.getValue() << "\n";
+        return 0;
 }

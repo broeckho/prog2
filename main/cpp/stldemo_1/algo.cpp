@@ -19,13 +19,10 @@
 
 #include "../stldemo_1/RandInt.h"
 #include <algorithm>
-#include <cstdlib>
-#include <exception>
 #include <iomanip>
 #include <iostream>
 #include <list>
 #include <map>
-#include <string>
 #include <vector>
 
 using std::cout;
@@ -39,55 +36,55 @@ namespace {
 template <typename C>
 void SimpleRandInit(C& c, unsigned int seed)
 {
-	std::srand(seed);
-	typename C::size_type size = c.size();
-	for (typename C::iterator it = c.begin(); it != c.end(); ++it) {
-		*it = static_cast<typename C::value_type>(rand() % size);
-	}
+        std::srand(seed);
+        typename C::size_type size = c.size();
+        for (typename C::iterator it = c.begin(); it != c.end(); ++it) {
+                *it = static_cast<typename C::value_type>(rand() % size);
+        }
 }
 
 /** Sum all the elements of a container. */
 template <typename C>
 typename C::value_type Sum(C const& c)
 {
-	typename C::value_type val = typename C::value_type();
-	for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
-		val += *it;
-	}
-	return val;
+        typename C::value_type val = typename C::value_type();
+        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+                val += *it;
+        }
+        return val;
 }
 
 /** Bin identical elements container. */
 template <typename C>
 std::map<typename C::value_type, unsigned int> Bin(C const& c)
 {
-	std::map<typename C::value_type, unsigned int> m;
-	for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
-		m[*it]++;
-	}
-	return m;
+        std::map<typename C::value_type, unsigned int> m;
+        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+                m[*it]++;
+        }
+        return m;
 }
 
 /** Sum all the elements of a sequence. */
 template <typename It>
 typename It::value_type Sum(It first, It last)
 {
-	typename It::value_type val = It::value_type();
-	for (It it = first; it != last; ++it) {
-		val += *it;
-	}
-	return val;
+        typename It::value_type val = It::value_type();
+        for (It it = first; it != last; ++it) {
+                val += *it;
+        }
+        return val;
 }
 
 /** Bin identical elements in a sequence. */
 template <typename It>
 std::map<typename It::value_type, unsigned int> Bin(It first, It last)
 {
-	std::map<typename It::value_type, unsigned int> m;
-	for (It it = first; it != last; ++it) {
-		m[*it]++;
-	}
-	return m;
+        std::map<typename It::value_type, unsigned int> m;
+        for (It it = first; it != last; ++it) {
+                m[*it]++;
+        }
+        return m;
 }
 
 /** Accumulate values of type T */
@@ -95,144 +92,144 @@ template <typename T>
 class Accumulator
 {
 public:
-	///
-	Accumulator(T t = T()) : m_accum(t) {}
+        ///
+        Accumulator(T t = T()) : m_accum(t) {}
 
-	///
-	T operator()(T t) { return (m_accum += t); }
+        ///
+        T operator()(T t) { return (m_accum += t); }
 
-	///
-	T operator()() const { return m_accum; }
+        ///
+        T operator()() const { return m_accum; }
 
 private:
-	T m_accum;
+        T m_accum;
 };
 
 /** Increment a value of type T */
 class Incrementor
 {
 public:
-	///
-	Incrementor(unsigned int n) : m_num(n) {}
+        ///
+        Incrementor(unsigned int n) : m_num(n) {}
 
-	///
-	template <typename T>
-	T operator()(T t)
-	{
-		for (unsigned int i = 1; i <= m_num; i++) {
-			t++;
-		}
-		return t;
-	}
+        ///
+        template <typename T>
+        T operator()(T t)
+        {
+                for (unsigned int i = 1; i <= m_num; i++) {
+                        t++;
+                }
+                return t;
+        }
 
 private:
-	unsigned int m_num;
+        unsigned int m_num;
 };
 
 /** Print pairs. */
 template <typename T, typename U>
 std::ostream& operator<<(std::ostream& out, std::pair<T, U> p)
 {
-	operator<<(out.operator<<(p.first), " - ");
-	(out.operator<<(p.second)).operator<<(endl);
-	return out;
+        operator<<(out.operator<<(p.first), " - ");
+        (out.operator<<(p.second)).operator<<(endl);
+        return out;
 }
 
 /** Print container. */
 template <typename C>
 std::ostream& Printer(std::ostream& out, C const& c)
 {
-	for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
-		out << " " << *it;
-	}
-	return out;
+        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+                out << " " << *it;
+        }
+        return out;
 }
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, std::vector<T> const& v)
 {
-	return Printer<std::vector<T>>(os, v);
+        return Printer<std::vector<T>>(os, v);
 }
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, std::list<T> const& v)
 {
-	return Printer<std::list<T>>(os, v);
+        return Printer<std::list<T>>(os, v);
 }
 
 template <typename T, typename U>
 std::ostream& operator<<(std::ostream& os, std::map<T, U> const& v)
 {
-	return Printer<std::map<T, U>>(os, v);
+        return Printer<std::map<T, U>>(os, v);
 }
 
 } // end-of-anonymous-namespace
 
 int main() try {
-	string marker = "\n------------------------------------\n";
-	cout << std::boolalpha;
-	// block 1
-	{
-		cout << marker << "simpleRandInit for vector of 10 int:" << endl;
-		std::vector<double> v(10);
-		SimpleRandInit(v, 3);
-		cout << v << endl << "sum: " << Sum(v) << endl;
-	}
-	// block 2
-	{
-		cout << marker << "bin processes list of 15 int:" << endl;
-		std::list<int> v(15);
-		SimpleRandInit(v, 7);
-		cout << v << endl << "sum: " << Sum(v) << endl << Bin(v) << endl;
-	}
-	// block 3
-	{
-		cout << marker << "bin processes vector of 10 double:" << endl;
-		std::vector<double> v(10);
-		generate(v.begin(), v.end(), RandInt(7, static_cast<unsigned int>(v.size())));
-		cout << v << endl << Bin(v.begin(), v.end()) << endl;
-	}
-	// block 4
-	{
-		cout << marker << "find in list of 15 int:" << endl;
-		std::list<int> v(15);
-		SimpleRandInit(v, 7);
-		cout << v << endl;
-		std::list<int>::iterator it1 = find(v.begin(), v.end(), 6);
-		std::list<int>::iterator it2 = find(it1, v.end(), 14);
-		std::list<int>::iterator it3 = find(it1, it2, 13);
-		cout << (it3 != it2) << endl;
-	}
-	// block 5
-	{
-		cout << marker << "functor to accumulate sequence:" << endl;
-		std::vector<int> v(10);
-		std::list<int> l(12);
-		generate(v.begin(), v.end(), RandInt(8, static_cast<unsigned int>(v.size())));
-		generate(l.begin(), l.end(), RandInt(6, static_cast<unsigned int>(v.size())));
-		Accumulator<int> a;
-		a = for_each(v.begin(), v.end(), a);
-		cout << v << endl << a() << endl;
-		a = for_each(l.begin(), l.end(), a);
-		cout << l << endl << a() << endl;
-	}
-	// block 6
-	{
-		cout << marker << "functor to transform sequence:" << endl;
-		std::vector<int> v(8);
-		std::list<int> l(8);
-		generate(v.begin(), v.end(), RandInt(3, static_cast<unsigned int>(v.size())));
-		cout << "transform out of place: " << endl;
-		transform(v.begin(), v.end(), l.begin(), Incrementor(2));
-		cout << v << endl << l << endl;
-		cout << "transform in place: " << endl;
-		transform(v.begin(), v.end(), v.begin(), Incrementor(5));
-		cout << v << endl;
-	}
+        string marker = "\n------------------------------------\n";
+        cout << std::boolalpha;
+        // block 1
+        {
+                cout << marker << "simpleRandInit for vector of 10 int:" << endl;
+                std::vector<double> v(10);
+                SimpleRandInit(v, 3);
+                cout << v << endl << "sum: " << Sum(v) << endl;
+        }
+        // block 2
+        {
+                cout << marker << "bin processes list of 15 int:" << endl;
+                std::list<int> v(15);
+                SimpleRandInit(v, 7);
+                cout << v << endl << "sum: " << Sum(v) << endl << Bin(v) << endl;
+        }
+        // block 3
+        {
+                cout << marker << "bin processes vector of 10 double:" << endl;
+                std::vector<double> v(10);
+                generate(v.begin(), v.end(), RandInt(7, static_cast<unsigned int>(v.size())));
+                cout << v << endl << Bin(v.begin(), v.end()) << endl;
+        }
+        // block 4
+        {
+                cout << marker << "find in list of 15 int:" << endl;
+                std::list<int> v(15);
+                SimpleRandInit(v, 7);
+                cout << v << endl;
+                std::list<int>::iterator it1 = find(v.begin(), v.end(), 6);
+                std::list<int>::iterator it2 = find(it1, v.end(), 14);
+                std::list<int>::iterator it3 = find(it1, it2, 13);
+                cout << (it3 != it2) << endl;
+        }
+        // block 5
+        {
+                cout << marker << "functor to accumulate sequence:" << endl;
+                std::vector<int> v(10);
+                std::list<int> l(12);
+                generate(v.begin(), v.end(), RandInt(8, static_cast<unsigned int>(v.size())));
+                generate(l.begin(), l.end(), RandInt(6, static_cast<unsigned int>(v.size())));
+                Accumulator<int> a;
+                a = for_each(v.begin(), v.end(), a);
+                cout << v << endl << a() << endl;
+                a = for_each(l.begin(), l.end(), a);
+                cout << l << endl << a() << endl;
+        }
+        // block 6
+        {
+                cout << marker << "functor to transform sequence:" << endl;
+                std::vector<int> v(8);
+                std::list<int> l(8);
+                generate(v.begin(), v.end(), RandInt(3, static_cast<unsigned int>(v.size())));
+                cout << "transform out of place: " << endl;
+                transform(v.begin(), v.end(), l.begin(), Incrementor(2));
+                cout << v << endl << l << endl;
+                cout << "transform in place: " << endl;
+                transform(v.begin(), v.end(), v.begin(), Incrementor(5));
+                cout << v << endl;
+        }
 
-	return 0;
+        return 0;
 } catch (exception& e) {
-	cout << e.what() << endl;
+        cout << e.what() << endl;
 } catch (...) {
-	cout << "Unknown exception" << endl;
+        cout << "Unknown exception" << endl;
 }

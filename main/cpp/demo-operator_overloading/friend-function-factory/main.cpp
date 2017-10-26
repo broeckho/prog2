@@ -8,15 +8,15 @@
 
 int main()
 {
-	Factory factory;
+        Factory factory;
 
-	Object a = factory();
+        Object a = factory();
 
-	Object b = factory();
+        Object b = factory();
 
-	Object c = factory();
+        Object c = factory();
 
-	std::cout << "ID van a: " << a.printID() << std::endl
-		  << "ID van b: " << b.printID() << std::endl
-		  << "ID van c: " << c.printID() << std::endl;
+        std::cout << "ID van a: " << a.printID() << std::endl
+                  << "ID van b: " << b.printID() << std::endl
+                  << "ID van c: " << c.printID() << std::endl;
 }

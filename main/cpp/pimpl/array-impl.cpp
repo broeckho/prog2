@@ -28,8 +28,8 @@ namespace Pimpl {
  */
 struct MemoryPool::MemoryPoolImpl
 {
-	char* pointer;
-	size_t allocatedCount;
+        char* pointer;
+        size_t allocatedCount;
 };
 
 /**
@@ -42,8 +42,8 @@ MemoryPool::MemoryPool(size_t capacity) : m_impl(new MemoryPoolImpl({new char[ca
  */
 MemoryPool::~MemoryPool()
 {
-	// Erase the entire memory pool in one fell swoop.
-	delete[] m_impl->pointer;
+        // Erase the entire memory pool in one fell swoop.
+        delete[] m_impl->pointer;
 }
 
 /**
@@ -52,9 +52,9 @@ MemoryPool::~MemoryPool()
  */
 char* MemoryPool::AllocateMemory(size_t size)
 {
-	// Allocate memory by incrementing a pointer.
-	char* result = m_impl->pointer + m_impl->allocatedCount;
-	m_impl->allocatedCount += size;
-	return result;
+        // Allocate memory by incrementing a pointer.
+        char* result = m_impl->pointer + m_impl->allocatedCount;
+        m_impl->allocatedCount += size;
+        return result;
 }
 }

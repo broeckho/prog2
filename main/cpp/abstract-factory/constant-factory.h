@@ -29,15 +29,15 @@ template <typename TResult, typename... TArgs>
 class ConstantFactory : public Factory<TResult, TArgs...>
 {
 public:
-	// Creates a factory that always produces the given value.
-	ConstantFactory(const TResult& value) : m_value(value) {}
+        // Creates a factory that always produces the given value.
+        ConstantFactory(const TResult& value) : m_value(value) {}
 
-	// Instructs this factory to create a value.
-	virtual TResult Create(TArgs...) override final { return m_value; }
+        // Instructs this factory to create a value.
+        virtual TResult Create(TArgs...) override final { return m_value; }
 
-	virtual ~ConstantFactory() {}
+        virtual ~ConstantFactory() {}
 
 private:
-	TResult m_value;
+        TResult m_value;
 };
 }

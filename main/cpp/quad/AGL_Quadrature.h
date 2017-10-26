@@ -28,7 +28,7 @@ template <>
 class GaussLegendreSelect<2>
 {
 public:
-	typedef GaussLegendre2Rule Rule;
+        typedef GaussLegendre2Rule Rule;
 };
 
 /**
@@ -38,7 +38,7 @@ template <>
 class GaussLegendreSelect<4>
 {
 public:
-	typedef GaussLegendre2Rule Rule;
+        typedef GaussLegendre2Rule Rule;
 };
 
 /**
@@ -48,7 +48,7 @@ template <>
 class GaussLegendreSelect<8>
 {
 public:
-	typedef GaussLegendre8Rule Rule;
+        typedef GaussLegendre8Rule Rule;
 };
 
 /**
@@ -58,7 +58,7 @@ template <>
 class GaussLegendreSelect<16>
 {
 public:
-	typedef GaussLegendre16Rule Rule;
+        typedef GaussLegendre16Rule Rule;
 };
 
 /**
@@ -68,7 +68,7 @@ template <>
 class GaussLegendreSelect<32>
 {
 public:
-	typedef GaussLegendre32Rule Rule;
+        typedef GaussLegendre32Rule Rule;
 };
 
 /**
@@ -80,17 +80,17 @@ public:
 template <int N1, int N2, typename ConvergencePolicy = ComboDifference, typename CellCountPolicy = OnViolationThrow>
 class AGL_Quadrature
     : public AdaptiveQuadrature<typename GaussLegendreSelect<N1>::Rule, typename GaussLegendreSelect<N2>::Rule,
-				ConvergencePolicy, CellCountPolicy>
+                                ConvergencePolicy, CellCountPolicy>
 {
 public:
-	/** Constructor initializes everything.*/
-	AGL_Quadrature(double convergenceTolerance, unsigned int initialCellCount, unsigned int cellCountLimit)
-	    : AdaptiveQuadrature<typename GaussLegendreSelect<N1>::Rule, typename GaussLegendreSelect<N2>::Rule,
-				 ConvergencePolicy, CellCountPolicy>(convergenceTolerance, initialCellCount,
-								     cellCountLimit)
-	{
-		assert(N1 != N2);
-	}
+        /** Constructor initializes everything.*/
+        AGL_Quadrature(double convergenceTolerance, unsigned int initialCellCount, unsigned int cellCountLimit)
+            : AdaptiveQuadrature<typename GaussLegendreSelect<N1>::Rule, typename GaussLegendreSelect<N2>::Rule,
+                                 ConvergencePolicy, CellCountPolicy>(convergenceTolerance, initialCellCount,
+                                                                     cellCountLimit)
+        {
+                assert(N1 != N2);
+        }
 
 private:
 };

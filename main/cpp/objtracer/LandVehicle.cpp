@@ -43,11 +43,11 @@ LandVehicle::LandVehicle(LandVehicle&& ori) noexcept : Vehicle(ori) { COMP_MISC_
  */
 LandVehicle& LandVehicle::operator=(const LandVehicle& rhs)
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		Vehicle::operator=(rhs);
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                Vehicle::operator=(rhs);
+        }
+        return *this;
 }
 
 /**
@@ -58,11 +58,11 @@ LandVehicle& LandVehicle::operator=(const LandVehicle& rhs)
  */
 LandVehicle& LandVehicle::operator=(LandVehicle&& rhs) noexcept
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		Vehicle::operator=(rhs);
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                Vehicle::operator=(rhs);
+        }
+        return *this;
 }
 
 /**
@@ -78,7 +78,7 @@ LandVehicle::~LandVehicle() { COMP_MISC_MEMBER_TRACER; }
  */
 void LandVehicle::get_info() const
 {
-	COMP_MISC_MEMBER_TRACER;
-	cout << "I'm a generic Land vehicle" << endl;
+        COMP_MISC_MEMBER_TRACER;
+        cout << "I'm a generic Land vehicle" << endl;
 }
 }

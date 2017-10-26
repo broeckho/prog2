@@ -19,8 +19,6 @@
 
 #include "buffer.h"
 
-#include <cstddef>
-
 namespace Raii {
 
 /**
@@ -28,29 +26,29 @@ namespace Raii {
  */
 Buffer::Buffer(const Buffer& other) : m_bufSize(other.m_bufSize)
 {
-	// Allocate a new (uninitialized) block of memory.
-	m_data = new char[m_bufSize];
-	// Copies the given buffer's memory block contents to this
-	// buffer's memory block.
-	for (size_t i = 0; i < m_bufSize; i++)
-		m_data[i] = other.m_data[i];
+        // Allocate a new (uninitialized) block of memory.
+        m_data = new char[m_bufSize];
+        // Copies the given buffer's memory block contents to this
+        // buffer's memory block.
+        for (size_t i = 0; i < m_bufSize; i++)
+                m_data[i] = other.m_data[i];
 }
 
 /**
  * Moves the given buffer.
  */
-Buffer::Buffer(Buffer&& other)
+Buffer::Buffer(Buffer&& other) noexcept
 {
-	// Set this buffer's size.
-	m_bufSize = other.m_bufSize;
-	// Move the given buffer's block of memory.
-	m_data = other.m_data;
+        // Set this buffer's size.
+        m_bufSize = other.m_bufSize;
+        // Move the given buffer's block of memory.
+        m_data = other.m_data;
 
-	// Turn the moved buffer into an empty buffer, because we must
-	// leave the argument in a valid (but otherwise indeterminate)
-	// state.
-	other.m_bufSize = 0;
-	other.m_data = nullptr;
+        // Turn the moved buffer into an empty buffer, because we must
+        // leave the argument in a valid (but otherwise indeterminate)
+        // state.
+        other.m_bufSize = 0;
+        other.m_data = nullptr;
 }
 
 /**
@@ -59,54 +57,54 @@ Buffer::Buffer(Buffer&& other)
  */
 Buffer& Buffer::operator=(const Buffer& other)
 {
-	if (this == &other)
-		// Never perform self-assignment.
-		return *this;
+        if (this == &other)
+                // Never perform self-assignment.
+                return *this;
 
-	// Delete this buffer's old block of memory. If we were to simply
-	// overwrite this pointer, then we'd get a memory leak.
-	delete[] m_data;
+        // Delete this buffer's old block of memory. If we were to simply
+        // overwrite this pointer, then we'd get a memory leak.
+        delete[] m_data;
 
-	// Set this buffer's size.
-	m_bufSize = other.m_bufSize;
-	// Allocate a new (uninitialized) block of memory.
-	for (size_t i = 0; i < m_bufSize; i++)
-		// Copies the given buffer's memory block contents to this
-		// buffer's memory block.
-		m_data[i] = other.m_data[i];
+        // Set this buffer's size.
+        m_bufSize = other.m_bufSize;
+        // Allocate a new (uninitialized) block of memory.
+        for (size_t i = 0; i < m_bufSize; i++)
+                // Copies the given buffer's memory block contents to this
+                // buffer's memory block.
+                m_data[i] = other.m_data[i];
 
-	// Return a reference to the '*this' value, to support
-	// chaining assignments, i.e. 'a = b = c;'
-	return *this;
+        // Return a reference to the '*this' value, to support
+        // chaining assignments, i.e. 'a = b = c;'
+        return *this;
 }
 
 /**
  * Moves the given buffer's data to this buffer.
  */
-Buffer& Buffer::operator=(Buffer&& other)
+Buffer& Buffer::operator=(Buffer&& other) noexcept
 {
-	if (this == &other)
-		// Never perform self-assignment.
-		return *this;
+        if (this == &other)
+                // Never perform self-assignment.
+                return *this;
 
-	// Delete this buffer's old block of memory. If we were to simply
-	// overwrite this pointer, then we'd get a memory leak.
-	delete[] m_data;
+        // Delete this buffer's old block of memory. If we were to simply
+        // overwrite this pointer, then we'd get a memory leak.
+        delete[] m_data;
 
-	// Set this buffer's size.
-	m_bufSize = other.m_bufSize;
-	// Sets this buffer's data pointer to the moved buffer's data
-	// pointer.
-	m_data = other.m_data;
+        // Set this buffer's size.
+        m_bufSize = other.m_bufSize;
+        // Sets this buffer's data pointer to the moved buffer's data
+        // pointer.
+        m_data = other.m_data;
 
-	// Turn the moved buffer into an empty buffer, because we must
-	// leave the argument in a valid (but otherwise indeterminate)
-	// state.
-	other.m_bufSize = 0;
-	other.m_data = nullptr;
+        // Turn the moved buffer into an empty buffer, because we must
+        // leave the argument in a valid (but otherwise indeterminate)
+        // state.
+        other.m_bufSize = 0;
+        other.m_data = nullptr;
 
-	// Return a reference to the '*this' value, to support
-	// chaining assignments, i.e. 'a = b = c;'
-	return *this;
+        // Return a reference to the '*this' value, to support
+        // chaining assignments, i.e. 'a = b = c;'
+        return *this;
 }
 }

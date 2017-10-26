@@ -27,10 +27,10 @@ template <typename TResult, typename... TArgs>
 class Factory
 {
 public:
-	/// Destructor needs to be virtual.
-	virtual ~Factory() {}
+        /// Destructor needs to be virtual.
+        virtual ~Factory() {}
 
-	/// Instructs this factory to create a value.
-	virtual TResult Create(TArgs... args) = 0;
+        /// Instructs this factory to create a value.
+        virtual TResult Create(TArgs... args) = 0;
 };
 }

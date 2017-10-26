@@ -29,14 +29,14 @@ struct select;
 template <typename T1, typename T2>
 struct select<T1, T2, true>
 {
-	using type = T1;
+        using type = T1;
 };
 
 /// Specialization for bool==false
 template <typename T1, typename T2>
 struct select<T1, T2, false>
 {
-	using type = T2;
+        using type = T2;
 };
 // END_SNIPPET{FullSource}
 

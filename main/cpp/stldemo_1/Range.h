@@ -28,36 +28,36 @@
 template <typename Iter>
 struct Range : public std::pair<Iter, Iter>
 {
-	Range(Iter it1, Iter it2) : std::pair<Iter, Iter>(it1, it2){};
+        Range(Iter it1, Iter it2) : std::pair<Iter, Iter>(it1, it2){};
 };
 
 template <typename Iter>
 Range<Iter> make_range(Iter it1, Iter it2)
 {
-	return Range<Iter>(it1, it2);
+        return Range<Iter>(it1, it2);
 }
 
 template <typename Cont>
 Range<typename Cont::const_iterator> make_range(Cont const& c)
 {
-	return Range<typename Cont::const_iterator>(c.begin(), c.end());
+        return Range<typename Cont::const_iterator>(c.begin(), c.end());
 }
 
 template <typename T, typename U>
 std::ostream& operator<<(std::ostream& out, std::pair<T, U> const& p)
 {
-	operator<<(out.operator<<(p.first), " - ");
-	(out.operator<<(p.second)).operator<<(std::endl);
-	return out;
+        operator<<(out.operator<<(p.first), " - ");
+        (out.operator<<(p.second)).operator<<(std::endl);
+        return out;
 }
 
 template <typename Iter>
 std::ostream& operator<<(std::ostream& out, Range<Iter> r)
 {
-	for (Iter it = r.first; it != r.second; ++it) {
-		out << " " << *it;
-	}
-	return out;
+        for (Iter it = r.first; it != r.second; ++it) {
+                out << " " << *it;
+        }
+        return out;
 }
 // END_SNIPPET{FullSource}
 

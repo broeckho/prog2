@@ -16,35 +16,32 @@ Engine::Engine(double power) : m_power(power), m_running(false) { COMP_MISC_MEMB
 Engine::Engine(Engine const& ori) : m_power(ori.m_power), m_running(ori.m_running) { COMP_MISC_MEMBER_TRACER; }
 
 ///
-Engine::Engine(Engine&& ori) noexcept : m_power(ori.m_power), m_running(ori.m_running)
-{
-	COMP_MISC_MEMBER_TRACER;
-}
+Engine::Engine(Engine&& ori) noexcept : m_power(ori.m_power), m_running(ori.m_running) { COMP_MISC_MEMBER_TRACER; }
 
 ///
 Engine& Engine::operator=(const Engine& rhs)
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		m_power = rhs.m_power;
-		m_running = rhs.m_running;
-	}
-	return *this;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                m_power = rhs.m_power;
+                m_running = rhs.m_running;
+        }
+        return *this;
 }
 
 ///
 Engine& Engine::operator=(Engine&& rhs) noexcept
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (this != &rhs) {
-		m_power = rhs.m_power;
-		m_running = rhs.m_running;
+        COMP_MISC_MEMBER_TRACER;
+        if (this != &rhs) {
+                m_power = rhs.m_power;
+                m_running = rhs.m_running;
 
-		// Leave the argument in an indeterminate state.
-		rhs.m_power = 0.0;
-		rhs.m_running = false;
-	}
-	return *this;
+                // Leave the argument in an indeterminate state.
+                rhs.m_power = 0.0;
+                rhs.m_running = false;
+        }
+        return *this;
 }
 
 ///
@@ -53,26 +50,26 @@ Engine::~Engine() { COMP_MISC_MEMBER_TRACER; }
 ///
 void Engine::start()
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (!m_running) {
-		m_running = true;
-	}
+        COMP_MISC_MEMBER_TRACER;
+        if (!m_running) {
+                m_running = true;
+        }
 }
 
 ///
 void Engine::stop()
 {
-	COMP_MISC_MEMBER_TRACER;
-	if (m_running) {
-		m_running = false;
-	}
+        COMP_MISC_MEMBER_TRACER;
+        if (m_running) {
+                m_running = false;
+        }
 }
 
 ///
 bool Engine::is_running() const
 {
-	COMP_MISC_MEMBER_TRACER;
-	return m_running;
+        COMP_MISC_MEMBER_TRACER;
+        return m_running;
 }
 
 } // end_of_namespace

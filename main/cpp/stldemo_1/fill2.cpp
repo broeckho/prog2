@@ -21,15 +21,14 @@
 #include "../stldemo_1/RandInt.h"
 #include "../stldemo_1/Range.h"
 #include <algorithm>
-#include <iostream>
 #include <vector>
 
 int main()
 {
-	std::vector<double> v(10);
-	RandInt r(1, 20);
-	std::generate(v.begin(), v.end(), r);
-	std::cout << make_range(v) << std::endl;
-	return 0;
+        std::vector<double> v(10);
+        RandInt r(1, 20);
+        std::generate(v.begin(), v.end(), r);
+        std::cout << make_range(v) << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

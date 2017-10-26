@@ -12,21 +12,21 @@
 
 int main()
 {
-	try {
+        try {
 
-		Stack<int> intStack;
-		Stack<double, std::deque<double>> dblStack;
+                Stack<int> intStack;
+                Stack<double, std::deque<double>> dblStack;
 
-		intStack.push(7);
-		std::cout << intStack.top() << std::endl;
+                intStack.push(7);
+                std::cout << intStack.top() << std::endl;
 
-		dblStack.push(42.42);
-		std::cout << dblStack.top() << std::endl;
-		dblStack.pop();
-	} catch (std::exception const& ex) {
-		std::cerr << "Exception: " << ex.what() << std::endl;
-		return EXIT_FAILURE;
-	}
-	return 0;
+                dblStack.push(42.42);
+                std::cout << dblStack.top() << std::endl;
+                dblStack.pop();
+        } catch (std::exception const& ex) {
+                std::cerr << "Exception: " << ex.what() << std::endl;
+                return EXIT_FAILURE;
+        }
+        return 0;
 }
 // END_SNIPPET{FullSource}

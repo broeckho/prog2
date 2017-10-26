@@ -40,17 +40,17 @@ template <typename Rule>
 class Bisector : public Rule
 {
 public:
-	/** Execute the rule on the bisected cell. */
-	template <typename Ftor>
-	static typename Ftor::result_type sum(typename Ftor::argument_type l, typename Ftor::argument_type d,
-					      Ftor const& f)
-	{
-		typedef typename UA_CoMP::Num::StripConstRef<typename Ftor::argument_type>::type Arg;
+        /** Execute the rule on the bisected cell. */
+        template <typename Ftor>
+        static typename Ftor::result_type sum(typename Ftor::argument_type l, typename Ftor::argument_type d,
+                                              Ftor const& f)
+        {
+                typedef typename UA_CoMP::Num::StripConstRef<typename Ftor::argument_type>::type Arg;
 
-		Arg const h = static_cast<Arg>(0.5) * d;
-		Arg const m = l + h;
-		return Rule::sum(l, h, f) + Rule::sum(m, h, f);
-	}
+                Arg const h = static_cast<Arg>(0.5) * d;
+                Arg const m = l + h;
+                return Rule::sum(l, h, f) + Rule::sum(m, h, f);
+        }
 };
 
 /**
@@ -120,73 +120,73 @@ public:
  * 		cell count in AdaptiveQuadrature.
  */
 template <typename QuadRule1, typename QuadRule2 = Bisector<QuadRule1>, typename ConvergencePolicy = ComboDifference,
-	  typename CellCountPolicy = OnViolationThrow>
+          typename CellCountPolicy = OnViolationThrow>
 class AdaptiveQuadrature : public AQRule1<QuadRule1>,
-			   public AQRule2<QuadRule2>,
-			   public ConvergencePolicy,
-			   public CellCountPolicy
+                           public AQRule2<QuadRule2>,
+                           public ConvergencePolicy,
+                           public CellCountPolicy
 {
 public:
-	typedef AQRule1<QuadRule1> first_rule;
-	typedef AQRule2<QuadRule2> second_rule;
+        typedef AQRule1<QuadRule1> first_rule;
+        typedef AQRule2<QuadRule2> second_rule;
 
-	/**
-	* Constructor initializes everything.
-	*/
-	AdaptiveQuadrature(double convergenceTolerance, unsigned int initialCellCount, unsigned int cellCountLimit)
-	    : fConvergenceTolerance(convergenceTolerance), fInitialCellCount(initialCellCount),
-	      fCellCountLimit(cellCountLimit)
-	{
-	}
+        /**
+        * Constructor initializes everything.
+        */
+        AdaptiveQuadrature(double convergenceTolerance, unsigned int initialCellCount, unsigned int cellCountLimit)
+            : fConvergenceTolerance(convergenceTolerance), fInitialCellCount(initialCellCount),
+              fCellCountLimit(cellCountLimit)
+        {
+        }
 
-	// The implicit essential operators are fine for now.
+        // The implicit essential operators are fine for now.
 
-	/**
-	 * Return a reference to the first sum rule subobject.
-	 * @return          Reference to first sum rule.
-	 * @exception       None.
-	 */
-	AQRule1<QuadRule1>& rule1() { return *this; }
+        /**
+         * Return a reference to the first sum rule subobject.
+         * @return          Reference to first sum rule.
+         * @exception       None.
+         */
+        AQRule1<QuadRule1>& rule1() { return *this; }
 
-	/**
-	 * Return a reference to the second sum rule subobject.
-	 * @return          Reference to first sum rule.
-	 * @exception       None.
-	 */
-	AQRule2<QuadRule2>& rule2() { return *this; }
+        /**
+         * Return a reference to the second sum rule subobject.
+         * @return          Reference to first sum rule.
+         * @exception       None.
+         */
+        AQRule2<QuadRule2>& rule2() { return *this; }
 
-	// Defined below.
-	template <typename Integrand>
-	std::tuple<bool, typename Integrand::result_type, typename Integrand::result_type, unsigned int> evaluate(
-	    typename Integrand::argument_type l, typename Integrand::argument_type r, Integrand ftor) const;
+        // Defined below.
+        template <typename Integrand>
+        std::tuple<bool, typename Integrand::result_type, typename Integrand::result_type, unsigned int> evaluate(
+            typename Integrand::argument_type l, typename Integrand::argument_type r, Integrand ftor) const;
 
-	// Defined below
-	template <typename Integrand>
-	typename Integrand::result_type operator()(typename Integrand::argument_type l,
-						   typename Integrand::argument_type r, Integrand ftor) const;
+        // Defined below
+        template <typename Integrand>
+        typename Integrand::result_type operator()(typename Integrand::argument_type l,
+                                                   typename Integrand::argument_type r, Integrand ftor) const;
 
-	/** Return the convergence tolerance. */
-	double getConvergenceTolerance() const { return fConvergenceTolerance; }
+        /** Return the convergence tolerance. */
+        double getConvergenceTolerance() const { return fConvergenceTolerance; }
 
-	/** Return the initial cell count. */
-	unsigned int getInitialCellCount() const { return fInitialCellCount; }
+        /** Return the initial cell count. */
+        unsigned int getInitialCellCount() const { return fInitialCellCount; }
 
-	/** Return the cell count limit. */
-	unsigned int getCellCountLimit() const { return fCellCountLimit; }
+        /** Return the cell count limit. */
+        unsigned int getCellCountLimit() const { return fCellCountLimit; }
 
-	/** Set the convergence tolerance. */
-	void setConvergenceTolerance(double x) { fConvergenceTolerance = x; }
+        /** Set the convergence tolerance. */
+        void setConvergenceTolerance(double x) { fConvergenceTolerance = x; }
 
-	/** Set initial cell count. */
-	void setInitialCellCount(unsigned int i) { fInitialCellCount = i; }
+        /** Set initial cell count. */
+        void setInitialCellCount(unsigned int i) { fInitialCellCount = i; }
 
-	/** Set cell count limit. */
-	void setCellCountLimit(unsigned int i) { fCellCountLimit = i; }
+        /** Set cell count limit. */
+        void setCellCountLimit(unsigned int i) { fCellCountLimit = i; }
 
 private:
-	double fConvergenceTolerance;
-	unsigned int fInitialCellCount;
-	unsigned int fCellCountLimit;
+        double fConvergenceTolerance;
+        unsigned int fInitialCellCount;
+        unsigned int fCellCountLimit;
 };
 
 /**
@@ -204,72 +204,72 @@ std::tuple<bool, typename Integrand::result_type, typename Integrand::result_typ
 AdaptiveQuadrature<QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy>::evaluate(
     typename Integrand::argument_type l, typename Integrand::argument_type r, Integrand ftor) const
 {
-	using std::stack;
-	using std::pair;
-	using std::make_pair;
+        using std::stack;
+        using std::pair;
+        using std::make_pair;
 
-	typedef typename StripConstRef<typename Integrand::argument_type>::type Arg;
-	typedef typename StripConstRef<typename Integrand::result_type>::type Res;
+        typedef typename StripConstRef<typename Integrand::argument_type>::type Arg;
+        typedef typename StripConstRef<typename Integrand::result_type>::type Res;
 
-	// Stack of integration cells with each cell (left endpoint, size)
-	stack<pair<Arg, Arg>> divStack;
-	Res cumulateSum1;
-	Res cumulateSum2;
-	unsigned int cellCounter;
-	bool NoMoreCells = false;
+        // Stack of integration cells with each cell (left endpoint, size)
+        stack<pair<Arg, Arg>> divStack;
+        Res cumulateSum1;
+        Res cumulateSum2;
+        unsigned int cellCounter;
+        bool NoMoreCells = false;
 
-	// Initialize with the required number of cells on the stack,
-	// set the cumulative sums (of rule1 and rule2) to zero and
-	// initialize the cell count.
-	{
-		Arg const d = (r - l) / static_cast<Arg>(fInitialCellCount);
-		for (Arg b = l; b < r - 0.5 * d; b += d) {
-			divStack.push(make_pair(b, d));
-		}
-		cumulateSum1 = 0.0;
-		cumulateSum2 = 0.0;
-		cellCounter = fInitialCellCount;
-	}
+        // Initialize with the required number of cells on the stack,
+        // set the cumulative sums (of rule1 and rule2) to zero and
+        // initialize the cell count.
+        {
+                Arg const d = (r - l) / static_cast<Arg>(fInitialCellCount);
+                for (Arg b = l; b < r - 0.5 * d; b += d) {
+                        divStack.push(make_pair(b, d));
+                }
+                cumulateSum1 = 0.0;
+                cumulateSum2 = 0.0;
+                cellCounter = fInitialCellCount;
+        }
 
-	// Work that stack until it is empty.
-	while (!divStack.empty()) {
+        // Work that stack until it is empty.
+        while (!divStack.empty()) {
 
-		// Look at the top cell and determine sums for it.
-		Arg const b = divStack.top().first;
-		Arg const d = divStack.top().second;
-		Res const sum1 = first_rule::sum(b, d, ftor);
-		Res const sum2 = second_rule::sum(b, d, ftor);
-		// If the use of the nested types does not work, then:
-		// Res const sum1 = Rule1<QuadRule1>::sum(b, d, ftor);
-		// Res const sum2 = Rule2<QuadRule2>::sum(b, d, ftor);
+                // Look at the top cell and determine sums for it.
+                Arg const b = divStack.top().first;
+                Arg const d = divStack.top().second;
+                Res const sum1 = first_rule::sum(b, d, ftor);
+                Res const sum2 = second_rule::sum(b, d, ftor);
+                // If the use of the nested types does not work, then:
+                // Res const sum1 = Rule1<QuadRule1>::sum(b, d, ftor);
+                // Res const sum2 = Rule2<QuadRule2>::sum(b, d, ftor);
 
-		// If the sums for both rules agree, or if we are not allowed to
-		// create new cells, we are done with this cell. Add its contribution
-		// to the cumulatve sums. If allowed (cell count violation does not
-		// throw exception) we continue summing on the existing cells to obtain
-		// at least a rough estimate of the integral.
-		if ((ConvergencePolicy::evaluate(sum1, sum2) < fConvergenceTolerance) || NoMoreCells) {
-			cumulateSum1 += sum1;
-			cumulateSum2 += sum2;
-			divStack.pop();
-		} else {
-			// Executing this block increases the cellCount; check that against the
-			// policy.
-			// Not executing leaves the current cell on stack to be processed, as
-			// should be.
-			NoMoreCells = !CellCountPolicy::check(cellCounter + 1 <= fCellCountLimit);
-			if (!NoMoreCells) {
-				divStack.pop();
-				Arg const dN = 0.5 * d;
-				divStack.push(make_pair(b + dN, dN));
-				divStack.push(make_pair(b, dN));
-				++cellCounter;
-			}
-		}
-	}
+                // If the sums for both rules agree, or if we are not allowed to
+                // create new cells, we are done with this cell. Add its contribution
+                // to the cumulatve sums. If allowed (cell count violation does not
+                // throw exception) we continue summing on the existing cells to obtain
+                // at least a rough estimate of the integral.
+                if ((ConvergencePolicy::evaluate(sum1, sum2) < fConvergenceTolerance) || NoMoreCells) {
+                        cumulateSum1 += sum1;
+                        cumulateSum2 += sum2;
+                        divStack.pop();
+                } else {
+                        // Executing this block increases the cellCount; check that against the
+                        // policy.
+                        // Not executing leaves the current cell on stack to be processed, as
+                        // should be.
+                        NoMoreCells = !CellCountPolicy::check(cellCounter + 1 <= fCellCountLimit);
+                        if (!NoMoreCells) {
+                                divStack.pop();
+                                Arg const dN = 0.5 * d;
+                                divStack.push(make_pair(b + dN, dN));
+                                divStack.push(make_pair(b, dN));
+                                ++cellCounter;
+                        }
+                }
+        }
 
-	bool const status = (ConvergencePolicy::evaluate(cumulateSum1, cumulateSum2) < fConvergenceTolerance);
-	return std::make_tuple(status, cumulateSum1, cumulateSum2, cellCounter);
+        bool const status = (ConvergencePolicy::evaluate(cumulateSum1, cumulateSum2) < fConvergenceTolerance);
+        return std::make_tuple(status, cumulateSum1, cumulateSum2, cellCounter);
 }
 
 /**
@@ -286,7 +286,7 @@ template <typename Integrand>
 inline typename Integrand::result_type AdaptiveQuadrature<QuadRule1, QuadRule2, ConvergencePolicy, ErrorPolicy>::
 operator()(typename Integrand::argument_type l, typename Integrand::argument_type r, Integrand ftor) const
 {
-	return std::get<2>(evaluate(l, r, ftor));
+        return std::get<2>(evaluate(l, r, ftor));
 }
 
 } // end-of-namespace-Num

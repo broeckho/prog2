@@ -29,37 +29,37 @@ using namespace Raii;
  */
 void printFile(File& file)
 {
-	int c;
-	while ((c = file.ReadChar()) != EOF)
-		std::cout << static_cast<char>(c);
-	std::cout << std::endl;
+        int c;
+        while ((c = file.ReadChar()) != EOF)
+                std::cout << static_cast<char>(c);
+        std::cout << std::endl;
 }
 
 int main()
 {
-	{
-		// Open 'tmp_file.txt' in write-mode by invoking the constructor.
-		File file("tmp_file.txt", "w");
+        {
+                // Open 'tmp_file.txt' in write-mode by invoking the constructor.
+                File file("tmp_file.txt", "w");
 
-		// Write the alphabet to the file (this is based on the assumption
-		// that 'char' is an ASCII character, but that's actually fairly
-		// reasonable for a small example like this)
-		for (char c = 'a'; c <= 'z'; c++)
-			file.WriteChar(c);
+                // Write the alphabet to the file (this is based on the assumption
+                // that 'char' is an ASCII character, but that's actually fairly
+                // reasonable for a small example like this)
+                for (char c = 'a'; c <= 'z'; c++)
+                        file.WriteChar(c);
 
-		// 'tmp_file.txt' is closed automatically by the destructor when 'file'
-		// goes out of scope (which is right about now).
-	}
-	{
-		// Open 'tmp_file.txt' again by invoking the constructor, but this
-		// time, we'll open it in read-mode.
-		File file("tmp_file.txt", "r");
+                // 'tmp_file.txt' is closed automatically by the destructor when 'file'
+                // goes out of scope (which is right about now).
+        }
+        {
+                // Open 'tmp_file.txt' again by invoking the constructor, but this
+                // time, we'll open it in read-mode.
+                File file("tmp_file.txt", "r");
 
-		// Dump the file's contents to stdout.
-		printFile(file);
+                // Dump the file's contents to stdout.
+                printFile(file);
 
-		// We can also close the file manually. The destructor will do nothing
-		// in that case.
-		file.Close();
-	}
+                // We can also close the file manually. The destructor will do nothing
+                // in that case.
+                file.Close();
+        }
 }

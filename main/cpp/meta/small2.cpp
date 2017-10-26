@@ -29,23 +29,26 @@ template <typename T1, typename T2>
 class pack_for_file_storage
 {
 public:
-	typedef typename smaller<T1, T2>::type pack_type;
-	void pack(T1 t1);
-	void pack(T2 t2);
-	pack_type peek(unsigned int i) const { return fInfo[i]; }
+        using pack_type = typename smaller<T1, T2>::type;
+
+public:
+        pack_for_file_storage() = default;
+        void pack(T1 t1){};
+        void pack(T2 t2){};
+        pack_type peek(unsigned int i) const { return fInfo[i]; }
 
 private:
-	pack_type fInfo[100000];
+        pack_type fInfo[100000];
 };
 
 } // anonnymous namespace
 
 int main()
 {
-	pack_for_file_storage<float, long> pp;
-	pack_for_file_storage<float, long>::pack_type p;
-	p = pp.peek(3);
-	//...
-	return 0;
+        pack_for_file_storage<float, long> pp;
+        pack_for_file_storage<float, long>::pack_type p;
+        p = pp.peek(3);
+        //...
+        return 0;
 }
 // END_SNIPPET{FullSource}

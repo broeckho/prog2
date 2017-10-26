@@ -18,35 +18,35 @@ namespace Num {
  */
 template <typename QuadAlgorithm, typename Integrand>
 class Integral : public std::binary_function<typename Integrand::argument_type, typename Integrand::argument_type,
-					     typename Integrand::result_type>
+                                             typename Integrand::result_type>
 {
 public:
-	// Implicit essential operators OK for now.
+        // Implicit essential operators OK for now.
 
-	/**
-	 * Constructor initializes all datamembers.
-	 * @param       quad        Quadrature algorithm that computes the integral.
-	 * @param       ftor        Functor that get integrated.
-	 */
-	Integral(QuadAlgorithm const& quad, Integrand const& ftor) : fQuadAlgorithm(quad), fIntegrand(ftor) {}
+        /**
+         * Constructor initializes all datamembers.
+         * @param       quad        Quadrature algorithm that computes the integral.
+         * @param       ftor        Functor that get integrated.
+         */
+        Integral(QuadAlgorithm const& quad, Integrand const& ftor) : fQuadAlgorithm(quad), fIntegrand(ftor) {}
 
-	/**
-	 * Evaluates integral from l to r.
-	 * @return                  Value of the integral.
-	 * @param       l           Left integration boundary.
-	 * @param       r           Right integration boundary.
-	 */
-	typename Integral::result_type operator()(typename Integral::first_argument_type l,
-						  typename Integral::first_argument_type r) const
-	{
-		return fQuadAlgorithm(l, r, fIntegrand);
-	}
+        /**
+         * Evaluates integral from l to r.
+         * @return                  Value of the integral.
+         * @param       l           Left integration boundary.
+         * @param       r           Right integration boundary.
+         */
+        typename Integral::result_type operator()(typename Integral::first_argument_type l,
+                                                  typename Integral::first_argument_type r) const
+        {
+                return fQuadAlgorithm(l, r, fIntegrand);
+        }
 
 private:
-	// Integral(Integral const&);
-	// Integral& operator=(Integral const&);
-	QuadAlgorithm fQuadAlgorithm;
-	Integrand fIntegrand;
+        // Integral(Integral const&);
+        // Integral& operator=(Integral const&);
+        QuadAlgorithm fQuadAlgorithm;
+        Integrand fIntegrand;
 };
 
 /**
@@ -56,7 +56,7 @@ private:
 template <typename QuadAlgorithm, typename Integrand>
 inline Integral<QuadAlgorithm, Integrand> make_integral(QuadAlgorithm const& quad, Integrand const& ftor)
 {
-	return Integral<QuadAlgorithm, Integrand>(quad, ftor);
+        return Integral<QuadAlgorithm, Integrand>(quad, ftor);
 }
 
 } // end-of-namespace-Num

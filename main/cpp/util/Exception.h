@@ -28,8 +28,8 @@ namespace Util {
 class Exception : public std::runtime_error
 {
 public:
-	/// Constructor initializes message for the exception.
-	Exception(std::string const& m) : std::runtime_error(m) {}
+        /// Constructor initializes message for the exception.
+        Exception(std::string const& m) : std::runtime_error(m) {}
 };
 
 } // namespace Util

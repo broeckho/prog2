@@ -13,10 +13,11 @@ using namespace std;
 
 int main()
 {
-	const int a = 3;
-	auto b = const_cast<int*>(&a);
-	*b = 5;
-	cout << "Value of a: " << a << endl;
-	cout << "Value of *b: " << *b << endl;
-	return 0;
+        cout << __FUNCTION__ << "  haha  " << __PRETTY_FUNCTION__ << endl;
+        const int a = 3;
+        auto b = const_cast<int*>(&a);
+        *b = 5;
+        cout << "Value of a: " << a << endl;
+        cout << "Value of *b: " << *b << endl;
+        return 0;
 }

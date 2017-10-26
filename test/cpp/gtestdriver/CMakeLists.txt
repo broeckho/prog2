@@ -49,7 +49,6 @@ add_test( NAME	${EXEC}
 							--shuffle 
 							--gtest_output=xml:${G_OUTPUT_DIR}/${EXEC}.xml 
 		)
-#file( MAKE_DIRECTORY  ${G_OUTPUT_DIR} )
 
 #-----------------
 unset( G_OUTPUT_DIR )  

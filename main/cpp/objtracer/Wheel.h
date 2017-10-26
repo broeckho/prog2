@@ -13,37 +13,36 @@ namespace ODemo {
 class Wheel
 {
 public:
-	/// Default constructor.
-	Wheel();
+        /// Default constructor.
+        Wheel();
 
-	/// Copy constructor.
-	Wheel(const Wheel& ori);
+        /// Copy constructor.
+        Wheel(const Wheel& ori);
 
-	/// Move constructor.
-	Wheel(Wheel&& ori) noexcept;
+        /// Move constructor.
+        Wheel(Wheel&& ori) noexcept;
 
-	/// Copy assignment operator.
-	Wheel& operator=(const Wheel& rhs);
+        /// Copy assignment operator.
+        Wheel& operator=(const Wheel& rhs);
 
-	/// Move assignment operator.
-	Wheel& operator=(Wheel&& rhs) noexcept;
+        /// Move assignment operator.
+        Wheel& operator=(Wheel&& rhs) noexcept;
 
-	/// destructor.
-	~Wheel();
+        /// destructor.
+        ~Wheel();
 
-	/// Start turning.
-	void start();
+        /// Start turning.
+        void start();
 
-	/// Stop turning.
-	void stop();
+        /// Stop turning.
+        void stop();
 
-	/// Indicate whether wheel is rotating or not.
-	bool is_rotating() const;
+        /// Indicate whether wheel is rotating or not.
+        bool is_rotating() const;
 
 private:
-	double m_speed;
-	bool m_rotating;
+        double m_speed;
+        bool m_rotating;
 };
 
 } // end_of_namespace
-

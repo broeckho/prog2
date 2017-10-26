@@ -26,25 +26,25 @@ template <typename T>
 class Accumulator
 {
 public:
-	Accumulator(T t = T()) : fAccumulator(t) {}
+        Accumulator(T t = T()) : fAccumulator(t) {}
 
-	T operator()(T t) { return (fAccumulator += t); }
+        T operator()(T t) { return (fAccumulator += t); }
 
-	T operator()() const { return fAccumulator; }
+        T operator()() const { return fAccumulator; }
 
 private:
-	T fAccumulator;
+        T fAccumulator;
 };
 
 int main()
 {
-	std::vector<int> v(3);
-	Accumulator<int> a;
-	v[0] = 1;
-	v[1] = 2;
-	v[2] = 3;
-	a = std::for_each(v.begin(), v.end(), a);
-	std::cout << make_range(v) << " sum: " << a() << std::endl;
-	return 0;
+        std::vector<int> v(3);
+        Accumulator<int> a;
+        v[0] = 1;
+        v[1] = 2;
+        v[2] = 3;
+        a = std::for_each(v.begin(), v.end(), a);
+        std::cout << make_range(v) << " sum: " << a() << std::endl;
+        return 0;
 }
 // END_SNIPPET{FullSource}

@@ -29,7 +29,7 @@ namespace AbstractFactory {
 class StdinEmployeeFactory : public Factory<Employee>
 {
 public:
-	/// Instructs this factory to create a value.
-	Employee Create() final;
+        /// Instructs this factory to create a value.
+        Employee Create() final;
 };
 }

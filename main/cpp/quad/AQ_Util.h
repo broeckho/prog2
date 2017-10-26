@@ -16,7 +16,7 @@ template <typename T>
 class StripConstRef
 {
 public:
-	typedef typename std::remove_cv<typename std::remove_reference<T>::type>::type type;
+        typedef typename std::remove_cv<typename std::remove_reference<T>::type>::type type;
 };
 
 } // end-of-namespace Num

@@ -17,8 +17,8 @@ namespace Num {
 class AbsoluteDifference
 {
 public:
-	/** Returns true iff the absolute difference is below tolerance. */
-	static double evaluate(double v1, double v2) { return std::fabs(v1 - v2); }
+        /** Returns true iff the absolute difference is below tolerance. */
+        static double evaluate(double v1, double v2) { return std::fabs(v1 - v2); }
 };
 
 /**
@@ -28,11 +28,11 @@ public:
 class ComboDifference
 {
 public:
-	/** Returns true iff combo difference is below tolerance. */
-	static double evaluate(double v1, double v2)
-	{
-		return std::fabs(v1 - v2) / (1.0 + std::fabs(v1) + std::fabs(v2));
-	}
+        /** Returns true iff combo difference is below tolerance. */
+        static double evaluate(double v1, double v2)
+        {
+                return std::fabs(v1 - v2) / (1.0 + std::fabs(v1) + std::fabs(v2));
+        }
 };
 
 } // end-of-namespace-Num

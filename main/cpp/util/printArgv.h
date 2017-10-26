@@ -25,11 +25,11 @@ namespace Util {
 
 void printArgv(int argc, char* argv[], std::ostream& os)
 {
-	os << "argc   : " << argc << std::endl;
-	for (int i = 0; i < argc; i++) {
-		os << "argv[" << i << "]: " << argv[i] << std::endl;
-	}
-	return;
+        os << "argc   : " << argc << std::endl;
+        for (int i = 0; i < argc; i++) {
+                os << "argv[" << i << "]: " << argv[i] << std::endl;
+        }
+        return;
 }
 
 } // namespace Util

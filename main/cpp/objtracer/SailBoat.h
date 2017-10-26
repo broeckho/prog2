@@ -15,34 +15,33 @@ namespace ODemo {
 class SailBoat : public WaterVehicle
 {
 public:
-	/// Parametrized constructor initializes the name of the boat.
-	explicit SailBoat(std::string name);
+        /// Parametrized constructor initializes the name of the boat.
+        explicit SailBoat(std::string name);
 
-	/// Copy constructor.
-	SailBoat(const SailBoat& ori);
+        /// Copy constructor.
+        SailBoat(const SailBoat& ori);
 
-	/// Move constructor.
-	SailBoat(SailBoat&& ori)  noexcept ;
+        /// Move constructor.
+        SailBoat(SailBoat&& ori) noexcept;
 
-	/// Copy assignment.
-	SailBoat& operator=(const SailBoat& rhs);
+        /// Copy assignment.
+        SailBoat& operator=(const SailBoat& rhs);
 
-	/// Move assignment.
-	SailBoat& operator=(SailBoat&& rhs) noexcept;
+        /// Move assignment.
+        SailBoat& operator=(SailBoat&& rhs) noexcept;
 
-	/// Destructor.
-	~SailBoat() override ;
+        /// Destructor.
+        ~SailBoat() override;
 
-	/// Sailboat motion.
-	void move(double speed, std::vector<double> direction) override;
+        /// Sailboat motion.
+        void move(double speed, std::vector<double> direction) override;
 
-	/// Display identification info.
-	void get_info() const override;
+        /// Display identification info.
+        void get_info() const override;
 
 private:
-	std::string m_name;
-	bool m_sails_up;
+        std::string m_name;
+        bool m_sails_up;
 };
 
 } // end_of_namespace
-

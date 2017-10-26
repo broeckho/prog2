@@ -36,47 +36,47 @@ namespace Raii {
 class RandomReadFile
 {
 public:
-	/**
-	 * Opens a random-read file at the given path.
-	 */
-	RandomReadFile(const char* path) : m_file(path, "r"), m_buf() {}
+        /**
+         * Opens a random-read file at the given path.
+         */
+        RandomReadFile(const char* path) : m_file(path, "r"), m_buf() {}
 
-	/*
-	 * Reads the 'char' at the given offset in this file.
-	 */
-	char operator[](size_t Offset) const
-	{
-		// Fills the buffer vector with data, until the 'char' at the given
-		// offset becomes available.
-		// Note that this the enclosing method is marked 'const', though
-		// the logic below clearly mutates the object's state.
-		// That's perfectly fine, actually, because those changes to this
-		// object's state are not visible to the outside world. Hence
-		// the name 'logically const'.
-		while (Offset >= m_buf.size()) {
-			int c = m_file.ReadChar();
-			if (c == EOF)
-				// We can't recover from this, because we're being
-				// asked to read beyond the end of the stream. The
-				// only way out is to throw an exception.
-				throw ReadError();
+        /*
+         * Reads the 'char' at the given offset in this file.
+         */
+        char operator[](size_t Offset) const
+        {
+                // Fills the buffer vector with data, until the 'char' at the given
+                // offset becomes available.
+                // Note that this the enclosing method is marked 'const', though
+                // the logic below clearly mutates the object's state.
+                // That's perfectly fine, actually, because those changes to this
+                // object's state are not visible to the outside world. Hence
+                // the name 'logically const'.
+                while (Offset >= m_buf.size()) {
+                        int c = m_file.ReadChar();
+                        if (c == EOF)
+                                // We can't recover from this, because we're being
+                                // asked to read beyond the end of the stream. The
+                                // only way out is to throw an exception.
+                                throw ReadError();
 
-			// Append the data to the buffer.
-			m_buf.push_back(c);
-		}
+                        // Append the data to the buffer.
+                        m_buf.push_back(c);
+                }
 
-		// Read the character from the buffer.
-		return m_buf.at(Offset);
-	}
+                // Read the character from the buffer.
+                return m_buf.at(Offset);
+        }
 
 private:
-	// The file that is currently open. This member is mutable, even
-	// when its enclosing object is (logically) 'const'.
-	mutable File m_file;
+        // The file that is currently open. This member is mutable, even
+        // when its enclosing object is (logically) 'const'.
+        mutable File m_file;
 
-	// A buffer for previously read data. This member is mutable, even
-	// when its enclosing object is (logically) 'const'.
-	mutable std::vector<char> m_buf;
+        // A buffer for previously read data. This member is mutable, even
+        // when its enclosing object is (logically) 'const'.
+        mutable std::vector<char> m_buf;
 };
 
 } // end of namespace
