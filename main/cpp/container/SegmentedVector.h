@@ -255,6 +255,7 @@ public:
         }
 
 private:
+        /// We want to create memory without initializing it, hence the Chunk.
         /// POD type with same alignment requirement as for T's.
         using Chunk = typename std::aligned_storage<sizeof(T), std::alignment_of<T>::value>::type;
 
@@ -270,6 +271,7 @@ private:
                 const size_t i = m_size % N; // Offset of chunk within its block
 
                 if (b == m_blocks.size()) { // Out of buffers, last buffer is full
+                        /// Create memory without initializing it, hence the Chunk i.o T.
                         Chunk* chunk = new Chunk[N];
                         m_blocks.push_back(chunk);
                 }
