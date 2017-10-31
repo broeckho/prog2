@@ -7,7 +7,6 @@
 // BEGIN_SNIPPET{FullSource}
 #include "max.hpp"
 #include <iostream>
-#include <string>
 
 int main()
 {

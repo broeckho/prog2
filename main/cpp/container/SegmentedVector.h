@@ -87,6 +87,7 @@ public:
         /// Copy assignment
         self_type& operator=(const self_type& other)
         {
+                /// See http://stackoverflow.com/a/9322542/698767 on self-assignment test
                 if (this != &other) {
                         clear();
                         m_blocks.reserve(other.m_blocks.size());
@@ -102,6 +103,7 @@ public:
         /// Move assignment
         self_type& operator=(self_type&& other)
         {
+                /// See http://stackoverflow.com/a/9322542/698767 on self-assignment test
                 if (this != &other) {
                         clear();
                         m_blocks = std::move(other.m_blocks);

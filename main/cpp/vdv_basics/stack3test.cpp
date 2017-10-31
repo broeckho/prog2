@@ -6,7 +6,6 @@
 
 // BEGIN_SNIPPET{FullSource}
 #include "stack3.hpp"
-#include <cstdlib>
 #include <deque>
 #include <iostream>
 

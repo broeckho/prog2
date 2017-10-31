@@ -18,12 +18,11 @@
 # Build & install & smoke test :
 #============================================================================
 set( EXTRA_SRC_myfirst1main   myfirst.cpp myfirstinst.cpp )
-set( EXTRA_SRC_tracertest     tracer.cpp )
 
 foreach( EXEC	addvaltest max0 max1 max1-partial max2 max3 max3-bis max4
 				myfirst1main myfirst2main myfirst4main printcollmain
 				stack1test stack2test stack3test stack4test stack5test
-				stack6test stack7test refnonref tracertest )
+				stack6test stack7test refnonref )
 
 	add_executable( ${EXEC}	${EXEC}.cpp ${EXTRA_SRC_${EXEC}} )
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )

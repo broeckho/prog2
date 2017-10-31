@@ -5,9 +5,7 @@
  */
 
 #include "stack5.hpp"
-#include <cstdlib>
 #include <iostream>
-#include <string>
 
 int main()
 {

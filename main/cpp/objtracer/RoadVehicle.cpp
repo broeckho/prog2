@@ -80,7 +80,7 @@ void RoadVehicle::move(double speed, vector<double> direction)
 {
         COMP_MISC_MEMBER_TRACER;
         cout << "RoadVehicle is moving with speed " << speed << " in direction" << endl;
-        for (auto&& d : direction) {
+        for (const auto& d : direction) {
                 cout << d << endl;
         }
 }

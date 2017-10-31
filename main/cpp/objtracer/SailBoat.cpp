@@ -94,7 +94,7 @@ void SailBoat::move(double speed, vector<double> direction)
         COMP_MISC_MEMBER_TRACER;
         m_sails_up = true;
         cout << "Sailboat is moving with speed " << speed << " in direction" << endl;
-        for (auto&& d : direction) {
+        for (const auto& d : direction) {
                 cout << d << endl;
         }
 }

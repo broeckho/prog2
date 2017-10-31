@@ -5,15 +5,12 @@
  */
 
 #include "stack4.hpp"
-#include <cstdlib>
 #include <iostream>
-#include <string>
 
 int main()
 {
         try {
                 Stack<int, 20> int20Stack;
-                Stack<int, 40> int40Stack;
                 Stack<std::string, 40> stringStack;
                 int20Stack.push(7);
                 std::cout << int20Stack.top() << std::endl;

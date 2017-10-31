@@ -5,9 +5,7 @@
  */
 
 #include "stack6.hpp"
-#include <cstdlib>
 #include <iostream>
-#include <string>
 #include <vector>
 
 int main()

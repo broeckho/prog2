@@ -6,9 +6,7 @@
 
 // BEGIN_SNIPPET{FullSource}
 #include "stack2.hpp"
-#include <cstdlib>
 #include <iostream>
-#include <string>
 
 int main()
 {

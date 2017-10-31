@@ -20,6 +20,7 @@ inline int const& max(int const& a, int const& b) { return a < b ? b : a; }
 
 int main()
 {
+
         ::max(7, 42, 68); // OK but uses template int-max
 
         return 0;
