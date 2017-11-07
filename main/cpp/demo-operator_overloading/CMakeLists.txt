@@ -18,7 +18,6 @@
 # Build / install / smoke test:
 #============================================================================
 foreach( EXEC	conversion-operator
-                explicit
                 friend-input-operator
                 functor-state
                 lambda-by-reference 

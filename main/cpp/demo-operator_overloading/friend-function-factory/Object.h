@@ -5,7 +5,6 @@ class Object
 {
 public:
         friend Object Factory::operator()();
-
         int printID() const { return id; }
 
 private:

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef DISTANCE_H
-#define DISTANCE_H
 
 class Distance
 {
@@ -12,4 +10,3 @@ private:
         int fromX, fromY;
 };
 
-#endif // DISTANCE_H

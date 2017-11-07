@@ -56,7 +56,7 @@ template <typename T>
 T Polynomial<T>::horner(const T& x) const
 {
         T result = vect[vect.size() - 1];
-        for (int i = vect.size() - 2; i >= 0; i--) {
+        for (auto i = vect.size() - 2; i >= 0; i--) {
                 result = vect[i] + result * x;
         }
         return result;

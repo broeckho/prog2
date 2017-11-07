@@ -7,7 +7,7 @@ using std::endl;
 class Lambda1
 {
 public:
-        Lambda1(int& counter) : counter(counter) {}
+        explicit Lambda1(int& counter) : counter(counter) {}
         int operator()(int x)
         {
                 int val = counter + x;
@@ -19,7 +19,7 @@ private:
         int& counter;
 };
 
-Lambda1 makeCountingAdder(int& counter) { return Lambda1(counter); }
+Lambda1 makeCountingAdder(int& counter) { return {Lambda1(counter)}; }
 #else
 std::function<int(int)> makeCountingAdder(int& counter)
 {

@@ -33,7 +33,7 @@ namespace {
 class Incrementor
 {
 public:
-        Incrementor(unsigned int n) : fNum(n) {}
+        explicit Incrementor(unsigned int n) : fNum(n) {}
 
         template <typename T>
         T operator()(T t)
@@ -55,12 +55,15 @@ int main()
         std::vector<int> v(8);
         std::list<int> l(8);
         generate(v.begin(), v.end(), RandInt(3, v.size()));
+
         // Out of place transform
         transform(v.begin(), v.end(), l.begin(), Incrementor(2));
         std::cout << make_range(v) << std::endl << make_range(l) << std::endl;
+
         // In place transform
         transform(v.begin(), v.end(), v.begin(), Incrementor(5));
         std::cout << make_range(v) << std::endl;
+
         return 0;
 }
 // END_SNIPPET{FullSource}

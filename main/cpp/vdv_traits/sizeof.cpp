@@ -5,7 +5,7 @@
  */
 
 #include <iostream>
-#include <stddef.h>
+#include <cstddef>
 
 template <typename T>
 class TypeSize

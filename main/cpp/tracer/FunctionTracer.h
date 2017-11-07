@@ -39,7 +39,7 @@ class FunctionTracer
 public:
         /// Constructor inserts message in TrackerOutput about entering a function
         /// body.
-        FunctionTracer(string const& function_name, LogSeverity severity = TracerOutput::get_severity());
+        explicit FunctionTracer(string const& function_name, LogSeverity severity = TracerOutput::get_severity());
 
         /// Destructor inserts message in TracketOutput about leaving funvtion body.
         ~FunctionTracer();

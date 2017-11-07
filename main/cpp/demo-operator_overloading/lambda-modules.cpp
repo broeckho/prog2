@@ -7,26 +7,24 @@
 #include <chrono>
 #include <functional>
 #include <iostream>
-#include <string>
 #include <thread>
 #include <vector>
 
-// MAIN PROGRAM
 static std::vector<std::function<std::string()>> commands;
 
-void registerCommand(std::function<std::string()> command) { commands.push_back(command); }
+void registerCommand(const std::function<std::string()>& command) { commands.push_back(command); }
 
 void showHelp()
 {
         std::cout << "Available commands:" << std::endl;
-        for (auto command : commands) {
+        for (const auto& command : commands) {
                 std::cout << "\t - " << command() << std::endl;
         }
 }
 
 bool hasCommand(const std::string& searchValue)
 {
-        for (auto command : commands) {
+        for (const auto& command : commands) {
                 if (command() == searchValue) {
                         return true;
                 }

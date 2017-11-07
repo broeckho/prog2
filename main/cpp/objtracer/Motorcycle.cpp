@@ -48,7 +48,7 @@ Motorcycle::Motorcycle(Motorcycle const& ori)
         if (ori.m_engine == nullptr) {
                 m_engine = nullptr;
         } else {
-                m_engine = shared_ptr<Engine>(new Engine(*ori.m_engine));
+                m_engine = make_shared<Engine>(*ori.m_engine);
         }
 }
 
@@ -74,7 +74,7 @@ Motorcycle& Motorcycle::operator=(Motorcycle const& rhs)
                 if (rhs.m_engine == nullptr) {
                         m_engine = nullptr;
                 } else {
-                        m_engine = shared_ptr<Engine>(new Engine(*rhs.m_engine));
+                        m_engine = make_shared<Engine>(*rhs.m_engine);
                 }
                 m_body.reset(new Body(*rhs.m_body));
                 m_wheels = rhs.m_wheels;

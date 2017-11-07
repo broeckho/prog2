@@ -51,27 +51,27 @@ set( LIBS   ${LIBS}   m )
 # Boost
 #----------------------------------------------------------------------------
 set(BOOST_ROOT ${GOBELIJN_BOOST_ROOT})
-find_package( Boost COMPONENTS filesystem thread date_time system REQUIRED )
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS} )
-set( LIBS   ${LIBS} ${Boost_LIBRARIES} )
+find_package(Boost COMPONENTS filesystem thread date_time system REQUIRED)
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+set(LIBS   ${LIBS} ${Boost_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # TCLAP Library (command line processing)
 #----------------------------------------------------------------------------
-include_directories( ${CMAKE_HOME_DIRECTORY}/main/resources/lib/tclap/include )
+include_directories( ${CMAKE_HOME_DIRECTORY}/main/resources/lib/tclap/include)
 
 #----------------------------------------------------------------------------
 # G3log
 #----------------------------------------------------------------------------
-include_directories( ${CMAKE_HOME_DIRECTORY}/main/resources/lib/g3log/src )
-set( G3LOG_LIBRARIES			g3logger_shared) #lib_activeobject)
-set( G3LOG_LIBRARIES_STATIC		g3logger-static) #lib_activeobject)
+include_directories(${CMAKE_HOME_DIRECTORY}/main/resources/lib/g3log/src)
+set(G3LOG_LIBRARIES            g3logger_shared) #lib_activeobject)
+set(G3LOG_LIBRARIES_STATIC     g3logger-static) #lib_activeobject)
 
 #----------------------------------------------------------------------------
 # Linking.
 #----------------------------------------------------------------------------
-set( BUILD_SHARED_LIBS 	    ON 	 )
-set( CMAKE_INSTALL_RPATH    ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_LOCATION} )
-SET( CMAKE_INSTALL_RPATH_USE_LINK_PATH   TRUE )
+set(BUILD_SHARED_LIBS 	    ON)
+set(CMAKE_INSTALL_RPATH    ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_LOCATION})
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH   TRUE)
 
 #############################################################################

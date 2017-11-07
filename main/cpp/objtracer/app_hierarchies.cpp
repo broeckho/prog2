@@ -1,6 +1,6 @@
 /**
  * @file
- * Demo for the ctor/dtor/copy-ctor etc in inheritance hierarchies.
+ * Demo for inheritance hierarchies.
  * @author P. Klosiewicz, J.Broeckhove  CoMP/UA
  */
 
@@ -22,7 +22,7 @@ using std::exception;
  * @return      status
  * @exception   None.
  */
-int vbasics()
+int app_hierarchies()
 {
         COMP_MISC_FUNCTION_TRACER;
 

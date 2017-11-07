@@ -1,9 +1,10 @@
 /**
  * @file
- * Demo code for essential operators (Stroustrup ch 17).
+ * Demo code for what happens with essential operators (ctor, dtor, assignment).
  * @author J. Broeckhove  CoMP/UA
  */
 
+#include "demos.h"
 #include "objtracer/Body.h"
 #include "objtracer/Motorcycle.h"
 #include "objtracer/Unicycle.h"
@@ -13,14 +14,12 @@
 using namespace std;
 using namespace ODemo;
 
-int mbasics();
-
 /**
  * Demo prog for features of ctor/dtor.
  * @return      status
  * @exception   None.
  */
-int mbasics()
+int app_essentialops()
 {
         cout << __FUNCTION__ << "  haha  " << __PRETTY_FUNCTION__ << endl;
         COMP_MISC_FUNCTION_TRACER;

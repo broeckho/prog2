@@ -26,7 +26,7 @@ void simpleRandInit(C& c, unsigned int seed)
 {
         std::srand(seed);
         typename C::size_type size = c.size();
-        for (typename C::iterator it = c.begin(); it != c.end(); ++it) {
+        for (auto it = c.begin(); it != c.end(); ++it) {
                 *it = static_cast<typename C::value_type>(rand() % size);
         }
 }

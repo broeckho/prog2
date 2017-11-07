@@ -23,6 +23,7 @@ int main()
         int num[] = {1, 2, 3, 4, 5};
 
         // print product of all values
-        std::cout << "the product of the integer values is " << Accum<int, MultPolicy>::accum(&num[0], &num[5]) << '\n';
+        std::cout << "the product of the integer values is "
+                  << Accum<int, MultPolicy>::accum(&num[0], &num[5]) << '\n';
         return 0;
 }

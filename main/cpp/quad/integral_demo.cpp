@@ -6,7 +6,6 @@
  */
 #include "abs_diff.h"
 #include "quad/quad.h"
-#include <iostream>
 
 using std::cout;
 using std::endl;

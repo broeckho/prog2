@@ -5,9 +5,6 @@
  */
 
 #include "tracer/MemberTracer.h"
-#include "tracer/TracerOutput.h"
-#include <sstream>
-#include <string>
 
 namespace UA_CoMP {
 namespace Misc {

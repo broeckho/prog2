@@ -38,17 +38,17 @@ void SimpleRandInit(C& c, unsigned int seed)
 {
         std::srand(seed);
         typename C::size_type size = c.size();
-        for (typename C::iterator it = c.begin(); it != c.end(); ++it) {
+        for (auto it = c.begin(); it != c.end(); ++it) {
                 *it = static_cast<typename C::value_type>(rand() % size);
         }
 }
 
 /** Sum all the elements of a container. */
 template <typename C>
-typename C::value_type Sum(C const& c)
+typename C::value_type Sum(const C& c)
 {
         typename C::value_type val = typename C::value_type();
-        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+        for (auto it = c.cbegin(); it != c.cend(); ++it) {
                 val += *it;
         }
         return val;
@@ -59,7 +59,7 @@ template <typename C>
 std::map<typename C::value_type, unsigned int> Bin(C const& c)
 {
         std::map<typename C::value_type, unsigned int> m;
-        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+        for (auto it = c.cbegin(); it != c.cend(); ++it) {
                 m[*it]++;
         }
         return m;
@@ -69,7 +69,7 @@ std::map<typename C::value_type, unsigned int> Bin(C const& c)
 template <typename It>
 typename It::value_type Sum(It first, It last)
 {
-        typename It::value_type val = It::value_type();
+        typename It::value_type val = typename It::value_type();
         for (It it = first; it != last; ++it) {
                 val += *it;
         }
@@ -93,7 +93,7 @@ class Accumulator
 {
 public:
         ///
-        Accumulator(T t = T()) : m_accum(t) {}
+        explicit Accumulator(T t = T()) : m_accum(t) {}
 
         ///
         T operator()(T t) { return (m_accum += t); }
@@ -110,7 +110,7 @@ class Incrementor
 {
 public:
         ///
-        Incrementor(unsigned int n) : m_num(n) {}
+        explicit Incrementor(unsigned int n) : m_num(n) {}
 
         ///
         template <typename T>
@@ -139,7 +139,7 @@ std::ostream& operator<<(std::ostream& out, std::pair<T, U> p)
 template <typename C>
 std::ostream& Printer(std::ostream& out, C const& c)
 {
-        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+        for (auto it = c.cbegin(); it != c.cend(); ++it) {
                 out << " " << *it;
         }
         return out;
@@ -165,7 +165,7 @@ std::ostream& operator<<(std::ostream& os, std::map<T, U> const& v)
 
 } // end-of-anonymous-namespace
 
-int main() try {
+int main() {
         string marker = "\n------------------------------------\n";
         cout << std::boolalpha;
         // block 1
@@ -180,7 +180,7 @@ int main() try {
                 cout << marker << "bin processes list of 15 int:" << endl;
                 std::list<int> v(15);
                 SimpleRandInit(v, 7);
-                cout << v << endl << "sum: " << Sum(v) << endl << Bin(v) << endl;
+                cout << v << endl << "sum: " << Sum(v.cbegin(), v.cend()) << endl << Bin(v) << endl;
         }
         // block 3
         {
@@ -195,9 +195,9 @@ int main() try {
                 std::list<int> v(15);
                 SimpleRandInit(v, 7);
                 cout << v << endl;
-                std::list<int>::iterator it1 = find(v.begin(), v.end(), 6);
-                std::list<int>::iterator it2 = find(it1, v.end(), 14);
-                std::list<int>::iterator it3 = find(it1, it2, 13);
+                auto it1 = find(v.begin(), v.end(), 6);
+                auto it2 = find(it1, v.end(), 14);
+                auto it3 = find(it1, it2, 13);
                 cout << (it3 != it2) << endl;
         }
         // block 5
@@ -228,8 +228,4 @@ int main() try {
         }
 
         return 0;
-} catch (exception& e) {
-        cout << e.what() << endl;
-} catch (...) {
-        cout << "Unknown exception" << endl;
 }

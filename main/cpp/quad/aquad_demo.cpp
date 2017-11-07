@@ -6,8 +6,6 @@
  */
 #include "quad/quad.h"
 #include <iomanip>
-#include <iostream>
-#include <string>
 
 using std::boolalpha;
 using std::setprecision;

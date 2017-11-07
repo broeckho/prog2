@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
                 // GLOG_logtostderr with value
                 // true. "
                 //		<< endl;
-                cout << "Process the objdriver output with \"cut -f 2 -d ] <logfile>\" to "
+                cout << "Process the output with \"cut -f 2 -d ] <logfile>\" to "
                         "get a reasonable output."
                      << endl;
 
@@ -74,12 +74,11 @@ int main(int argc, char* argv[])
                 // Setting up the register with available tests
                 //----------------------------------------------------------------------
                 FunctionRegister f_reg;
-                f_reg["exam01"] = exam01;
-                f_reg["fcalls"] = fcalls;
-                f_reg["mbasics"] = mbasics;
-                f_reg["mcopy"] = mcopy;
-                f_reg["vbasics"] = vbasics;
-                f_reg["vpoly"] = vpoly;
+                f_reg["app_copy"] = app_copy;
+                f_reg["app_essentialops"] = app_essentialops;
+                f_reg["app_fcalls"] = app_fcalls;
+                f_reg["app_hierarchies"] = app_hierarchies;
+                f_reg["app_poly2"] = app_poly2;
 
                 //----------------------------------------------------------------------
                 // Set demo to execute

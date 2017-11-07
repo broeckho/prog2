@@ -11,7 +11,7 @@
 class A
 {
 public:
-        A(int i) : m_i(i){};
+        explicit A(int i) : m_i(i){};
 
         void f() const { std::cout << "Using f() const: value i = " << m_i << std::endl; }
 

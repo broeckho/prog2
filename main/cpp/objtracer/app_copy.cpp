@@ -1,11 +1,11 @@
 /**
  * @file
- * Demo code for deep vs. shallow copy (Stroustrup ch 10).
+ * Demo code for deep vs. shallow copy.
  * @author P. Klosiewicz, J.Broeckhove  CoMP/UA
  */
 
 #include "demos.h"
-#include "objtracer/demobj.h"
+#include "demobj.h"
 #include "tracer/tracer.h"
 
 using namespace std;
@@ -16,7 +16,7 @@ using namespace ODemo;
  * @return      status
  * @exception   None.
  */
-int mcopy()
+int app_copy()
 {
         COMP_MISC_FUNCTION_TRACER;
 
@@ -36,7 +36,7 @@ int mcopy()
         auto m2Ptr = new Motorcycle(*m1Ptr);
 
         COMP_MISC_LOG_TRACER(" statement: Motorcycle m3(shared_ptr<Engine>(new Engine(77)));");
-        Motorcycle m3(shared_ptr<Engine>(new Engine(77)));
+        Motorcycle m3(make_shared<Engine>(77));
 
         COMP_MISC_LOG_TRACER(" statement: m3 = *m2Ptr;");
         m3 = *m2Ptr;

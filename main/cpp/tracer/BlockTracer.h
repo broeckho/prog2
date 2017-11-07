@@ -30,7 +30,7 @@ class BlockTracer
 {
 public:
         /// Constructor insert message in TrackerOutput about entering a block.
-        BlockTracer(string const& msg, LogSeverity severity = TracerOutput::get_severity());
+        explicit BlockTracer(string const& msg, LogSeverity severity = TracerOutput::get_severity());
 
         /// Destructor inserts message in TrackerOutput about leaving a block.
         ~BlockTracer();

@@ -28,7 +28,7 @@ SET(G3_DEFINITIONS "")
 
 # -DUSE_DYNAMIC_LOGGING_LEVELS=ON   : run-type turn on/off levels
 option (USE_DYNAMIC_LOGGING_LEVELS
-       "Turn ON/OFF log levels. An disabled level will not push logs of that level to the sink. By default dynamic logging is disabled" OFF)
+       "Turn ON/OFF log levels. An disabled level will not push logs of that level to the sink. By default dynamic logging is enabled" ON)
 IF(USE_DYNAMIC_LOGGING_LEVELS)
    LIST(APPEND G3_DEFINITIONS G3_DYNAMIC_LOGGING)
    MESSAGE("-DUSE_DYNAMIC_LOGGING_LEVELS=ON")

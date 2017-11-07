@@ -5,8 +5,7 @@ using namespace std;
 class Integer
 {
 public:
-        Integer(int i) : m_value(i) {}
-        int getValue() const { return m_value; };
+        explicit Integer(int i) : m_value(i) {}
 
 private:
         friend ostream& operator<<(ostream& os, const Integer& integer);

@@ -3,8 +3,8 @@
  * @see lambda-by-value.cpp
  * @author Tobia De Koninck (Groepje P = NP)
  */
+
 #include <iostream>
-#include <string>
 
 int main()
 {

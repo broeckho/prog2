@@ -30,9 +30,9 @@ int main()
         RandInt r(7, c.size());
         std::generate(c.begin(), c.end(), r);
         std::cout << make_range(c) << std::endl;
-        std::list<int>::iterator it1 = find(c.begin(), c.end(), 14);
-        std::list<int>::iterator it2 = find(it1, c.end(), 13);
-        std::list<int>::iterator it3 = find(it1, it2, 11);
+        auto it1 = find(c.begin(), c.end(), 14);
+        auto it2 = find(it1, c.end(), 13);
+        auto it3 = find(it1, it2, 11);
         std::cout << std::boolalpha << (it3 != it2) << std::endl;
         return 0;
 }

@@ -19,6 +19,10 @@
 
 // BEGIN_SNIPPET{FullSource}
 #include "smaller.h"
+#include <cstddef>
+#include <vector>
+
+using namespace std;
 
 namespace {
 
@@ -32,22 +36,25 @@ public:
         using pack_type = typename smaller<T1, T2>::type;
 
 public:
-        pack_for_file_storage() = default;
-        void pack(T1 t1){};
-        void pack(T2 t2){};
-        pack_type peek(unsigned int i) const { return fInfo[i]; }
+        explicit pack_for_file_storage(size_t s) { m_data.resize(s); };
+        void pack(T1 t1, size_t i){ m_data[i] = static_cast<pack_type>(t1); }
+        void pack(T2 t2, size_t i){ m_data[i] = static_cast<pack_type>(t2); };
+        pack_type peek(size_t i) const { return m_data[i]; }
 
 private:
-        pack_type fInfo[100000];
+        vector<pack_type>     m_data;
 };
 
 } // anonnymous namespace
 
 int main()
 {
-        pack_for_file_storage<float, long> pp;
+        pack_for_file_storage<float, long> pp{100};
         pack_for_file_storage<float, long>::pack_type p;
         p = pp.peek(3);
+        pp.pack(5.0f, 4);
+        pp.pack(1l, 6);
+        pp.pack(p, 1);
         //...
         return 0;
 }

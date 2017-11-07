@@ -5,8 +5,6 @@
  */
 
 #include "tracer/FunctionTracer.h"
-#include "tracer/TracerOutput.h"
-#include <string>
 
 namespace UA_CoMP {
 namespace Misc {

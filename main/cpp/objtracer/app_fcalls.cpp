@@ -1,6 +1,6 @@
 /**
  * @file
- * A C++ code example relating to the material in Stroustrup (3 ed.) chapter 10.
+ * Demo code for what happens with function call arguments.
  * @author J. Broeckhove  CoMP/UA, 2011.
  */
 
@@ -28,12 +28,12 @@ void f2p(Motorcycle* bp)
         COMP_MISC_FUNCTION_TRACER;
         bp->halt();
 }
-void f3(Motorcycle const& b)
+void f3(const Motorcycle& b)
 {
         COMP_MISC_FUNCTION_TRACER;
         b.is_running();
 }
-void f3p(Motorcycle const* bp)
+void f3p(const Motorcycle* bp)
 {
         COMP_MISC_FUNCTION_TRACER;
         bp->is_running();
@@ -47,12 +47,12 @@ Motorcycle g() { return Motorcycle(); }
  * @return      status
  * @exception   None.
  */
-int fcalls()
+int app_fcalls()
 {
         COMP_MISC_FUNCTION_TRACER;
 
         COMP_MISC_LOG_TRACER(" statement: Motorcycle bvar1(shared_ptr<Engine>(new Engine(1.0)));");
-        Motorcycle bvar1(shared_ptr<Engine>(new Engine(1.0)));
+        Motorcycle bvar1(make_shared<Engine>(1.0));
 
         COMP_MISC_LOG_TRACER(" statement: f1(bvar1);");
         f1(bvar1);

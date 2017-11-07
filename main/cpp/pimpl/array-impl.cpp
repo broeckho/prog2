@@ -19,15 +19,14 @@
 
 #include "memory-pool.h"
 
-#include <cstdlib>
-#include <memory>
-
 namespace Pimpl {
 /**
  * The 'MemoryPool::MemoryPoolImpl' POD that uses a dynamically allocated array.
  */
 struct MemoryPool::MemoryPoolImpl
 {
+        MemoryPoolImpl(char *string, int i)
+                : pointer(string), allocatedCount(static_cast<size_t>(i)) {}
         char* pointer;
         size_t allocatedCount;
 };
@@ -35,7 +34,7 @@ struct MemoryPool::MemoryPoolImpl
 /**
  * Creates a memory pool that has at least the given capacity.
  */
-MemoryPool::MemoryPool(size_t capacity) : m_impl(new MemoryPoolImpl({new char[capacity], 0})) {}
+MemoryPool::MemoryPool(size_t capacity) : m_impl(new MemoryPoolImpl(new char[capacity], 0)) {}
 
 /**
  * Frees this memory pool's resources, if any.

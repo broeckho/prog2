@@ -38,6 +38,15 @@ typedef LEVELS LogSeverity;
 class TracerOutput
 {
 public:
+        /// No constructor.
+        TracerOutput() =delete;
+
+        // No copy constructor.
+        TracerOutput(const TracerOutput&) =delete;
+
+        // No assignment.
+        TracerOutput& operator=(const TracerOutput&) =delete;
+
         /// Indicate whether current making output.
         static bool is_output_on() { return g_make_output; }
 
@@ -57,18 +66,15 @@ public:
         static void decrease_indent() { g_indent--; }
 
         /// Set the severity level for logging to the google log.
-        static void set_severity(LogSeverity severity) { g_severity = severity; }
+        static void set_severity(const LogSeverity& severity) { g_severity = severity; }
 
         /// Insert the message in the google log at given severity level.
         static void log(string const& msg, LogSeverity severity = get_severity());
 
 private:
-        TracerOutput();
-        TracerOutput(TracerOutput const&);
-        TracerOutput& operator=(TracerOutput const&);
-        static bool g_make_output;
-        static unsigned int g_indent;
-        static LogSeverity g_severity;
+        static bool           g_make_output;
+        static unsigned int   g_indent;
+        static LogSeverity    g_severity;
 };
 
 } // end of namespace

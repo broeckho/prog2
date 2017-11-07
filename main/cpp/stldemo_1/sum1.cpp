@@ -26,7 +26,7 @@ template <typename C>
 typename C::value_type sum(C const& c)
 {
         typename C::value_type val = typename C::value_type();
-        for (typename C::const_iterator it = c.begin(); it != c.end(); ++it) {
+        for (auto it = c.cbegin(); it != c.cend(); ++it) {
                 val += *it;
         }
         return val;

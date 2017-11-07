@@ -10,7 +10,7 @@ int main()
 {
         int offset{0}; // voorbeeld van een capture
         std::set<int*, std::function<bool(int*, int*)>> ints{
-            [offset](int* lhs, int* rhs) -> bool { return *lhs < *rhs + offset; }};
+            [offset](const int* lhs, const int* rhs) -> bool { return *lhs < *rhs + offset; }};
 
         ints.insert(new int(13));
         ints.insert(new int(11));

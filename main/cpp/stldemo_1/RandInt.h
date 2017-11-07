@@ -29,13 +29,13 @@ class RandInt
 {
 public:
         /// Initialize seed and ranfe of generator.
-        RandInt(unsigned int seed, unsigned int range) : fSeed(seed), fRange(range) { std::srand(fSeed); }
+        RandInt(unsigned int seed, unsigned long range) : m_seed(seed), m_range(range) { std::srand(m_seed); }
         /// return random int within  range.
-        int operator()() { return rand() % fRange; }
+        int operator()() { return rand() % m_range; }
 
 private:
-        int fSeed;
-        int fRange;
+        int m_seed;
+        unsigned long m_range;
 };
 // END_SNIPPET{FullSource}
 

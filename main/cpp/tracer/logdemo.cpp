@@ -9,34 +9,12 @@
 
 using namespace std;
 
-namespace {
-
-// Dumb demo function.
-void ff() { COMP_MISC_FUNCTION_TRACER; }
-
-// Dumb demo class.
-class LogTest
-{
-public:
-        ///
-        LogTest()
-        {
-                COMP_MISC_MEMBER_TRACER;
-                ff();
-        }
-
-        ///
-        ~LogTest() { COMP_MISC_MEMBER_TRACER; }
-};
-
-} // anonymous namespace
-
 int main(int argc, char* argv[])
 {
         try {
                 // Initialize Google logging library.
                 string logPath("/tmp");
-                if (getenv("G3LOG_log_dir") != NULL) {
+                if (getenv("G3LOG_log_dir") != nullptr) {
                         logPath = *getenv("G3LOG_log_dir");
                 }
                 std::unique_ptr<g3::LogWorker> g3log{g3::LogWorker::createLogWorker()};
@@ -58,8 +36,8 @@ int main(int argc, char* argv[])
                 TCLAP::SwitchArg reverseSwitch("r", "reverse", "Print name backwards", cmd, false);
 
                 // Parse command line and get the value each argument.
-                cmd.parse(argc, argv);
-                std::string name = nameArg.getValue();
+                cmd.parse(argc, static_cast<const char* const *>(argv));
+                std::string name(const_cast<const std::string&>(nameArg.getValue()));
                 bool reverseName = reverseSwitch.getValue();
 
                 // Do what you intend.

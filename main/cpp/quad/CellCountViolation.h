@@ -24,7 +24,7 @@ public:
         /** Checks and throws iff condition is violated, otherwise return true. */
         static bool check(bool b)
         {
-                if (b == false) {
+                if (!b ) {
                         throw std::runtime_error("Cellcount violation in AdaptiveQuadrature");
                 }
                 return b;
@@ -50,7 +50,7 @@ class OnViolationExit
 public:
         static bool check(bool b)
         {
-                if (b == false) {
+                if ( !b ) {
                         exit(EXIT_FAILURE);
                 }
                 return b;

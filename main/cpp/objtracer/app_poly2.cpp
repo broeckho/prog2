@@ -34,9 +34,12 @@ void displayBis(Vehicle& b)
  * @return      status
  * @exception   None.
  */
-int vpoly()
+int app_poly2()
 {
         COMP_MISC_FUNCTION_TRACER;
+
+        // Setting the log output ON/OFF
+        COMP_MISC_TRACER_OUTPUT_OFF;
 
         COMP_MISC_LOG_TRACER(">>>> statement: RoadVehicle rv1;");
         RoadVehicle rv1;
@@ -49,6 +52,9 @@ int vpoly()
 
         COMP_MISC_LOG_TRACER(">>>> statement: SailBoat b1(\"Freddy\");");
         SailBoat b1("Freddy");
+
+        // Setting the log output ON/OFF
+        COMP_MISC_TRACER_OUTPUT_ON;
 
         COMP_MISC_LOG_TRACER(">>>> statement: displayBis(rv1);");
         displayBis(rv1);

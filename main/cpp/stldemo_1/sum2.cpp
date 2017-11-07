@@ -26,7 +26,7 @@ template <typename T>
 class Accumulator
 {
 public:
-        Accumulator(T t = T()) : fAccumulator(t) {}
+        explicit Accumulator(T t = T()) : fAccumulator(t) {}
 
         T operator()(T t) { return (fAccumulator += t); }
 

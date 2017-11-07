@@ -52,10 +52,10 @@ unset( LIB )
 #============================================================================
 # Build / install / smoke test for executables:
 #============================================================================
-set( EXEC	objtracer )
+set( EXEC	app_exec )
 set( SRC
-		${EXEC}.cpp exam01.cpp fcalls.cpp mbasics.cpp
-		mcopy.cpp vbasics.cpp vpoly.cpp 
+		${EXEC}.cpp app_fcalls.cpp app_essentialops.cpp
+		app_copy.cpp app_hierarchies.cpp app_poly2.cpp
 )
 #---------------------
 include_directories( ${LOG_SRC} )
@@ -65,11 +65,11 @@ target_link_libraries( ${EXEC} demobj tracer ${G3LOG_LIBRARIES}  )
 #---------------------
 install( TARGETS ${EXEC} RUNTIME DESTINATION 	${BIN_INSTALL_LOCATION} )
 #------------------------
-set( PROJECTS     exam01 fcalls mbasics mcopy vbasics vpoly )
+set( PROJECTS     app_fcalls app_essential_ops app_copy app_hierarchies app_poly2 )
 foreach (PROJ ${PROJECTS} )
 
-		add_test( NAME  objtracer_${PROJ}
-				COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:objtracer>
+		add_test( NAME  app_exec_${PROJ}
+				COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:app_exec>
 				--exec ${PROJ} )
 		
 endforeach()

@@ -1,27 +1,18 @@
 #include "../../demo-operator_overloading/call-operator/plotter.h"
 
 #include <cmath>
+#include <cstddef>
 #include <limits>
-#include <string>
 #include <vector>
 
 template <typename T>
-Plotter<T>::Plotter()
-{
-}
-
-template <typename T>
-Plotter<T>::~Plotter()
-{
-}
-
-template <typename T>
-std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, T n) const
+std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, unsigned int n) const
 {
         std::vector<std::pair<T, T>> lines;
-        T delta = (to - from) / (T)n;
-        for (T i = from; i <= to; i += delta) {
-                lines.push_back(std::make_pair(i, f(i)));
+        T delta = (to - from) / n;
+        for (unsigned int i = 0; i < n; ++i ) {
+                T x = from + static_cast<T>(i) * delta;
+                lines.push_back(std::make_pair(x, f(x)));
         }
 
         T mininf = -std::numeric_limits<double>::infinity();
@@ -48,8 +39,7 @@ std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, T n) co
         T dy = (imagey / 2) - DCy;
 
         std::string result;
-
-        for (T i = 0; i < lines.size(); i++) {
+        for (size_t i = 0; i < lines.size(); i++) {
                 result += "(" + std::to_string(lines[i].first * scale + dx) + "," +
                           std::to_string(lines[i].second * scale + dy) + ")\n";
         }
@@ -57,7 +47,7 @@ std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, T n) co
 }
 
 template <typename T>
-std::string Plotter<T>::operator()(const std::function<T(T)>& f, T from, T to, T n) const
+std::string Plotter<T>::operator()(const std::function<T(T)>& f, T from, T to, unsigned int n) const
 {
         return plot(f, from, to, n);
 }
