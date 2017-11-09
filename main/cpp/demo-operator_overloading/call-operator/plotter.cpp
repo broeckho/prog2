@@ -1,8 +1,11 @@
-#include "../../demo-operator_overloading/call-operator/plotter.h"
+#include "plotter.h"
 
 #include <cmath>
+#include <limits>
 #include <string>
 #include <vector>
+
+using std::numeric_limits;
 
 template <typename T>
 std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, unsigned int n) const
@@ -14,8 +17,8 @@ std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, unsigne
                 lines.push_back(std::make_pair(x, f(x)));
         }
 
-        T mininf = -std::numeric_limits<double>::infinity();
-        T maxinf = std::numeric_limits<double>::infinity();
+        T mininf = -numeric_limits<double>::infinity();
+        T maxinf = numeric_limits<double>::infinity();
         T maxx = mininf, maxy = mininf, minx = maxinf, miny = maxinf;
         for (auto& p : lines) {
                 if (p.first < minx)

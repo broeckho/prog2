@@ -36,8 +36,9 @@ struct power<0>
 
 int main()
 {
-        int a[power<3>::value] = {0, 0, 0, 0, 0, 0, 0, 0};
-        std::cout << a[0] << std::endl;
+        int a[power<0>::value] = {1};
+        int b[power<3>::value] = {0, 0, 0, 0, 0, 0, 0, 0};
+        std::cout << a[0] << " --- " << b[0] << std::endl;
         return 0;
 }
 // END_SNIPPET{FullSource}

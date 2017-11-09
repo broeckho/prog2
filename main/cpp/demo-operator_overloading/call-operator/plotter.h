@@ -1,6 +1,4 @@
 #pragma once
-#ifndef PLOTTER_H
-#define PLOTTER_H
 
 #include <functional>
 
@@ -17,4 +15,3 @@ public:
         std::string operator()(const std::function<T(T)>& f, T from = 0.0, T to = 1.0, unsigned int n = 10) const;
 };
 
-#endif // PLOTTER_H

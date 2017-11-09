@@ -208,7 +208,8 @@ int main() {
                 Accumulator<int> a;
                 a = for_each(v.begin(), v.end(), a);
                 cout << v << endl << a() << endl;
-                a = for_each(l.begin(), l.end(), a);
+                Incrementor b(2);
+                for_each(l.begin(), l.end(), b);
                 cout << l << endl << a() << endl;
         }
         // block 6
