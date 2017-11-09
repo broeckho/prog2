@@ -1,13 +1,13 @@
-#ifndef GOBELIJN_QUAD_AGL_QUADRATURE_H_INCLUDED
-#define GOBELIJN_QUAD_AGL_QUADRATURE_H_INCLUDED
+#pragma once
 /**
  * @file
  * AGL (Adaptive GaussLegendre) Quadrature.
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
-#include "quad/AdaptiveQuadrature.h"
-#include "quad/GaussLegendreRules.h"
+
+#include "AdaptiveQuadrature.h"
+#include "GaussLegendreRules.h"
 #include <cassert>
 
 namespace UA_CoMP {
@@ -95,7 +95,6 @@ public:
 private:
 };
 
-} // end-of-namespace Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

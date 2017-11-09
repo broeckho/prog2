@@ -4,8 +4,9 @@
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
+
 #include "abs_diff.h"
-#include "quad/quad.h"
+#include "quad.h"
 
 using std::cout;
 using std::endl;

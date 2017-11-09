@@ -1,12 +1,12 @@
-#ifndef GOBELIJN_QUAD_POWERFUNCTOR_H
-#define GOBELIJN_QUAD_POWERFUNCTOR_H
+#pragma once
 /**
  * @file
  * Power functor.
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
-#include "quad/AQ_Util.h"
+
+#include "AQ_Util.h"
 #include <cmath>
 #include <functional>
 
@@ -51,7 +51,6 @@ private:
         Integral fIntegral;
 };
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

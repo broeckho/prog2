@@ -76,7 +76,7 @@ Motorcycle& Motorcycle::operator=(Motorcycle const& rhs)
                 } else {
                         m_engine = make_shared<Engine>(*rhs.m_engine);
                 }
-                m_body.reset(new Body(*rhs.m_body));
+                m_body = make_unique<Body>(*rhs.m_body);
                 m_wheels = rhs.m_wheels;
                 m_owner = rhs.m_owner;
                 m_speed = rhs.m_speed;

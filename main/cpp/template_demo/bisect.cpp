@@ -31,36 +31,40 @@ double f(double x) { return 5.0 * x - 3.0; }
 double bisect(double func(double), double x1, double x2, double xacc)
 {
         int const JMAX = 40;
-        double dx, f, fmid, xmid, rtb;
 
-        f = func(x1);
-        fmid = func(x2);
+        double f {func(x1)};
+        double fmid {func(x2)};
         if (f * fmid >= 0.0) {
                 cerr << "root must be bracketed" << endl;
                 exit(EXIT_FAILURE);
         }
-        if (f < 0.0) {
-                rtb = x1;
-                dx = x2 - x1;
-        } else {
+
+        double rtb {x1};
+        double dx {x2 - x1};
+        if (f >= 0.0) {
                 rtb = x2;
                 dx = x1 - x2;
         }
 
+        bool root_found {false};
         for (int j = 0; j < JMAX; j++) {
                 dx *= 0.5;
-                xmid = rtb + dx;
+                double xmid = rtb + dx;
                 fmid = func(xmid);
                 if (fmid <= 0.0) {
                         rtb = xmid;
                 }
                 if ((fabs(dx) < xacc) || (fmid == 0.0)) {
-                        return rtb;
+                        root_found = true;
+                        break;
                 }
         }
-        cerr << "Too many bisections" << endl;
-        exit(EXIT_FAILURE);
-        return 0.0;
+
+        if (!root_found) {
+                cerr << "Too many bisections" << endl;
+                exit(EXIT_FAILURE);
+        }
+        return rtb;
 }
 
 } // unnamed namespace

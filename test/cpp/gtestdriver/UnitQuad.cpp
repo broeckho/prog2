@@ -17,7 +17,7 @@
 * Tests for Quad.
 */
 
-#include "quad/quad.h"
+#include "template_quad/quad.h"
 #include <gtest/gtest.h>
 
 namespace UA_CoMP {

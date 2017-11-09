@@ -20,6 +20,7 @@
 // BEGIN_SNIPPET{FullSource}
 #include "Range.h"
 #include <vector>
+#include <algorithm>
 
 template <typename T>
 class Accumulator

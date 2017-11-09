@@ -20,6 +20,7 @@
 // BEGIN_SNIPPET{FullSource}
 #include "RandInt.h"
 #include "Range.h"
+#include <algorithm>
 #include <iomanip>
 #include <list>
 

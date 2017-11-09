@@ -18,7 +18,7 @@
 # Build & install & smoke test :
 #============================================================================
 foreach( EXEC 	accum1 accum2 accum3 accum4 accum5 accum6 accum7 accum8
-		accum9 accum10 elementtype sizeof )
+		accum9 accum10 sizeof )
 
 	add_executable( ${EXEC}	${EXEC}.cpp )	
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )

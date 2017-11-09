@@ -1,14 +1,15 @@
-#ifndef GOBELIJN_QUAD_ADAPTIVEQUADRATURE_H_INCLUDED
-#define GOBELIJN_QUAD_ADAPTIVEQUADRATURE_H_INCLUDED
+#pragma once
 /**
  * @file
  * The AdaptiveQuadrature template.
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
-#include "quad/AQ_Util.h"
-#include "quad/CellCountViolation.h"
-#include "quad/Convergence.h"
+
+#include "AQ_Util.h"
+#include "CellCountViolation.h"
+#include "Convergence.h"
+
 #include <cmath>
 #include <exception>
 #include <iostream>
@@ -289,7 +290,6 @@ operator()(typename Integrand::argument_type l, typename Integrand::argument_typ
         return std::get<2>(evaluate(l, r, ftor));
 }
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

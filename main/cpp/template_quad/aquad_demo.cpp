@@ -4,7 +4,8 @@
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
-#include "quad/quad.h"
+
+#include "quad.h"
 #include <iomanip>
 
 using std::boolalpha;

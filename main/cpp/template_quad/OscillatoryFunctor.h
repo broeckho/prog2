@@ -1,12 +1,13 @@
-#ifndef GOBELIJN_QUAD_OSCILLATORYFUNCTOR_H
-#define GOBELIJN_QUAD_OSCILLATORYFUNCTOR_H
+#pragma once
 /**
  * @file
  * Oscillatory functor.
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 201.
  */
-#include "quad/AQ_Util.h"
+
+#include "AQ_Util.h"
+
 #include <cmath>
 #include <functional>
 
@@ -62,7 +63,6 @@ private:
         Integral fIntegral;
 };
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

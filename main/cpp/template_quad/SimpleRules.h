@@ -1,12 +1,12 @@
-#ifndef GOBELIJN_QUAD_SIMPLERULES_H_INCLUDED
-#define GOBELIJN_QUAD_SIMPLERULES_H_INCLUDED
+#pragma once
 /**
  * @file
  * Elementary Quadrature Rules.
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
-#include "quad/AQ_Util.h"
+
+#include "AQ_Util.h"
 
 namespace UA_CoMP {
 namespace Num {
@@ -40,7 +40,5 @@ public:
         }
 };
 
-} // end-of-namespace Num
-} // end-of-namespace-UA_CoMP
-
-#endif // end-of-include-guard
+} // end-of-namespace
+} // end-of-namespace

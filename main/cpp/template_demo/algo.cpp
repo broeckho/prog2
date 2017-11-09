@@ -19,6 +19,7 @@
 
 #include "RandInt.h"
 
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <list>
@@ -193,8 +194,8 @@ int main() {
                 std::list<int> v(15);
                 SimpleRandInit(v);
                 cout << v << endl;
-                auto it1 = find(v.begin(), v.end(), 6);
-                auto it2 = find(it1, v.end(), 14);
+                auto it1 = find(v.cbegin(), v.cend(), 6);
+                auto it2 = find(it1, v.cend(), 14);
                 auto it3 = find(it1, it2, 13);
                 cout << (it3 != it2) << endl;
         }

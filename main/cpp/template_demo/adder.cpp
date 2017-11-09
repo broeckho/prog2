@@ -26,7 +26,6 @@ template <typename T>
 T Adder(T v)
 {
         cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
-
         return v;
 }
 
@@ -35,7 +34,6 @@ template <typename T, typename... Args>
 T Adder(T first, Args... args)
 {
         cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
-
         return first + Adder(args...);
 }
 
