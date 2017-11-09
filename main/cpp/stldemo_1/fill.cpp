@@ -21,7 +21,6 @@
 #include "../stldemo_1/RandInt.h"
 #include "../stldemo_1/Range.h"
 #include <algorithm>
-#include <vector>
 
 int main()
 {

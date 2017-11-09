@@ -22,7 +22,6 @@
 #include "../stldemo_1/Range.h"
 #include <algorithm>
 #include <list>
-#include <vector>
 
 namespace {
 
@@ -54,7 +53,7 @@ int main()
 {
         std::vector<int> v(8);
         std::list<int> l(8);
-        generate(v.begin(), v.end(), RandInt(3, v.size()));
+        generate(v.begin(), v.end(), RandInt(3, static_cast<int>(v.size())));
 
         // Out of place transform
         transform(v.begin(), v.end(), l.begin(), Incrementor(2));

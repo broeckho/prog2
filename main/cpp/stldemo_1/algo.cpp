@@ -23,7 +23,7 @@
 #include <iostream>
 #include <list>
 #include <map>
-#include <vector>
+#include <random>
 
 using std::cout;
 using std::endl;
@@ -32,14 +32,13 @@ using std::exception;
 
 namespace {
 
-/** Initialize a container with random ints. */
+/** Initialize a container with random ints in [1, 100]. */
 template <typename C>
-void SimpleRandInit(C& c, unsigned int seed)
+void SimpleRandInit(C& c)
 {
-        std::srand(seed);
-        typename C::size_type size = c.size();
+        RandInt r(1, 100);
         for (auto it = c.begin(); it != c.end(); ++it) {
-                *it = static_cast<typename C::value_type>(rand() % size);
+                *it = r();
         }
 }
 
@@ -172,14 +171,14 @@ int main() {
         {
                 cout << marker << "simpleRandInit for vector of 10 int:" << endl;
                 std::vector<double> v(10);
-                SimpleRandInit(v, 3);
+                SimpleRandInit(v);
                 cout << v << endl << "sum: " << Sum(v) << endl;
         }
         // block 2
         {
                 cout << marker << "bin processes list of 15 int:" << endl;
                 std::list<int> v(15);
-                SimpleRandInit(v, 7);
+                SimpleRandInit(v);
                 cout << v << endl << "sum: " << Sum(v.cbegin(), v.cend()) << endl << Bin(v) << endl;
         }
         // block 3
@@ -193,7 +192,7 @@ int main() {
         {
                 cout << marker << "find in list of 15 int:" << endl;
                 std::list<int> v(15);
-                SimpleRandInit(v, 7);
+                SimpleRandInit(v);
                 cout << v << endl;
                 auto it1 = find(v.begin(), v.end(), 6);
                 auto it2 = find(it1, v.end(), 14);

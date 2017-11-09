@@ -17,7 +17,7 @@
 #============================================================================
 # Build / install / smoke test:
 #============================================================================
-foreach( EXEC	algo bisect fill1 fill2 find freq sum1 sum2 trans )
+foreach( EXEC	algo bisect fill find freq sum1 sum2 trans )
 
 	add_executable( ${EXEC}	${EXEC}.cpp )
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )

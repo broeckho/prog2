@@ -27,7 +27,7 @@
 int main()
 {
         std::list<int> c(15);
-        RandInt r(7, c.size());
+        RandInt r(7, static_cast<int>(c.size()));
         std::generate(c.begin(), c.end(), r);
         std::cout << make_range(c) << std::endl;
         auto it1 = find(c.begin(), c.end(), 14);

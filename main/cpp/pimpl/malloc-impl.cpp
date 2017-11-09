@@ -18,6 +18,7 @@
  */
 
 #include "memory-pool.h"
+#include <cstdlib>
 #include <vector>
 
 namespace Pimpl {

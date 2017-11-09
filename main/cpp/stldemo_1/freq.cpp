@@ -22,7 +22,6 @@
 #include "../stldemo_1/Range.h"
 #include <algorithm>
 #include <map>
-#include <vector>
 
 template <typename It>
 std::map<typename It::value_type, unsigned int> freq(It first, It last)

@@ -21,6 +21,7 @@
 
 // BEGIN_SNIPPET{FullSource}
 #include <cstdlib>
+#include <random>
 
 /**
  * Produce random integer (int) values.
@@ -29,13 +30,19 @@ class RandInt
 {
 public:
         /// Initialize seed and ranfe of generator.
-        RandInt(unsigned int seed, unsigned long range) : m_seed(seed), m_range(range) { std::srand(m_seed); }
+        RandInt(unsigned int a, unsigned int b)
+        {
+                std::random_device rd;
+                m_mt = std::mt19937(rd());
+                m_dist = std::uniform_int_distribution<int>(a, b);
+        }
+
         /// return random int within  range.
-        int operator()() { return rand() % m_range; }
+        int operator()() { return m_dist(m_mt); }
 
 private:
-        int m_seed;
-        unsigned long m_range;
+        std::mt19937 m_mt;
+        std::uniform_int_distribution<int> m_dist;
 };
 // END_SNIPPET{FullSource}
 
