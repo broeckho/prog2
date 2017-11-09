@@ -39,13 +39,6 @@ add_executable(call-operator
 		    call-operator/polynomial.cpp
 )
 
-add_executable(friend-function-factory 
-		    friend-function-factory/main.cpp 
-		    friend-function-factory/Factory.cpp 
-		    friend-function-factory/Factory.h 
-		    friend-function-factory/Object.h
-)
-
 add_executable(functor-info 
             functor-info/distance.cpp 
             functor-info/main.cpp
@@ -56,7 +49,6 @@ add_executable(functor-lambda lambda-functor/main.cpp)
 target_compile_options(functor-lambda PUBLIC "-DUSE_FUNCTOR")
 
 foreach( EXEC	call-operator
-                friend-function-factory
                 functor-info
                 lambda-functor
                 functor-lambda )

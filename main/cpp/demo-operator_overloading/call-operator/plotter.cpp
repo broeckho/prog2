@@ -1,8 +1,6 @@
 #include "../../demo-operator_overloading/call-operator/plotter.h"
 
 #include <cmath>
-#include <cstddef>
-#include <limits>
 #include <string>
 #include <vector>
 

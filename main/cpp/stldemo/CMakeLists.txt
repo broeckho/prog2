@@ -10,23 +10,21 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2016, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2012, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
 
 #============================================================================
 # Build / install / smoke test:
 #============================================================================
-foreach( EXEC	adder tuple_printer )
+foreach(EXEC	algo bisect fill find freq sum1 sum2 trans
+				adder tuple_printer)
 
-	add_executable( ${EXEC}	${EXEC}.cpp )
-	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
-	add_test( NAME ${EXEC}
-			COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}> )
+	add_executable(${EXEC}	${EXEC}.cpp)
+	install(TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION})
+	add_test(NAME ${EXEC}
+			COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}>)
 					
 endforeach()
 
 #############################################################################
-
-
-

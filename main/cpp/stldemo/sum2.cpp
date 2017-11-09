@@ -14,26 +14,36 @@
  */
 /**
  * @file
- * Demo for find algorithm & ranges.
+ * Sum the elements of container, using STL.
  */
 
 // BEGIN_SNIPPET{FullSource}
-#include "../stldemo_1/RandInt.h"
-#include "../stldemo_1/Range.h"
-#include <algorithm>
-#include <iomanip>
-#include <list>
+#include "Range.h"
+#include <vector>
+
+template <typename T>
+class Accumulator
+{
+public:
+        explicit Accumulator(T t = T()) : fAccumulator(t) {}
+
+        T operator()(T t) { return (fAccumulator += t); }
+
+        T operator()() const { return fAccumulator; }
+
+private:
+        T fAccumulator;
+};
 
 int main()
 {
-        std::list<int> c(15);
-        RandInt r(7, static_cast<int>(c.size()));
-        std::generate(c.begin(), c.end(), r);
-        std::cout << make_range(c) << std::endl;
-        auto it1 = find(c.begin(), c.end(), 14);
-        auto it2 = find(it1, c.end(), 13);
-        auto it3 = find(it1, it2, 11);
-        std::cout << std::boolalpha << (it3 != it2) << std::endl;
+        std::vector<int> v(3);
+        Accumulator<int> a;
+        v[0] = 1;
+        v[1] = 2;
+        v[2] = 3;
+        a = std::for_each(v.begin(), v.end(), a);
+        std::cout << make_range(v) << " sum: " << a() << std::endl;
         return 0;
 }
 // END_SNIPPET{FullSource}

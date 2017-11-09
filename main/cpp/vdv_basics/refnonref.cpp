@@ -5,7 +5,6 @@
  */
 
 #include <iostream>
-#include <typeinfo>
 
 template <typename T>
 void ref(T const& x)

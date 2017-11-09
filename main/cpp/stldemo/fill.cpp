@@ -18,9 +18,8 @@
  */
 
 // BEGIN_SNIPPET{FullSource}
-#include "../stldemo_1/RandInt.h"
-#include "../stldemo_1/Range.h"
-#include <algorithm>
+#include "RandInt.h"
+#include "Range.h"
 
 int main()
 {

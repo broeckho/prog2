@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <stack>
-#include <typeinfo>
 #include <vector>
 
 template <typename T>

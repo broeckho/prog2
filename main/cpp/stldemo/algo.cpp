@@ -17,13 +17,12 @@
  * Demo for generic programming.
  */
 
-#include "../stldemo_1/RandInt.h"
-#include <algorithm>
+#include "RandInt.h"
+
 #include <iomanip>
 #include <iostream>
 #include <list>
 #include <map>
-#include <random>
 
 using std::cout;
 using std::endl;

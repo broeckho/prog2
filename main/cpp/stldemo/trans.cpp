@@ -18,16 +18,14 @@
  */
 
 // BEGIN_SNIPPET{FullSource}
-#include "../stldemo_1/RandInt.h"
-#include "../stldemo_1/Range.h"
-#include <algorithm>
+#include "RandInt.h"
+#include "Range.h"
 #include <list>
 
 namespace {
 
 /**
- * Dummy functor for demo on using the
- * STL transform algorithm.
+ * Dummy functor for demo on using the STL transform algorithm.
  */
 class Incrementor
 {
@@ -56,11 +54,12 @@ int main()
         generate(v.begin(), v.end(), RandInt(3, static_cast<int>(v.size())));
 
         // Out of place transform
-        transform(v.begin(), v.end(), l.begin(), Incrementor(2));
+        Incrementor incr(2);
+        transform(v.begin(), v.end(), l.begin(), incr);
         std::cout << make_range(v) << std::endl << make_range(l) << std::endl;
 
         // In place transform
-        transform(v.begin(), v.end(), v.begin(), Incrementor(5));
+        transform(v.begin(), v.end(), v.begin(), incr);
         std::cout << make_range(v) << std::endl;
 
         return 0;
