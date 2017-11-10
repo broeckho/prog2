@@ -78,6 +78,7 @@ int main(int argc, char* argv[])
                 f_reg["app_essentialops"] = app_essentialops;
                 f_reg["app_fcalls"] = app_fcalls;
                 f_reg["app_hierarchies"] = app_hierarchies;
+                f_reg["app_poly1"] = app_poly1;
                 f_reg["app_poly2"] = app_poly2;
 
                 //----------------------------------------------------------------------

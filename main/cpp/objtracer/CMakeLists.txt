@@ -38,11 +38,8 @@ install( TARGETS ${LIB} LIBRARY
                 DESTINATION 	${LIB_INSTALL_LOCATION}
                 PERMISSIONS 	OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ )	 
 install( FILES 
-		Bicycle.h demobj.h Engine.h
-		LandVehicle.h Motorcycle.h 
-		PassengerRoadVehicle.h
-		Person.h RoadVehicle.h SailBoat.h Vehicle.h 
-		WaterVehicle.h Wheel.h
+		Bicycle.h demobj.h Engine.h LandVehicle.h Motorcycle.h PassengerRoadVehicle.h
+		Person.h RoadVehicle.h SailBoat.h Vehicle.h WaterVehicle.h Wheel.h
                 DESTINATION 	${INCLUDE_INSTALL_LOCATION}/objtracer
                 PERMISSIONS 	OWNER_READ GROUP_READ WORLD_READ )
 #---------------------
@@ -55,7 +52,7 @@ unset( LIB )
 set( EXEC	app_exec )
 set( SRC
 		${EXEC}.cpp app_fcalls.cpp app_essentialops.cpp
-		app_copy.cpp app_hierarchies.cpp app_poly2.cpp
+		app_copy.cpp app_hierarchies.cpp app_poly1.cpp app_poly2.cpp
 )
 #---------------------
 include_directories( ${LOG_SRC} )
@@ -65,7 +62,7 @@ target_link_libraries( ${EXEC} demobj tracer ${G3LOG_LIBRARIES}  )
 #---------------------
 install( TARGETS ${EXEC} RUNTIME DESTINATION 	${BIN_INSTALL_LOCATION} )
 #------------------------
-set( PROJECTS     app_fcalls app_essential_ops app_copy app_hierarchies app_poly2 )
+set( PROJECTS     app_fcalls app_essential_ops app_copy app_hierarchies app_poly1 app_poly2 )
 foreach (PROJ ${PROJECTS} )
 
 		add_test( NAME  app_exec_${PROJ}
