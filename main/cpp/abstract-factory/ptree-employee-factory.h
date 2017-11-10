@@ -46,8 +46,6 @@ public:
         static constexpr const char* EmployeeDepartmentNameKey = "DepartmentName";
 
         /// The Boost property tree key for the employees' salaries.
-
-        ///
         static constexpr const char* EmployeeSalaryKey = "Salary";
 
 private:

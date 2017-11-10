@@ -13,7 +13,9 @@ template <typename T, typename Policy = SumPolicy, typename Traits = Accumulatio
 class Accum
 {
 public:
-        typedef typename Traits::type AccT;
+        using AccT = typename Traits::type;
+
+public:
         static AccT accum(T const* beg, T const* end)
         {
                 AccT total = Traits::zero();

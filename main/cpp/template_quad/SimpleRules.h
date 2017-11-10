@@ -31,11 +31,11 @@ public:
         template <class Ftor>
         static typename Ftor::result_type sum(typename Ftor::argument_type l, typename Ftor::argument_type d, Ftor f)
         {
-                typedef typename StripConstRef<typename Ftor::argument_type>::type Arg;
-                typedef typename StripConstRef<typename Ftor::result_type>::type Res;
+                using Arg = typename StripConstRef<typename Ftor::argument_type>::type;
+                using Res = typename StripConstRef<typename Ftor::result_type>::type;
 
-                Arg const h = static_cast<Arg>(0.5) * d;
-                Arg const r = l + d;
+                const Arg h {static_cast<Arg>(0.5) * d};
+                const Arg r {l + d};
                 return static_cast<Res>(0.333333333333333) * h * (f(l) + static_cast<Res>(4.0) * f(l + h) + f(r));
         }
 };

@@ -1,16 +1,15 @@
-#ifndef GOBELIJN_QUAD_CELLCOUNTVIOLATION_H_INCLUDED
-#define GOBELIJN_QUAD_CELLCOUNTVIOLATION_H_INCLUDED
+#pragma once
 /**
  * @file
  * Predefined policies for handling a cell count violation.
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
+
 #include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <stdexcept>
-//#include "util/Exception.h"
 
 namespace UA_CoMP {
 namespace Num {
@@ -57,7 +56,6 @@ public:
         }
 };
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

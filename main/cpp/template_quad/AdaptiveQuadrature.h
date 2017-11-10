@@ -46,7 +46,7 @@ public:
         static typename Ftor::result_type sum(typename Ftor::argument_type l, typename Ftor::argument_type d,
                                               Ftor const& f)
         {
-                typedef typename UA_CoMP::Num::StripConstRef<typename Ftor::argument_type>::type Arg;
+                using Arg = typename UA_CoMP::Num::StripConstRef<typename Ftor::argument_type>::type;
 
                 Arg const h = static_cast<Arg>(0.5) * d;
                 Arg const m = l + h;
@@ -128,8 +128,8 @@ class AdaptiveQuadrature : public AQRule1<QuadRule1>,
                            public CellCountPolicy
 {
 public:
-        typedef AQRule1<QuadRule1> first_rule;
-        typedef AQRule2<QuadRule2> second_rule;
+        using first_rule = AQRule1<QuadRule1>;
+        using second_rule = AQRule2<QuadRule2>;
 
         /**
         * Constructor initializes everything.
@@ -209,8 +209,8 @@ AdaptiveQuadrature<QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy>::ev
         using std::pair;
         using std::make_pair;
 
-        typedef typename StripConstRef<typename Integrand::argument_type>::type Arg;
-        typedef typename StripConstRef<typename Integrand::result_type>::type Res;
+        using Arg = typename StripConstRef<typename Integrand::argument_type>::type;
+        using Res = typename StripConstRef<typename Integrand::result_type>::type;
 
         // Stack of integration cells with each cell (left endpoint, size)
         stack<pair<Arg, Arg>> divStack;

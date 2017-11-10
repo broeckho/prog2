@@ -28,8 +28,7 @@ namespace AbstractFactory {
 Employee StdinEmployeeFactory::Create()
 {
         // Use standard input to create the Employee instance.
-        // Print some values to stdout to make sure the user knows
-        // what is expected of them.
+        // Print some values to stdout to make sure the user knows what is expected of them.
         Employee result;
         std::cout << "Hi, there. What's your name?" << std::endl;
         std::getline(std::cin, result.Name);

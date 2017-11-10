@@ -9,23 +9,34 @@
 #include <stdexcept>
 #include <vector>
 
+
+/// Stack class using vector as element container.
+/// \tparam T           Template param for element type.
+/// \tparam CONT        Container type fo stack elements.
 template <typename T, typename CONT = std::vector<T>>
 class Stack
 {
 public:
-        void push(T const&);
-        void pop();
-        T top() const;
+        /// Check whether stack is empty.
+        /// \return     True iff empty.
         bool empty() const { return elems.empty(); }
+
+        /// Pop element off the stack.
+        void pop();
+
+        /// Pushes element onto stack.
+        /// \param e    Element to be pushed onto stack.
+        void push(const T& e);
+
+        /// Return top element of the stack (but not pop-ing it).
+        /// \return     Top element of the stack.
+        T top() const;
+
 private:
-        CONT elems;
+        CONT elems;     ///< Container for the stack elements.
 };
 
-template <typename T, typename CONT>
-void Stack<T, CONT>::push(T const& elem)
-{
-        elems.push_back(elem);
-}
+// -------------------- Implementations ----------------------------------------
 
 template <typename T, typename CONT>
 void Stack<T, CONT>::pop()
@@ -34,6 +45,12 @@ void Stack<T, CONT>::pop()
                 throw std::out_of_range("pop(): empty stack");
         }
         elems.pop_back();
+}
+
+template <typename T, typename CONT>
+void Stack<T, CONT>::push(const T& elem)
+{
+        elems.push_back(elem);
 }
 
 template <typename T, typename CONT>

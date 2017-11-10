@@ -8,9 +8,9 @@
 #include "accumtraits2.hpp"
 
 template <typename T>
-inline typename AccumulationTraits<T>::AccT accum(T const* beg, T const* end)
+inline typename AccumulationTraits<T>::type accum(const T* beg, const T* end)
 {
-        typedef typename AccumulationTraits<T>::AccT AccT;
+        using AccT = typename AccumulationTraits<T>::type;
 
         AccT total = AccT();
         while (beg != end) {
@@ -19,4 +19,3 @@ inline typename AccumulationTraits<T>::AccT accum(T const* beg, T const* end)
         }
         return total;
 }
-

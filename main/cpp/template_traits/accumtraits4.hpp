@@ -42,4 +42,3 @@ struct AccumulationTraits<float>
         using type = double;
         static constexpr type zero() { return 0; }
 };
-

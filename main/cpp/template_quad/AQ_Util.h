@@ -1,5 +1,4 @@
-#ifndef GOBELIJN_QUAD_AQ_UTIL_H_INCLUDED
-#define GOBELIJN_QUAD_AQ_UTIL_H_INCLUDED
+#pragma once
 /**
  * @file
  * Utilities for the implementation of the Adaptive Quadrature.
@@ -16,10 +15,9 @@ template <typename T>
 class StripConstRef
 {
 public:
-        typedef typename std::remove_cv<typename std::remove_reference<T>::type>::type type;
+        using type = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
 };
 
-} // end-of-namespace Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

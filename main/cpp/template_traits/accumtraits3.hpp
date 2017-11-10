@@ -12,23 +12,23 @@ template <>
 class AccumulationTraits<char>
 {
 public:
-        typedef int AccT;
-        static AccT const zero = 0;
+        using type = int;
+        static const type value = 0;
 };
 
 template <>
 class AccumulationTraits<short>
 {
 public:
-        typedef int AccT;
-        static AccT const zero = 0;
+        using type = int;
+        static const type value = 0;
 };
 
 template <>
 class AccumulationTraits<int>
 {
 public:
-        using AccT = long;
-        static AccT constexpr zero = 0;
+        using type = long;
+        static constexpr type value = 0;
 };
 

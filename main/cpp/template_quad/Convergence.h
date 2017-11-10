@@ -1,5 +1,4 @@
-#ifndef GOBELIJN_QUAD_CONVERGENCE_H_INCLUDED
-#define GOBELIJN_QUAD_CONVERGENCE_H_INCLUDED
+#pragma once
 /**
  * @file
  * Predefined convergence policies for the AdaptiveQuadrature template.
@@ -35,7 +34,6 @@ public:
         }
 };
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

@@ -1,5 +1,4 @@
-#ifndef INC_BASICS_MAX_HPP
-#define INC_BASICS_MAX_HPP
+#pragma once
 /**
  * @file.
  * Template function returns maximum.
@@ -14,4 +13,3 @@ inline T const& max(T const& a, T const& b)
 }
 // END_SNIPPET{FullSource}
 
-#endif // INC_BASICS_MAX_HPP

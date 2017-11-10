@@ -8,11 +8,11 @@
 #include "accumtraits3.hpp"
 
 template <typename T>
-inline typename AccumulationTraits<T>::AccT accum(T const* beg, T const* end)
+inline typename AccumulationTraits<T>::type accum(T const* beg, T const* end)
 {
-        using AccT = typename AccumulationTraits<T>::AccT;
+        using AccT = typename AccumulationTraits<T>::type;
 
-        AccT total = AccumulationTraits<T>::zero;
+        AccT total = AccumulationTraits<T>::value;
         while (beg != end) {
                 total += *beg;
                 ++beg;

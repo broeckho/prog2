@@ -1,5 +1,4 @@
-#ifndef GOBELIJN_QUAD_INTEGRAL_H_INCLUDED
-#define GOBELIJN_QUAD_INTEGRAL_H_INCLUDED
+#pragma once
 /**
  * @file
  * The Integral wrapper template.
@@ -21,8 +20,6 @@ class Integral : public std::binary_function<typename Integrand::argument_type, 
                                              typename Integrand::result_type>
 {
 public:
-        // Implicit essential operators OK for now.
-
         /**
          * Constructor initializes all datamembers.
          * @param       quad        Quadrature algorithm that computes the integral.
@@ -43,8 +40,6 @@ public:
         }
 
 private:
-        // Integral(Integral const&);
-        // Integral& operator=(Integral const&);
         QuadAlgorithm fQuadAlgorithm;
         Integrand fIntegrand;
 };
@@ -59,7 +54,6 @@ inline Integral<QuadAlgorithm, Integrand> make_integral(QuadAlgorithm const& qua
         return Integral<QuadAlgorithm, Integrand>(quad, ftor);
 }
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

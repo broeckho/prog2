@@ -5,15 +5,37 @@
  * @author J. Broeckhove - see copyright.txt
  */
 
-#include "stack7decl.hpp"
 #include <deque>
 #include <stdexcept>
 
-template <typename T, typename ALLOC, template <typename, typename> class CONT>
-void Stack<T, ALLOC, CONT>::push(T const& elem)
+/// Stack template.
+/// \tparam T           Template param for element.
+/// \tparam ALLOC       Allocator for the stack container.
+/// \tparam CONT        Template param for container for elements.
+template <typename T, typename ALLOC = std::allocator<T>, template <typename, typename> class CONT = std::deque>
+class Stack
 {
-        elems.push_back(elem);
-}
+public:
+        /// Check whether stack is empty.
+        /// \return     True iff empty.
+        bool empty() const { return elems.empty(); }
+
+        /// Pop element off the stack.
+        void pop();
+
+        /// Pushes element onto stack.
+        /// \param e    Element to be pushed onto stack.
+        void push(const T& e);
+
+        /// Return top element of the stack (but not pop-ing it).
+        /// \return     Top element of the stack.
+        T top() const;
+
+private:
+        CONT<T, ALLOC> elems;           ///< Container for the stack elements.
+};
+
+// -------------------- Implementations ----------------------------------------
 
 template <typename T, typename ALLOC, template <typename, typename> class CONT>
 void Stack<T, ALLOC, CONT>::pop()
@@ -22,6 +44,12 @@ void Stack<T, ALLOC, CONT>::pop()
                 throw std::out_of_range("Stack<>::pop(): empty stack");
         }
         elems.pop_back();
+}
+
+template <typename T, typename ALLOC, template <typename, typename> class CONT>
+void Stack<T, ALLOC, CONT>::push(T const& elem)
+{
+        elems.push_back(elem);
 }
 
 template <typename T, typename ALLOC, template <typename, typename> class CONT>

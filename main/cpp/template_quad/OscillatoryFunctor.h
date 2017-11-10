@@ -24,8 +24,8 @@ using std::cos;
 class OscillatoryFunctor : public std::unary_function<double, double>
 {
 public:
-        typedef argument_type Arg;
-        typedef result_type Res;
+        using Arg = argument_type;
+        using Res = result_type;
 
         /** Nested class contains the analytic integral of the functor for testing
          * purposes. */

@@ -1,5 +1,4 @@
-#ifndef INC_ABSDIFF_H
-#define INC_ABSDIFF_H
+#pragma once
 /**
  * @file
  * Utilities.
@@ -13,7 +12,6 @@ namespace Num {
 
 double abs_diff(double b, double e, double h, std::function<double(double)> f1, std::function<double(double)> f2);
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end-of-include-guard

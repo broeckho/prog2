@@ -12,34 +12,34 @@ template <>
 class AccumulationTraits<char>
 {
 public:
-        typedef int AccT;
+        using type = int;
 };
 
 template <>
 class AccumulationTraits<short>
 {
 public:
-        typedef int AccT;
+        using type = int;
 };
 
 template <>
 class AccumulationTraits<int>
 {
 public:
-        typedef long AccT;
+        using type = long;
 };
 
 template <>
 class AccumulationTraits<unsigned int>
 {
 public:
-        typedef unsigned long AccT;
+        using type = unsigned long;
 };
 
 template <>
 class AccumulationTraits<float>
 {
 public:
-        typedef double AccT;
+        using type = double;
 };
 

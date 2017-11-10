@@ -22,6 +22,7 @@
 #include "factory.h"
 
 namespace AbstractFactory {
+
 /**
  * An employee factory implementation that uses standard input to construct
  * employee instances.
@@ -32,4 +33,5 @@ public:
         /// Instructs this factory to create a value.
         Employee Create() final;
 };
+
 }

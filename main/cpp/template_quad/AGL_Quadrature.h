@@ -22,53 +22,53 @@ class GaussLegendreSelect
 };
 
 /**
- * Specialization to select GauusLegendre2Rule.
+ * Specialization to select GauusLegendre2 Rule.
  */
 template <>
 class GaussLegendreSelect<2>
 {
 public:
-        typedef GaussLegendre2Rule Rule;
+        using Rule =  GaussLegendre2Rule;
 };
 
 /**
- * Specialization to select GauusLegendre4Rule.
+ * Specialization to select GauusLegendre4 Rule.
  */
 template <>
 class GaussLegendreSelect<4>
 {
 public:
-        typedef GaussLegendre2Rule Rule;
+        using Rule =  GaussLegendre2Rule;
 };
 
 /**
- * Specialization to select GauusLegendre8Rule.
+ * Specialization to select GauusLegendre8 Rule.
  */
 template <>
 class GaussLegendreSelect<8>
 {
 public:
-        typedef GaussLegendre8Rule Rule;
+        using Rule =  GaussLegendre8Rule;
 };
 
 /**
- * Specialization to select GauusLegendre16Rule.
+ * Specialization to select GauusLegendre16 Rule.
  */
 template <>
 class GaussLegendreSelect<16>
 {
 public:
-        typedef GaussLegendre16Rule Rule;
+        using Rule =  GaussLegendre16Rule;
 };
 
 /**
- * Specialization to select GauusLegendre32Rule.
+ * Specialization to select GauusLegendre32 Rule.
  */
 template <>
 class GaussLegendreSelect<32>
 {
 public:
-        typedef GaussLegendre32Rule Rule;
+        using Rule =  GaussLegendre32Rule;
 };
 
 /**

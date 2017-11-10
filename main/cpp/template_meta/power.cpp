@@ -24,14 +24,14 @@
 template <int N>
 struct power
 {
-        static int constexpr value = 2 * power<N - 1>::value;
+        static constexpr int value = 2 * power<N - 1>::value;
 };
 
 /** Ends recursive instantiation */
 template <>
 struct power<0>
 {
-        static int constexpr value = 1;
+        static constexpr int value = 1;
 };
 
 int main()

@@ -20,17 +20,18 @@
 #include "ptree-employee-factory.h"
 
 namespace AbstractFactory {
+
 /**
  * Instructs this factory to create a value.
  */
 Employee PtreeEmployeeFactory::Create()
 {
-        // Grab some values from the ptree, and use them to build an Employee
-        // instance.
+        // Grab some values from the ptree, and use them to build an Employee instance.
         Employee result;
         result.Name = m_ptree.get_child(EmployeeNameKey).get_value<std::string>();
         result.DepartmentName = m_ptree.get_child(EmployeeDepartmentNameKey).get_value<std::string>();
         result.Salary = m_ptree.get_child(EmployeeSalaryKey).get_value<double>();
         return result;
 }
+
 }

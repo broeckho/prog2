@@ -1,5 +1,4 @@
-#ifndef INC_BASICS_STACK1_HPP
-#define INC_BASICS_STACK1_HPP
+#pragma once
 /**
  * @file.
  * Stack class template.
@@ -10,24 +9,32 @@
 #include <stdexcept>
 #include <vector>
 
+/// Stack class using vector as element container.
+/// \tparam T   Template param for element type.
 template <typename T>
 class Stack
 {
-private:
-        std::vector<T> elems;
-
 public:
-        void push(T const&);
-        void pop();
-        T top() const;
+        /// Check whether stack is empty.
+        /// \return     True iff empty.
         bool empty() const { return elems.empty(); }
+
+        /// Pop element off the stack.
+        void pop();
+
+        /// Pushes element onto stack.
+        /// \param e    Element to be pushed onto stack.
+        void push(const T& e);
+
+        /// Return top element of the stack (but not pop-ing it).
+        /// \return     Top element of the stack.
+        T top() const;
+
+private:
+        std::vector<T> elems;   ///< Container for the stack elements.
 };
 
-template <typename T>
-void Stack<T>::push(T const& elem)
-{
-        elems.push_back(elem);
-}
+// -------------------- Implementations ----------------------------------------
 
 template <typename T>
 void Stack<T>::pop()
@@ -36,6 +43,12 @@ void Stack<T>::pop()
                 throw std::out_of_range("pop(): empty stack");
         }
         elems.pop_back();
+}
+
+template <typename T>
+void Stack<T>::push(T const& elem)
+{
+        elems.push_back(elem);
 }
 
 template <typename T>
@@ -48,4 +61,3 @@ T Stack<T>::top() const
 }
 // END_SNIPPET{FullSource}
 
-#endif // INC_BASICS_STACK1_HPP

@@ -4,6 +4,7 @@
  * @author  Jan Broeckhove, CoMP/UA
  * @remark (c) Jan Broeckhove, 2011.
  */
+
 #include "abs_diff.h"
 #include <cmath>
 
@@ -27,5 +28,5 @@ double abs_diff(double b, double e, double h, function<double(double)> f1, funct
         return maxDiff;
 }
 
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // end-of-namespace
+} // end-of-namespace

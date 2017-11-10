@@ -16,6 +16,13 @@
  * @file
  * Varyadic template adder.
  */
+/// Macro to take advantage of PRETTY_FUNCTION over plain FUNCTION with gcc.
+#if defined(__GNUC__)
+#define COMP_MISC_FUNCTION_NAME __PRETTY_FUNCTION__
+#else
+#define COMP_MISC_FUNCTION_NAME __FUNCTION__
+#endif
+
 
 #include <iostream>
 
@@ -25,7 +32,7 @@ using namespace std;
 template <typename T>
 T Adder(T v)
 {
-        cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
+        cout << "\n\t ----> \n\t " << COMP_MISC_FUNCTION_NAME << "\n\t <----- \n" << endl;
         return v;
 }
 
@@ -33,7 +40,7 @@ T Adder(T v)
 template <typename T, typename... Args>
 T Adder(T first, Args... args)
 {
-        cout << "\n\t ----> \n\t " << __PRETTY_FUNCTION__ << "\n\t <----- \n" << endl;
+        cout << "\n\t ----> \n\t " << COMP_MISC_FUNCTION_NAME << "\n\t <----- \n" << endl;
         return first + Adder(args...);
 }
 
