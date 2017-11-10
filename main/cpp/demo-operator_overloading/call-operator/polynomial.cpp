@@ -1,4 +1,4 @@
-#include "../../demo-operator_overloading/call-operator/polynomial.h"
+#include "polynomial.h"
 
 template <typename T>
 T Polynomial<T>::operator()(const T& x)

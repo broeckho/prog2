@@ -21,9 +21,7 @@ foreach( EXEC	friend-input-operator
                 functor-state
                 lambda-by-reference 
                 lambda-by-value
-                lambda-functor
-                lambda-set  
-                overloading-member-vs-non-member)
+                lambda-functor)
 
 	add_executable( ${EXEC}	${EXEC}.cpp )
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )

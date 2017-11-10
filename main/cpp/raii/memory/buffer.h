@@ -58,20 +58,18 @@ public:
         /// Gets the buffer's size, in bytes.
         size_t GetSize() const { return m_bufSize; }
 
-        /// Indexes this byte buffer with the given value. AReturns reference to
-        /// mutable char.
+        /// Indexed access. Returns reference to mutable char.
         char& operator[](size_t i) { return m_data[i]; }
 
-        /// Indexes this byte buffer with the given value. Returns reference to a
-        /// constant char.
+        /// Indexed access. Returns reference to a constant char.
         const char& operator[](size_t i) const { return m_data[i]; }
 
 private:
         /// Stores the size of this buffer's memory block.
-        size_t m_bufSize;
+        size_t     m_bufSize;
 
         /// Stores a pointer to this buffer's memory block.
-        char* m_data;
+        char*      m_data;
 };
 
 } // end of namespace

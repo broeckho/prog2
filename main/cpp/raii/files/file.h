@@ -1,3 +1,4 @@
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -16,27 +17,17 @@
  * @file.
  * RAII File class.
  */
-#pragma once
+
 #include <cstdio>
 #include <string>
 
 namespace Raii {
 
-class FileError
-{
-};
-class OpenError : public FileError
-{
-};
-class CloseError : public FileError
-{
-};
-class ReadError : public FileError
-{
-};
-class WriteError : public FileError
-{
-};
+class FileError {};
+class OpenError : public FileError {};
+class CloseError : public FileError {};
+class ReadError : public FileError {};
+class WriteError : public FileError {};
 
 /**
  * A wrapper around the C FILE*-based IO API.
@@ -93,6 +84,17 @@ public:
         }
 
         /**
+         * Closes this file resource. An exception is thrown if this
+         * file cannot be closed properly. Successfully closing a file
+         * more than once is a no-op.
+         */
+        void Close()
+        {
+                if (!CloseImpl())
+                        throw CloseError();
+        }
+
+        /**
          * Checks if this file is still open.
          */
         bool IsOpen() const { return m_file != nullptr; }
@@ -130,17 +132,6 @@ public:
                 if (result == EOF)
                         // File error. Throw.
                         throw WriteError();
-        }
-
-        /**
-         * Closes this file resource. An exception is thrown if this
-         * file cannot be closed properly. Successfully closing a file
-         * more than once is a no-op.
-         */
-        void Close()
-        {
-                if (!CloseImpl())
-                        throw CloseError();
         }
 
 private:
