@@ -29,11 +29,11 @@ add_subdirectory(objtracer)
 add_subdirectory(observer)
 add_subdirectory(pimpl)
 add_subdirectory(raii)
+add_subdirectory(template_basics)
 add_subdirectory(template_demo)
 add_subdirectory(template_meta)
 add_subdirectory(template_quad)
-add_subdirectory(template_vdv_basics)
-add_subdirectory(template_vdv_traits)
+add_subdirectory(template_traits)
 add_subdirectory(tracer)
 
 #############################################################################

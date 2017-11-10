@@ -1,11 +1,10 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
 
-#ifndef INC_TRAITS_ACCUM10_HPP
-#define INC_TRAITS_ACCUM10_HPP
 
 #include <iterator>
 
@@ -22,4 +21,3 @@ inline typename std::iterator_traits<Iter>::value_type accum(Iter start, Iter en
         return total;
 }
 
-#endif // INC_TRAITS_ACCUM10_HPP

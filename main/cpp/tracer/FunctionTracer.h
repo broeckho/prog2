@@ -37,16 +37,19 @@ using std::string;
 class FunctionTracer
 {
 public:
-        /// Constructor inserts message in TrackerOutput about entering a function
-        /// body.
+        /// Constructor inserts message in TrackerOutput about entering a function body.
         explicit FunctionTracer(string const& function_name, LogSeverity severity = TracerOutput::get_severity());
+
+        /// No copy constructor.
+        FunctionTracer(FunctionTracer const&) =delete;
+
+        /// No assignment.
+        FunctionTracer& operator=(FunctionTracer const&) =delete;
 
         /// Destructor inserts message in TracketOutput about leaving funvtion body.
         ~FunctionTracer();
 
 private:
-        FunctionTracer(FunctionTracer const&);
-        FunctionTracer& operator=(FunctionTracer const&);
         std::string const m_function_name;
         LogSeverity const m_severity;
 };

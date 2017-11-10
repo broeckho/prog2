@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_TRAITS_SUMPOLICY1_HPP
-#define INC_TRAITS_SUMPOLICY1_HPP
 
 class SumPolicy
 {
@@ -17,4 +15,3 @@ public:
         }
 };
 
-#endif // INC_TRAITS_SUMPOLICY1_HPP

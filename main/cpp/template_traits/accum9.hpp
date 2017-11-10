@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_TRAITS_ACCUM9_HPP
-#define INC_TRAITS_ACCUM9_HPP
 
 #include "accumtraits4.hpp"
 #include "sumpolicy3.hpp"
@@ -26,4 +24,3 @@ public:
         }
 };
 
-#endif // INC_TRAITS_ACCUM9_HPP

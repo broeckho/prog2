@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_TRAITS_ACCUMTRAITS4_HPP
-#define INC_TRAITS_ACCUMTRAITS4_HPP
 
 template <typename T>
 struct AccumulationTraits;
@@ -45,4 +43,3 @@ struct AccumulationTraits<float>
         static constexpr type zero() { return 0; }
 };
 
-#endif // INC_TRAITS_ACCUMTRAITS4_HPP

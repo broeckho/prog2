@@ -1,5 +1,5 @@
-
-#pragma once/**
+#pragma once
+/**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt

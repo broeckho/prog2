@@ -1,20 +1,18 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
 
-#ifndef ACCUM_HPP
-#define ACCUM_HPP
-
-#include "accumtraits2.hpp"
+#include "accumtraits3.hpp"
 
 template <typename T>
 inline typename AccumulationTraits<T>::AccT accum(T const* beg, T const* end)
 {
-        typedef typename AccumulationTraits<T>::AccT AccT;
+        using AccT = typename AccumulationTraits<T>::AccT;
 
-        AccT total = AccT();
+        AccT total = AccumulationTraits<T>::zero;
         while (beg != end) {
                 total += *beg;
                 ++beg;
@@ -22,4 +20,3 @@ inline typename AccumulationTraits<T>::AccT accum(T const* beg, T const* end)
         return total;
 }
 
-#endif // ACCUM_HPP

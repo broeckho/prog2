@@ -32,12 +32,16 @@ public:
         /// Constructor insert message in TrackerOutput about entering a block.
         explicit BlockTracer(string const& msg, LogSeverity severity = TracerOutput::get_severity());
 
+        /// No copy constructor.
+        BlockTracer(BlockTracer const&) =delete;
+
+        /// No assignment.
+        BlockTracer& operator=(BlockTracer const&) =delete;
+
         /// Destructor inserts message in TrackerOutput about leaving a block.
         ~BlockTracer();
 
 private:
-        BlockTracer(BlockTracer const&);
-        BlockTracer& operator=(BlockTracer const&);
         std::string const m_msg;
         LogSeverity const m_severity;
 };

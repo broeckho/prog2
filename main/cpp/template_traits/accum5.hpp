@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_TRAITS_ACCUM5_HPP
-#define INC_TRAITS_ACCUM5_HPP
 
 #include "accumtraits4.hpp"
 
@@ -24,4 +22,3 @@ public:
         }
 };
 
-#endif // INC_TRAITS_ACCUM5_HPP

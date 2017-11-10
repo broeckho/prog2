@@ -24,9 +24,6 @@
 namespace UA_CoMP {
 namespace Misc {
 
-using std::string;
-// using google::LogSeverity;
-
 /**
  * Class whose constructor/destructor pair are used to mark entering
  * and leaving a member (function) body block.
@@ -43,12 +40,16 @@ public:
         MemberTracer(string const& member_name, void const* object_this,
                      LogSeverity severity = TracerOutput::get_severity());
 
+        /// No copy constructor.
+        MemberTracer(MemberTracer const&) =delete;
+
+        /// No assignment.
+        MemberTracer& operator=(MemberTracer const&) =delete;
+
         /// Destructor inserts message in TrackerOutput about leaving member body.
         ~MemberTracer();
 
 private:
-        MemberTracer(MemberTracer const&);
-        MemberTracer& operator=(MemberTracer const&);
         std::string const m_member_name;
         void const* const m_object_this;
         LogSeverity const m_severity;
