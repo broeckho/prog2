@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  * Demonstrate use of member function templates.
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_BASICS_STACK6DECL_HPP
-#define INC_BASICS_STACK6DECL_HPP
 
 #include <deque>
 
@@ -25,4 +23,3 @@ public:
         Stack<T, CONT>& operator=(Stack<T2, CONT2> const&);
 };
 
-#endif // INC_BASICS_STACK6DECL_HPP

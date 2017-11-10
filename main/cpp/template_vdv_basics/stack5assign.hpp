@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  * Stack assignment operator.
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_BASICS_STACK5ASSIGN_HPP
-#define INC_BASICS_STACK5ASSIGN_HPP
 
 #include "stack5decl.hpp"
 
@@ -26,4 +24,3 @@ Stack<T>& Stack<T>::operator=(Stack<T2> const& op2)
         return *this;
 }
 
-#endif // INC_BASICS_STACK5ASSIGN_HPP

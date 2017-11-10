@@ -1,5 +1,4 @@
-#ifndef INC_BASICS_STACK3_HPP
-#define INC_BASICS_STACK3_HPP
+#pragma once
 /**
  * @file.
  * Stack class template.
@@ -13,14 +12,13 @@
 template <typename T, typename CONT = std::vector<T>>
 class Stack
 {
-private:
-        CONT elems;
-
 public:
         void push(T const&);
         void pop();
         T top() const;
         bool empty() const { return elems.empty(); }
+private:
+        CONT elems;
 };
 
 template <typename T, typename CONT>
@@ -48,4 +46,3 @@ T Stack<T, CONT>::top() const
 }
 // END_SNIPPET{FullSource}
 
-#endif // INC_BASICS_STACK3_HPP

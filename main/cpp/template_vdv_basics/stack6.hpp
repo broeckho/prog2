@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_BASICS_STACK6_HPP
-#define INC_BASICS_STACK6_HPP
 
 #include "stack6assign.hpp"
 #include "stack6decl.hpp"
@@ -35,5 +33,3 @@ T Stack<T, CONT>::top() const
         }
         return elems.back();
 }
-
-#endif // INC_BASICS_STACK6_HPP

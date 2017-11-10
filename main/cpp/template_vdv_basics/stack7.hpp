@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  * Demonstrate use of member function templates.
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_BASICS_STACK7_HPP
-#define INC_BASICS_STACK7_HPP
 
 #include "stack7decl.hpp"
 #include <deque>
@@ -35,4 +33,3 @@ T Stack<T, ALLOC, CONT>::top() const
         return elems.back();
 }
 
-#endif // INC_BASICS_STACK7_HPP

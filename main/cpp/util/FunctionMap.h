@@ -110,7 +110,6 @@ private:
         MapType m_map;
 };
 
-} // namespace Util
-} // namespace UA_CoMP
+} // namespace
+} // namespace
 
-#endif // end-of-include-guard

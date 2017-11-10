@@ -12,7 +12,6 @@
 int main()
 {
         try {
-
                 Stack<int> intStack;
                 Stack<double, std::deque<double>> dblStack;
 

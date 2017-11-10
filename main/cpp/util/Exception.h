@@ -1,5 +1,4 @@
-#ifndef INC_UTIL_EXCEPTION_H
-#define INC_UTIL_EXCEPTION_H
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -32,7 +31,6 @@ public:
         Exception(std::string const& m) : std::runtime_error(m) {}
 };
 
-} // namespace Util
-} // namespace UA_CoMP
+} // namespace
+} // namespace
 
-#endif // end-of-include-guard

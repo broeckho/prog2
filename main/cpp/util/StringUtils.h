@@ -1,5 +1,4 @@
-#ifndef INC_STRINGUTILS_H
-#define INC_STRINGUTILS_H
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -84,7 +83,5 @@ public:
         }
 };
 
-} // namespace Util
-} // namespace UA_CoMP
-
-#endif // end-of-include-guard
+} // namespace
+} // namespace

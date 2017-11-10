@@ -1,5 +1,4 @@
-#ifndef TIMEKEEPER_RECORDS_H_INCLUDED
-#define TIMEKEEPER_RECORDS_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -274,7 +273,6 @@ inline std::ostream& operator<<<std::chrono::seconds>(std::ostream& os, Records<
         return os;
 }
 
-} // namespace Timekeeper
-} // namespace UA_CoMP
+} // namespace
+} // namespace
 
-#endif // end-of-include-guard

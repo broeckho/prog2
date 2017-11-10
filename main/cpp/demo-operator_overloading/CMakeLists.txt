@@ -17,12 +17,11 @@
 #============================================================================
 # Build / install / smoke test:
 #============================================================================
-foreach( EXEC	conversion-operator
-                friend-input-operator
+foreach( EXEC	friend-input-operator
                 functor-state
                 lambda-by-reference 
                 lambda-by-value
-                lambda-modules  
+                lambda-functor
                 lambda-set  
                 overloading-member-vs-non-member)
 
@@ -39,19 +38,7 @@ add_executable(call-operator
 		    call-operator/polynomial.cpp
 )
 
-add_executable(functor-info 
-            functor-info/distance.cpp 
-            functor-info/main.cpp
-)
-
-add_executable(lambda-functor lambda-functor/main.cpp)
-add_executable(functor-lambda lambda-functor/main.cpp)
-target_compile_options(functor-lambda PUBLIC "-DUSE_FUNCTOR")
-
-foreach( EXEC	call-operator
-                functor-info
-                lambda-functor
-                functor-lambda )
+foreach( EXEC	call-operator )
 
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
 	add_test( NAME ${EXEC}  

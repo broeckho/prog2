@@ -1,5 +1,4 @@
-#ifndef CONSTSTR_H_INCLUDED
-#define CONSTSTR_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the indismo software.
  *  It is free software: you can redistribute it and/or modify it
@@ -42,4 +41,3 @@ private:
         std::size_t m_size;
 };
 
-#endif

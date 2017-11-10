@@ -3,24 +3,7 @@
 using std::cout;
 using std::endl;
 
-#ifdef USE_FUNCTOR
-class Lambda1
-{
-public:
-        explicit Lambda1(int& counter) : counter(counter) {}
-        int operator()(int x)
-        {
-                int val = counter + x;
-                counter++;
-                return val;
-        }
 
-private:
-        int& counter;
-};
-
-Lambda1 makeCountingAdder(int& counter) { return {Lambda1(counter)}; }
-#else
 std::function<int(int)> makeCountingAdder(int& counter)
 {
         return [&counter](int x) -> int {
@@ -29,8 +12,6 @@ std::function<int(int)> makeCountingAdder(int& counter)
                 return val;
         };
 }
-
-#endif
 
 int main()
 {

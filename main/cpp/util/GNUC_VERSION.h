@@ -1,5 +1,4 @@
-#ifndef GNUC_VERSION_H_INCLUDED
-#define GNUC_VERSION_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -27,4 +26,3 @@
 #endif
 #endif
 
-#endif // end-of-include-guard

@@ -1,5 +1,4 @@
-#ifndef INC_BASICS_STACK2_HPP
-#define INC_BASICS_STACK2_HPP
+#pragma once
 /**
  * @file.
  * Full specialisation of stack class template.
@@ -15,14 +14,13 @@
 template <>
 class Stack<std::string>
 {
-private:
-        std::deque<std::string> elems;
-
 public:
         void push(std::string const&);
         void pop();
         std::string top() const;
         bool empty() const { return elems.empty(); }
+private:
+        std::deque<std::string> elems;
 };
 
 void Stack<std::string>::push(std::string const& elem) { elems.push_back(elem); }
@@ -44,4 +42,3 @@ std::string Stack<std::string>::top() const
 }
 // END_SNIPPET{FullSource}
 
-#endif // INC_BASICS_STACK2_HPP

@@ -1,5 +1,4 @@
-#ifndef TIMEKEEPER_CLOCKCLIB_H_INCLUDED
-#define TIMEKEEPER_CLOCKCLIB_H_INCLUDED
+#pragma once
 
 #include <chrono>
 #include <ctime>
@@ -35,7 +34,6 @@ public:
         }
 };
 
-} // end-of-namespace Timekeeper
-} // end-of-namespace UA_CoMP
+} // end-of-namespace
+} // end-of-namespace
 
-#endif // end of include guard

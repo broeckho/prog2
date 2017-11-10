@@ -1,5 +1,4 @@
-#ifndef TIMEKEEPER_CLOCK_TRAITS_H_INCLUDED
-#define TIMEKEEPER_CLOCK_TRAITS_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -51,7 +50,5 @@ public:
         using Records = UA_CoMP::Timekeeper::Records<D>;
 };
 
-} // namespace Timekeeper
-} // namespace UA_CoMP
-
-#endif // end-of-include-guard
+} // namespace
+} // namespace

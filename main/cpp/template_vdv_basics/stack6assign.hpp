@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  *
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_BASICS_STACK6ASSIGN_HPP
-#define INC_BASICS_STACK6ASSIGN_HPP
 
 #include "stack6decl.hpp"
 
@@ -26,4 +24,3 @@ Stack<T, CONT>& Stack<T, CONT>::operator=(Stack<T2, CONT2> const& op2)
         return *this;
 }
 
-#endif // INC_BASICS_STACK6ASSIGN_HPP

@@ -1,5 +1,4 @@
-#ifndef PRINTARGV_H_INCLUDED
-#define PRINTARGV_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -32,7 +31,6 @@ void printArgv(int argc, char* argv[], std::ostream& os)
         return;
 }
 
-} // namespace Util
-} // namespace UA_CoMP
+} // namespace
+} // namespace
 
-#endif // end-of-include-guard

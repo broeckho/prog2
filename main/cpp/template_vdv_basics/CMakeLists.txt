@@ -17,10 +17,9 @@
 #============================================================================
 # Build & install & smoke test :
 #============================================================================
-foreach( EXEC	addvaltest max0 max1 max1-partial max2 max3 max3-bis
-				printcollmain
+foreach( EXEC	max0 max1 max1-partial max2 max3 max3-bis
 				stack1test stack2test stack3test stack4test stack5test
-				stack6test stack7test refnonref )
+				stack6test stack7test )
 
 	add_executable( ${EXEC}	${EXEC}.cpp ${EXTRA_SRC_${EXEC}} )
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )

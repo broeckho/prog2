@@ -1,5 +1,4 @@
-#ifndef TIMEKEEPER_TIMEABLE_H_INCLUDED
-#define TIMEKEEPER_TIMEABLE_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -54,7 +53,6 @@ public:
         virtual TimingsType GetTimings() const = 0;
 };
 
-} // namespace Timekeeper
-} // namespace UA_CoMP
+} // namespace
+} // namespace
 
-#endif // end-of-include-guard

@@ -3,7 +3,6 @@
 #include <functional>
 
 template <typename T>
-
 class Plotter
 {
 public:

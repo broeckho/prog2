@@ -1,5 +1,4 @@
-#ifndef TIMEKEEPER_CLOCKS_H_INCLUDED
-#define TIMEKEEPER_CLOCKS_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -28,4 +27,3 @@
 #include "timekeeper/Utils.h"
 #include <chrono>
 
-#endif // end-of-include-guard

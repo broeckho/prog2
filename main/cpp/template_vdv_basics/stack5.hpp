@@ -1,11 +1,9 @@
+#pragma once
 /**
  * @file.
  * Template function returns maximum.
  * @author J. Broeckhove - see copyright.txt
  */
-
-#ifndef INC_BASICS_STACK5_HPP
-#define INC_BASICS_STACK5_HPP
 
 #include "stack5assign.hpp"
 #include "stack5decl.hpp"
@@ -36,4 +34,3 @@ T Stack<T>::top() const
         return elems.back();
 }
 
-#endif // INC_BASICS_STACK5_HPP

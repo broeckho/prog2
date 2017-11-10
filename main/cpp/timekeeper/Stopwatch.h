@@ -1,5 +1,4 @@
-#ifndef TIMEKEEPER_STOPWATCH_H_INCLUDED
-#define TIMEKEEPER_STOPWATCH_H_INCLUDED
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -127,7 +126,6 @@ std::ostream& operator<<(std::ostream& oss, Stopwatch<T> const& stopwatch)
         return (oss << stopwatch.ToString());
 }
 
-} // namespace Timekeeper
-} // namespace UA_CoMP
+} // namespace
+} // namespace
 
-#endif // end of include guard
