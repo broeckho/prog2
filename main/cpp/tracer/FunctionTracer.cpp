@@ -11,7 +11,6 @@ namespace Misc {
 
 using std::ostringstream;
 
-///
 FunctionTracer::FunctionTracer(string const& function_name, LogSeverity severity)
     : m_function_name(function_name), m_severity(severity)
 {
@@ -19,7 +18,6 @@ FunctionTracer::FunctionTracer(string const& function_name, LogSeverity severity
         TracerOutput::increase_indent();
 }
 
-///
 FunctionTracer::~FunctionTracer()
 {
         TracerOutput::decrease_indent();

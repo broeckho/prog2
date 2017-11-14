@@ -23,7 +23,6 @@
 
 add_subdirectory(abstract-factory)
 add_subdirectory(demo-const)
-add_subdirectory(demo-copy_move)
 add_subdirectory(demo-operator_overloading)
 add_subdirectory(objtracer)
 add_subdirectory(observer)

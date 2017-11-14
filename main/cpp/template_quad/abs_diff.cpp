@@ -13,9 +13,6 @@ namespace Num {
 
 using std::function;
 
-/**
-* Compares two functors on a grid and returns maximum absolute difference.
-*/
 double abs_diff(double b, double e, double h, function<double(double)> f1, function<double(double)> f2)
 {
         double maxDiff = 0.0;

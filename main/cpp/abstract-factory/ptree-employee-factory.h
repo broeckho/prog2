@@ -30,10 +30,7 @@ namespace AbstractFactory {
 class PtreeEmployeeFactory : public Factory<Employee>
 {
 public:
-        /**
-         * Creates a factory that analyzes the given property tree, and
-         * uses it to construct an employee instance.
-         */
+        /// Creates a factory that analyzes the given property tree, and construct an employee instance.
         explicit PtreeEmployeeFactory(const boost::property_tree::ptree& ptree) : m_ptree(ptree) {}
 
         /// Instructs this factory to create a value.

@@ -9,7 +9,6 @@
 namespace UA_CoMP {
 namespace Misc {
 
-///
 MemberTracer::MemberTracer(string const& member_name, void const* object_this, LogSeverity severity)
     : m_member_name(member_name), m_object_this(object_this), m_severity(severity)
 {
@@ -19,7 +18,6 @@ MemberTracer::MemberTracer(string const& member_name, void const* object_this, L
         TracerOutput::increase_indent();
 }
 
-///
 MemberTracer::~MemberTracer()
 {
         TracerOutput::decrease_indent();
