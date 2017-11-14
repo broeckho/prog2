@@ -28,6 +28,10 @@ add_library( ${LIB} ${SRC} )
 set_target_properties( ${LIB} PROPERTIES   SOVERSION 0   VERSION 0.0.0 )
 target_link_libraries( ${LIB} 	        ${G3LOG_LIBRARIES} )
 #----------------------------
+install( TARGETS ${LIB}
+		LIBRARY DESTINATION    ${LIB_INSTALL_LOCATION}
+		ARCHIVE DESTINATION    ${LIB_INSTALL_LOCATION}
+		PERMISSIONS    OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ )
 install( FILES  
 		BlockTracer.h 
 		FunctionTracer.h 

@@ -27,7 +27,6 @@ set( SRC
 include_directories( ${LOG_SRC} )
 add_library( ${LIB}        ${SRC}  )
 set_target_properties( ${LIB} PROPERTIES    SOVERSION	0     VERSION 0.0.0 )
-
 if( APPLE )
 	set_target_properties( ${LIB} PROPERTIES 
 			INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_LOCATION} )
