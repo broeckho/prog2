@@ -29,6 +29,9 @@ public:
         /// Move assingment
         Body& operator=(Body&& rhs) noexcept;
 
+        /// Destructor
+        ~Body();
+
         /// Weird operation
         Body operator+(const Body& b);
 

@@ -9,16 +9,12 @@
 
 namespace ODemo {
 
-///
 Engine::Engine(double power) : m_power(power), m_running(false) { COMP_MISC_MEMBER_TRACER; }
 
-///
 Engine::Engine(Engine const& ori) : m_power(ori.m_power), m_running(ori.m_running) { COMP_MISC_MEMBER_TRACER; }
 
-///
 Engine::Engine(Engine&& ori) noexcept : m_power(ori.m_power), m_running(ori.m_running) { COMP_MISC_MEMBER_TRACER; }
 
-///
 Engine& Engine::operator=(const Engine& rhs)
 {
         COMP_MISC_MEMBER_TRACER;
@@ -29,7 +25,6 @@ Engine& Engine::operator=(const Engine& rhs)
         return *this;
 }
 
-///
 Engine& Engine::operator=(Engine&& rhs) noexcept
 {
         COMP_MISC_MEMBER_TRACER;
@@ -44,10 +39,8 @@ Engine& Engine::operator=(Engine&& rhs) noexcept
         return *this;
 }
 
-///
 Engine::~Engine() { COMP_MISC_MEMBER_TRACER; }
 
-///
 void Engine::start()
 {
         COMP_MISC_MEMBER_TRACER;
@@ -56,7 +49,6 @@ void Engine::start()
         }
 }
 
-///
 void Engine::stop()
 {
         COMP_MISC_MEMBER_TRACER;
@@ -65,7 +57,6 @@ void Engine::stop()
         }
 }
 
-///
 bool Engine::is_running() const
 {
         COMP_MISC_MEMBER_TRACER;

@@ -11,16 +11,12 @@
 namespace ODemo {
 using namespace std;
 
-/// Single parameter constructor
 Body::Body(std::string color) : m_color(std::move(color)) { COMP_MISC_MEMBER_TRACER; }
 
-/// Copy constructor
 Body::Body(Body const& ori) : m_color(ori.m_color) { COMP_MISC_MEMBER_TRACER; }
 
-/// Move constructor
 Body::Body(Body&& ori) noexcept : m_color(std::move(ori.m_color)) { COMP_MISC_MEMBER_TRACER; }
 
-/// Copy assignment
 Body& Body::operator=(Body const& rhs)
 {
         COMP_MISC_MEMBER_TRACER;
@@ -30,7 +26,6 @@ Body& Body::operator=(Body const& rhs)
         return *this;
 }
 
-/// Move assignment
 Body& Body::operator=(Body&& rhs) noexcept
 {
         COMP_MISC_MEMBER_TRACER;
@@ -41,10 +36,14 @@ Body& Body::operator=(Body&& rhs) noexcept
         return *this;
 }
 
-/// Weird operation
+Body::~Body()
+{
+        COMP_MISC_MEMBER_TRACER;
+}
+
 Body Body::operator+(const Body& b)
 {
         COMP_MISC_MEMBER_TRACER;
         return Body(m_color + b.m_color);
 }
-}
+} // end of namespace
