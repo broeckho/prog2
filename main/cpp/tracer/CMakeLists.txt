@@ -26,20 +26,8 @@ set( SRC
 #----------------------------		
 add_library( ${LIB} ${SRC} )
 set_target_properties( ${LIB} PROPERTIES   SOVERSION 0   VERSION 0.0.0 )
-if( APPLE )
-	set_target_properties( ${LIB}  PROPERTIES 
-	            INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_LOCATION} )
-endif( APPLE )
 target_link_libraries( ${LIB} 	        ${G3LOG_LIBRARIES} )
-#----------------------------		
-add_library( ${LIB}-static STATIC ${SRC} )
-set_target_properties(${LIB}-static PROPERTIES OUTPUT_NAME ${LIB} )
-target_link_libraries( ${LIB}-static 	${G3LOG_LIBRARIES_STATIC} )
 #----------------------------
-install( TARGETS ${LIB} ${LIB}-static
-                LIBRARY DESTINATION    ${LIB_INSTALL_LOCATION} 
-                ARCHIVE DESTINATION    ${LIB_INSTALL_LOCATION} 
-	            PERMISSIONS    OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ )
 install( FILES  
 		BlockTracer.h 
 		FunctionTracer.h 
@@ -60,14 +48,9 @@ set( EXEC	logdemo )
 add_executable( ${EXEC}	${EXEC}.cpp )
 target_link_libraries( ${EXEC} tracer                   ${G3LOG_LIBRARIES} )
 #----------------------------
-add_executable( ${EXEC}-static	${EXEC}.cpp )
-target_link_libraries( ${EXEC}-static tracer-static     ${G3LOG_LIBRARIES_STATIC} )
-#----------------------------
-install( TARGETS ${EXEC} ${EXEC}-static RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
+install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
 #----------------------------
 add_test( NAME ${EXEC}  
-		    COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}> -n "jan" )	
-add_test( NAME ${EXEC}-static  
 		    COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}> -n "jan" )
 #----------------------------
 unset( EXEC )
