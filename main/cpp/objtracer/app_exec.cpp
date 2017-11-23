@@ -43,23 +43,11 @@ int main(int argc, char* argv[])
                 //----------------------------------------------------------------------
                 // Initialize logging library .
                 //----------------------------------------------------------------------
-                string logPath("/tmp");
-                if (getenv("G3LOG_log_dir") != nullptr) {
-                        logPath = *getenv("G3LOG_log_dir");
-                }
+                string logPath("./");
                 std::unique_ptr<g3::LogWorker> g3log{g3::LogWorker::createLogWorker()};
                 g3log->addDefaultLogger(argv[0], logPath);
                 g3::initializeLogging(g3log.get());
-
-                cout << "If you do not want log in /tmp, define environment "
-                     << "variable G3LOG_log_dir e.g. with value ./ " << endl;
-                // cout << "If you want log on stderr, specify environment" << " variable
-                // GLOG_logtostderr with value
-                // true. "
-                //		<< endl;
-                cout << "Process the output with \"cut -f 2 -d ] <logfile>\" to "
-                        "get a reasonable output."
-                     << endl;
+                cout << "Process the log with \"cut -f 2 -d ] <logfile>\" to get a clean output." << endl;
 
                 //----------------------------------------------------------------------
                 // Command line definition and parsing.
@@ -76,6 +64,7 @@ int main(int argc, char* argv[])
                 FunctionRegister f_reg;
                 f_reg["app_copy"] = app_copy;
                 f_reg["app_essentialops"] = app_essentialops;
+                f_reg["app_exception"] = app_exception;
                 f_reg["app_fcalls"] = app_fcalls;
                 f_reg["app_hierarchies"] = app_hierarchies;
                 f_reg["app_poly1"] = app_poly1;

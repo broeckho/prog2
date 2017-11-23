@@ -50,10 +50,11 @@ set( LIBS   ${LIBS}   m )
 #----------------------------------------------------------------------------
 # Boost
 #----------------------------------------------------------------------------
-set(BOOST_ROOT ${GOBELIJN_BOOST_ROOT})
-find_package(Boost COMPONENTS filesystem thread date_time system REQUIRED)
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-set(LIBS   ${LIBS} ${Boost_LIBRARIES})
+find_package(Boost COMPONENTS filesystem thread date_time system QUIET)
+if(Boost_FOUND)
+    include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+    set(LIBS   ${LIBS} ${Boost_LIBRARIES})
+endif()
 
 #----------------------------------------------------------------------------
 # TCLAP Library (command line processing)

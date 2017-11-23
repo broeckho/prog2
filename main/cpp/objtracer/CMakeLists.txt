@@ -48,31 +48,28 @@ unset( LIB )
 #============================================================================
 # Build / install / smoke test for executables:
 #============================================================================
-set( EXEC	app_exec )
-set( SRC
-		${EXEC}.cpp app_fcalls.cpp app_essentialops.cpp
-		app_copy.cpp app_hierarchies.cpp app_poly1.cpp app_poly2.cpp
-)
+set(EXEC	app_exec)
+set(SRC
+		${EXEC}.cpp app_fcalls.cpp app_essentialops.cpp app_exception.cpp
+		app_copy.cpp app_hierarchies.cpp app_poly1.cpp app_poly2.cpp)
 #---------------------
-include_directories( ${LOG_SRC} )
-add_executable( ${EXEC}	   ${SRC} )
-target_link_libraries( ${EXEC} demobj tracer ${G3LOG_LIBRARIES}  )
-
+include_directories(${LOG_SRC})
+add_executable(${EXEC}	   ${SRC})
+target_link_libraries(${EXEC} demobj tracer ${G3LOG_LIBRARIES} )
 #---------------------
-install( TARGETS ${EXEC} RUNTIME DESTINATION 	${BIN_INSTALL_LOCATION} )
+install(TARGETS ${EXEC} RUNTIME DESTINATION 	${BIN_INSTALL_LOCATION})
 #------------------------
-set( PROJECTS     app_fcalls app_essential_ops app_copy app_hierarchies app_poly1 app_poly2 )
-foreach (PROJ ${PROJECTS} )
-
-		add_test( NAME  app_exec_${PROJ}
+set(PROJECTS   app_fcalls app_essential_ops app_exception
+				app_copy app_hierarchies app_poly1 app_poly2)
+foreach (PROJ ${PROJECTS})
+		add_test(NAME  app_exec_${PROJ}
 				COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:app_exec>
-				--exec ${PROJ} )
-		
+				--exec ${PROJ})
 endforeach()
 #---------------------
-unset( SRC )
-unset( EXEC )
-unset( PROJECTS )
+unset(SRC)
+unset(EXEC)
+unset(PROJECTS)
 
 #############################################################################
 

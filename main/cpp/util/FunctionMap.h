@@ -1,5 +1,4 @@
-#ifndef INC_FUNCTION_MAP_H
-#define INC_FUNCTION_MAP_H
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -12,22 +11,17 @@
  *  a copy of the GNU General Public License along with the software. If not,
  *  see <http://www.gnu.org/licenses/>.
  *
- *  Copyright 2013, Jan Broeckhove, UA/CoMP.
+ *  Copyright 2017, Jan Broeckhove, UA/CoMP.
  */
 /**
  * @file
  * Implementation of a map to hold function. I'm assuming fairly few
  * operations on the map after initialization. Developed to use it to
  * hold factory functions (i.e. function objects that encapsulate the
- * creation of other objects. You can switch between std::function or
- * boost::function. I intend to use this with the boost.functional
- * factory and with my present boost/gcc combo the assignment of
- * e.g. function<A*(int)> f = factory<A*>() succeeds for boost::function
- * but fails for std::function.
+ * creation of other objects.
  */
 
-#include <boost/function.hpp>
-#include <boost/functional/factory.hpp>
+
 #include <functional>
 #include <initializer_list>
 #include <list>
@@ -38,36 +32,19 @@
 namespace UA_CoMP {
 namespace Util {
 
-template <typename T>
-struct BadFunctionCallType
-{
-};
-
 template <typename S>
-struct BadFunctionCallType<std::function<S>>
-{
-        typedef std::bad_function_call type;
-};
-
-template <typename S>
-struct BadFunctionCallType<boost::function<S>>
-{
-        typedef boost::bad_function_call type;
-};
-
-template <typename S, template <typename> class F = std::function>
 class FunctionMap
 {
 public:
         // Type of function stored in the map.
-        typedef F<S> FunctionType;
+        using FunctionType = std::function<S>;
 
         // Type of bad_function_call exception
-        typedef typename BadFunctionCallType<FunctionType>::type BadFunctionCallType;
+        using BadFunctionCallType = std::bad_function_call;
 
 private:
         ///
-        typedef std::map<const std::string, const FunctionType> MapType;
+        using MapType = std::map<const std::string, const FunctionType>;
 
 public:
         /// Construct an empty map.

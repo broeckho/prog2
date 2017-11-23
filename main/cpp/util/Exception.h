@@ -19,6 +19,7 @@
  */
 #include <stdexcept>
 #include <string>
+#include <utility>
 
 namespace UA_CoMP {
 namespace Util {
@@ -28,7 +29,7 @@ class Exception : public std::runtime_error
 {
 public:
         /// Constructor initializes message for the exception.
-        Exception(std::string const& m) : std::runtime_error(m) {}
+        Exception(const std::string m) : std::runtime_error(std::move(m)) {}
 };
 
 } // namespace
