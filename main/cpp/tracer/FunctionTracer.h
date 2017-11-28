@@ -6,7 +6,6 @@
  */
 
 #include "tracer/TracerOutput.h"
-#include <iosfwd>
 #include <string>
 
 /// Macro to take advantage of PRETTY_FUNCTION over plain FUNCTION with gcc.
@@ -23,8 +22,6 @@
 namespace UA_CoMP {
 namespace Misc {
 
-using std::string;
-
 /**
  * Class whose constructor/destructor pair are used to mark entering
  * and leaving a function body block.
@@ -38,20 +35,19 @@ class FunctionTracer
 {
 public:
         /// Constructor inserts message in TrackerOutput about entering a function body.
-        explicit FunctionTracer(string const& function_name, LogSeverity severity = TracerOutput::get_severity());
+        explicit FunctionTracer(const std::string & function_name);
 
         /// No copy constructor.
-        FunctionTracer(FunctionTracer const&) =delete;
+        FunctionTracer(const FunctionTracer&) =delete;
 
         /// No assignment.
-        FunctionTracer& operator=(FunctionTracer const&) =delete;
+        FunctionTracer& operator=(const FunctionTracer&) =delete;
 
         /// Destructor inserts message in TracketOutput about leaving funvtion body.
         ~FunctionTracer();
 
 private:
         std::string const m_function_name;
-        LogSeverity const m_severity;
 };
 
 } // end of namespace

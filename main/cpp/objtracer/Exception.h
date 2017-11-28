@@ -27,7 +27,7 @@ public:
         const char* what() const noexcept override;
 
         /// Get info.
-        virtual std::string get_info() const;
+        virtual void info() const;
 private:
         std::string m_message;
 };
@@ -39,7 +39,7 @@ public:
         explicit MotionException(std::string m);
 
         /// Get info.
-        std::string get_info() const override;
+        void info() const override;
 };
 
 class LoadingException: public Exception
@@ -49,7 +49,7 @@ public:
         explicit LoadingException(std::string m);
 
         /// Get info.
-        std::string get_info() const override;
+        void info() const override;
 };
 
 class SailingException: public MotionException
@@ -59,7 +59,7 @@ public:
         explicit SailingException(std::string m);
 
         /// Get info.
-        std::string get_info() const override;
+        void info() const override;
 };
 
 

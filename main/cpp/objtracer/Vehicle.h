@@ -19,10 +19,11 @@ public:
         /// Destructor.
         virtual ~Vehicle() = default;
 
+        /// Return vehicle information.
+        virtual void info() const = 0;
+
         /// Motion of vehicle.
         virtual void move(double speed, std::vector<double> direction) = 0;
-
-        /// Return vehicle information.
-        virtual std::string get_info() const = 0;
 };
-}
+
+} // end of namespace

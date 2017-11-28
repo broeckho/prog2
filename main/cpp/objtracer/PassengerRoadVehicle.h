@@ -46,7 +46,7 @@ public:
         int get_free() const;
 
         /// Return identification info.
-        std::string get_info() const override;
+        void info() const override;
 
 private:
         int m_capacity;

@@ -30,8 +30,6 @@ int main(int argc, char* argv[])
                         "get a reasonable output."
                      << endl;
 
-                UA_CoMP::Misc::TracerOutput::set_severity(INFO);
-
                 // Command line description.
                 TCLAP::CmdLine cmd("Command description message", ' ', "0.9");
                 TCLAP::ValueArg<string> nameArg("n", "name", "Name to print", true, "homer", "string", cmd);

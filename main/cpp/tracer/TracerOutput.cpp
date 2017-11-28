@@ -5,39 +5,34 @@
  */
 
 #include "tracer/TracerOutput.h"
+#include <g3log/g3log.hpp>
 
 namespace UA_CoMP {
 namespace Misc {
 
-using std::ostringstream;
+using namespace std;
 
-bool TracerOutput::g_make_output {true};
-unsigned int TracerOutput::g_indent {0};
-LogSeverity TracerOutput::g_severity {INFO};
+TracerOutput g_tracer_log;
 
-bool TracerOutput::is_output_on() { return g_make_output; }
+bool TracerOutput::is_output_on() { return m_make_output; }
 
-LogSeverity TracerOutput::get_severity() { return g_severity; }
+void TracerOutput::set_output_on() { m_make_output = true; }
 
-void TracerOutput::set_output_on() { g_make_output = true; }
+void TracerOutput::set_output_off() { m_make_output = false; }
 
-void TracerOutput::set_output_off() { g_make_output = false; }
+void TracerOutput::increase_indent() { m_indent++; }
 
-void TracerOutput::increase_indent() { g_indent++; }
+void TracerOutput::decrease_indent() { m_indent--; }
 
-void TracerOutput::decrease_indent() { g_indent--; }
-
-void TracerOutput::set_severity(const LogSeverity& severity) { g_severity = severity; }
-
-void TracerOutput::log(string const& msg, LogSeverity severity)
+void TracerOutput::log(const string& msg)
 {
         if (is_output_on()) {
                 ostringstream os;
-                for (unsigned int i = 0; i < g_indent; ++i) {
+                for (unsigned int i = 0; i < m_indent; ++i) {
                         os << "     ";
                 }
                 os << msg;
-                LOG(severity) << os.str();
+                LOG(INFO) << os.str();
         }
 }
 

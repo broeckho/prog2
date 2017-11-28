@@ -32,11 +32,11 @@ public:
         /// Destructor.
         ~LandVehicle() override;
 
+        /// Return identification info.
+        void info() const override;
+
         /// Pure virtual function: motion for the LandVehicle.
         void move(double speed, std::vector<double> direction) override = 0;
-
-        /// Return identification info.
-        std::string get_info() const override;
 };
 
 } // end_of_namespace

@@ -34,11 +34,11 @@ public:
         /// Destructor.
         ~RoadVehicle() override;
 
+        /// Return identification info.
+        void info() const override;
+
         /// Motion of the vehicle.
         void move(double speed, std::vector<double> direction) override;
-
-        /// Return identification info.
-        std::string get_info() const override;
 };
 
 } // end_of_namespace

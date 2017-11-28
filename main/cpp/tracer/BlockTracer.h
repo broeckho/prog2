@@ -6,7 +6,6 @@
  */
 
 #include "tracer/TracerOutput.h"
-#include <iosfwd>
 #include <string>
 
 /// Macro for tracking block scope.
@@ -15,35 +14,32 @@
 namespace UA_CoMP {
 namespace Misc {
 
-using std::string;
-
 /**
  * Class whose constructor/destructor pair are used to mark entering
  * and leaving a code block.
- * You do this by defining an automatic variable of CodeTracker type
+ * You do this by defining an automatic variable of BlockTracer type
  * at the beginning of the block. The constructor triggers an appropriate
  * message.The destructor for the variable gets called when leaving the
  * block and triggers the appropriate message.
- * The messages are logged through the TrackerOutput.
+ * The messages are logged through the tarcer log.
  */
 class BlockTracer
 {
 public:
         /// Constructor insert message in TrackerOutput about entering a block.
-        explicit BlockTracer(string const& msg, LogSeverity severity = TracerOutput::get_severity());
+        explicit BlockTracer(const std::string& msg);
 
         /// No copy constructor.
-        BlockTracer(BlockTracer const&) =delete;
+        BlockTracer(const BlockTracer&) =delete;
 
         /// No assignment.
-        BlockTracer& operator=(BlockTracer const&) =delete;
+        BlockTracer& operator=(const BlockTracer&) =delete;
 
-        /// Destructor inserts message in TrackerOutput about leaving a block.
+        /// Destructor inserts message in TracerOutput about leaving a block.
         ~BlockTracer();
 
 private:
-        std::string const m_msg;
-        LogSeverity const m_severity;
+        const std::string       m_msg;
 };
 
 } // end of namespace

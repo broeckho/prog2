@@ -6,8 +6,6 @@
 
 #include "objtracer/RoadVehicle.h"
 #include "tracer/tracer.h"
-#include <iostream>
-#include <sstream>
 
 namespace ODemo {
 
@@ -37,23 +35,21 @@ RoadVehicle& RoadVehicle::operator=(RoadVehicle&& rhs) noexcept
         return *this;
 }
 
-RoadVehicle::~RoadVehicle() { COMP_MISC_MEMBER_TRACER; }
-
-void RoadVehicle::move(double speed, vector<double> direction)
+RoadVehicle::~RoadVehicle()
 {
         COMP_MISC_MEMBER_TRACER;
-        cout << "RoadVehicle is moving with speed " << speed << " in direction" << endl;
-        for (const auto& d : direction) {
-                cout << d << endl;
-        }
 }
 
-string RoadVehicle::get_info() const
+void RoadVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        stringstream ss;
-        ss << "I'm a generic Road vehicle" << endl;
-        ss << LandVehicle::get_info();
-        return ss.str();
+        const string s {"I'm a generic Road vehicle"};
+        COMP_MISC_LOG_TRACER(s);
 }
+
+void RoadVehicle::move(double, vector<double>)
+{
+        COMP_MISC_MEMBER_TRACER;
+}
+
 } // end of namespace

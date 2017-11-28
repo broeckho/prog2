@@ -6,8 +6,6 @@
 
 #include "objtracer/WaterVehicle.h"
 #include "tracer/tracer.h"
-#include <iostream>
-#include <sstream>
 
 namespace ODemo {
 
@@ -53,6 +51,16 @@ WaterVehicle::~WaterVehicle()
         COMP_MISC_MEMBER_TRACER;
 }
 
+void WaterVehicle::info() const
+{
+        COMP_MISC_MEMBER_TRACER;
+        string s {"I'm a generic Water vehicle"};
+        if (m_sinking) {
+                s.append(" and I'm sinking!");
+        }
+        COMP_MISC_LOG_TRACER(s);
+}
+
 void WaterVehicle::start_sinking()
 {
         COMP_MISC_MEMBER_TRACER;
@@ -63,18 +71,6 @@ void WaterVehicle::stop_sinking()
 {
         COMP_MISC_MEMBER_TRACER;
         m_sinking = false;
-}
-
-string WaterVehicle::get_info() const
-{
-        COMP_MISC_MEMBER_TRACER;
-        stringstream ss;
-        ss << "I'm a generic Water vehicle";
-        if (m_sinking) {
-                ss << " and I'm sinking!";
-        }
-        cout << endl;
-        return ss.str();
 }
 
 } // end of namespace

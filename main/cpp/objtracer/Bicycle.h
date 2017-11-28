@@ -50,7 +50,7 @@ public:
         void setColor(std::string color);
 
         /// Display info on model and color of the bike.
-        std::string get_info() const override;
+        void info() const override;
 
 private:
         std::string m_model;

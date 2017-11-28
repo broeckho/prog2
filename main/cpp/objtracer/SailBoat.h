@@ -33,11 +33,11 @@ public:
         /// Destructor.
         ~SailBoat() override;
 
+        /// Return identification info.
+        void info() const override;
+
         /// Sailboat motion.
         void move(double speed, std::vector<double> direction) override;
-
-        /// Return identification info.
-        std::string get_info() const override;
 
 private:
         std::string m_name;

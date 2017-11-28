@@ -27,7 +27,7 @@ int app_exception()
                 Bicycle m1("Honda", "red");
 
                 COMP_MISC_LOG_TRACER(" statement: m1.get_nfo();");
-                COMP_MISC_LOG_TRACER(m1.get_info());
+                m1.info();
 
                 COMP_MISC_LOG_TRACER(" statement: SailBoat s1(\"Marina\");");
                 SailBoat s1("Marina");;
@@ -47,19 +47,19 @@ int app_exception()
                 s1.start_sinking();
 
                 COMP_MISC_LOG_TRACER(" statement: s1.displayInfo();");
-                COMP_MISC_LOG_TRACER(s1.get_info());
+                s1.info();
         }
         catch(LoadingException& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with LoadingException");
-                COMP_MISC_LOG_TRACER(e.get_info());
+                e.info();
         }
         catch(SailingException& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with SailingException");
-                COMP_MISC_LOG_TRACER(e.get_info());
+                e.info();
         }
         catch(Exception& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with Exception");
-                COMP_MISC_LOG_TRACER(e.get_info());
+                e.info();
                 COMP_MISC_LOG_TRACER(e.what());
         }
         COMP_MISC_LOG_TRACER(" statement: return 0;");

@@ -27,32 +27,30 @@ namespace Misc {
 /**
  * Class whose constructor/destructor pair are used to mark entering
  * and leaving a member (function) body block.
- * You do this by defining an automatic variable of CodeTracker type
+ * You do this by defining an automatic variable of MemberTracer
  * at the beginning of the member body. The constructor triggers an
  * appropriate message.The destructor for the variable gets called
  * when leaving the member function body and triggers the appropriate
- * message. The messages are logged through the TrackerOutput.
+ * message. The messages are logged to the tracer_log.
  */
 class MemberTracer
 {
 public:
-        /// Constructor inserts message in TrackerOutput about entering member body.
-        MemberTracer(string const& member_name, void const* object_this,
-                     LogSeverity severity = TracerOutput::get_severity());
+        /// Constructor inserts message in TracerOutput about entering member body.
+        MemberTracer(const std::string& member_name, const void* object_this);
 
         /// No copy constructor.
-        MemberTracer(MemberTracer const&) =delete;
+        MemberTracer(const MemberTracer&) =delete;
 
         /// No assignment.
-        MemberTracer& operator=(MemberTracer const&) =delete;
+        MemberTracer& operator=(const MemberTracer&) =delete;
 
-        /// Destructor inserts message in TrackerOutput about leaving member body.
+        /// Destructor inserts message in TracerOutput about leaving member body.
         ~MemberTracer();
 
 private:
-        std::string const m_member_name;
-        void const* const m_object_this;
-        LogSeverity const m_severity;
+        const std::string       m_member_name;
+        const void* const       m_object_this;
 };
 
 } // end of namespace

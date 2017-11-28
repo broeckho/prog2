@@ -5,77 +5,58 @@
  * @author J.Broeckhove  CoMP/UA
  */
 
-#include <g3log/g3log.hpp>
-#include <iosfwd>
 #include <string>
 
 /// Macro for turning tracker output on.
-#define COMP_MISC_TRACER_OUTPUT_ON UA_CoMP::Misc::TracerOutput::set_output_on()
+#define COMP_MISC_TRACER_OUTPUT_ON UA_CoMP::Misc::g_tracer_log.set_output_on()
 
 /// Macro for turning tracker output off.
-#define COMP_MISC_TRACER_OUTPUT_OFF UA_CoMP::Misc::TracerOutput::set_output_off()
+#define COMP_MISC_TRACER_OUTPUT_OFF UA_CoMP::Misc::g_tracer_log.set_output_off()
 
 /// Macro for inserting log message into tracker output at current severity level.
-#define COMP_MISC_LOG_TRACER(MSG) UA_CoMP::Misc::TracerOutput::log(MSG)
+#define COMP_MISC_LOG_TRACER(MSG) UA_CoMP::Misc::g_tracer_log.log(MSG)
 
 namespace UA_CoMP {
 namespace Misc {
 
-using std::string;
-
-// Typedef for log severity indication
-using LogSeverity = LEVELS;
-
 /**
- * Class used to channel output of the BlockTracker, FunctionTracker
- * and MemberTracker objects to the google log.
- * Manages the following features for the Tracker object's output:
+ * Class used to channel output of the BlockTracer, FunctionTracer
+ * and MemberTracer objects to the g3log.
+ * Manages the following features for the Tracer object's output:
  * \li on or off status of producing output to the log
  * \li the indentation levels when blocks get nested
- * \li the severity level for logging to the google log
- * Consequently the class consists entirely of static members.
  */
 class TracerOutput
 {
 public:
         /// No constructor.
-        TracerOutput() =delete;
-
-        // No copy constructor.
-        TracerOutput(const TracerOutput&) =delete;
-
-        // No assignment.
-        TracerOutput& operator=(const TracerOutput&) =delete;
+        TracerOutput() =default;
 
         /// Indicate whether current making output.
-        static bool is_output_on();
-
-        /// Return the current severity level for logging to the google log.
-        static LogSeverity get_severity();
+        bool is_output_on();
 
         /// Start making output (ok even output already started).
-        static void set_output_on();
+        void set_output_on();
 
         /// Stop making output (ok even if output already stopped).
-        static void set_output_off();
+        void set_output_off();
 
         /// Increase the indentation level.
-        static void increase_indent();
+        void increase_indent();
 
         /// Decrease the indentation level.
-        static void decrease_indent();
-
-        /// Set the severity level for logging to the google log.
-        static void set_severity(const LogSeverity& severity);
+        void decrease_indent();
 
         /// Insert the message in the google log at given severity level.
-        static void log(string const& msg, LogSeverity severity = get_severity());
+        void log(const std::string& msg);
 
 private:
-        static bool           g_make_output;
-        static unsigned int   g_indent;
-        static LogSeverity    g_severity;
+        bool           m_make_output {true};
+        unsigned int   m_indent {0};
 };
+
+/// TracerOutput instance connected to g3log default logger.
+extern TracerOutput g_tracer_log;
 
 } // end of namespace
 } // end of namespace

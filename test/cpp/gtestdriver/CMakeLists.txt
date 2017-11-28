@@ -40,7 +40,7 @@ add_executable( ${EXEC}  ${SRC} )
 target_link_libraries( ${EXEC} ${LIBS} gtest pthread )
  
 #-----------------        
-install( TARGETS ${EXEC} DESTINATION   ${BIN_INSTALL_LOCATION} )
+install( TARGETS ${EXEC} RUNTIME DESTINATION   ${BIN_INSTALL_LOCATION} )
  
 #-----------------      
 add_test( NAME	${EXEC}

@@ -9,18 +9,18 @@
 namespace UA_CoMP {
 namespace Misc {
 
-using std::string;
+using namespace std;
 
-BlockTracer::BlockTracer(string const& msg, LogSeverity severity) : m_msg(msg), m_severity(severity)
+BlockTracer::BlockTracer(const string& msg): m_msg(msg)
 {
-        TracerOutput::log("---> code block: " + m_msg, m_severity);
-        TracerOutput::increase_indent();
+        g_tracer_log.log("---> code block: " + m_msg);
+        g_tracer_log.increase_indent();
 }
 
 BlockTracer::~BlockTracer()
 {
-        TracerOutput::decrease_indent();
-        TracerOutput::log("<---  code block: " + m_msg, m_severity);
+        g_tracer_log.decrease_indent();
+        g_tracer_log.log("<---  code block: " + m_msg);
 }
 
 } // end of namespace

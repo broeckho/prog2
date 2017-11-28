@@ -6,7 +6,6 @@
 
 #include "objtracer/LandVehicle.h"
 #include "tracer/tracer.h"
-#include <iostream>
 
 namespace ODemo {
 
@@ -38,9 +37,11 @@ LandVehicle& LandVehicle::operator=(LandVehicle&& rhs) noexcept
 
 LandVehicle::~LandVehicle() { COMP_MISC_MEMBER_TRACER; }
 
-string LandVehicle::get_info() const
+void LandVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        return "I'm a generic Land vehicle\n";
+        const string s {"I'm a generic Land vehicle"};
+        COMP_MISC_LOG_TRACER(s);
 }
-}
+
+} // end of namespace

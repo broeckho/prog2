@@ -23,7 +23,7 @@ void display_all(list<shared_ptr<Vehicle>> l)
 {
         COMP_MISC_FUNCTION_TRACER;
         for(const auto& p: l) {
-                COMP_MISC_LOG_TRACER(p->get_info());
+                p->info();
         }
 }
 
@@ -45,9 +45,9 @@ int app_poly1()
         };
 
         COMP_MISC_TRACER_OUTPUT_ON;             // Setting the log output ON/OFF
-        COMP_MISC_LOG_TRACER("invocation for l1: \n");
+        COMP_MISC_LOG_TRACER("invocation for l1:");
         display_all(l1);
-        COMP_MISC_LOG_TRACER("done with l1.\n\n");
+        COMP_MISC_LOG_TRACER("done with l1.");
 
         COMP_MISC_TRACER_OUTPUT_OFF;            // Setting the log output ON/OFF
         list<shared_ptr<Vehicle>> l2 {
@@ -55,9 +55,9 @@ int app_poly1()
         };
 
         COMP_MISC_TRACER_OUTPUT_ON;             // Setting the log output ON/OFF
-        COMP_MISC_LOG_TRACER("invocation for l2: \n");
+        COMP_MISC_LOG_TRACER("invocation for l2:");
         display_all(l2);
-        COMP_MISC_LOG_TRACER("done with l2. \n\n");
+        COMP_MISC_LOG_TRACER("done with l2.");
 
         COMP_MISC_LOG_TRACER(">>>> statement: return 0;");
         return 0;

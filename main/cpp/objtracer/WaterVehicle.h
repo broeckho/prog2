@@ -33,6 +33,9 @@ public:
         /// Destructor.
         ~WaterVehicle() override;
 
+        /// Return identification info.
+        void info() const override;
+        
         /// Pure virtual method for motion.
         void move(double speed, std::vector<double> direction) override = 0;
 
@@ -41,9 +44,6 @@ public:
 
         /// Stop sinking, even if you were not sinking in the first place.
         void stop_sinking();
-
-        /// Return identification info.
-        std::string get_info() const override;
 
 private:
         bool m_sinking;

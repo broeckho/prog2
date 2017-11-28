@@ -6,8 +6,6 @@
 
 #include "objtracer/SailBoat.h"
 #include "tracer/tracer.h"
-#include <iostream>
-#include <sstream>
 
 namespace ODemo {
 
@@ -53,23 +51,22 @@ SailBoat& SailBoat::operator=(SailBoat&& rhs) noexcept
 
 SailBoat::~SailBoat() { COMP_MISC_MEMBER_TRACER; }
 
+void SailBoat::info() const
+{
+        COMP_MISC_MEMBER_TRACER;
+        string s {"I'm a sailboat named \"" + m_name + "\" and my sails are "};
+        if (m_sails_up) {
+                s.append("up.");
+        } else {
+                s.append("down.");
+        }
+        COMP_MISC_LOG_TRACER(s);
+}
+
 void SailBoat::move(double, vector<double>)
 {
         COMP_MISC_MEMBER_TRACER;
         m_sails_up = true;
 }
 
-string SailBoat::get_info() const
-{
-        COMP_MISC_MEMBER_TRACER;
-        stringstream ss;
-        ss << "I'm a sailboat named \"" << m_name << "\" and my sails are ";
-        if (m_sails_up) {
-                ss << "up." << endl;
-        } else {
-                cout << "down." << endl;
-        }
-        ss << WaterVehicle::get_info();
-        return ss.str();
-}
 } // end of namespace

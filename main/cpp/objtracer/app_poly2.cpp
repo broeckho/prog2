@@ -18,13 +18,13 @@ namespace {
 void display(Vehicle* p)
 {
         COMP_MISC_FUNCTION_TRACER;
-        COMP_MISC_LOG_TRACER(p->get_info());
+        p->info();
 }
 
 void displayBis(Vehicle& b)
 {
         COMP_MISC_FUNCTION_TRACER;
-        COMP_MISC_LOG_TRACER(b.get_info());
+        b.info();
 }
 
 } // end-of-anonymous-namespace

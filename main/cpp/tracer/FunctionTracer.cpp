@@ -9,19 +9,19 @@
 namespace UA_CoMP {
 namespace Misc {
 
-using std::ostringstream;
+using namespace std;
 
-FunctionTracer::FunctionTracer(string const& function_name, LogSeverity severity)
-    : m_function_name(function_name), m_severity(severity)
+FunctionTracer::FunctionTracer(const string& function_name)
+    : m_function_name(function_name)
 {
-        TracerOutput::log("---> function body: " + m_function_name, m_severity);
-        TracerOutput::increase_indent();
+        g_tracer_log.log("---> function body: " + m_function_name);
+        g_tracer_log.increase_indent();
 }
 
 FunctionTracer::~FunctionTracer()
 {
-        TracerOutput::decrease_indent();
-        TracerOutput::log("<--- function body: " + m_function_name, m_severity);
+        g_tracer_log.decrease_indent();
+        g_tracer_log.log("<--- function body: " + m_function_name);
 }
 
 } // end of namespace

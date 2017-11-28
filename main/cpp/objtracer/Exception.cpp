@@ -32,22 +32,19 @@ const char* Exception::what() const noexcept
         return m_message.c_str();
 }
 
-string Exception::get_info() const
+void Exception::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        return "Exception";
 }
-
 
 MotionException::MotionException(std::string m) : Exception(std::move(m))
 {
         COMP_MISC_MEMBER_TRACER;
 }
 
-string MotionException::get_info() const
+void MotionException::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        return "MotionException";
 }
 
 
@@ -56,10 +53,9 @@ LoadingException::LoadingException(std::string m) : Exception(std::move(m))
         COMP_MISC_MEMBER_TRACER;
 }
 
-string LoadingException::get_info() const
+void LoadingException::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        return "LoadingException";
 }
 
 
@@ -68,10 +64,9 @@ SailingException::SailingException(std::string m) : MotionException(std::move(m)
         COMP_MISC_MEMBER_TRACER;
 }
 
-string SailingException::get_info() const
+void SailingException::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        return "SailingException";
 }
 
 

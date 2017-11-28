@@ -17,11 +17,7 @@
 #============================================================================
 # Build / install / smoke test:
 #============================================================================
-foreach( EXEC	friend-input-operator
-                functor-state
-                lambda-by-reference 
-                lambda-by-value
-                lambda-functor)
+foreach( EXEC	functor-state lambda-by-reference lambda-by-value lambda-functor)
 
 	add_executable( ${EXEC}	${EXEC}.cpp )
 	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
@@ -30,10 +26,8 @@ foreach( EXEC	friend-input-operator
 			
 endforeach()
 
-add_executable(call-operator 
-		    call-operator/plotter.cpp 
-		    call-operator/main.cpp 
-		    call-operator/polynomial.cpp
+add_executable(call-operator call-operator/plotter.cpp
+		    call-operator/main.cpp call-operator/polynomial.cpp
 )
 
 foreach( EXEC	call-operator )

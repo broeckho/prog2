@@ -6,12 +6,14 @@
 
 #include "objtracer/PassengerRoadVehicle.h"
 #include "tracer/tracer.h"
+#include "util/StringUtils.h"
 #include <iostream>
 #include <sstream>
 
 namespace ODemo {
 
 using namespace std;
+using namespace UA_CoMP::Util;
 
 PassengerRoadVehicle::PassengerRoadVehicle(int numSeats)
         : RoadVehicle(), m_capacity(numSeats), m_free(numSeats)
@@ -89,12 +91,12 @@ int PassengerRoadVehicle::get_free() const
         return m_free;
 }
 
-string PassengerRoadVehicle::get_info() const
+void PassengerRoadVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        stringstream ss;
-        ss << "I'm a PassengerRoadVehicle: #seats = " << m_capacity << ", #free seats = " << m_free << endl;
-        ss << RoadVehicle::get_info();
-        return ss.str();
+        const string s {"I'm a PassengerRoadVehicle: #seats = " + StringUtils::ToString(m_capacity)
+                        + ", #free seats = " + StringUtils::ToString(m_free)};
+        COMP_MISC_LOG_TRACER(s);
 }
+
 } // end of namespace
