@@ -11,9 +11,9 @@ namespace Misc {
 
 using std::ostringstream;
 
-bool TracerOutput::g_make_output = true;
-unsigned int TracerOutput::g_indent = 0;
-LogSeverity TracerOutput::g_severity = INFO;
+bool TracerOutput::g_make_output {true};
+unsigned int TracerOutput::g_indent {0};
+LogSeverity TracerOutput::g_severity {INFO};
 
 bool TracerOutput::is_output_on() { return g_make_output; }
 

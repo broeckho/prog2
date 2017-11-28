@@ -21,7 +21,7 @@ Exception::Exception(const Exception& e) : m_message(e.m_message)
         COMP_MISC_MEMBER_TRACER;
 }
 
-Exception::Exception(Exception&& e) : m_message(std::move(e.m_message))
+Exception::Exception(Exception&& e) noexcept : m_message(std::move(e.m_message))
 {
         COMP_MISC_MEMBER_TRACER;
 }

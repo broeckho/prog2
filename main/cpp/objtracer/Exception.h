@@ -15,16 +15,16 @@ class Exception : public std::exception
 {
 public:
         /// Constructor initializes message for the exception.
-        Exception(std::string m);
+        explicit Exception(std::string m);
 
         /// Copy constructor.
         Exception(const Exception& e);
 
         /// Move Constructor.
-        Exception(Exception&& e);
+        Exception(Exception&& e) noexcept;
 
         /// Return message text.
-        virtual const char* what() const noexcept;
+        const char* what() const noexcept override;
 
         /// Get info.
         virtual std::string get_info() const;
@@ -36,7 +36,7 @@ class MotionException: public Exception
 {
 public:
         /// Constructor initializes message for the exception.
-        MotionException(std::string m);
+        explicit MotionException(std::string m);
 
         /// Get info.
         std::string get_info() const override;
@@ -46,7 +46,7 @@ class LoadingException: public Exception
 {
 public:
         /// Constructor initializes message for the exception.
-        LoadingException(std::string m);
+        explicit LoadingException(std::string m);
 
         /// Get info.
         std::string get_info() const override;
@@ -56,7 +56,7 @@ class SailingException: public MotionException
 {
 public:
         /// Constructor initializes message for the exception.
-        SailingException(std::string m);
+        explicit SailingException(std::string m);
 
         /// Get info.
         std::string get_info() const override;

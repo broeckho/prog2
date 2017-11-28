@@ -53,7 +53,7 @@ SailBoat& SailBoat::operator=(SailBoat&& rhs) noexcept
 
 SailBoat::~SailBoat() { COMP_MISC_MEMBER_TRACER; }
 
-void SailBoat::move(double speed, vector<double> direction)
+void SailBoat::move(double, vector<double>)
 {
         COMP_MISC_MEMBER_TRACER;
         m_sails_up = true;

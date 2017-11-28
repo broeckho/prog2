@@ -24,7 +24,7 @@
 if(Boost_FOUND)
     add_subdirectory(abstract-factory)
 else()
-    message("Boost not found: not including directory <abstract-factory>.")
+    message(WARNING "Boost not found: not including directory <abstract-factory>.")
 endif()
 add_subdirectory(demo-const)
 add_subdirectory(demo-operator_overloading)

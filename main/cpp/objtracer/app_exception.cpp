@@ -49,6 +49,10 @@ int app_exception()
                 COMP_MISC_LOG_TRACER(" statement: s1.displayInfo();");
                 COMP_MISC_LOG_TRACER(s1.get_info());
         }
+        catch(LoadingException& e) {
+                COMP_MISC_LOG_TRACER(" catch clause with LoadingException");
+                COMP_MISC_LOG_TRACER(e.get_info());
+        }
         catch(SailingException& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with SailingException");
                 COMP_MISC_LOG_TRACER(e.get_info());
