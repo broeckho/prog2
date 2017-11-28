@@ -9,9 +9,8 @@
 #include <iostream>
 
 namespace ODemo {
-using std::vector;
-using std::cout;
-using std::endl;
+
+using namespace std;
 
 LandVehicle::LandVehicle() : Vehicle() { COMP_MISC_MEMBER_TRACER; }
 
@@ -39,9 +38,9 @@ LandVehicle& LandVehicle::operator=(LandVehicle&& rhs) noexcept
 
 LandVehicle::~LandVehicle() { COMP_MISC_MEMBER_TRACER; }
 
-void LandVehicle::get_info() const
+string LandVehicle::get_info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        cout << "I'm a generic Land vehicle" << endl;
+        return "I'm a generic Land vehicle\n";
 }
 }

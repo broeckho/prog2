@@ -19,7 +19,7 @@
 #============================================================================
 set( LIB	demobj )
 set( SRC 	
-		Bicycle.cpp Body.cpp Engine.cpp LandVehicle.cpp
+		Bicycle.cpp Body.cpp Engine.cpp Exception.cpp LandVehicle.cpp
 		Motorcycle.cpp PassengerRoadVehicle.cpp Person.cpp 
 		RoadVehicle.cpp SailBoat.cpp Unicycle.cpp 
 		WaterVehicle.cpp Wheel.cpp )
@@ -37,8 +37,9 @@ install( TARGETS ${LIB} LIBRARY
                 DESTINATION 	${LIB_INSTALL_LOCATION}
                 PERMISSIONS 	OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ )	 
 install( FILES 
-		Bicycle.h demobj.h Engine.h LandVehicle.h Motorcycle.h PassengerRoadVehicle.h
-		Person.h RoadVehicle.h SailBoat.h Vehicle.h WaterVehicle.h Wheel.h
+		Bicycle.h demobj.h Engine.h Exception.h LandVehicle.h Motorcycle.h
+		PassengerRoadVehicle.h Person.h RoadVehicle.h SailBoat.h Vehicle.h
+		WaterVehicle.h Wheel.h
                 DESTINATION 	${INCLUDE_INSTALL_LOCATION}/objtracer
                 PERMISSIONS 	OWNER_READ GROUP_READ WORLD_READ )
 #---------------------

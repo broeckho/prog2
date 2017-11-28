@@ -7,12 +7,11 @@
 #include "objtracer/SailBoat.h"
 #include "tracer/tracer.h"
 #include <iostream>
+#include <sstream>
 
 namespace ODemo {
-using std::string;
-using std::cout;
-using std::endl;
-using std::vector;
+
+using namespace std;
 
 SailBoat::SailBoat(string name) : WaterVehicle(), m_name(std::move(name)), m_sails_up(false)
 {
@@ -58,22 +57,19 @@ void SailBoat::move(double speed, vector<double> direction)
 {
         COMP_MISC_MEMBER_TRACER;
         m_sails_up = true;
-        cout << "Sailboat is moving with speed " << speed << " in direction" << endl;
-        for (const auto& d : direction) {
-                cout << d << endl;
-        }
 }
 
-void SailBoat::get_info() const
+string SailBoat::get_info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        WaterVehicle::get_info();
-        cout << "I'm a sailboat named \"" << m_name << "\" and my sails are ";
+        stringstream ss;
+        ss << "I'm a sailboat named \"" << m_name << "\" and my sails are ";
         if (m_sails_up) {
-                cout << "up.";
+                ss << "up." << endl;
         } else {
-                cout << "down.";
+                cout << "down." << endl;
         }
-        cout << endl;
+        ss << WaterVehicle::get_info();
+        return ss.str();
 }
 } // end of namespace

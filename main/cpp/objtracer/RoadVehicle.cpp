@@ -7,11 +7,11 @@
 #include "objtracer/RoadVehicle.h"
 #include "tracer/tracer.h"
 #include <iostream>
+#include <sstream>
 
 namespace ODemo {
-using std::cout;
-using std::endl;
-using std::vector;
+
+using namespace std;
 
 RoadVehicle::RoadVehicle() : LandVehicle() { COMP_MISC_MEMBER_TRACER; }
 
@@ -48,10 +48,12 @@ void RoadVehicle::move(double speed, vector<double> direction)
         }
 }
 
-void RoadVehicle::get_info() const
+string RoadVehicle::get_info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        LandVehicle::get_info();
-        cout << "I'm a generic Road vehicle" << endl;
+        stringstream ss;
+        ss << "I'm a generic Road vehicle" << endl;
+        ss << LandVehicle::get_info();
+        return ss.str();
 }
 } // end of namespace

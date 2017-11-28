@@ -42,8 +42,8 @@ public:
         /// Stop sinking, even if you were not sinking in the first place.
         void stop_sinking();
 
-        /// Display identification info.
-        void get_info() const override;
+        /// Return identification info.
+        std::string get_info() const override;
 
 private:
         bool m_sinking;

@@ -7,6 +7,7 @@
 
 #include "objtracer/Bicycle.h"
 #include "objtracer/Engine.h"
+#include "objtracer/Exception.h"
 #include "objtracer/LandVehicle.h"
 #include "objtracer/Motorcycle.h"
 #include "objtracer/PassengerRoadVehicle.h"

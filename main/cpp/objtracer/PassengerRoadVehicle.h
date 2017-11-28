@@ -45,8 +45,8 @@ public:
         /// Return the number of seats still free.
         int get_free() const;
 
-        /// Display identification info.
-        void get_info() const override;
+        /// Return identification info.
+        std::string get_info() const override;
 
 private:
         int m_capacity;

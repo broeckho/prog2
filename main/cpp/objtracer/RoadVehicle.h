@@ -37,8 +37,8 @@ public:
         /// Motion of the vehicle.
         void move(double speed, std::vector<double> direction) override;
 
-        /// Display identification info.
-        void get_info() const override;
+        /// Return identification info.
+        std::string get_info() const override;
 };
 
 } // end_of_namespace

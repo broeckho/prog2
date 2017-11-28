@@ -35,8 +35,8 @@ public:
         /// Pure virtual function: motion for the LandVehicle.
         void move(double speed, std::vector<double> direction) override = 0;
 
-        /// Displa identification info.
-        void get_info() const override;
+        /// Return identification info.
+        std::string get_info() const override;
 };
 
 } // end_of_namespace

@@ -7,6 +7,7 @@
 #include "Bicycle.h"
 #include "tracer/tracer.h"
 #include <iostream>
+#include <sstream>
 
 namespace ODemo {
 
@@ -133,10 +134,12 @@ void Bicycle::setColor(string color)
 /**
  * @return              None.
  */
-void Bicycle::get_info() const
+string Bicycle::get_info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        cout << "I'm a bicycle: model = " << m_model << ", color = " << m_color << endl;
-        PassengerRoadVehicle::get_info();
+        stringstream ss;
+        ss <<  "I'm a bicycle: model = " << m_model << ", color = " << m_color << endl;
+        ss << PassengerRoadVehicle::get_info();
+        return ss.str();
 }
 }

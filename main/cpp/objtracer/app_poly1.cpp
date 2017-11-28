@@ -22,10 +22,8 @@ namespace {
 void display_all(list<shared_ptr<Vehicle>> l)
 {
         COMP_MISC_FUNCTION_TRACER;
-        int i {0};
         for(const auto& p: l) {
-                cout << "element number:" << i++ << endl;
-                p->get_info();
+                COMP_MISC_LOG_TRACER(p->get_info());
         }
 }
 
@@ -47,9 +45,9 @@ int app_poly1()
         };
 
         COMP_MISC_TRACER_OUTPUT_ON;             // Setting the log output ON/OFF
-        cout << "invocation for l1: " << endl;
+        COMP_MISC_LOG_TRACER("invocation for l1: \n");
         display_all(l1);
-        cout << "done with l1." << endl << endl;
+        COMP_MISC_LOG_TRACER("done with l1.\n\n");
 
         COMP_MISC_TRACER_OUTPUT_OFF;            // Setting the log output ON/OFF
         list<shared_ptr<Vehicle>> l2 {
@@ -57,9 +55,9 @@ int app_poly1()
         };
 
         COMP_MISC_TRACER_OUTPUT_ON;             // Setting the log output ON/OFF
-        cout << "invocation for l2: " << endl;
+        COMP_MISC_LOG_TRACER("invocation for l2: \n");
         display_all(l2);
-        cout << "done with l2." << endl << endl;
+        COMP_MISC_LOG_TRACER("done with l2. \n\n");
 
         COMP_MISC_LOG_TRACER(">>>> statement: return 0;");
         return 0;
