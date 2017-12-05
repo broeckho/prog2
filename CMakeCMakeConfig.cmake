@@ -24,7 +24,6 @@
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS 	TRUE)
 set(CMAKE_COLOR_MAKEFILE                ON)
 set(CMAKE_VERBOSE_MAKEFILE              OFF)
-set(CMAKE_ENABLE_COMPILE_COMMANDS       ON)
 enable_testing()
 
 #============================================================================

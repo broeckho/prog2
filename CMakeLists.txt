@@ -34,27 +34,8 @@ if(CMAKE_VERSION VERSION_GREATER 3)
 endif()
 
 #============================================================================
-# Git revision status.
-#============================================================================
-find_package(Git QUIET)
-if(GIT_FOUND)
-    GIT_WC_INFO(${CMAKE_SOURCE_DIR} GOBELIJN)
-else()
-    # This is done to eliminate blank output of undefined CMake variables.
-    set(GIT_FOUND FALSE)
-    set(GOBELIJN_WC_REVISION_HASH      "0000000")
-    set(GOBELIJN_WC_LAST_CHANGED_DATE  "0000 0000 0000")
-endif()
-#============================================================================
-# Defaults for user defined options.
-#============================================================================
-set_if_null(GOBELIJN_INCLUDE_DOC         OFF)
-set_if_null(GOBELIJN_VERBOSE_TESTING     OFF)
-
-#============================================================================
 # Install directory definitions.
 #============================================================================
-#set_if_null(CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed")
 set_if_null(BIN_INSTALL_LOCATION	    bin   )
 set_if_null(LIB_INSTALL_LOCATION	    lib   )
 set_if_null(INCLUDE_INSTALL_LOCATION    include)
@@ -66,6 +47,19 @@ set_if_null(TESTS_INSTALL_LOCATION	    tests )
 # Configuration C++ compile & link deferred to separate file.
 #============================================================================
 include(CMakeCPPConfig.cmake)
+
+#============================================================================
+# Git revision status.
+#============================================================================
+find_package(Git QUIET)
+if(GIT_FOUND)
+    GIT_WC_INFO(${CMAKE_SOURCE_DIR} GOBELIJN)
+else()
+    # This is done to eliminate blank output of undefined CMake variables.
+    set(GIT_FOUND FALSE)
+    set(GOBELIJN_WC_REVISION_HASH      "0000000")
+    set(GOBELIJN_WC_LAST_CHANGED_DATE  "0000 0000 0000")
+endif()
 
 #============================================================================
 # Add subdirs (excluding doc dir avoids building doc in development):
