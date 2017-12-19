@@ -21,7 +21,6 @@
 
 // BEGIN_SNIPPET{FullSource}
 /// Primary template for selection between two types.
-
 template <typename T1, typename T2, bool b>
 struct select;
 
