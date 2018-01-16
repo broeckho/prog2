@@ -48,13 +48,13 @@ Bicycle& Bicycle::operator=(Bicycle&& rhs) noexcept
 {
         COMP_MISC_MEMBER_TRACER;
         if (this != &rhs) {
-                PassengerRoadVehicle::operator=(rhs);
+                PassengerRoadVehicle::operator=(std::move(rhs));
                 m_model = std::move(rhs.m_model);
                 m_color = std::move(rhs.m_color);
 
                 // Leave the argument in an indeterminate state.
-                rhs.m_model = nullptr;
-                rhs.m_color = nullptr;
+                rhs.m_model = "";
+                rhs.m_color = "";
         }
         return *this;
 }
