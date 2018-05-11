@@ -1,30 +1,29 @@
 /*
- *  This file is part of the gobelijn software.
- *  Gobelijn is free software: you can redistribute it and/or modify it
- *  under the terms of the GNU General Public License as published by the
- *  Free Software Foundation, either version 3 of the License, or any later
- *  version. Gobelijn is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- *  or FITNESS FOR A PARTICULAR PURPOSE.
- *  See the GNU General Public License for details. You should have received
- *  a copy of the GNU General Public License along with the software. If not,
- *  see <http://www.gnu.org/licenses/>.
+ * Copyright 2011-2016 Universiteit Antwerpen
  *
- *  Copyright 2014, Jan Broeckhove, CoMP research group, Universiteit Antwerpen.
+ * Licensed under the EUPL, Version 1.1 or  as soon they will be approved by
+ * the European Commission - subsequent versions of the EUPL (the "Licence");
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at: http://ec.europa.eu/idabc/eupl5
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing
+ * permissions and limitations under the Licence.
  */
 /**
  * @file
  * Unit tests of SegmentedVector.
  */
 
+#include "container/SegmentedVector.h"
+
 #include <gtest/gtest.h>
 #include <ostream>
 #include <stdexcept>
 
-#include "container/SegmentedVector.h"
-
 using namespace std;
-using namespace UA_CoMP::Container;
 
 namespace UA_CoMP {
 namespace Container {
@@ -63,11 +62,11 @@ public:
         }
         void Moved() { m_event_list.push_back(MOVED); }
 
-        int GetCounter() const { return m_counter; }
+        int              GetCounter() const { return m_counter; }
         const EventList& GetEventList() const { return m_event_list; }
 
 private:
-        int m_counter;
+        int       m_counter;
         EventList m_event_list;
 };
 
@@ -100,22 +99,26 @@ public:
                 }
         }
 
-        int i;
-        std::string str;
-        int* array;
+        int          i;
+        std::string  str;
+        int*         array;
         TraceMemory& t;
 };
-}
+} // namespace
 
 template <class SegmentedVector>
 void RunBasicOperationsTest(SegmentedVector& c, size_t size)
 {
-        const size_t block_size = c.get_elements_per_block();
+        const size_t block_size       = c.get_elements_per_block();
+        const size_t initial_capacity = c.capacity();
 
         // Allocation of blocks when filling container.
         for (size_t i = 0; i < size; i++) {
                 c.push_back(i);
-                EXPECT_EQ(1 + i / block_size, c.get_block_count());
+                EXPECT_EQ(1 + i, c.size());
+                if (i > initial_capacity) {
+                        EXPECT_EQ(1 + i / block_size, c.get_block_count());
+                }
         }
 
         // De-allocation of blocks when emptying container.
@@ -124,6 +127,7 @@ void RunBasicOperationsTest(SegmentedVector& c, size_t size)
                 auto num = c.size() / block_size;
                 if (c.size() > 0 && (c.size() % block_size > 0))
                         ++num;
+                c.shrink_to_fit();
                 EXPECT_EQ(num, c.get_block_count());
         }
 
@@ -159,21 +163,77 @@ void RunBasicOperationsTest(SegmentedVector& c, size_t size)
         }
 }
 
-TEST(UnitSegmentedVector, BasicOperations128)
+TEST(UnitSegmentedVector, BasicOperations_128_0)
 {
         SegmentedVector<size_t, 128> c;
         RunBasicOperationsTest(c, 128);
 }
 
-TEST(UnitSegmentedVector, BasicOperations260)
+TEST(UnitSegmentedVector, BasicOperations_128_99)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(99);
+        RunBasicOperationsTest(c, 128);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_128_128)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(128);
+        RunBasicOperationsTest(c, 128);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_128_143)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(143);
+        RunBasicOperationsTest(c, 128);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_260_0)
 {
         SegmentedVector<size_t, 128> c;
         RunBasicOperationsTest(c, 260);
 }
 
-TEST(UnitSegmentedVector, BasicOperations12345)
+TEST(UnitSegmentedVector, BasicOperations_260_128)
 {
         SegmentedVector<size_t, 128> c;
+        c.reserve(128);
+        RunBasicOperationsTest(c, 260);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_260_143)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(143);
+        RunBasicOperationsTest(c, 260);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_260_288)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(288);
+        RunBasicOperationsTest(c, 260);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_12345_0)
+{
+        SegmentedVector<size_t, 128> c;
+        RunBasicOperationsTest(c, 12345);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_12345_1001)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(1001);
+        RunBasicOperationsTest(c, 12345);
+}
+
+TEST(UnitSegmentedVector, BasicOperations_12345_14001)
+{
+        SegmentedVector<size_t, 128> c;
+        c.reserve(14001);
         RunBasicOperationsTest(c, 12345);
 }
 
@@ -249,7 +309,7 @@ TEST(UnitSegmentedVector, PushPop)
         EXPECT_EQ(0UL, c.size());
 
         for (int i = 0; i < 10; i++) {
-                c.push_back('a' + i);
+                c.push_back(static_cast<char>('a' + i));
         }
         EXPECT_EQ(10UL, c.size());
 
@@ -329,12 +389,17 @@ TEST(UnitSegmentedVector, CopyConstruct)
 TEST(UnitSegmentedVector, MoveConstruct)
 {
         SegmentedVector<int, 4> c;
+        c.reserve(23);
         for (int i = 0; i < 100; i++) {
                 c.push_back(i);
         }
+        const size_t cap = c.capacity();
 
         SegmentedVector<int, 4> d(std::move(c));
+        EXPECT_EQ(0UL, c.size());
         EXPECT_EQ(100UL, d.size());
+        EXPECT_EQ(0UL, c.capacity());
+        EXPECT_EQ(cap, d.capacity());
         for (int i = 0; i < 100; i++) {
                 EXPECT_EQ(i, d[i]);
         }
@@ -343,26 +408,32 @@ TEST(UnitSegmentedVector, MoveConstruct)
 TEST(UnitSegmentedVector, MoveAssignment)
 {
         SegmentedVector<int, 4> c;
+        c.reserve(3);
         for (int i = 0; i < 100; i++) {
                 c.push_back(i);
         }
+        const size_t cap = c.capacity();
 
         SegmentedVector<int, 4> d;
+        c.reserve(6);
         for (int i = 0; i < 20; i++) {
                 d.push_back(5);
         }
 
         d = std::move(c);
+        EXPECT_EQ(0UL, c.size());
         EXPECT_EQ(100UL, d.size());
+        EXPECT_EQ(0UL, c.capacity());
+        EXPECT_EQ(cap, d.capacity());
         for (int i = 0; i < 100; i++) {
                 EXPECT_EQ(i, d[i]);
         }
-        EXPECT_EQ(0UL, c.size());
 }
 
 TEST(UnitSegmentedVector, IndexOperator)
 {
         SegmentedVector<int, 4> c;
+        c.reserve(22);
         for (int i = 0; i < 100; i++) {
                 c.push_back(i);
         }
@@ -374,6 +445,7 @@ TEST(UnitSegmentedVector, IndexOperator)
 TEST(UnitSegmentedVector, IteratorForEmptyMBV)
 {
         SegmentedVector<int, 4> c;
+        c.reserve(3);
         auto it1 = c.begin();
         auto it2 = c.end();
         EXPECT_EQ(true, it1 == it2);
@@ -382,6 +454,7 @@ TEST(UnitSegmentedVector, IteratorForEmptyMBV)
 TEST(UnitSegmentedVector, Dereferencing)
 {
         SegmentedVector<int, 4> c;
+        c.reserve(101);
         for (int i = 0; i < 100; i++) {
                 c.push_back(i);
         }
@@ -397,6 +470,7 @@ TEST(UnitSegmentedVector, Dereferencing)
 TEST(UnitSegmentedVector, RangeBasedLoop)
 {
         SegmentedVector<int, 4> c;
+        c.reserve(98);
         for (int i = 0; i < 100; i++) {
                 c.push_back(i);
         }
@@ -407,6 +481,6 @@ TEST(UnitSegmentedVector, RangeBasedLoop)
         }
 }
 
-} // Tests
-} // Container
-} // UA_CoMP
+} // namespace Tests
+} // namespace Container
+} // namespace SimPT_Sim

@@ -1,5 +1,4 @@
-#ifndef GOBELIJN_STLDEMO_RANDINT_H
-#define GOBELIJN_STLDEMO_RANDINT_H
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -19,7 +18,6 @@
  * Functor produces random values.
  */
 
-// BEGIN_SNIPPET{FullSource}
 #include <cstdlib>
 #include <random>
 
@@ -44,6 +42,4 @@ private:
         std::mt19937 m_mt;
         std::uniform_int_distribution<int> m_dist;
 };
-// END_SNIPPET{FullSource}
 
-#endif // end-of-include-guard

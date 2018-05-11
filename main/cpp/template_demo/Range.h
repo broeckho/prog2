@@ -1,5 +1,4 @@
-#ifndef GOBELIJN_STLDEMO_RANGE_H
-#define GOBELIJN_STLDEMO_RANGE_H
+#pragma once
 /*
  *  This file is part of the gobelijn software.
  *  Gobelijn is free software: you can redistribute it and/or modify it
@@ -61,4 +60,3 @@ std::ostream& operator<<(std::ostream& out, Range<Iter> r)
 }
 // END_SNIPPET{FullSource}
 
-#endif // end-of-include-guard

@@ -1,23 +1,24 @@
 #pragma once
 /*
- *  This file is part of the gobelijn software.
- *  Gobelijn is free software: you can redistribute it and/or modify it
- *  under the terms of the GNU General Public License as published by the
- *  Free Software Foundation, either version 3 of the License, or any later
- *  version. Gobelijn is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- *  or FITNESS FOR A PARTICULAR PURPOSE.
- *  See the GNU General Public License for details. You should have received
- *  a copy of the GNU General Public License along with the software. If not,
- *  see <http://www.gnu.org/licenses/>.
+ * Copyright 2011-2016 Universiteit Antwerpen
  *
- *  Copyright 2012, Jan Broeckhove, CoMP research group, Universiteit Antwerpen.
+ * Licensed under the EUPL, Version 1.1 or  as soon they will be approved by
+ * the European Commission - subsequent versions of the EUPL (the "Licence");
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at: http://ec.europa.eu/idabc/eupl5
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing
+ * permissions and limitations under the Licence.
  */
 /**
  * @file
  * Interface and implementation for SegmentedVector class
- * @author	Glenn Van de Water, Joeri Exelmans, Jan Broeckhove
  */
+
+#include "SVIterator.h"
 
 #include <array>
 #include <cassert>
@@ -28,14 +29,13 @@
 #include <utility>
 #include <vector>
 
-#include "SVIterator.h"
-
 namespace UA_CoMP {
 namespace Container {
 
 /**
  * Container that stores objects "almost contiguously" and guarantees that
- * pointers/iterators are not invalidated when the container grows.
+ * pointers/iterators are not invalidated when the container grows, either
+ * through push_back/emplace_back of elements or resevation of capacity.
  * It combines vector properties (high data locality) with queue properties
  * (can increase capacity without pointer/iterator invalidation). Actually,
  * its implementation is much like a queue but with a limited interface
@@ -54,56 +54,60 @@ public:
         // ==================================================================
         // Member types
         // ==================================================================
-        using value_type = T;
-        using size_type = std::size_t;
-        using self_type = SegmentedVector<T, N>;
-        using iterator = SVIterator<T, N, T*, T&, false>;
+        using value_type     = T;
+        using size_type      = std::size_t;
+        using self_type      = SegmentedVector<T, N>;
+        using iterator       = SVIterator<T, N, T*, T&, false>;
         using const_iterator = SVIterator<T, N>;
 
         // ==================================================================
         // Construction / Copy / Move / Destruction
         // ==================================================================
 
-        /// Construct
-        SegmentedVector() : m_size(0) {}
+        /// Construct empty SegmentedVector.
+        explicit SegmentedVector() : m_blocks(), m_size(0) {}
 
-        /// Copy constructor
-        SegmentedVector(const self_type& other) : m_size(0)
+        /// Copy constructor (copies elements & capacity). If excess capacity
+        /// not needed, do shrink_to_fit.
+        SegmentedVector(const self_type& other) : m_blocks(), m_size(0)
         {
-                m_blocks.reserve(other.m_blocks.size());
+                reserve(other.capacity());
                 for (const auto& elem : other) {
                         push_back(elem);
                 }
                 assert(m_size == other.m_size);
                 assert(m_blocks.size() == other.m_blocks.size());
+                assert(this->capacity() == other.capacity());
         }
 
-        /// Move constructor
-        SegmentedVector(self_type&& other) : m_blocks(std::move(other.m_blocks)), m_size(other.m_size)
+        /// Move constructor (moves elements & capacity). If excess capacity
+        /// not needed, do shrink_to_fit.
+        SegmentedVector(self_type&& other) noexcept : m_blocks(std::move(other.m_blocks)), m_size(other.m_size)
         {
                 other.m_size = 0;
         }
 
-        /// Copy assignment
-        self_type& operator=(const self_type& other)
+        /// Copy assignment (copies elements & capacity). If excess capacity
+        /// not needed, do shrink_to_fit.
+        SegmentedVector& operator=(const self_type& other)
         {
-                /// See http://stackoverflow.com/a/9322542/698767 on self-assignment test
                 if (this != &other) {
                         clear();
-                        m_blocks.reserve(other.m_blocks.size());
+                        reserve(other.capacity());
                         for (const auto& elem : other) {
                                 push_back(elem);
                         }
                         assert(m_size == other.m_size);
                         assert(m_blocks.size() == other.m_blocks.size());
+                        assert(this->capacity() == other.capacity());
                 }
                 return *this;
         }
 
-        /// Move assignment
-        self_type& operator=(self_type&& other)
+        /// Move assignment (copies elements & capacity). If excess capacity
+        /// not needed, do shrink_to_fit.
+        SegmentedVector& operator=(self_type&& other) noexcept
         {
-                /// See http://stackoverflow.com/a/9322542/698767 on self-assignment test
                 if (this != &other) {
                         clear();
                         m_blocks = std::move(other.m_blocks);
@@ -185,6 +189,9 @@ public:
         // Capacity
         // ==================================================================
 
+        /// Returns number of elements that can be stored without allocating additional blocks.
+        std::size_t capacity() const { return N * m_blocks.size(); }
+
         /// Checks whether container is empty.
         bool empty() const { return m_size == 0; }
 
@@ -201,6 +208,23 @@ public:
         // Modifiers
         // ==================================================================
 
+        /// Allocates aditional blocks to achieve requested capacity.
+        void reserve(size_type new_capacity)
+        {
+                while (new_capacity > capacity()) {
+                        m_blocks.push_back(new Chunk[N]);
+                }
+        }
+
+        /// Deallocates (empty) blocks to schrink capacity to fit current size.
+        void shrink_to_fit()
+        {
+                size_type req_blocks = 1 + (size() - 1) / N;
+                while (req_blocks < m_blocks.size()) {
+                        delete[] m_blocks.back();
+                        m_blocks.pop_back();
+                }
+        }
         /// Clears the content.
         void clear()
         {
@@ -219,7 +243,7 @@ public:
         T* emplace_back(Args&&... args)
         {
                 T* memory = this->get_chunk();
-                return new (memory) T(args...); // construct new object
+                return new (memory) T(std::forward<Args>(args)...); // construct new object
         }
 
         /// Removes the last element.
@@ -257,7 +281,6 @@ public:
         }
 
 private:
-        /// We want to create memory without initializing it, hence the Chunk.
         /// POD type with same alignment requirement as for T's.
         using Chunk = typename std::aligned_storage<sizeof(T), std::alignment_of<T>::value>::type;
 
@@ -273,8 +296,7 @@ private:
                 const size_t i = m_size % N; // Offset of chunk within its block
 
                 if (b == m_blocks.size()) { // Out of buffers, last buffer is full
-                        /// Create memory without initializing it, hence the Chunk i.o T.
-                        Chunk* chunk = new Chunk[N];
+                        auto chunk = new Chunk[N];
                         m_blocks.push_back(chunk);
                 }
                 ++m_size;
@@ -283,7 +305,8 @@ private:
 
 private:
         std::vector<Chunk*> m_blocks; ///< Vector registers pointers to blocks of chunks.
-        size_t m_size;                ///< Index of first free chunk when indexed contiguously.
+        size_t              m_size;   ///< Index of first free chunk when indexed contiguously.
 };
-}
-}
+
+} // namespace Container
+} // namespace UA_CoMP

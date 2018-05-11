@@ -18,7 +18,10 @@
  * Interface/Implementation for Iterator.
  */
 
+#include <cassert>
 #include <cstddef>
+#include <iterator>
+#include <limits>
 #include <type_traits>
 
 namespace UA_CoMP {
