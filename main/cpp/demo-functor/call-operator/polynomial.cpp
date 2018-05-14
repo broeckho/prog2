@@ -1,4 +1,11 @@
+/**
+ * @file
+ * Implementation of Polynomial..
+ * @author P. Klosiewicz, J.Broeckhove  CoMP/UA
+ */
 #include "polynomial.h"
+
+#include <cstddef>
 
 template <typename T>
 T Polynomial<T>::operator()(const T& x)

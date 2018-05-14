@@ -28,49 +28,49 @@ matrix:
 
     - os: linux
       compiler: gcc
-      env: CXX_COMPILER_NAME='g++-6' CXX_COMPILER_ID=GNU TRAVIS_BUILD_DOCS=true
+      env: CXX_NAME='g++-6' TRAVIS_BUILD_DOCS=true
       addons: {apt: { packages: [*default_packages, g++-6], sources: [*default_sources]}}
 
     - os: linux
       compiler: gcc
-      env: CXX_COMPILER_NAME='g++-6' CXX_COMPILER_ID=GNU CMAKE_BUILD_TYPE=Debug
+      env: CXX_NAME='g++-6' CMAKE_BUILD_TYPE=Debug
       addons: {apt: { packages: [*default_packages, g++-6], sources: [*default_sources]}}
 
     - os: linux
       compiler: gcc
-      env: CXX_COMPILER_NAME='g++-7' CXX_COMPILER_ID=GNU
+      env: CXX_NAME='g++-7'
       addons: {apt: { packages: [*default_packages, g++-7], sources: [*default_sources]}}
 
     - os: linux
       compiler: clang
-      env: CXX_COMPILER_NAME='clang++-6.0' CXX_COMPILER_ID=LLVM
+      env: CXX_NAME='clang++-6.0'
       addons: {apt: { packages: [*default_packages, clang-6.0], sources: [*default_sources, llvm-toolchain-trusty-6.0]}}
 
     - os: osx
       osx_image: xcode8.3
       compiler: clang
-      env: CXX_COMPILER_NAME='c++' CXX_COMPILER_ID=APPLE
+      env: CXX_NAME='c++'
 
     - os: osx
       osx_image: xcode9.2
       compiler: clang
-      env: CXX_COMPILER_NAME='c++' CXX_COMPILER_ID=APPLE
+      env: CXX_NAME='c++'
 
     - os: osx
       osx_image: xcode9.2
       compiler: clang
-      env: CXX_COMPILER_NAME='clang++' CXX_COMPILER_ID=LLVM
+      env: CXX_NAME='clang++'
 
 before_install:
   # Check commit matches expected commit (because of Travis bug)
   - if [[ "$TRAVIS_COMMIT" != "$(git rev-parse HEAD)" ]]; then echo "Commit doesn't match expected $TRAVIS_COMMIT"; fi
   - |
-    if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$CXX_COMPILER_ID" == "LLVM" ]]; then
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$CXX_NAME" == "clang++" ]]; then
       brew install --with-clang llvm@6
       brew link --force --overwrite llvm@6
     fi
   # This is required to override Travis's definitions of CC and CXX that lead to old Ubuntu-packaged compilers
-  - export CXX=$CXX_COMPILER_NAME
+  - export CXX=$CXX_NAME
 
 install:
     #--------- OSX
