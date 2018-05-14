@@ -12,6 +12,7 @@ cache:
 
 addons:
   apt:
+    update: true
     sources: &default_sources
       - ubuntu-toolchain-r-test
     packages: &default_packages
