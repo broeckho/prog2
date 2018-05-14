@@ -71,7 +71,7 @@ install:
     #--------- OSX
   - |
     if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      brew upgrade python cmake
+      brew upgrade cmake
       brew install ccache
     fi
     #--------- All platforms
