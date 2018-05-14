@@ -28,7 +28,7 @@ using namespace Raii;
 void printBuffer(const Buffer& buf)
 {
         std::cout << "size: " << buf.GetSize() << ", data: ";
-        for (int i = 0; i < buf.GetSize(); i++) {
+        for (unsigned int i = 0; i < buf.GetSize(); i++) {
                 if (i > 0)
                         std::cout << ", ";
 

@@ -1,13 +1,14 @@
 /**
  * @file
- * Implementation for the Motorcycle class used to demo object aggregation
- * features.
+ * Implementation of Motorcycle used to demo object aggregation features.
  * @author J.Broeckhove  CoMP/UA
  */
 
 #include "objtracer/Motorcycle.h"
 #include "tracer/tracer.h"
 #include "util/Exception.h"
+
+#include <memory>
 
 namespace ODemo {
 
