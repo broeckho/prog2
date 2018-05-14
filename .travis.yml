@@ -33,6 +33,11 @@ matrix:
 
     - os: linux
       compiler: gcc
+      env: CXX_COMPILER_NAME='g++-6' CXX_COMPILER_ID=GNU CMAKE_BUILD_TYPE=Debug
+      addons: {apt: { packages: [*default_packages, g++-6], sources: [*default_sources]}}
+
+    - os: linux
+      compiler: gcc
       env: CXX_COMPILER_NAME='g++-7' CXX_COMPILER_ID=GNU
       addons: {apt: { packages: [*default_packages, g++-7], sources: [*default_sources]}}
 
@@ -98,14 +103,8 @@ script:
   #			BOOST_ROOT: specify where the correct version of boost can be found
   #			BOOST_NO_SYSTEM_PATHS: should be ON to prevent mixing different versions of boost
   # Arbitrarily chosen one platform for Debug build.
-  - |
-    if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$CXX_COMPILER_ID" == "LLVM" ]]; then
-      CMAKE_BUILD_TYPE=Debug GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
-      CMAKE_BUILD_TYPE=Debug make test
-    else
-      GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
-      make test
-    fi
+  - GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
+  - make test
 
 #after_success:
     # Generate the docs only if master, the travis_build_docs is true and we can use secure variables
