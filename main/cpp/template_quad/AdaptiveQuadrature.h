@@ -234,7 +234,6 @@ AdaptiveQuadrature<QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy>::ev
 
         // Work that stack until it is empty.
         while (!divStack.empty()) {
-
                 // Look at the top cell and determine sums for it.
                 Arg const b = divStack.top().first;
                 Arg const d = divStack.top().second;

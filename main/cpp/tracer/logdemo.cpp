@@ -50,7 +50,6 @@ int main(int argc, char* argv[])
 
                 // Straight logging to google log
                 LOG(INFO) << "hello there: " << endl;
-
         } catch (TCLAP::ArgException& e) {
                 cerr << "error: " << e.error() << " for argument " << e.argId() << std::endl;
         } catch (exception& e) {

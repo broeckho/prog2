@@ -25,14 +25,20 @@
 #============================================================================
 set(GOBELIJN_INCLUDE_DOC      FALSE)
 set(GOBELIJN_VERBOSE_TESTING  FALSE)
-#set(GOBELIJN_COMPILER_ID      GNU)
-set(GOBELIJN_COMPILER_ID      Clang)
+set(GOBELIJN_COMPILER_ID      GNU)
+#set(GOBELIJN_COMPILER_ID      Clang)
+#set(GOBELIJN_COMPILER_ID      Apple)
+
+#set(CMAKE_CXX_FLAGS “—Weffc++ Wextra -pedantic")
+#set(CMAKE_CXX_FLAGS "-UNDEBUG")
+
+#set(CMAKE_BUILD_TYPE "Debug")
 
 #============================================================================
 # Install dir.
 #============================================================================
 execute_process(COMMAND git rev-list HEAD --count
-        OUTPUT_VARIABLE GOBELIJN_GIT_LABEL OUTPUT_STRIP_TRAILING_WHITESPACE)
+    OUTPUT_VARIABLE GOBELIJN_GIT_LABEL OUTPUT_STRIP_TRAILING_WHITESPACE)
 set(CMAKE_INSTALL_PREFIX  $ENV{HOME}/opt/gobelijn-${GOBELIJN_GIT_LABEL})
 
 #============================================================================
@@ -55,8 +61,22 @@ if(APPLE)
     elseif(GOBELIJN_COMPILER_ID STREQUAL "Clang")
         set(CMAKE_C_COMPILER   /opt/local/bin/clang   CACHE PATH "C compiler path")
         set(CMAKE_CXX_COMPILER /opt/local/bin/clang++ CACHE PATH "CXX compiler path")
+    elseif(GOBELIJN_COMPILER_ID STREQUAL "Apple")
+        set(CMAKE_C_COMPILER   /usr/bin/cc   CACHE PATH "C compiler path")
+        set(CMAKE_CXX_COMPILER /usr/bin/c++  CACHE PATH "CXX compiler path")
     endif()
-#    set(GOBELIJN_BOOST_ROOT "")
+endif()
+
+#============================================================================
+# Boost.
+#============================================================================
+if(LINUX)
+    set(STRIDE_BOOST_ROOT "/opt/boost/gcc/boost_1_66_0/")
+    set(STRIDE_BOOST_NO_SYSTEM_PATHS ON)
+endif()
+if(APPLE AND STRIDE_COMPILER_ID STREQUAL "GNU")
+    set(STRIDE_BOOST_ROOT "/opt/boost-1.66.0")
+    set(STRIDE_BOOST_NO_SYSTEM_PATHS ON)
 endif()
 
 #############################################################################

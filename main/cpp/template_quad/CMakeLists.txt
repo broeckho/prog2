@@ -10,21 +10,35 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2012, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2012, 2018, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
 
 #============================================================================
 # Build / install / smoke test:
 #============================================================================
-foreach( EXEC	aquad_demo integral_demo )
+set(SRC
+	abs_diff.cpp
+	AdaptiveQuadrature.h
+	AGL_Quadrature.h
+	AQ_Util.h
+	CellCountViolation.h
+	Convergence.h
+	GaussLegendreRules.h
+	OscillatoryFunctor.h
+	PowerFunctor.h
+	SimpleRules.h
+)
 
-	add_executable( ${EXEC}	${EXEC}.cpp abs_diff.cpp )	
-	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )			
-	add_test( NAME ${EXEC}  
-			COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}> )
+foreach(EXEC  aquad_demo integral_demo )
+
+	add_executable(${EXEC}	${EXEC}.cpp ${SRC})
+	install(TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION})
+	add_test(NAME ${EXEC}
+        COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}>)
 	
 endforeach()
+unset(SRC)
 
 #============================================================================
 # Install headers.

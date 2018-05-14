@@ -39,7 +39,6 @@ public:
 int main(int argc, char* argv[])
 {
         try {
-
                 //----------------------------------------------------------------------
                 // Initialize logging library .
                 //----------------------------------------------------------------------
@@ -106,7 +105,6 @@ int main(int argc, char* argv[])
                 //----------------------------------------------------------------------
                 cout << endl << "Exiting ... " << endl;
                 return (0);
-
         } catch (TCLAP::ArgException& e) {
                 cerr << "error: " << e.error() << " for arg " << e.argId() << "  " << endl;
         } catch (exception& e) {

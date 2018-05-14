@@ -33,7 +33,7 @@ public:
         ConstantFactory(const TResult& value) : m_value(value) {}
 
         /// Instructs this factory to create a value.
-        virtual TResult Create(TArgs...) override final { return m_value; }
+        TResult Create(TArgs...) final { return m_value; }
 
         ///
         virtual ~ConstantFactory() = default;

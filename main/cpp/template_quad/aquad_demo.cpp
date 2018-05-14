@@ -5,7 +5,11 @@
  * @remark (c) Jan Broeckhove, 2011.
  */
 
-#include "quad.h"
+#include "AGL_Quadrature.h"
+#include "OscillatoryFunctor.h"
+#include "PowerFunctor.h"
+#include "SimpleRules.h"
+
 #include <iomanip>
 
 using std::boolalpha;

@@ -21,9 +21,16 @@
 #============================================================================
 #   Configuring Make invocations.
 #============================================================================
+NCORES=`getconf _NPROCESSORS_ONLN`
 ifeq ($(PARALLEL_MAKE),)
-	PARALLEL_MAKE = -j4
+	PARALLEL_MAKE = -j$(NCORES)
 endif
+
+#============================================================================
+#   Test related: had to duplicate CMAKE_INSTALL_PREFIX here for gtester
+#============================================================================
+LABEL=$(shell git rev-list HEAD --count)
+CMAKE_INSTALL_PREFIX  = $(HOME)/opt/stride-$(LABEL)
 
 #============================================================================
 # 	CMake command for Mac OSX or *nix
@@ -49,72 +56,85 @@ endif
 ifneq ($(CMAKE_CXX_FLAGS),)
 	CMAKE_ARGS += -DCMAKE_CXX_FLAGS=$(CMAKE_CXX_FLAGS)
 endif
+ifneq ($(CMAKE_BUILD_TYPE),)
+	CMAKE_ARGS += -DCMAKE_BUILD_TYPE:STRING=$(CMAKE_BUILD_TYPE)
+endif
 ifneq ($(CMAKE_INSTALL_PREFIX),)
 	CMAKE_ARGS += -DCMAKE_INSTALL_PREFIX:PATH=$(CMAKE_INSTALL_PREFIX)
-endif
-ifneq ($(GOBELIJN_BOOST_ROOT),)
-	CMAKE_ARGS += -DGOBELIJN_BOOST_ROOT:PATH=$(GOBELIJN_BOOST_ROOT)
 endif
 ifneq ($(GOBELIJN_INCLUDE_DOC),)
 	CMAKE_ARGS += -DGOBELIJN_INCLUDE_DOC:BOOL=$(GOBELIJN_INCLUDE_DOC)
 endif
-ifneq ($(GOBELIJN_VERBOSE_TESTING),)
-	CMAKE_ARGS += -DGOBELIJN_VERBOSE_TESTING:BOOL=$(GOBELIJN_VERBOSE_TESTING)
+ifneq ($(GOBELIJN_BOOST_ROOT),)
+	CMAKE_ARGS += -DGOBELIJN_BOOST_ROOT:PATH=$(GOBELIJN_BOOST_ROOT)
 endif
+ifneq ($(GOBELIJN_BOOST_NO_SYSTEM_PATHS),)
+	CMAKE_ARGS += -DGOBELIJN_BOOST_NO_SYSTEM_PATHS:STRING=$(GOBELIJN_BOOST_NO_SYSTEM_PATHS)
+endif
+
+#============================================================================
+#   Build directory.
+#============================================================================
 ifeq ($(BUILD_DIR),)
-	BUILD_DIR = build
+ifeq ($(CMAKE_BUILD_TYPE),Debug)
+	BUILD_DIR = ./cmake-build-debug
+else
+	BUILD_DIR = ./cmake-build-release
+endif
 endif
 
 #============================================================================
 #   Targets
 #============================================================================
-.PHONY: configure all install install_main install_test  
-.PHONY: clean distclean test installcheck format
+.PHONY: configure all install
+.PHONY: clean distclean test format
 
 help:
 	@ cmake -E echo " "
 	@ cmake -E echo " Read INSTALL.txt in this directory for a brief overview."
-	@ cmake -E echo "    "
-	@ cmake -E echo " Current macro values are (cmake will use an appropriate"
-	@ cmake -E echo " default for any macro that has not been set):"
+	@ cmake -E echo " Current macro values are:"
 	@ cmake -E echo " "
-	@ cmake -E echo "   PARALLEL_MAKE             : " $(PARALLEL_MAKE)
+	@ cmake -E echo "   BUILD_DIR                      : " $(BUILD_DIR)
 	@ cmake -E echo " "
-	@ cmake -E echo "   BUILD_DIR                 : " $(BUILD_DIR)
+	@ cmake -E echo "   CMAKE_GENERATOR                : " $(CMAKE_GENERATOR)
+	@ cmake -E echo "   CMAKE_CXX_COMPILER             : " $(CMAKE_CXX_COMPILER)
+	@ cmake -E echo "   CMAKE_CXX_FLAGS                : " $(CMAKE_CXX_FLAGS)
+	@ cmake -E echo "   CMAKE_BUILD_TYPE               : " $(CMAKE_BUILD_TYPE)
+	@ cmake -E echo "   CMAKE_INSTALL_PREFIX           : " $(CMAKE_INSTALL_PREFIX)
 	@ cmake -E echo " "
-	@ cmake -E echo "   CMAKE_BUILD_TYPE          : " $(CMAKE_BUILD_TYPE)
-	@ cmake -E echo "   CMAKE_CXX_COMPILER        : " $(CMAKE_CXX_COMPILER)
-	@ cmake -E echo "   CMAKE_CXX_FLAGS           : " $(CMAKE_CXX_FLAGS)
-	@ cmake -E echo "   CMAKE_INSTALL_PREFIX      : " $(CMAKE_INSTALL_PREFIX)
+	@ cmake -E echo "   GOBELIJN_INCLUDE_DOC           : " $(GOBELIJN_INCLUDE_DOC)
+	@ cmake -E echo "   GOBELIJN_BOOST_ROOT            : " $(GOBELIJN_BOOST_ROOT)
+	@ cmake -E echo "   GOBELIJN_BOOST_NO_SYSTEM_PATHS : " $(GOBELIJN_BOOST_ROOT)
 	@ cmake -E echo " "
-	@ cmake -E echo "   GOBELIJN_BOOST_ROOT       : " $(GOBELIJN_BOOST_ROOT)
-	@ cmake -E echo "   GOBELIJN_INCLUDE_DOC      : " $(GOBELIJN_INCLUDE_DOC)
-	@ cmake -E echo "   GOBELIJN_VERBOSE_TESTING  : " $(GOBELIJN_VERBOSE_TESTING)
-	@ cmake -E echo " "
-				
-configure:
+
+
+cores:
+	@ echo "\nMake invocation using -j"$(NCORES) "\n"
+
+configure: cores
 	cmake -E make_directory $(BUILD_DIR)
 	cmake -E chdir $(BUILD_DIR) cmake $(CMAKE_ARGS) ..
 
 all: configure
-	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) all
+	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) --no-print-directory all
 
 install: configure
 	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) --no-print-directory install   
-	
-install_main:
-	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR)/main --no-print-directory install
-	
-install_test: install_main
-	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR)/test --no-print-directory install
 
-distclean clean:
-	cmake -E remove_directory $(BUILD_DIR)
+clean: cores
+	 if [ -d $(BUILD_DIR) ]; then $(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) clean; fi
 
-test installcheck: install_test
-	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) run_ctest
-	
+distclean:
+	$(CMAKE) -E remove_directory $(BUILD_DIR)
+
+test: install
+	cd $(BUILD_DIR)/test; ctest $(TESTARGS) -V
+
+gtest: install
+	cd $(CMAKE_INSTALL_PREFIX); bin/gtester $(TESTARGS)
+
 format:
 	resources/bash/clang-format-all .
+	resources/bash/remove_trailing_space
 	
 #############################################################################

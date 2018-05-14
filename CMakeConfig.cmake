@@ -21,9 +21,10 @@
 #============================================================================
 # Configuration for the CMake tool itself.
 #============================================================================
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS 	TRUE)
-set(CMAKE_COLOR_MAKEFILE                ON)
-set(CMAKE_VERBOSE_MAKEFILE              OFF)
+set(CMAKE_ENABLE_COMPILE_COMMANDS      ON)
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS  TRUE)
+set(CMAKE_COLOR_MAKEFILE               ON)
+set(CMAKE_VERBOSE_MAKEFILE             OFF)
 enable_testing()
 
 #============================================================================
@@ -33,14 +34,22 @@ set(CMAKE_INSTALL_PREFIX  "${CMAKE_BINARY_DIR}/installed"
         CACHE PATH "Install prefix path.")
 set(CMAKE_BUILD_TYPE          "Release"
         CACHE STRING "Build type: None Debug Release RelWithDebInfo MinSizeRel.")
+set(CMAKE_PROGRAM_PATH  "$ENV{PATH}"
+    CACHE PATH "Where to look with find_program." )
+
+#============================================================================
+# Using CCache if available.
+#============================================================================
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM AND NOT FORCE_NO_CCHACHE)
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+endif()
 
 #============================================================================
 # Introduce Gobelijn specific variables.
 #============================================================================
 set(GOBELIJN_INCLUDE_DOC  FALSE
         CACHE BOOL "Include building of documentation.")
-set(GOBELIJN_VERBOSE_TESTING  TRUE
-        CACHE BOOL "Run tests in verbose mode.")
 
 #============================================================================
 # Additional CMake modules.
@@ -57,12 +66,10 @@ endif()
 #============================================================================
 # Macro sets NAME to VALUE iff the NAME has not been defined yet:
 #============================================================================
-MACRO(set_if_null NAME VALUE)
-        if(NOT DEFINED ${NAME} )
-                set(${NAME}    "${VALUE}")
-        elseif(${NAME} STREQUAL "")
-                set(${NAME}    "${VALUE}")
-        endif()
-ENDMACRO(set_if_null)
+macro(set_if_null NAME VALUE)
+    if( NOT DEFINED ${NAME} OR "${NAME}" STREQUAL "" )
+        set( ${NAME}    "${VALUE}" )
+    endif()
+endmacro(set_if_null)
 
 #############################################################################

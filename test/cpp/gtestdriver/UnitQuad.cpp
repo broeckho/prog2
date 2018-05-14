@@ -17,7 +17,12 @@
  * Tests for Quad.
  */
 
-#include "template_quad/quad.h"
+#include "template_quad/AGL_Quadrature.h"
+#include "template_quad/OscillatoryFunctor.h"
+#include "template_quad/PowerFunctor.h"
+#include "template_quad/SimpleRules.h"
+
+
 #include <gtest/gtest.h>
 
 namespace UA_CoMP {

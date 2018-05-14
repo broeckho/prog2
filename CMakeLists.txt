@@ -21,7 +21,7 @@
 #============================================================================
 # Configuring Make and local settings for project.
 #============================================================================
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 include(CMakeConfig.cmake)
 include(CMakeLocal.cmake OPTIONAL)
 
@@ -44,11 +44,6 @@ set_if_null(DOC_INSTALL_LOCATION	    doc   )
 set_if_null(TESTS_INSTALL_LOCATION	    tests )
 
 #============================================================================
-# Configuration C++ compile & link deferred to separate file.
-#============================================================================
-include(CMakeCPP.cmake)
-
-#============================================================================
 # Git revision status.
 #============================================================================
 find_package(Git QUIET)
@@ -59,6 +54,18 @@ else()
     set(GIT_FOUND FALSE)
     set(GOBELIJN_WC_REVISION_HASH      "0000000")
     set(GOBELIJN_WC_LAST_CHANGED_DATE  "0000 0000 0000")
+endif()
+
+#============================================================================
+# Configuration C++ compile & link deferred to separate file.
+#============================================================================
+include(CMakeCPP.cmake)
+
+#============================================================================
+# Configuration for DOC: DOXYGEN
+#============================================================================
+if(STRIDE_INCLUDE_DOC)
+    find_package( Doxygen)
 endif()
 
 #============================================================================
@@ -81,13 +88,16 @@ if ( GIT_FOUND )
 endif()
 message(STATUS "------> Settings and options: ")
 message(STATUS "------> GOBELIJN_INCLUDE_DOC        : ${GOBELIJN_INCLUDE_DOC} "     )
-message(STATUS "------> GOBELIJN_VERBOSE_TESTING    : ${GOBELIJN_VERBOSE_TESTING} " )
 #
 message(STATUS " ")
 message(STATUS "------> CMAKE_SYSTEM                : ${CMAKE_SYSTEM} "             )
 message(STATUS "------> CMAKE_SYSTEM_VERSION        : ${CMAKE_SYSTEM_VERSION} "     )
 message(STATUS "------> CMAKE_SYSTEM_PROCESSOR      : ${CMAKE_SYSTEM_PROCESSOR} "   )
-message(STATUS "------> CMAKE_VERSION               : ${CMAKE_VERSION} "            )
+#
+message( STATUS " " )
+message( STATUS "------> CMAKE_VERSION               : ${CMAKE_VERSION} "          )
+message( STATUS "------> CMAKE_PREFIX_PATH           : ${CMAKE_PREFIX_PATH} "      )
+message( STATUS "------> ENVIRONMENT PATH            : $ENV{PATH} "                )
 #
 message(STATUS " ")
 message(STATUS "------> CMAKE_BUILD_TYPE            : ${CMAKE_BUILD_TYPE} "         )
@@ -109,6 +119,19 @@ message(STATUS "------> Boost_FOUND                 : ${Boost_FOUND} "          
 message(STATUS "------> Boost_VERSION               : ${Boost_VERSION} "            )
 message(STATUS "------> Boost_INCLUDE_DIRS          : ${Boost_INCLUDE_DIRS} "       )
 message(STATUS "------> Boost_LIBRARIES             : ${Boost_LIBRARIES} "          )
+#
+message( STATUS "" )
+if ( STRIDE_INCLUDE_DOC )
+    message( STATUS "------> DOXYGEN_FOUND               : ${DOXYGEN_FOUND} "          )
+    message( STATUS "------> DOXYGEN_DOT_FOUND           : ${DOXYGEN_DOT_FOUND} "      )
+    if ( DOXYGEN_FOUND )
+        message( STATUS "------> DOXYGEN_EXECUTABLE          : ${DOXYGEN_EXECUTABLE} " )
+        message( STATUS "------> DOXYGEN_VERSION             : ${DOXYGEN_VERSION} "    )
+    endif()
+    if ( DOXYGEN_DOT_FOUND )
+        message( STATUS "------> DOXYGEN_DOT_EXECUTABLE      : ${DOXYGEN_DOT_EXECUTABLE} " )
+    endif()
+endif()
 #
 message(STATUS "")
 message(STATUS "Report complete.")

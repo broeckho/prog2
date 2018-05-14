@@ -52,7 +52,7 @@ set(CMAKE_BUILD_TYPE Release)
 
 project (g3log)
 if( CMAKE_VERSION VERSION_GREATER 3 )
-	cmake_policy(SET CMP0042 OLD)
+#	cmake_policy(SET CMP0042 OLD)
 endif()
 
 MESSAGE("\n>> g3log configuration info:")

@@ -29,6 +29,11 @@ set(GOBELIJN_COMPILER_ID      GNU)
 #set(GOBELIJN_COMPILER_ID      Clang)
 #set(GOBELIJN_COMPILER_ID      Apple)
 
+#set(CMAKE_CXX_FLAGS “—Weffc++ Wextra -pedantic")
+#set(CMAKE_CXX_FLAGS "-UNDEBUG")
+
+#set(CMAKE_BUILD_TYPE "Debug")
+
 #============================================================================
 # Install dir.
 #============================================================================
@@ -60,7 +65,18 @@ if(APPLE)
         set(CMAKE_C_COMPILER   /usr/bin/cc   CACHE PATH "C compiler path")
         set(CMAKE_CXX_COMPILER /usr/bin/c++  CACHE PATH "CXX compiler path")
     endif()
-#    set(GOBELIJN_BOOST_ROOT "")
+endif()
+
+#============================================================================
+# Boost.
+#============================================================================
+if(LINUX)
+    set(STRIDE_BOOST_ROOT "/opt/boost/gcc/boost_1_66_0/")
+    set(STRIDE_BOOST_NO_SYSTEM_PATHS ON)
+endif()
+if(APPLE AND STRIDE_COMPILER_ID STREQUAL "GNU")
+    set(STRIDE_BOOST_ROOT "/opt/boost-1.66.0")
+    set(STRIDE_BOOST_NO_SYSTEM_PATHS ON)
 endif()
 
 #############################################################################

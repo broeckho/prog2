@@ -8,6 +8,7 @@
 
 #include "AdaptiveQuadrature.h"
 #include "GaussLegendreRules.h"
+
 #include <cassert>
 
 namespace UA_CoMP {

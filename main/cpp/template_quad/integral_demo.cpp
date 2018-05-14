@@ -6,7 +6,11 @@
  */
 
 #include "abs_diff.h"
-#include "quad.h"
+#include "AGL_Quadrature.h"
+#include "Integral.h"
+#include "OscillatoryFunctor.h"
+#include "PowerFunctor.h"
+#include "SimpleRules.h"
 
 using std::bind1st;
 using std::cout;

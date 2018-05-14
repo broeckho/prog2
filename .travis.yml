@@ -1,84 +1,117 @@
-# This .travis.yml is based on LOOT's .travis.yml:
-# https://github.com/loot/loot/blob/dev/.travis.yml
-# but see also at:
-# https://genbattle.bitbucket.io/blog/2016/01/17/c++-travis-ci/?
- 
-# We are dealing with a C++ project.
 language: cpp
-
-# Use Ubuntu 14.04.5 LTS (Trusty Tahr) instead of Ubuntu 12.04.5 LTS (Precise Pangolin)
 dist: trusty
 
-# We're going to need boost for all configurations
+env:
+  global:
+    secure: EROUAjbfrAVF4dwimkwN5wvrDqQVkFpHKOl2eGHNKR79GDGIVZqtfeAC8O2WlzHSvIuB+8HOdkQV+FQ39pjrfWtLwLDuUd31Qeye0HxFo+h+gnP+6n/I/TGfo2dUcUSVVOH3FsHZ8qfsBSsU+qoTt1TbaUnp7qdjNIT1mE7mX1D9g1bwoZyBDJCbd3+NBUzhyBtKfNDmW7iTzRKFeHN/bWXQ5FT2bkt+QwARL08nNl1BLh+EqhhiLnMusqmmPPtCgG2FqYva0ADFVQ2UK7sm/xL61WsvRMzps2CJoVedGrUKHBj/gOSBpO7yEjk27cECvnP3Xw149e4bofV36wAYY3kC6hvBiHT/+8v1HqJf0jyAK5I3SqQfzspOlc4rYdI5kuRP4gYCWIW8PE+8bADaP/q71DSX54KOdVDgXy2oQAuSiNXoPLP/vNHHfmljavL4krw4uKVXSh7AMfUfKgpT0F1/92OW1z+s/w37wVIxoBFFGCaq7ZQeG0MzN6j/WrJFR9A4iZ6kUd0pl1z78ziZylCzD4+WpAf00ufiUL40gwER0f1wO58IcKj1b8l3JwR0LFAWZOfG/SlN6VkY5AJx16JK33KjknWzl/CCUPl4ee/xDRdIWA6mSeyXN8wzVM0mUUN29+OIul7to2YVlYYwKZObPX0nFUYhjLtkYddMTnM=
+
+cache:
+  directories:
+    - $HOME/.ccache
+    - $HOME/deps
+
 addons:
   apt:
     sources: &default_sources
       - ubuntu-toolchain-r-test
     packages: &default_packages
-      - libboost-all-dev
+      # - libhdf5-dev
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - graphviz
 
 matrix:
   include:
-   
+
     - os: linux
       compiler: gcc
-      env: CC_COMPILER_NAME='gcc-6' CXX_COMPILER_NAME='g++-6'
-      addons:
-        apt:
-          sources:
-            - *default_sources
-          packages: [ *default_packages, gcc-6, g++-6 ]
+      env: CXX_COMPILER_NAME='g++-6' CXX_COMPILER_ID=GNU TRAVIS_BUILD_DOCS=true
+      addons: {apt: { packages: [*default_packages, g++-6], sources: [*default_sources]}}
+
+    - os: linux
+      compiler: gcc
+      env: CXX_COMPILER_NAME='g++-7' CXX_COMPILER_ID=GNU
+      addons: {apt: { packages: [*default_packages, g++-7], sources: [*default_sources]}}
 
     - os: linux
       compiler: clang
-      env: CC_COMPILER_NAME='clang-3.8' CXX_COMPILER_NAME='clang++-3.8'
-      addons:
-        apt:
-          sources: 
-            - *default_sources
-            - llvm-toolchain-trusty
-          packages:
-            - *default_packages
-            - clang-3.8
-            - clang++-3.8
-            - libstdc++-6-dev
-
-    - os: linux
-      compiler: clang
-      env: CC_COMPILER_NAME='clang-4.0' CXX_COMPILER_NAME='clang++-4.0'
-      addons:
-        apt:
-          sources:
-            - *default_sources
-            - llvm-toolchain-trusty-4.0
-          packages:
-            - *default_packages
-            - clang-4.0
-            - clang++-4.0
-            - libstdc++-6-dev
+      env: CXX_COMPILER_NAME='clang++-6.0' CXX_COMPILER_ID=LLVM
+      addons: {apt: { packages: [*default_packages, clang-6.0], sources: [*default_sources, llvm-toolchain-trusty-6.0]}}
 
     - os: osx
       osx_image: xcode8.3
       compiler: clang
-      env: CC_COMPILER_NAME='cc' CXX_COMPILER_NAME='c++' CLANGSOURCE=APPLE
+      env: CXX_COMPILER_NAME='c++' CXX_COMPILER_ID=APPLE
 
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode9.2
       compiler: clang
-      env: CC_COMPILER_NAME='cc' CXX_COMPILER_NAME='c++' CLANGSOURCE=APPLE
+      env: CXX_COMPILER_NAME='c++' CXX_COMPILER_ID=APPLE
 
-#    - os: osx
-#      osx_image: xcode8.2
-#      compiler: clang
-#      env: CC_COMPILER_NAME='/usr/local/bin/clang-3.8' CXX_COMPILER_NAME='/usr/local/bin/clang++-3.8' CLANGSOURCE=LLVM
+    - os: osx
+      osx_image: xcode9.3
+      compiler: clang
+      env: CXX_COMPILER_NAME='clang++' CXX_COMPILER_ID=LLVM
 
 before_install:
   # Check commit matches expected commit (because of Travis bug)
-  - if [[ "$TRAVIS_COMMIT" != "$(git rev-parse HEAD)" ]]; then echo "Commit $(git rev-parse HEAD) doesn't match expected commit $TRAVIS_COMMIT"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$CLANGSOURCE" == "LLVM" ]]; then brew update && brew install --with-clang llvm38 && brew link --force --overwrite llvm38; fi
-  # This needs to be done because we want to override Travis's definitions of CC and CXX that lead to old Ubuntu-packaged compilers
-  - export CXX="$CXX_COMPILER_NAME" CC="$CC_COMPILER_NAME"
+  - if [[ "$TRAVIS_COMMIT" != "$(git rev-parse HEAD)" ]]; then echo "Commit doesn't match expected $TRAVIS_COMMIT"; fi
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$CXX_COMPILER_ID" == "LLVM" ]]; then
+      brew install --with-clang llvm@6
+      brew link --force --overwrite llvm@6
+    fi
+  # This is required to override Travis's definitions of CC and CXX that lead to old Ubuntu-packaged compilers
+  - export CXX="$CXX_COMPILER_NAME"
+
+install:
+    #--------- OSX
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      brew upgrade python cmake
+      brew install ccache
+    fi
+    #--------- All platforms
+  - |
+    export BOOSTHOME=$HOME/deps/boost_1_66_0
+    if [[ -z "$(ls -A $BOOSTHOME)" ]]; then
+      cd /tmp/
+      wget -O boost_1_66_0.tar.gz https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz -q
+      tar xf boost_1_66_0.tar.gz > /dev/null 2>&1
+      cd boost_1_66_0/
+      # Configure & build  --prefix: install dir for boost  --with-libraries: only build libraries that we actually need
+      ./bootstrap.sh --prefix=$BOOSTHOME --with-libraries=chrono,date_time,filesystem,iostreams,locale,regex,system,thread
+      ./b2 -q -a -j2 -d0 --disable-filesystem2 cxxflags="-v -std=c++11" threading=multi install
+      cd $TRAVIS_BUILD_DIR;
+    else
+      echo "Already have boost cache"
+    fi
+    export LD_LIBRARY_PATH=$BOOSTHOME/lib:$LD_LIBRARY_PATH
+    sudo rm -f /usr/local/lib/libboost*.dylib*
+    sudo ln -s $BOOSTHOME/lib/*.{so,dylib}* /usr/local/lib
 
 script:
-  - PARALLEL_MAKE=-j2 make install
-  - make test
+  # Build stride and run tests
+  #			BOOST_ROOT: specify where the correct version of boost can be found
+  #			BOOST_NO_SYSTEM_PATHS: should be ON to prevent mixing different versions of boost
+  # Arbitrarily chosen one platform for Debug build.
+  - |
+    if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "$CXX_COMPILER_ID" == "LLVM" ]]; then
+      CMAKE_BUILD_TYPE=Debug GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
+      CMAKE_BUILD_TYPE=Debug make test
+    else
+      GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
+      make test
+    fi
+
+#after_success:
+    # Generate the docs only if master, the travis_build_docs is true and we can use secure variables
+#  - |
+#    if [[ "$TRAVIS_BRANCH" = "master" && "$TRAVIS_BUILD_DOCS" = "true" && "$TRAVIS_PULL_REQUEST" = "false" ]]; then
+#      cd $TRAVIS_BUILD_DIR
+#      chmod +x resources/sh/generate-doxygen.sh
+#      resources/sh/generate-doxygen.sh
+#    fi
+
