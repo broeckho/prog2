@@ -200,4 +200,4 @@ void Motorcycle::set_owner(Person* newOwnerPtr)
         m_owner = newOwnerPtr;
 }
 
-} // end_of_namespace
+} // namespace ODemo

@@ -59,4 +59,3 @@ std::ostream& operator<<(std::ostream& out, Range<Iter> r)
         return out;
 }
 // END_SNIPPET{FullSource}
-

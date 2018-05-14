@@ -54,6 +54,5 @@ inline Integral<QuadAlgorithm, Integrand> make_integral(QuadAlgorithm const& qua
         return Integral<QuadAlgorithm, Integrand>(quad, ftor);
 }
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

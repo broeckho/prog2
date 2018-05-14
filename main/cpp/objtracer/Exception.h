@@ -28,11 +28,12 @@ public:
 
         /// Get info.
         virtual void info() const;
+
 private:
         std::string m_message;
 };
 
-class MotionException: public Exception
+class MotionException : public Exception
 {
 public:
         /// Constructor initializes message for the exception.
@@ -42,7 +43,7 @@ public:
         void info() const override;
 };
 
-class LoadingException: public Exception
+class LoadingException : public Exception
 {
 public:
         /// Constructor initializes message for the exception.
@@ -52,7 +53,7 @@ public:
         void info() const override;
 };
 
-class SailingException: public MotionException
+class SailingException : public MotionException
 {
 public:
         /// Constructor initializes message for the exception.
@@ -62,6 +63,4 @@ public:
         void info() const override;
 };
 
-
-
-} // end_of_namespace
+} // namespace ODemo

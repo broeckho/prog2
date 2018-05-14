@@ -73,4 +73,4 @@ private:
         std::unique_ptr<MemoryPoolImpl> m_impl;
 };
 
-} // end of namespace
+} // namespace Pimpl

@@ -34,11 +34,11 @@ public:
                 using Arg = typename StripConstRef<typename Ftor::argument_type>::type;
                 using Res = typename StripConstRef<typename Ftor::result_type>::type;
 
-                const Arg h {static_cast<Arg>(0.5) * d};
-                const Arg r {l + d};
+                const Arg h{static_cast<Arg>(0.5) * d};
+                const Arg r{l + d};
                 return static_cast<Res>(0.333333333333333) * h * (f(l) + static_cast<Res>(4.0) * f(l + h) + f(r));
         }
 };
 
-} // end-of-namespace
-} // end-of-namespace
+} // namespace Num
+} // namespace UA_CoMP

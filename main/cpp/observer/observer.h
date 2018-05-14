@@ -32,7 +32,7 @@ public:
         /// Registers the given observer with this observable's collection of observers.
         void Register(std::shared_ptr<Observer<TArgs...>> obs) { m_observerCollection.push_back(obs); }
 
-        ///Removes the given observer from this observable's collection of observers.
+        /// Removes the given observer from this observable's collection of observers.
         void Unregister(std::shared_ptr<Observer<TArgs...>> obs)
         {
                 m_observerCollection.erase(std::remove(m_observerCollection.begin(), m_observerCollection.end(), obs),
@@ -40,14 +40,14 @@ public:
         }
 
         /// Notifies all registered observers of an event.
-        void NotifyObservers(TArgs... args) {
-                for (const auto &obs : m_observerCollection) {
+        void NotifyObservers(TArgs... args)
+        {
+                for (const auto& obs : m_observerCollection) {
                         obs->Notify(args...);
                 }
         }
 
 private:
-
         std::vector<std::shared_ptr<Observer<TArgs...>>> m_observerCollection; ///< Observers.
 };
-}
+} // namespace observer

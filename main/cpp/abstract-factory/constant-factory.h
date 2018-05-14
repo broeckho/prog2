@@ -36,9 +36,9 @@ public:
         virtual TResult Create(TArgs...) override final { return m_value; }
 
         ///
-        virtual ~ConstantFactory() =default;
+        virtual ~ConstantFactory() = default;
 
 private:
         TResult m_value;
 };
-} // namespace
+} // namespace AbstractFactory

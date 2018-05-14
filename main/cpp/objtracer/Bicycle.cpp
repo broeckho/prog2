@@ -59,10 +59,7 @@ Bicycle& Bicycle::operator=(Bicycle&& rhs) noexcept
         return *this;
 }
 
-Bicycle::~Bicycle()
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+Bicycle::~Bicycle() { COMP_MISC_MEMBER_TRACER; }
 
 string Bicycle::getModel() const
 {
@@ -95,4 +92,4 @@ void Bicycle::info() const
         COMP_MISC_LOG_TRACER(s);
 }
 
-} // end of namespace
+} // namespace ODemo

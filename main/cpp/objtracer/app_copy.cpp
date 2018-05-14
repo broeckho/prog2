@@ -4,8 +4,8 @@
  * @author P. Klosiewicz, J.Broeckhove  CoMP/UA
  */
 
-#include "demos.h"
 #include "demobj.h"
+#include "demos.h"
 #include "tracer/tracer.h"
 
 using namespace std;

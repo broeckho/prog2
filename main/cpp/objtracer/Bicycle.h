@@ -57,4 +57,4 @@ private:
         std::string m_color;
 };
 
-} // end_of_namespace
+} // namespace ODemo

@@ -8,8 +8,6 @@
 #include "objtracer/demobj.h"
 #include "tracer/tracer.h"
 
-//#pragma clang diagnostic push
-//#pragma ide diagnostic ignored "TemplateArgumentsIssues"
 using namespace ODemo;
 using namespace std;
 
@@ -86,5 +84,3 @@ int app_hierarchies()
         COMP_MISC_LOG_TRACER(" statement: return 0;");
         return 0;
 }
-
-#pragma clang diagnostic pop

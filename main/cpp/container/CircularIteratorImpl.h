@@ -178,6 +178,6 @@ protected:
         base_type m_end;
         base_type m_it;
 };
-}
-}
-}
+} // namespace Impl_
+} // namespace Container
+} // namespace UA_CoMP

@@ -13,9 +13,9 @@
 
 namespace UA_CoMP {
 namespace Num {
+using std::cos;
 using std::exp;
 using std::sin;
-using std::cos;
 /**
  * Oscillatory functor.
  * Cfr. The Handbook of Mathematical Functions,
@@ -63,6 +63,5 @@ private:
         Integral fIntegral;
 };
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

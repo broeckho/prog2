@@ -30,7 +30,8 @@ int app_exception()
                 m1.info();
 
                 COMP_MISC_LOG_TRACER(" statement: SailBoat s1(\"Marina\");");
-                SailBoat s1("Marina");;
+                SailBoat s1("Marina");
+                ;
 
                 vector<double> direction(2);
                 direction[0] = 1.0;
@@ -38,8 +39,7 @@ int app_exception()
                 COMP_MISC_LOG_TRACER(" statement: s1.move(4, direction);");
                 s1.move(4, direction);
 
-                if (direction[0] == 1.0)
-                {
+                if (direction[0] == 1.0) {
                         throw SailingException("Help");
                 }
 
@@ -48,16 +48,13 @@ int app_exception()
 
                 COMP_MISC_LOG_TRACER(" statement: s1.displayInfo();");
                 s1.info();
-        }
-        catch(LoadingException& e) {
+        } catch (LoadingException& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with LoadingException");
                 e.info();
-        }
-        catch(SailingException& e) {
+        } catch (SailingException& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with SailingException");
                 e.info();
-        }
-        catch(Exception& e) {
+        } catch (Exception& e) {
                 COMP_MISC_LOG_TRACER(" catch clause with Exception");
                 e.info();
                 COMP_MISC_LOG_TRACER(e.what());

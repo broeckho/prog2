@@ -44,4 +44,4 @@ private:
         bool m_running;
 };
 
-} // end_of_namespace
+} // namespace ODemo

@@ -40,19 +40,18 @@ public:
         MemberTracer(const std::string& member_name, const void* object_this);
 
         /// No copy constructor.
-        MemberTracer(const MemberTracer&) =delete;
+        MemberTracer(const MemberTracer&) = delete;
 
         /// No assignment.
-        MemberTracer& operator=(const MemberTracer&) =delete;
+        MemberTracer& operator=(const MemberTracer&) = delete;
 
         /// Destructor inserts message in TracerOutput about leaving member body.
         ~MemberTracer();
 
 private:
-        const std::string       m_member_name;
-        const void* const       m_object_this;
+        const std::string m_member_name;
+        const void* const m_object_this;
 };
 
-} // end of namespace
-} // end of namespace
-
+} // namespace Misc
+} // namespace UA_CoMP

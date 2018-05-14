@@ -33,4 +33,4 @@ public:
         /// Instructs this factory to create a value.
         virtual TResult Create(TArgs... args) = 0;
 };
-}
+} // namespace AbstractFactory

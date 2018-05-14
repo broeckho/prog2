@@ -14,8 +14,7 @@ using std::string;
 Unicycle::Unicycle() : m_wheel(), m_speed(0.0), m_direction(0.0) { COMP_MISC_MEMBER_TRACER; }
 
 // Perform a deep copy of the engine and a shallow copy of the owner
-Unicycle::Unicycle(Unicycle const& ori)
-        : m_wheel(ori.m_wheel), m_speed(ori.m_speed), m_direction(ori.m_direction)
+Unicycle::Unicycle(Unicycle const& ori) : m_wheel(ori.m_wheel), m_speed(ori.m_speed), m_direction(ori.m_direction)
 {
         COMP_MISC_MEMBER_TRACER;
 }
@@ -74,4 +73,4 @@ void Unicycle::turn(double degrees)
         }
 }
 
-} // end_of_namespace ODemo
+} // namespace ODemo

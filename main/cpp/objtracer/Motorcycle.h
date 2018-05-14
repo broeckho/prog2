@@ -81,12 +81,12 @@ public:
         void set_owner(Person* newOwnerPtr);
 
 private:
-        std::shared_ptr<Engine>   m_engine;
-        std::unique_ptr<Body>     m_body;
-        const Person*             m_owner;
-        std::array<Wheel, 2>      m_wheels;
-        double                    m_speed;
-        double                    m_direction;
+        std::shared_ptr<Engine> m_engine;
+        std::unique_ptr<Body> m_body;
+        const Person* m_owner;
+        std::array<Wheel, 2> m_wheels;
+        double m_speed;
+        double m_direction;
 };
 
-} // end_of_namespace
+} // namespace ODemo

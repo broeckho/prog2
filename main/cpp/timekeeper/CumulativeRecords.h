@@ -230,6 +230,5 @@ inline std::ostream& operator<<<std::chrono::seconds>(std::ostream& os,
         return os;
 }
 
-} // namespace
-} // namespace
-
+} // namespace Timekeeper
+} // namespace UA_CoMP

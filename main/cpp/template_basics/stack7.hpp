@@ -32,7 +32,7 @@ public:
         T top() const;
 
 private:
-        CONT<T, ALLOC> elems;           ///< Container for the stack elements.
+        CONT<T, ALLOC> elems; ///< Container for the stack elements.
 };
 
 // -------------------- Implementations ----------------------------------------
@@ -60,4 +60,3 @@ T Stack<T, ALLOC, CONT>::top() const
         }
         return elems.back();
 }
-

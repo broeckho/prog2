@@ -34,4 +34,4 @@ Employee PtreeEmployeeFactory::Create()
         return result;
 }
 
-}
+} // namespace AbstractFactory

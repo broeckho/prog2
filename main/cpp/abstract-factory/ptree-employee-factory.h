@@ -48,4 +48,4 @@ public:
 private:
         boost::property_tree::ptree m_ptree;
 };
-}
+} // namespace AbstractFactory

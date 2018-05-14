@@ -132,8 +132,8 @@ public:
         using second_rule = AQRule2<QuadRule2>;
 
         /**
-        * Constructor initializes everything.
-        */
+         * Constructor initializes everything.
+         */
         AdaptiveQuadrature(double convergenceTolerance, unsigned int initialCellCount, unsigned int cellCountLimit)
             : fConvergenceTolerance(convergenceTolerance), fInitialCellCount(initialCellCount),
               fCellCountLimit(cellCountLimit)
@@ -205,9 +205,9 @@ std::tuple<bool, typename Integrand::result_type, typename Integrand::result_typ
 AdaptiveQuadrature<QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy>::evaluate(
     typename Integrand::argument_type l, typename Integrand::argument_type r, Integrand ftor) const
 {
-        using std::stack;
-        using std::pair;
         using std::make_pair;
+        using std::pair;
+        using std::stack;
 
         using Arg = typename StripConstRef<typename Integrand::argument_type>::type;
         using Res = typename StripConstRef<typename Integrand::result_type>::type;
@@ -290,6 +290,5 @@ operator()(typename Integrand::argument_type l, typename Integrand::argument_typ
         return std::get<2>(evaluate(l, r, ftor));
 }
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

@@ -15,7 +15,6 @@ template <typename T, typename CONT = std::deque<T>>
 class Stack
 {
 public:
-
         /// Assignment of one stack to another.
         /// \tparam T2  Template param for element type of rhs stack.
         /// \return     reference to the stack.
@@ -38,8 +37,7 @@ public:
         T top() const;
 
 private:
-        CONT elems;             ///< Container for the stack elements.
-
+        CONT elems; ///< Container for the stack elements.
 };
 
 // -------------------- Implementations ----------------------------------------

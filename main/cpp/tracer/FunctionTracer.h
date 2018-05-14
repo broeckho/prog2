@@ -35,13 +35,13 @@ class FunctionTracer
 {
 public:
         /// Constructor inserts message in TrackerOutput about entering a function body.
-        explicit FunctionTracer(const std::string & function_name);
+        explicit FunctionTracer(const std::string& function_name);
 
         /// No copy constructor.
-        FunctionTracer(const FunctionTracer&) =delete;
+        FunctionTracer(const FunctionTracer&) = delete;
 
         /// No assignment.
-        FunctionTracer& operator=(const FunctionTracer&) =delete;
+        FunctionTracer& operator=(const FunctionTracer&) = delete;
 
         /// Destructor inserts message in TracketOutput about leaving funvtion body.
         ~FunctionTracer();
@@ -50,6 +50,5 @@ private:
         std::string const m_function_name;
 };
 
-} // end of namespace
-} // end of namespace
-
+} // namespace Misc
+} // namespace UA_CoMP

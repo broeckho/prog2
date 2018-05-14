@@ -13,6 +13,5 @@ namespace Num {
 /// Compares two functors on a grid and returns maximum absolute difference.
 double abs_diff(double b, double e, double h, std::function<double(double)> f1, std::function<double(double)> f2);
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

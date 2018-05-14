@@ -107,4 +107,4 @@ Buffer& Buffer::operator=(Buffer&& other) noexcept
         // chaining assignments, i.e. 'a = b = c;'
         return *this;
 }
-}
+} // namespace Raii

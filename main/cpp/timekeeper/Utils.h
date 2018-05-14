@@ -104,6 +104,5 @@ struct Utils
         }
 };
 
-} // namespace
-} // namespace
-
+} // namespace Timekeeper
+} // namespace UA_CoMP

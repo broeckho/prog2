@@ -42,4 +42,3 @@ class AccumulationTraits<float>
 public:
         using type = double;
 };
-

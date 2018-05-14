@@ -13,4 +13,3 @@
 #include "OscillatoryFunctor.h"
 #include "PowerFunctor.h"
 #include "SimpleRules.h"
-

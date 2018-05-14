@@ -53,6 +53,5 @@ public:
         virtual TimingsType GetTimings() const = 0;
 };
 
-} // namespace
-} // namespace
-
+} // namespace Timekeeper
+} // namespace UA_CoMP

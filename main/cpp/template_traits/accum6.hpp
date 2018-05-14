@@ -5,7 +5,6 @@
  * @author J. Broeckhove - see copyright.txt
  */
 
-
 #include "accumtraits4.hpp"
 #include "sumpolicy1.hpp"
 
@@ -26,4 +25,3 @@ public:
                 return total;
         }
 };
-

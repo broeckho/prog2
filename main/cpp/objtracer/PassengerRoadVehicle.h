@@ -53,4 +53,4 @@ private:
         int m_free;
 };
 
-} // end_of_namespace
+} // namespace ODemo

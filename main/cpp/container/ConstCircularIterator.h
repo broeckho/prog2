@@ -109,5 +109,5 @@ ConstCircularIterator<T> prev(ConstCircularIterator<T> c)
         ConstCircularIterator<T> tmp(c);
         return --tmp;
 }
-}
-}
+} // namespace Container
+} // namespace UA_CoMP

@@ -34,6 +34,5 @@ public:
         }
 };
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Timekeeper
+} // namespace UA_CoMP

@@ -36,8 +36,7 @@ public:
         T top() const;
 
 private:
-        std::deque<T> elems;    ///< Container for the stack elements.
-
+        std::deque<T> elems; ///< Container for the stack elements.
 };
 
 // -------------------- Implementations ----------------------------------------
@@ -58,7 +57,6 @@ Stack<T>& Stack<T>::operator=(Stack<T2> const& op2)
         }
         return *this;
 }
-
 
 template <typename T>
 void Stack<T>::pop()

@@ -63,4 +63,4 @@ bool Engine::is_running() const
         return m_running;
 }
 
-} // end_of_namespace
+} // namespace ODemo

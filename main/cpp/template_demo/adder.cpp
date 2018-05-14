@@ -23,7 +23,6 @@
 #define COMP_MISC_FUNCTION_NAME __FUNCTION__
 #endif
 
-
 #include <iostream>
 
 using namespace std;

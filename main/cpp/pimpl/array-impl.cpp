@@ -25,8 +25,7 @@ namespace Pimpl {
  */
 struct MemoryPool::MemoryPoolImpl
 {
-        MemoryPoolImpl(char *string, int i)
-                : pointer(string), allocatedCount(static_cast<size_t>(i)) {}
+        MemoryPoolImpl(char* string, int i) : pointer(string), allocatedCount(static_cast<size_t>(i)) {}
         char* pointer;
         size_t allocatedCount;
 };
@@ -56,4 +55,4 @@ char* MemoryPool::AllocateMemory(size_t size)
         m_impl->allocatedCount += size;
         return result;
 }
-}
+} // namespace Pimpl

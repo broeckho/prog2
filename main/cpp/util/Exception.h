@@ -32,6 +32,5 @@ public:
         Exception(const std::string m) : std::runtime_error(std::move(m)) {}
 };
 
-} // namespace
-} // namespace
-
+} // namespace Util
+} // namespace UA_CoMP

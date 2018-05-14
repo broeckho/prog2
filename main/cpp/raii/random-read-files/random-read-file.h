@@ -79,4 +79,4 @@ private:
         mutable std::vector<char> m_buf;
 };
 
-} // end of namespace
+} // namespace Raii

@@ -13,9 +13,9 @@
  *  Copyright 2012, Jan Broeckhove, CoMP research group, Universiteit Antwerpen.
  */
 /**
-* @file
-* Tests for Timekeeper.
-*/
+ * @file
+ * Tests for Timekeeper.
+ */
 
 #include "timekeeper/ClockTraits.h"
 #include "timekeeper/CumulativeRecords.h"
@@ -148,4 +148,4 @@ TEST_F(UnitRecords, MergeCast)
 }
 
 } // namespace Timekeeper
-} // namespace-UA_CoMP
+} // namespace UA_CoMP

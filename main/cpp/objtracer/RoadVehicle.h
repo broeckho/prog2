@@ -41,4 +41,4 @@ public:
         void move(double speed, std::vector<double> direction) override;
 };
 
-} // end_of_namespace
+} // namespace ODemo

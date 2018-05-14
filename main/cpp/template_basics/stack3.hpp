@@ -9,7 +9,6 @@
 #include <stdexcept>
 #include <vector>
 
-
 /// Stack class using vector as element container.
 /// \tparam T           Template param for element type.
 /// \tparam CONT        Container type fo stack elements.
@@ -33,7 +32,7 @@ public:
         T top() const;
 
 private:
-        CONT elems;     ///< Container for the stack elements.
+        CONT elems; ///< Container for the stack elements.
 };
 
 // -------------------- Implementations ----------------------------------------
@@ -62,4 +61,3 @@ T Stack<T, CONT>::top() const
         return elems.back();
 }
 // END_SNIPPET{FullSource}
-

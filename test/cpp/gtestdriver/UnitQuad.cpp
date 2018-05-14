@@ -13,9 +13,9 @@
  *  Copyright 2012, Jan Broeckhove, CoMP research group, Universiteit Antwerpen.
  */
 /**
-* @file
-* Tests for Quad.
-*/
+ * @file
+ * Tests for Quad.
+ */
 
 #include "template_quad/quad.h"
 #include <gtest/gtest.h>
@@ -115,6 +115,6 @@ TEST(QuadTest, CellCountNoException)
         ASSERT_EQ(quad.getCellCountLimit(), cell_count);
 }
 
-} // end-of-namespace QuadTests
-} // end-of-namespace-Num
-} // end-of-namespace-UA_CoMP
+} // namespace QuadTests
+} // namespace Num
+} // namespace UA_CoMP

@@ -11,4 +11,3 @@ class SumPolicy
 public:
         static void accumulate(T1& total, const T2& value) { total += value; }
 };
-

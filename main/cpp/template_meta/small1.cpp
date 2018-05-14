@@ -37,7 +37,7 @@ int main()
 {
         smaller_select<float, long int>::type haha = 0;
         smaller_select<long double, float>::type hoho = 1.0;
-        std::cout << haha <<  " ... " << hoho << std::endl;
+        std::cout << haha << " ... " << hoho << std::endl;
         return 0;
 }
 // END_SNIPPET{FullSource}

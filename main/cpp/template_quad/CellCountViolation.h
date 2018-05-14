@@ -23,7 +23,7 @@ public:
         /** Checks and throws iff condition is violated, otherwise return true. */
         static bool check(bool b)
         {
-                if (!b ) {
+                if (!b) {
                         throw std::runtime_error("Cellcount violation in AdaptiveQuadrature");
                 }
                 return b;
@@ -49,13 +49,12 @@ class OnViolationExit
 public:
         static bool check(bool b)
         {
-                if ( !b ) {
+                if (!b) {
                         exit(EXIT_FAILURE);
                 }
                 return b;
         }
 };
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

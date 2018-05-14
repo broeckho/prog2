@@ -23,11 +23,21 @@
 
 namespace Raii {
 
-class FileError {};
-class OpenError : public FileError {};
-class CloseError : public FileError {};
-class ReadError : public FileError {};
-class WriteError : public FileError {};
+class FileError
+{
+};
+class OpenError : public FileError
+{
+};
+class CloseError : public FileError
+{
+};
+class ReadError : public FileError
+{
+};
+class WriteError : public FileError
+{
+};
 
 /**
  * A wrapper around the C FILE*-based IO API.
@@ -157,4 +167,4 @@ private:
         std::FILE* m_file;
 };
 
-} // end of namespace
+} // namespace Raii

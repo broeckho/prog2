@@ -3,7 +3,6 @@
 using std::cout;
 using std::endl;
 
-
 std::function<int(int)> makeCountingAdder(int& counter)
 {
         return [&counter](int x) -> int {

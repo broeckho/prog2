@@ -31,4 +31,3 @@ public:
         using type = long;
         static constexpr type value = 0;
 };
-

@@ -47,4 +47,4 @@ private:
         double m_direction;
 };
 
-} // end_of_namespace
+} // namespace ODemo

@@ -15,8 +15,7 @@ namespace ODemo {
 using namespace std;
 using namespace UA_CoMP::Util;
 
-PassengerRoadVehicle::PassengerRoadVehicle(int numSeats)
-        : RoadVehicle(), m_capacity(numSeats), m_free(numSeats)
+PassengerRoadVehicle::PassengerRoadVehicle(int numSeats) : RoadVehicle(), m_capacity(numSeats), m_free(numSeats)
 {
         COMP_MISC_MEMBER_TRACER;
 }
@@ -94,9 +93,9 @@ int PassengerRoadVehicle::get_free() const
 void PassengerRoadVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        const string s {"I'm a PassengerRoadVehicle: #seats = " + StringUtils::ToString(m_capacity)
-                        + ", #free seats = " + StringUtils::ToString(m_free)};
+        const string s{"I'm a PassengerRoadVehicle: #seats = " + StringUtils::ToString(m_capacity) +
+                       ", #free seats = " + StringUtils::ToString(m_free)};
         COMP_MISC_LOG_TRACER(s);
 }
 
-} // end of namespace
+} // namespace ODemo

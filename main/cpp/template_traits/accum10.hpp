@@ -5,7 +5,6 @@
  * @author J. Broeckhove - see copyright.txt
  */
 
-
 #include <iterator>
 
 template <typename Iter>

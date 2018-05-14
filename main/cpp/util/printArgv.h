@@ -31,6 +31,5 @@ void printArgv(int argc, char* argv[], std::ostream& os)
         return;
 }
 
-} // namespace
-} // namespace
-
+} // namespace Util
+} // namespace UA_CoMP

@@ -50,5 +50,5 @@ public:
         using Records = UA_CoMP::Timekeeper::Records<D>;
 };
 
-} // namespace
-} // namespace
+} // namespace Timekeeper
+} // namespace UA_CoMP

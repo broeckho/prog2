@@ -19,4 +19,4 @@ string Person::get_name() const
         COMP_MISC_MEMBER_TRACER;
         return m_name;
 }
-}
+} // namespace ODemo

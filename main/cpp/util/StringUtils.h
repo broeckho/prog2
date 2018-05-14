@@ -83,5 +83,5 @@ public:
         }
 };
 
-} // namespace
-} // namespace
+} // namespace Util
+} // namespace UA_CoMP

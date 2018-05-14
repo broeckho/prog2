@@ -60,4 +60,4 @@ bool Wheel::is_rotating() const
         return m_rotating;
 }
 
-} // end of namespace
+} // namespace ODemo

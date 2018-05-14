@@ -23,10 +23,10 @@
 namespace Raii {
 
 /**
-* A buffer of bytes, with a fixed size. Buffers manage a block of memory,
-* which can be copied and moved. A Buffer's memory block is automatically
-* released when it goes out of scope.
-*/
+ * A buffer of bytes, with a fixed size. Buffers manage a block of memory,
+ * which can be copied and moved. A Buffer's memory block is automatically
+ * released when it goes out of scope.
+ */
 class Buffer
 {
 public:
@@ -66,10 +66,10 @@ public:
 
 private:
         /// Stores the size of this buffer's memory block.
-        size_t     m_bufSize;
+        size_t m_bufSize;
 
         /// Stores a pointer to this buffer's memory block.
-        char*      m_data;
+        char* m_data;
 };
 
-} // end of namespace
+} // namespace Raii

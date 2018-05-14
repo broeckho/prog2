@@ -39,7 +39,7 @@ void f3p(const Motorcycle* bp)
         bp->is_running();
 }
 Motorcycle g() { return Motorcycle(); }
-}
+} // namespace
 
 /**
  * Demo prog for features of essential ops.

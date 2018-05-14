@@ -36,14 +36,11 @@ Body& Body::operator=(Body&& rhs) noexcept
         return *this;
 }
 
-Body::~Body()
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+Body::~Body() { COMP_MISC_MEMBER_TRACER; }
 
 Body Body::operator+(const Body& b)
 {
         COMP_MISC_MEMBER_TRACER;
         return Body(m_color + b.m_color);
 }
-} // end of namespace
+} // namespace ODemo

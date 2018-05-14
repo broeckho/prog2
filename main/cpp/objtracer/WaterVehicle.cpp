@@ -11,10 +11,7 @@ namespace ODemo {
 
 using namespace std;
 
-WaterVehicle::WaterVehicle() : Vehicle(), m_sinking(false)
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+WaterVehicle::WaterVehicle() : Vehicle(), m_sinking(false) { COMP_MISC_MEMBER_TRACER; }
 
 WaterVehicle::WaterVehicle(const WaterVehicle& ori) : Vehicle(ori), m_sinking(ori.m_sinking)
 {
@@ -46,15 +43,12 @@ WaterVehicle& WaterVehicle::operator=(WaterVehicle&& rhs) noexcept
         return *this;
 }
 
-WaterVehicle::~WaterVehicle()
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+WaterVehicle::~WaterVehicle() { COMP_MISC_MEMBER_TRACER; }
 
 void WaterVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        string s {"I'm a generic Water vehicle"};
+        string s{"I'm a generic Water vehicle"};
         if (m_sinking) {
                 s.append(" and I'm sinking!");
         }
@@ -73,4 +67,4 @@ void WaterVehicle::stop_sinking()
         m_sinking = false;
 }
 
-} // end of namespace
+} // namespace ODemo

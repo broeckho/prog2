@@ -36,5 +36,5 @@ void TracerOutput::log(const string& msg)
         }
 }
 
-} // end of namespace
-} // end of namespace
+} // namespace Misc
+} // namespace UA_CoMP

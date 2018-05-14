@@ -26,4 +26,4 @@ public:
         virtual void move(double speed, std::vector<double> direction) = 0;
 };
 
-} // end of namespace
+} // namespace ODemo

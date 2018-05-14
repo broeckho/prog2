@@ -30,7 +30,7 @@ class TracerOutput
 {
 public:
         /// No constructor.
-        TracerOutput() =default;
+        TracerOutput() = default;
 
         /// Indicate whether current making output.
         bool is_output_on();
@@ -51,13 +51,12 @@ public:
         void log(const std::string& msg);
 
 private:
-        bool           m_make_output {true};
-        unsigned int   m_indent {0};
+        bool m_make_output{true};
+        unsigned int m_indent{0};
 };
 
 /// TracerOutput instance connected to g3log default logger.
 extern TracerOutput g_tracer_log;
 
-} // end of namespace
-} // end of namespace
-
+} // namespace Misc
+} // namespace UA_CoMP

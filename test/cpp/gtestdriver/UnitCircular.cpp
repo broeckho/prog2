@@ -13,9 +13,9 @@
  *  Copyright 2012, Jan Broeckhove, CoMP research group, Universiteit Antwerpen.
  */
 /**
-* @file
-* Tests for Quad.
-*/
+ * @file
+ * Tests for Quad.
+ */
 #include <gtest/gtest.h>
 #include <vector>
 
@@ -244,4 +244,4 @@ TEST_F(UnitCircular, Loop3)
 
 } // namespace Tests
 } // namespace Container
-} // namespace-UA_CoMP
+} // namespace UA_CoMP

@@ -27,8 +27,8 @@ namespace AbstractFactory {
  */
 struct Employee
 {
-        std::string Name;               ///< Stores the person's name.
-        std::string DepartmentName;     ///< Stores the name of the employee's department.
-        double Salary;                  ///< Stores the employee's monthly wage.
+        std::string Name;           ///< Stores the person's name.
+        std::string DepartmentName; ///< Stores the name of the employee's department.
+        double Salary;              ///< Stores the employee's monthly wage.
 };
-}
+} // namespace AbstractFactory

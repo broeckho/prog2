@@ -11,8 +11,7 @@ namespace Misc {
 
 using namespace std;
 
-FunctionTracer::FunctionTracer(const string& function_name)
-    : m_function_name(function_name)
+FunctionTracer::FunctionTracer(const string& function_name) : m_function_name(function_name)
 {
         g_tracer_log.log("---> function body: " + m_function_name);
         g_tracer_log.increase_indent();
@@ -24,5 +23,5 @@ FunctionTracer::~FunctionTracer()
         g_tracer_log.log("<--- function body: " + m_function_name);
 }
 
-} // end of namespace
-} // end of namespace
+} // namespace Misc
+} // namespace UA_CoMP

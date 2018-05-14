@@ -22,8 +22,8 @@
 # Configuring Make and local settings for project.
 #============================================================================
 cmake_minimum_required(VERSION 2.8)
-include(CMakeCMakeConfig.cmake)
-include(CMakeLocalConfig.cmake OPTIONAL)
+include(CMakeConfig.cmake)
+include(CMakeLocal.cmake OPTIONAL)
 
 #============================================================================
 # Project name.
@@ -46,7 +46,7 @@ set_if_null(TESTS_INSTALL_LOCATION	    tests )
 #============================================================================
 # Configuration C++ compile & link deferred to separate file.
 #============================================================================
-include(CMakeCPPConfig.cmake)
+include(CMakeCPP.cmake)
 
 #============================================================================
 # Git revision status.

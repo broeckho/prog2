@@ -16,8 +16,8 @@ using std::function;
 double abs_diff(double b, double e, double h, function<double(double)> f1, function<double(double)> f2)
 {
         double maxDiff = 0.0;
-        auto n = static_cast<unsigned int>((e-b)/h);
-        for (int i=0; i < n; ++i) {
+        auto n = static_cast<unsigned int>((e - b) / h);
+        for (int i = 0; i < n; ++i) {
                 double y = b + static_cast<double>(i) * h;
                 double const temp = std::fabs(f1(y) - f2(y));
                 maxDiff = (temp > maxDiff ? temp : maxDiff);
@@ -25,5 +25,5 @@ double abs_diff(double b, double e, double h, function<double(double)> f1, funct
         return maxDiff;
 }
 
-} // end-of-namespace
-} // end-of-namespace
+} // namespace Num
+} // namespace UA_CoMP

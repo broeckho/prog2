@@ -21,7 +21,6 @@
  * creation of other objects.
  */
 
-
 #include <functional>
 #include <initializer_list>
 #include <list>
@@ -87,6 +86,5 @@ private:
         MapType m_map;
 };
 
-} // namespace
-} // namespace
-
+} // namespace Util
+} // namespace UA_CoMP

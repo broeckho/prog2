@@ -15,4 +15,3 @@ inline T accum(T const* beg, T const* end)
         }
         return total;
 }
-

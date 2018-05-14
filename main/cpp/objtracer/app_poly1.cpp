@@ -22,12 +22,12 @@ namespace {
 void display_all(list<shared_ptr<Vehicle>> l)
 {
         COMP_MISC_FUNCTION_TRACER;
-        for(const auto& p: l) {
+        for (const auto& p : l) {
                 p->info();
         }
 }
 
-} // end-of-anonymous-namespace
+} // namespace
 
 /**
  * Demonstrates late binding.
@@ -38,23 +38,20 @@ int app_poly1()
 {
         COMP_MISC_FUNCTION_TRACER;
 
+        COMP_MISC_TRACER_OUTPUT_OFF; // Setting the log output ON/OFF
+        list<shared_ptr<Vehicle>> l1{make_shared<RoadVehicle>(), make_shared<RoadVehicle>(),
+                                     make_shared<PassengerRoadVehicle>(5)};
 
-        COMP_MISC_TRACER_OUTPUT_OFF;            // Setting the log output ON/OFF
-        list<shared_ptr<Vehicle>> l1 {
-                make_shared<RoadVehicle>(), make_shared<RoadVehicle>(), make_shared<PassengerRoadVehicle>(5)
-        };
-
-        COMP_MISC_TRACER_OUTPUT_ON;             // Setting the log output ON/OFF
+        COMP_MISC_TRACER_OUTPUT_ON; // Setting the log output ON/OFF
         COMP_MISC_LOG_TRACER("invocation for l1:");
         display_all(l1);
         COMP_MISC_LOG_TRACER("done with l1.");
 
-        COMP_MISC_TRACER_OUTPUT_OFF;            // Setting the log output ON/OFF
-        list<shared_ptr<Vehicle>> l2 {
-                make_shared<RoadVehicle>(), make_shared<Bicycle>("Honda", "black"), make_shared<SailBoat>("Freddy")
-        };
+        COMP_MISC_TRACER_OUTPUT_OFF; // Setting the log output ON/OFF
+        list<shared_ptr<Vehicle>> l2{make_shared<RoadVehicle>(), make_shared<Bicycle>("Honda", "black"),
+                                     make_shared<SailBoat>("Freddy")};
 
-        COMP_MISC_TRACER_OUTPUT_ON;             // Setting the log output ON/OFF
+        COMP_MISC_TRACER_OUTPUT_ON; // Setting the log output ON/OFF
         COMP_MISC_LOG_TRACER("invocation for l2:");
         display_all(l2);
         COMP_MISC_LOG_TRACER("done with l2.");

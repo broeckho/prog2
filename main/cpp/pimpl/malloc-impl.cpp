@@ -57,4 +57,4 @@ char* MemoryPool::AllocateMemory(size_t size)
         m_impl->pointers.push_back(ptr);
         return reinterpret_cast<char*>(ptr);
 }
-}
+} // namespace Pimpl

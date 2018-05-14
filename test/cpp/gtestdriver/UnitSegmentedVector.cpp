@@ -62,11 +62,11 @@ public:
         }
         void Moved() { m_event_list.push_back(MOVED); }
 
-        int              GetCounter() const { return m_counter; }
+        int GetCounter() const { return m_counter; }
         const EventList& GetEventList() const { return m_event_list; }
 
 private:
-        int       m_counter;
+        int m_counter;
         EventList m_event_list;
 };
 
@@ -99,9 +99,9 @@ public:
                 }
         }
 
-        int          i;
-        std::string  str;
-        int*         array;
+        int i;
+        std::string str;
+        int* array;
         TraceMemory& t;
 };
 } // namespace
@@ -109,7 +109,7 @@ public:
 template <class SegmentedVector>
 void RunBasicOperationsTest(SegmentedVector& c, size_t size)
 {
-        const size_t block_size       = c.get_elements_per_block();
+        const size_t block_size = c.get_elements_per_block();
         const size_t initial_capacity = c.capacity();
 
         // Allocation of blocks when filling container.
@@ -483,4 +483,4 @@ TEST(UnitSegmentedVector, RangeBasedLoop)
 
 } // namespace Tests
 } // namespace Container
-} // namespace SimPT_Sim
+} // namespace UA_CoMP

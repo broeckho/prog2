@@ -38,4 +38,4 @@ Employee StdinEmployeeFactory::Create()
         std::cin >> result.Salary;
         return result;
 }
-}
+} // namespace AbstractFactory

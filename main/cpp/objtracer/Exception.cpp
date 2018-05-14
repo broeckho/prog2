@@ -11,20 +11,11 @@ namespace ODemo {
 
 using namespace std;
 
-Exception::Exception(std::string m) : m_message(std::move(m))
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+Exception::Exception(std::string m) : m_message(std::move(m)) { COMP_MISC_MEMBER_TRACER; }
 
-Exception::Exception(const Exception& e) : m_message(e.m_message)
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+Exception::Exception(const Exception& e) : m_message(e.m_message) { COMP_MISC_MEMBER_TRACER; }
 
-Exception::Exception(Exception&& e) noexcept : m_message(std::move(e.m_message))
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+Exception::Exception(Exception&& e) noexcept : m_message(std::move(e.m_message)) { COMP_MISC_MEMBER_TRACER; }
 
 const char* Exception::what() const noexcept
 {
@@ -32,42 +23,18 @@ const char* Exception::what() const noexcept
         return m_message.c_str();
 }
 
-void Exception::info() const
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+void Exception::info() const { COMP_MISC_MEMBER_TRACER; }
 
-MotionException::MotionException(std::string m) : Exception(std::move(m))
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+MotionException::MotionException(std::string m) : Exception(std::move(m)) { COMP_MISC_MEMBER_TRACER; }
 
-void MotionException::info() const
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+void MotionException::info() const { COMP_MISC_MEMBER_TRACER; }
 
+LoadingException::LoadingException(std::string m) : Exception(std::move(m)) { COMP_MISC_MEMBER_TRACER; }
 
-LoadingException::LoadingException(std::string m) : Exception(std::move(m))
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+void LoadingException::info() const { COMP_MISC_MEMBER_TRACER; }
 
-void LoadingException::info() const
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+SailingException::SailingException(std::string m) : MotionException(std::move(m)) { COMP_MISC_MEMBER_TRACER; }
 
+void SailingException::info() const { COMP_MISC_MEMBER_TRACER; }
 
-SailingException::SailingException(std::string m) : MotionException(std::move(m))
-{
-        COMP_MISC_MEMBER_TRACER;
-}
-
-void SailingException::info() const
-{
-        COMP_MISC_MEMBER_TRACER;
-}
-
-
-} // end_of_namespace
+} // namespace ODemo

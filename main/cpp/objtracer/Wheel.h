@@ -45,4 +45,4 @@ private:
         bool m_rotating;
 };
 
-} // end_of_namespace
+} // namespace ODemo

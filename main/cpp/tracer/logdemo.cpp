@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
                 TCLAP::SwitchArg reverseSwitch("r", "reverse", "Print name backwards", cmd, false);
 
                 // Parse command line and get the value each argument.
-                cmd.parse(argc, static_cast<const char* const *>(argv));
+                cmd.parse(argc, static_cast<const char* const*>(argv));
                 std::string name(const_cast<const std::string&>(nameArg.getValue()));
                 bool reverseName = reverseSwitch.getValue();
 

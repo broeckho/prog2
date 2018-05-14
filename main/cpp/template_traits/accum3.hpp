@@ -19,4 +19,3 @@ inline typename AccumulationTraits<T>::type accum(T const* beg, T const* end)
         }
         return total;
 }
-

@@ -106,5 +106,5 @@ CircularIterator<T> prev(CircularIterator<T> i)
         CircularIterator<T> tmp(i);
         return --tmp;
 }
-}
-}
+} // namespace Container
+} // namespace UA_CoMP

@@ -27,8 +27,8 @@
 
 using std::cout;
 using std::endl;
-using std::string;
 using std::exception;
+using std::string;
 
 namespace {
 
@@ -162,9 +162,10 @@ std::ostream& operator<<(std::ostream& os, std::map<T, U> const& v)
         return Printer<std::map<T, U>>(os, v);
 }
 
-} // end-of-anonymous-namespace
+} // namespace
 
-int main() {
+int main()
+{
         string marker = "\n------------------------------------\n";
         cout << std::boolalpha;
         // block 1

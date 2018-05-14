@@ -34,8 +34,8 @@ public:
         T top() const;
 
 private:
-        T elems[MAXSIZE];               ///< Array to caontain stack elements.
-        unsigned int numElems {0};      ///< Current number of elements.
+        T elems[MAXSIZE];         ///< Array to caontain stack elements.
+        unsigned int numElems{0}; ///< Current number of elements.
 };
 
 // -------------------- Implementations ----------------------------------------
@@ -67,4 +67,3 @@ T Stack<T, MAXSIZE>::top() const
         }
         return elems[numElems - 1];
 }
-

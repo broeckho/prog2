@@ -32,7 +32,7 @@ public:
         std::string top() const;
 
 private:
-        std::deque<std::string> elems;  ///< Container for the stack elements.
+        std::deque<std::string> elems; ///< Container for the stack elements.
 };
 
 // -------------------- Implementations ----------------------------------------
@@ -45,10 +45,7 @@ void Stack<std::string>::pop()
         elems.pop_back();
 }
 
-void Stack<std::string>::push(std::string const& elem)
-{
-        elems.push_back(elem);
-}
+void Stack<std::string>::push(std::string const& elem) { elems.push_back(elem); }
 
 std::string Stack<std::string>::top() const
 {
@@ -58,4 +55,3 @@ std::string Stack<std::string>::top() const
         return elems.back();
 }
 // END_SNIPPET{FullSource}
-

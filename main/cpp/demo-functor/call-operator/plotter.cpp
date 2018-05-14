@@ -12,7 +12,7 @@ std::string Plotter<T>::plot(const std::function<T(T)>& f, T from, T to, unsigne
 {
         std::vector<std::pair<T, T>> lines;
         T delta = (to - from) / n;
-        for (unsigned int i = 0; i < n; ++i ) {
+        for (unsigned int i = 0; i < n; ++i) {
                 T x = from + static_cast<T>(i) * delta;
                 lines.push_back(std::make_pair(x, f(x)));
         }

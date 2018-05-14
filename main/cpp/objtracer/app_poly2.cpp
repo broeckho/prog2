@@ -27,7 +27,7 @@ void displayBis(Vehicle& b)
         b.info();
 }
 
-} // end-of-anonymous-namespace
+} // namespace
 
 /**
  * Demonstrates late binding.

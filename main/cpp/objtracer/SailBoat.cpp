@@ -54,7 +54,7 @@ SailBoat::~SailBoat() { COMP_MISC_MEMBER_TRACER; }
 void SailBoat::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        string s {"I'm a sailboat named \"" + m_name + "\" and my sails are "};
+        string s{"I'm a sailboat named \"" + m_name + "\" and my sails are "};
         if (m_sails_up) {
                 s.append("up.");
         } else {
@@ -69,4 +69,4 @@ void SailBoat::move(double, vector<double>)
         m_sails_up = true;
 }
 
-} // end of namespace
+} // namespace ODemo

@@ -34,7 +34,7 @@ public:
                 os << endl;
         }
 };
-}
+} // namespace
 
 int main(int argc, char* argv[])
 {

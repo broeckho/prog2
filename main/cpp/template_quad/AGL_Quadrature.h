@@ -28,7 +28,7 @@ template <>
 class GaussLegendreSelect<2>
 {
 public:
-        using Rule =  GaussLegendre2Rule;
+        using Rule = GaussLegendre2Rule;
 };
 
 /**
@@ -38,7 +38,7 @@ template <>
 class GaussLegendreSelect<4>
 {
 public:
-        using Rule =  GaussLegendre2Rule;
+        using Rule = GaussLegendre2Rule;
 };
 
 /**
@@ -48,7 +48,7 @@ template <>
 class GaussLegendreSelect<8>
 {
 public:
-        using Rule =  GaussLegendre8Rule;
+        using Rule = GaussLegendre8Rule;
 };
 
 /**
@@ -58,7 +58,7 @@ template <>
 class GaussLegendreSelect<16>
 {
 public:
-        using Rule =  GaussLegendre16Rule;
+        using Rule = GaussLegendre16Rule;
 };
 
 /**
@@ -68,7 +68,7 @@ template <>
 class GaussLegendreSelect<32>
 {
 public:
-        using Rule =  GaussLegendre32Rule;
+        using Rule = GaussLegendre32Rule;
 };
 
 /**
@@ -95,6 +95,5 @@ public:
 private:
 };
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

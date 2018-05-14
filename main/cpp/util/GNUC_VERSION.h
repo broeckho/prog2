@@ -25,4 +25,3 @@
 #define GNUC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100)
 #endif
 #endif
-

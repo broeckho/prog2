@@ -18,6 +18,5 @@ public:
         using type = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
 };
 
-} // end-of-namespace
-} // end-of-namespace
-
+} // namespace Num
+} // namespace UA_CoMP

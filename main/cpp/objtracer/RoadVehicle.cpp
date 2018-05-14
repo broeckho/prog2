@@ -35,21 +35,15 @@ RoadVehicle& RoadVehicle::operator=(RoadVehicle&& rhs) noexcept
         return *this;
 }
 
-RoadVehicle::~RoadVehicle()
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+RoadVehicle::~RoadVehicle() { COMP_MISC_MEMBER_TRACER; }
 
 void RoadVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        const string s {"I'm a generic Road vehicle"};
+        const string s{"I'm a generic Road vehicle"};
         COMP_MISC_LOG_TRACER(s);
 }
 
-void RoadVehicle::move(double, vector<double>)
-{
-        COMP_MISC_MEMBER_TRACER;
-}
+void RoadVehicle::move(double, vector<double>) { COMP_MISC_MEMBER_TRACER; }
 
-} // end of namespace
+} // namespace ODemo

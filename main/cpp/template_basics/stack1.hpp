@@ -31,7 +31,7 @@ public:
         T top() const;
 
 private:
-        std::vector<T> elems;   ///< Container for the stack elements.
+        std::vector<T> elems; ///< Container for the stack elements.
 };
 
 // -------------------- Implementations ----------------------------------------
@@ -60,4 +60,3 @@ T Stack<T>::top() const
         return elems.back();
 }
 // END_SNIPPET{FullSource}
-

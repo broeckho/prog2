@@ -35,7 +35,7 @@ public:
 
         /// Return identification info.
         void info() const override;
-        
+
         /// Pure virtual method for motion.
         void move(double speed, std::vector<double> direction) override = 0;
 
@@ -49,4 +49,4 @@ private:
         bool m_sinking;
 };
 
-} // end_of_namespace
+} // namespace ODemo

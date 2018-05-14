@@ -34,4 +34,4 @@ public:
         Employee Create() final;
 };
 
-}
+} // namespace AbstractFactory

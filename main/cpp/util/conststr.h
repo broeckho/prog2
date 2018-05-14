@@ -40,4 +40,3 @@ private:
         const char* m_p;
         std::size_t m_size;
 };
-

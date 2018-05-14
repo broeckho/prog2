@@ -9,14 +9,14 @@
 #include <iomanip>
 
 using std::boolalpha;
-using std::setprecision;
-using std::setw;
-using std::scientific;
 using std::cout;
 using std::endl;
+using std::get;
+using std::scientific;
+using std::setprecision;
+using std::setw;
 using std::string;
 using std::tuple;
-using std::get;
 using namespace UA_CoMP::Num;
 
 namespace {
@@ -49,7 +49,7 @@ void verifyQuad(double b, double e, Quad quad, Integrand ftor)
                 cout << "Unknown exception in the verifyQuad procedure." << endl;
         }
 }
-} // end-of-anonymous-namespace
+} // namespace
 
 /**
  * Demonstrate the use of the AdaptiveQuadrature algorithm

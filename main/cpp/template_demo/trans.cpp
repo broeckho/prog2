@@ -46,7 +46,7 @@ private:
         unsigned int fNum;
 };
 
-} // end-of-anonymous namespace
+} // namespace
 
 int main()
 {

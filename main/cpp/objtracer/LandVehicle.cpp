@@ -40,8 +40,8 @@ LandVehicle::~LandVehicle() { COMP_MISC_MEMBER_TRACER; }
 void LandVehicle::info() const
 {
         COMP_MISC_MEMBER_TRACER;
-        const string s {"I'm a generic Land vehicle"};
+        const string s{"I'm a generic Land vehicle"};
         COMP_MISC_LOG_TRACER(s);
 }
 
-} // end of namespace
+} // namespace ODemo
