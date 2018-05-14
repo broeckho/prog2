@@ -51,7 +51,7 @@ echo "" > .nojekyll
 ##### Generate the Doxygen code documentation and log the output.          #####
 ################################################################################
 echo 'Generating Doxygen code documentation...'
-cd $TRAVIS_BUILD_DIR && make STRIDE_INCLUDE_DOC=TRUE configure
+cd $TRAVIS_BUILD_DIR && make GOBELIJN_INCLUDE_DOC=TRUE configure
 cd cmake-build-release/doc/doxygen && make all && mv html $TRAVIS_BUILD_DIR/code_docs
 cd $TRAVIS_BUILD_DIR && mv doc/doxygen/index.html code_docs
 
@@ -66,7 +66,7 @@ if [ -d "html" ] && [ -f "html/index.html" ]; then
 
     echo 'Uploading documentation to the gh-pages branch...'
 
-    echo "Stride [documentation](https://${GH_USER}.github.io/${GH_REPO}/)" > README.md
+    echo "Gobelijn [API documentation](https://${GH_USER}.github.io/${GH_REPO}/)" > README.md
 
     ##### Add everything in this directory (the Doxygen doc) to gh-pages branch.
     # GitHub is smart and knows which files have changed and which have not,

@@ -10,7 +10,7 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2012-2017, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2012, 2018, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
 
@@ -29,7 +29,7 @@ if(DOXYGEN_FOUND)
 	endif()
     
 	#=== setup ===          
-	set(DOXY_HTML_DIR  ${CMAKE_BINARY_DIR}/docs/reference_doc_html)
+	set(DOXY_HTML_DIR  ${CMAKE_BINARY_DIR}/html)
 	file(MAKE_DIRECTORY ${DOXY_HTML_DIR})
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/GobelijnLogo.png DESTINATION ${DOXY_HTML_DIR})
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mainpage.doxy.in    ${CMAKE_CURRENT_BINARY_DIR}/mainpage.doxy)
@@ -37,7 +37,7 @@ if(DOXYGEN_FOUND)
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.cmake.in   ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
     
 	#=== target ===
-	add_custom_target(doc ALL ${DOXYGEN_EXECUTABLE} Doxyfile)
+	add_custom_target(api_doc ALL ${DOXYGEN_EXECUTABLE} Doxyfile)
 
     #=== install ===
 	# need to install image files though

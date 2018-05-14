@@ -10,14 +10,13 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2012-2017, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2012, 2018, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
 
 #============================================================================
 # Add subdirs:
 #============================================================================
-message("In doc:   ${GOBELIJN_INCLUDE_DOC}")
 add_subdirectory(doxygen)
 add_subdirectory(tex)
 
