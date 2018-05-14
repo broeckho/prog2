@@ -28,10 +28,8 @@ set( EXEC  gtestdriver )
 set( SRC              
 	main.cpp
 	UnitCircular.cpp
-	UnitCumulativeRecords.cpp
 	UnitConstCircular.cpp
 	UnitQuad.cpp
-	UnitRecords.cpp
 	UnitSegmentedVector.cpp
 )
 

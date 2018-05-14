@@ -19,9 +19,8 @@
  */
 
 #include "ClockCLib.h"
-#include "CumulativeRecords.h"
-#include "Records.h"
 #include "Stopwatch.h"
+
 #include <chrono>
 
 namespace UA_CoMP {
@@ -42,12 +41,6 @@ public:
 
         /// Type for time duration units.
         using Duration = D;
-
-        /// Records with cumulative timing info.
-        using CumulativeRecords = UA_CoMP::Timekeeper::CumulativeRecords<D>;
-
-        /// Records with timing info.
-        using Records = UA_CoMP::Timekeeper::Records<D>;
 };
 
 } // namespace Timekeeper

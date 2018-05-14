@@ -11,13 +11,13 @@ int main()
 {
         try {
                 Stack<int> intStack;
-                Stack<float> floatStack;
+                Stack<double> doubleStack;
                 intStack.push(42);
                 intStack.push(7);
-                floatStack.push(7.7);
-                floatStack = intStack;
-                std::cout << floatStack.top() << std::endl;
-                floatStack.pop();
+                doubleStack.push(7.7);
+                doubleStack = intStack;
+                std::cout << doubleStack.top() << std::endl;
+                doubleStack.pop();
         } catch (std::exception const& ex) {
                 std::cerr << "Exception: " << ex.what() << std::endl;
                 return EXIT_FAILURE;

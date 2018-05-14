@@ -10,16 +10,9 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2017, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2017, 2018, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
-
-#file(GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
-#foreach(child ${children})
-#    if( IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${child})
-#        add_subdirectory(${child})
-#    endif()
-#endforeach()
 
 if(Boost_FOUND)
     add_subdirectory(abstract-factory)
