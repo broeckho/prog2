@@ -16,7 +16,7 @@ template <typename T>
 Polynomial<T> Polynomial<T>::operator+(const Polynomial<T>& x) const
 {
         Polynomial<T> result;
-        for (unsigned int i = 0; i < std::max(x.vect.size(), vect.size()); i++) {
+        for (size_t i = 0; i < std::max(x.vect.size(), vect.size()); i++) {
                 result.vect.push_back((vect.size() > i ? vect[i] : 0) + (x.vect.size() > i ? x.vect[i] : 0));
         }
         return result;
@@ -26,7 +26,7 @@ template <typename T>
 Polynomial<T> Polynomial<T>::operator*(const Polynomial<T>& x) const
 {
         Polynomial<T> result;
-        for (unsigned int i = 0; i < std::max(x.vect.size(), vect.size()); i++) {
+        for (size_t i = 0; i < std::max(x.vect.size(), vect.size()); i++) {
                 result.vect.push_back((vect.size() > i ? vect[i] : 0) * (x.vect.size() > i ? x.vect[i] : 0));
         }
         return result;
@@ -36,7 +36,7 @@ template <typename T>
 Polynomial<T> Polynomial<T>::operator-(const Polynomial<T>& x) const
 {
         Polynomial<T> result;
-        for (unsigned int i = 0; i < std::max(x.vect.size(), vect.size()); i++) {
+        for (size_t i = 0; i < std::max(x.vect.size(), vect.size()); i++) {
                 result.vect.push_back((vect.size() > i ? vect[i] : 0) - (x.vect.size() > i ? x.vect[i] : 0));
         }
         return result;
@@ -46,7 +46,7 @@ template <typename T>
 Polynomial<T> Polynomial<T>::derive() const
 {
         Polynomial<T> result;
-        for (int i = 1; i < vect.size(); i++) {
+        for (size_t i = 1; i < vect.size(); i++) {
                 result.vect.push_back(vect[i] * i);
         }
         return result;

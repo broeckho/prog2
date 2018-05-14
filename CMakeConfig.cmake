@@ -48,7 +48,7 @@ endif()
 #============================================================================
 # Introduce Gobelijn specific variables.
 #============================================================================
-set(GOBELIJN_INCLUDE_DOC  FALSE
+set(GOBELIJN_INCLUDE_DOC FALSE
         CACHE BOOL "Include building of documentation.")
 
 #============================================================================

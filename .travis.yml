@@ -57,7 +57,7 @@ matrix:
       env: CXX_COMPILER_NAME='c++' CXX_COMPILER_ID=APPLE
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.2
       compiler: clang
       env: CXX_COMPILER_NAME='clang++' CXX_COMPILER_ID=LLVM
 
@@ -81,31 +81,27 @@ install:
     fi
     #--------- All platforms
   - |
-    export BOOSTHOME=$HOME/deps/boost_1_66_0
+    #			BOOST_ROOT: specify where cmake can find the correct version of boost
+    #			BOOST_NO_SYSTEM_PATHS: should be ON to prevent mixing different versions of boost
+    export BOOST_ROOT=$HOME/deps/boost_1_66_0
     export BOOST_NO_SYSTEM_PATHS=ON
-    export BOOST_ROOT=$BOOSTHOME
-    if [[ -z "$(ls -A $BOOSTHOME)" ]]; then
+    if [[ -z "$(ls -A $BOOST_ROOT)" ]]; then
       cd /tmp/
       wget -O boost_1_66_0.tar.gz https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz -q
       tar xf boost_1_66_0.tar.gz > /dev/null 2>&1
       cd boost_1_66_0/
       # Configure & build  --prefix: install dir for boost  --with-libraries: only build libraries that we actually need
-      ./bootstrap.sh --prefix=$BOOSTHOME --with-libraries=chrono,date_time,filesystem,iostreams,locale,regex,system,thread
+      ./bootstrap.sh --prefix=$BOOST_ROOT --with-libraries=chrono,date_time,filesystem,system
       ./b2 -q -a -j2 -d0 --disable-filesystem2 cxxflags="-v -std=c++11" threading=multi install
       cd $TRAVIS_BUILD_DIR;
     else
       echo "Already have boost cache"
     fi
-    export LD_LIBRARY_PATH=$BOOSTHOME/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$BOOST_ROOT/lib:$LD_LIBRARY_PATH
     sudo rm -f /usr/local/lib/libboost*.dylib*
-    sudo ln -s $BOOSTHOME/lib/*.{so,dylib}* /usr/local/lib
+    sudo ln -s $BOOST_ROOT/lib/*.{so,dylib}* /usr/local/lib
 
 script:
-  # Build stride and run tests
-  #			BOOST_ROOT: specify where the correct version of boost can be found
-  #			BOOST_NO_SYSTEM_PATHS: should be ON to prevent mixing different versions of boost
-  # Arbitrarily chosen one platform for Debug build.
-  #- GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
   - make all
   - make test
 

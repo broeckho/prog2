@@ -27,49 +27,28 @@ ifeq ($(PARALLEL_MAKE),)
 endif
 
 #============================================================================
+# 	CMake command for Mac OSX or *nix
+#============================================================================
+ifeq ($(CMAKE),)
+	CMAKE = cmake
+endif
+
+#============================================================================
 #   Test related: had to duplicate CMAKE_INSTALL_PREFIX here for gtester
 #============================================================================
 LABEL=$(shell git rev-list HEAD --count)
 CMAKE_INSTALL_PREFIX  = $(HOME)/opt/stride-$(LABEL)
 
 #============================================================================
-# 	CMake command for Mac OSX or *nix
-#============================================================================
-ifeq ($(CMAKE),)
-	CMAKE = cmake
-endif
-ifeq ($(CMAKE_GENERATOR),)
-	CMAKE_GENERATOR = "Unix Makefiles"
-endif
-
-#============================================================================
 #   MACRO definitions to pass on to cmake
 #============================================================================
 CMAKE_ARGS += -DCMAKE_GENERATOR="Unix Makefiles"
 #
-ifneq ($(CMAKE_BUILD_TYPE),)
-	CMAKE_ARGS += -DCMAKE_BUILD_TYPE:STRING=$(CMAKE_BUILD_TYPE)
-endif
-ifneq ($(CMAKE_CXX_COMPILER),)
-	CMAKE_ARGS += -DCMAKE_CXX_COMPILER=$(CMAKE_CXX_COMPILER)
-endif
-ifneq ($(CMAKE_CXX_FLAGS),)
-	CMAKE_ARGS += -DCMAKE_CXX_FLAGS=$(CMAKE_CXX_FLAGS)
-endif
-ifneq ($(CMAKE_BUILD_TYPE),)
-	CMAKE_ARGS += -DCMAKE_BUILD_TYPE:STRING=$(CMAKE_BUILD_TYPE)
-endif
 ifneq ($(CMAKE_INSTALL_PREFIX),)
 	CMAKE_ARGS += -DCMAKE_INSTALL_PREFIX:PATH=$(CMAKE_INSTALL_PREFIX)
 endif
 ifneq ($(GOBELIJN_INCLUDE_DOC),)
 	CMAKE_ARGS += -DGOBELIJN_INCLUDE_DOC:BOOL=$(GOBELIJN_INCLUDE_DOC)
-endif
-ifneq ($(GOBELIJN_BOOST_ROOT),)
-	CMAKE_ARGS += -DGOBELIJN_BOOST_ROOT:PATH=$(GOBELIJN_BOOST_ROOT)
-endif
-ifneq ($(GOBELIJN_BOOST_NO_SYSTEM_PATHS),)
-	CMAKE_ARGS += -DGOBELIJN_BOOST_NO_SYSTEM_PATHS:STRING=$(GOBELIJN_BOOST_NO_SYSTEM_PATHS)
 endif
 
 #============================================================================
@@ -86,39 +65,33 @@ endif
 #============================================================================
 #   Targets
 #============================================================================
-.PHONY: configure all install
-.PHONY: clean distclean test format
+.PHONY: cores configure all install clean distclean test gtest format
 
 help:
-	@ cmake -E echo " "
-	@ cmake -E echo " Read INSTALL.txt in this directory for a brief overview."
-	@ cmake -E echo " Current macro values are:"
-	@ cmake -E echo " "
-	@ cmake -E echo "   BUILD_DIR                      : " $(BUILD_DIR)
-	@ cmake -E echo " "
-	@ cmake -E echo "   CMAKE_GENERATOR                : " $(CMAKE_GENERATOR)
-	@ cmake -E echo "   CMAKE_CXX_COMPILER             : " $(CMAKE_CXX_COMPILER)
-	@ cmake -E echo "   CMAKE_CXX_FLAGS                : " $(CMAKE_CXX_FLAGS)
-	@ cmake -E echo "   CMAKE_BUILD_TYPE               : " $(CMAKE_BUILD_TYPE)
-	@ cmake -E echo "   CMAKE_INSTALL_PREFIX           : " $(CMAKE_INSTALL_PREFIX)
-	@ cmake -E echo " "
-	@ cmake -E echo "   GOBELIJN_INCLUDE_DOC           : " $(GOBELIJN_INCLUDE_DOC)
-	@ cmake -E echo "   GOBELIJN_BOOST_ROOT            : " $(GOBELIJN_BOOST_ROOT)
-	@ cmake -E echo "   GOBELIJN_BOOST_NO_SYSTEM_PATHS : " $(GOBELIJN_BOOST_ROOT)
-	@ cmake -E echo " "
-
+	@ $(CMAKE) -E echo " "
+	@ $(CMAKE) -E echo " Read INSTALL.txt in this directory for a brief overview."
+	@ $(CMAKE) -E echo " Current macro values are:"
+	@ $(CMAKE) -E echo " "
+	@ $(CMAKE) -E echo "   BUILD_DIR                      : " $(BUILD_DIR)
+	@ $(CMAKE) -E echo " "
+	@ $(CMAKE) -E echo "   CMAKE_GENERATOR                : " $(CMAKE_GENERATOR)
+	@ $(CMAKE) -E echo "   CMAKE_BUILD_TYPE               : " $(CMAKE_BUILD_TYPE)
+	@ $(CMAKE) -E echo "   CMAKE_INSTALL_PREFIX           : " $(CMAKE_INSTALL_PREFIX)
+	@ $(CMAKE) -E echo " "
+	@ $(CMAKE) -E echo "   GOBELIJN_INCLUDE_DOC           : " $(GOBELIJN_INCLUDE_DOC)
+	@ $(CMAKE) -E echo " "
 
 cores:
 	@ echo "\nMake invocation using -j"$(NCORES) "\n"
 
 configure: cores
-	cmake -E make_directory $(BUILD_DIR)
-	cmake -E chdir $(BUILD_DIR) cmake $(CMAKE_ARGS) ..
+	$(CMAKE) -E make_directory $(BUILD_DIR)
+	$(CMAKE) -E chdir $(BUILD_DIR) $(CMAKE) $(CMAKE_ARGS) ..
 
 all: configure
 	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) --no-print-directory all
 
-install: configure
+install: cores
 	$(MAKE) $(PARALLEL_MAKE) -C $(BUILD_DIR) --no-print-directory install   
 
 clean: cores
