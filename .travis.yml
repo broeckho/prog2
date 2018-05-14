@@ -82,6 +82,8 @@ install:
     #--------- All platforms
   - |
     export BOOSTHOME=$HOME/deps/boost_1_66_0
+    export BOOST_NO_SYSTEM_PATHS=ON
+    export BOOST_ROOT=$BOOSTHOME
     if [[ -z "$(ls -A $BOOSTHOME)" ]]; then
       cd /tmp/
       wget -O boost_1_66_0.tar.gz https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz -q
@@ -103,7 +105,8 @@ script:
   #			BOOST_ROOT: specify where the correct version of boost can be found
   #			BOOST_NO_SYSTEM_PATHS: should be ON to prevent mixing different versions of boost
   # Arbitrarily chosen one platform for Debug build.
-  - GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
+  #- GOBELIJN_BOOST_ROOT=$BOOSTHOME GOBELIJN_BOOST_NO_SYSTEM_PATHS=ON make all
+  - make all
   - make test
 
 #after_success:

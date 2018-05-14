@@ -66,8 +66,8 @@ set( LIBS   ${LIBS}   m )
 #----------------------------------------------------------------------------
 # Boost
 #----------------------------------------------------------------------------
-set(BOOST_ROOT ${STRIDE_BOOST_ROOT})
-set(Boost_NO_SYSTEM_PATHS ${STRIDE_BOOST_NO_SYSTEM_PATHS})
+#set(BOOST_ROOT ${GOBELIJN_BOOST_ROOT})
+#set(Boost_NO_SYSTEM_PATHS ${GOBELIJN_BOOST_NO_SYSTEM_PATHS})
 find_package(Boost COMPONENTS filesystem thread date_time system QUIET)
 if(Boost_FOUND)
     include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
