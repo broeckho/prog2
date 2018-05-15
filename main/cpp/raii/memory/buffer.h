@@ -11,7 +11,7 @@
  *  a copy of the GNU General Public License along with the software. If not,
  *  see <http://www.gnu.org/licenses/>.
  *
- *  Copyright 2016, Jan Broeckhove.
+ *  Copyright 2016, 2018, Jan Broeckhove.
  */
 /**
  * @file.

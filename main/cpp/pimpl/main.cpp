@@ -16,7 +16,7 @@
  * @file.
  * Main for pimpl demo.
  */
-#include "memory-pool.h"
+#include "MemoryPool.h"
 
 #include <iostream>
 

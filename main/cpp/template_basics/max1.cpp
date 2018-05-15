@@ -1,28 +1,24 @@
 /**
  * @file.
- * Template function use with parameter deduction.
+ * Template function use with explicit parameters.
  * @author J. Broeckhove - see copyright.txt
  */
 
-// BEGIN_SNIPPET{FullSource}
-#include "max.hpp"
+#include "max1.hpp"
 #include <iostream>
 
 int main()
 {
-        int const i = 42;
-        std::cout << ::max(7, i) << std::endl;
+        const int i = 42;
+        std::cout << max<int>(7, i) << std::endl;
 
-        std::string const s1 = "mathematics";
-        std::string const s2 = "math";
+        const double f1 = 3.4;
+        const double f2 = -6.7;
+        std::cout << max<double>(f1, f2) << std::endl;
+
+        const std::string s1 = "mathematics";
+        const std::string s2 = "math";
         std::cout << ::max(s1, s2) << std::endl;
-
-        /* Code below should trigger an error
-            float const f1 = 3.4F;
-        double const f2 = -6.7;
-        ::max(f1, f2);
-        */
 
         return 0;
 }
-// END_SNIPPET{FullSource}

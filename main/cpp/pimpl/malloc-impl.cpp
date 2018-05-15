@@ -17,7 +17,7 @@
  * Pimpl implementation with malloc.
  */
 
-#include "memory-pool.h"
+#include "MemoryPool.h"
 #include <cstdlib>
 #include <vector>
 

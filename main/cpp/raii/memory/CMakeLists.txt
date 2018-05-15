@@ -18,7 +18,7 @@
 # Build & install & smoke test :
 #============================================================================
 set(EXEC buffer)
-add_executable( ${EXEC} main.cpp buffer.cpp )
+add_executable( ${EXEC} main.cpp buffer.cpp buffer.h)
 install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
 add_test( NAME ${EXEC}
 		COMMAND  ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/${EXEC} )

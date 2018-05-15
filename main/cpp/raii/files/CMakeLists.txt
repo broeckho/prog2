@@ -10,7 +10,7 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2012, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2012, 2018, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
 
@@ -18,11 +18,11 @@
 # Build & install & smoke test :
 #============================================================================
 set(EXEC file)
-add_executable( ${EXEC} main.cpp )
-install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
-add_test( NAME ${EXEC}
-		COMMAND  ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/${EXEC} )
-#------------------
+add_executable(${EXEC} main.cpp file.h)
+install(TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION})
+#
+add_test(NAME ${EXEC}
+		COMMAND  ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/${EXEC})
 unset( EXEC )
 
 #############################################################################

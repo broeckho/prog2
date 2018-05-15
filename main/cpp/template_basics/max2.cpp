@@ -4,16 +4,7 @@
  * @author J. Broeckhove - see copyright.txt
  */
 
-// BEGIN_SNIPPET{FullSource}
-#include "max.hpp"
-
-inline int const& max(int const& a, int const& b) { return a < b ? b : a; }
-
-template <typename T>
-inline T const& max(T const& a, T const& b, T const& c)
-{
-        return max(max(a, b), c);
-}
+#include "max2.hpp"
 
 int main()
 {
@@ -26,4 +17,3 @@ int main()
 
         return 0;
 }
-// END_SNIPPET{FullSource}

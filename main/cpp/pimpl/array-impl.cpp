@@ -17,7 +17,7 @@
  * Pimpl implementation with array.
  */
 
-#include "memory-pool.h"
+#include "MemoryPool.h"
 
 namespace Pimpl {
 /**

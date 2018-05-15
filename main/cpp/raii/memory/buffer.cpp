@@ -21,22 +21,15 @@
 
 namespace Raii {
 
-/**
- * Creates a copy of the given buffer.
- */
 Buffer::Buffer(const Buffer& other) : m_bufSize(other.m_bufSize)
 {
         // Allocate a new (uninitialized) block of memory.
         m_data = new char[m_bufSize];
-        // Copies the given buffer's memory block contents to this
-        // buffer's memory block.
+        // Copies the given buffer's memory block.
         for (size_t i = 0; i < m_bufSize; i++)
                 m_data[i] = other.m_data[i];
 }
 
-/**
- * Moves the given buffer.
- */
 Buffer::Buffer(Buffer&& other) noexcept
 {
         // Set this buffer's size.
@@ -44,17 +37,12 @@ Buffer::Buffer(Buffer&& other) noexcept
         // Move the given buffer's block of memory.
         m_data = other.m_data;
 
-        // Turn the moved buffer into an empty buffer, because we must
-        // leave the argument in a valid (but otherwise indeterminate)
-        // state.
+        // Turn the moved buffer into an empty buffer, because we must leave
+        // the argument in a valid (but otherwise indeterminate) state.
         other.m_bufSize = 0;
         other.m_data = nullptr;
 }
 
-/**
- * Creates a copy of the given buffer, and assigns that to this
- * buffer.
- */
 Buffer& Buffer::operator=(const Buffer& other)
 {
         if (this == &other)
@@ -78,9 +66,6 @@ Buffer& Buffer::operator=(const Buffer& other)
         return *this;
 }
 
-/**
- * Moves the given buffer's data to this buffer.
- */
 Buffer& Buffer::operator=(Buffer&& other) noexcept
 {
         if (this == &other)
@@ -93,13 +78,11 @@ Buffer& Buffer::operator=(Buffer&& other) noexcept
 
         // Set this buffer's size.
         m_bufSize = other.m_bufSize;
-        // Sets this buffer's data pointer to the moved buffer's data
-        // pointer.
+        // Sets this buffer's data pointer to the moved buffer's data pointer.
         m_data = other.m_data;
 
-        // Turn the moved buffer into an empty buffer, because we must
-        // leave the argument in a valid (but otherwise indeterminate)
-        // state.
+        // Turn the moved buffer into an empty buffer, because we must leave
+        // the argument in a valid (but otherwise indeterminate) state.
         other.m_bufSize = 0;
         other.m_data = nullptr;
 
