@@ -3,24 +3,24 @@ dist: trusty
 
 env:
   global:
-  - secure: vP3tXFI9V7XCDqtlPVk2Or+nNXJcfoCF0LfWLVQZvLZCNJaGIe5QKDsHxJmtLt35zf58kUb0Op+9QB5vrmhjmzmD3mUPkb9btoWMmbdrEMJyj8U3zxG5vrdrrLJovkwxbFKD0Gw0yM8hygIsGPLjsnE/MU6/51Fd5eSpohmJx53ndH8pzE6f5DMtn7wMHsvPqZRzaTYTsHsG+jK7TCBXHxR82tY0gHykBcGBu8GjfdoLM4PCIMHSuj+ThyhXiT+EAnnWQICfjpP6W8BTiAwDbmRVRBOG9pUJuJMSgoHC50bX1pgbyJnx+6l4taAn7dwqnEZaqNlNVyX/PkdEAtOaJNetfytD4M8N7G77BRY/67ApVFol9XgrnDfiP0x+O0BcV7SUQhxAizLh84f4HuOWAieVHldHes8nRMC/ZUrYHCkv/dUn4gNxuI5j/p+1ckvxSnZ+UH7fXokO49MRIP/S7+8Jl2wLxwZV0QH49OqOwMdvEKdx3qk241kBgHgNL0dg6X0YN3rCfQKr9jRafh/wbO8BkoztgQf3BEyBqMqPDkLM1mgv92rT5pbNVRugIWYeXHdig2WcxDujkdLXyyxoy88HczdEpUj8Bx4wU1Rjw44e751Kmnhh8bWKuDuusAKrje8L3nboi7028FXE0mZhUNkXLo89AXasYIuNcuhpdus=
+    secure: vP3tXFI9V7XCDqtlPVk2Or+nNXJcfoCF0LfWLVQZvLZCNJaGIe5QKDsHxJmtLt35zf58kUb0Op+9QB5vrmhjmzmD3mUPkb9btoWMmbdrEMJyj8U3zxG5vrdrrLJovkwxbFKD0Gw0yM8hygIsGPLjsnE/MU6/51Fd5eSpohmJx53ndH8pzE6f5DMtn7wMHsvPqZRzaTYTsHsG+jK7TCBXHxR82tY0gHykBcGBu8GjfdoLM4PCIMHSuj+ThyhXiT+EAnnWQICfjpP6W8BTiAwDbmRVRBOG9pUJuJMSgoHC50bX1pgbyJnx+6l4taAn7dwqnEZaqNlNVyX/PkdEAtOaJNetfytD4M8N7G77BRY/67ApVFol9XgrnDfiP0x+O0BcV7SUQhxAizLh84f4HuOWAieVHldHes8nRMC/ZUrYHCkv/dUn4gNxuI5j/p+1ckvxSnZ+UH7fXokO49MRIP/S7+8Jl2wLxwZV0QH49OqOwMdvEKdx3qk241kBgHgNL0dg6X0YN3rCfQKr9jRafh/wbO8BkoztgQf3BEyBqMqPDkLM1mgv92rT5pbNVRugIWYeXHdig2WcxDujkdLXyyxoy88HczdEpUj8Bx4wU1Rjw44e751Kmnhh8bWKuDuusAKrje8L3nboi7028FXE0mZhUNkXLo89AXasYIuNcuhpdus=
 
 cache:
   directories:
-  - "$HOME/.ccache"
-  - "$HOME/deps"
+    - "$HOME/.ccache"
+    - "$HOME/deps"
 
 addons:
   apt:
     update: true
-    sources: &2
-    - ubuntu-toolchain-r-test
-    packages: &1
-    - doxygen
-    - doxygen-doc
-    - doxygen-latex
-    - doxygen-gui
-    - graphviz
+    sources: &default_sources
+      - ubuntu-toolchain-r-test
+    packages: &default_packages
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - graphviz
 
 matrix:
   include:
