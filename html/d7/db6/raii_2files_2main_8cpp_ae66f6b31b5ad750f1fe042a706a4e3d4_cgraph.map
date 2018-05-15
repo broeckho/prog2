@@ -1,0 +1,8 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$da/d7f/classRaii_1_1File.html#ae99fdba0580788011d997bae7a99d3b6" title="Closes this file resource. " alt="" coords="105,5,221,32"/>
+<area shape="rect" id="node5" href="$d7/db6/raii_2files_2main_8cpp.html#a811db80f29e90335a4d5ce8b73370c49" title="Prints the contents of the given file. " alt="" coords="129,56,197,83"/>
+<area shape="rect" id="node7" href="$da/d7f/classRaii_1_1File.html#ad3b6ffae5554b191a0efeb04a898ea4c" title="Writes a single character to the file. " alt="" coords="269,107,411,133"/>
+<area shape="rect" id="node3" href="$da/d7f/classRaii_1_1File.html#a425ec78226a1a1646c3a5434b62da65b" title="Closes this file resource. " alt="" coords="269,5,411,32"/>
+<area shape="rect" id="node4" href="$da/d7f/classRaii_1_1File.html#a9239bc5f263ffa2422fe2d100d09d900" title="Checks if this file is still open. " alt="" coords="459,56,583,83"/>
+<area shape="rect" id="node6" href="$da/d7f/classRaii_1_1File.html#a6b6a43ad75c186c887fa494ba216c7c7" title="Reads the next input character from this file. " alt="" coords="269,56,411,83"/>
+</map>

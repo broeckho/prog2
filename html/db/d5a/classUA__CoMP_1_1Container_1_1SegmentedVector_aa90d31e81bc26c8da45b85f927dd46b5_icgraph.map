@@ -1,0 +1,6 @@
+<map id="UA_CoMP::Container::SegmentedVector::get_chunk" name="UA_CoMP::Container::SegmentedVector::get_chunk">
+<area shape="rect" id="node2" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a04da874bc36c0c44ffb36cc9d02b2a16" title="Constructs element in&#45;place at the end. " alt="" coords="256,5,483,46"/>
+<area shape="rect" id="node3" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a4dc1678c7a2d7af0199b89007113b179" title="Adds element to end. " alt="" coords="267,70,472,111"/>
+<area shape="rect" id="node4" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#ad881477fc10266a7b03a825c9563808e" title="Copy assignment (copies elements &amp; capacity). " alt="" coords="536,34,733,75"/>
+<area shape="rect" id="node5" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a861a3ae69f9e697ad3637327fd680479" title="Copy constructor (copies elements &amp; capacity). " alt="" coords="531,99,739,155"/>
+</map>

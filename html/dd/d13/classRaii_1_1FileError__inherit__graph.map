@@ -1,0 +1,7 @@
+<map id="Raii::FileError" name="Raii::FileError">
+<area shape="rect" id="node3" href="$d1/de4/classRaii_1_1CloseError.html" title="{Raii::CloseError\n||}" alt="" coords="5,256,120,333"/>
+<area shape="rect" id="node4" href="$dc/d4a/classRaii_1_1OpenError.html" title="{Raii::OpenError\n||}" alt="" coords="144,256,255,333"/>
+<area shape="rect" id="node5" href="$d3/d34/classRaii_1_1ReadError.html" title="{Raii::ReadError\n||}" alt="" coords="280,256,391,333"/>
+<area shape="rect" id="node6" href="$d7/d37/classRaii_1_1WriteError.html" title="{Raii::WriteError\n||}" alt="" coords="416,256,527,333"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="216,5,320,83"/>
+</map>

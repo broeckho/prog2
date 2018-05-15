@@ -1,0 +1,4 @@
+<map id="UA_CoMP::Timekeeper::Stopwatch::ToString" name="UA_CoMP::Timekeeper::Stopwatch::ToString">
+<area shape="rect" id="node2" href="$d1/d65/classUA__CoMP_1_1Timekeeper_1_1Stopwatch.html#aa0fa2b326da3b045e4b347dc3e8ae917" title="Returns the accumulated value without altering the stopwatch state. " alt="" coords="217,5,378,46"/>
+<area shape="rect" id="node3" href="$d0/d3f/structUA__CoMP_1_1Timekeeper_1_1Utils.html#a0917d6d2c45063eec7cf0640f258491c" title="Procude string in hh:mm:ss format. " alt="" coords="217,70,378,111"/>
+</map>

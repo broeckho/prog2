@@ -1,0 +1,10 @@
+<map id="Raii::File::IsOpen" name="Raii::File::IsOpen">
+<area shape="rect" id="node2" href="$da/d7f/classRaii_1_1File.html#a425ec78226a1a1646c3a5434b62da65b" title="Closes this file resource. " alt="" coords="179,56,320,83"/>
+<area shape="rect" id="node6" href="$da/d7f/classRaii_1_1File.html#a6b6a43ad75c186c887fa494ba216c7c7" title="Reads the next input character from this file. " alt="" coords="179,136,320,163"/>
+<area shape="rect" id="node9" href="$da/d7f/classRaii_1_1File.html#ad3b6ffae5554b191a0efeb04a898ea4c" title="Writes a single character to the file. " alt="" coords="179,191,320,217"/>
+<area shape="rect" id="node3" href="$da/d7f/classRaii_1_1File.html#ab3ff8c290231d07da6db019141d69e78" title="Performs clean&#45;up for this File instance. " alt="" coords="390,5,501,32"/>
+<area shape="rect" id="node4" href="$da/d7f/classRaii_1_1File.html#ae99fdba0580788011d997bae7a99d3b6" title="Closes this file resource. " alt="" coords="387,56,503,83"/>
+<area shape="rect" id="node5" href="$d7/db6/raii_2files_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="571,107,621,133"/>
+<area shape="rect" id="node7" href="$d7/db6/raii_2files_2main_8cpp.html#a811db80f29e90335a4d5ce8b73370c49" title="Prints the contents of the given file. " alt="" coords="411,107,479,133"/>
+<area shape="rect" id="node8" href="$d9/d33/classRaii_1_1RandomReadFile.html#a309f83b53e67b7ef480af6b9f033d4d0" title="Raii::RandomReadFile\l::operator[]" alt="" coords="368,158,523,199"/>
+</map>

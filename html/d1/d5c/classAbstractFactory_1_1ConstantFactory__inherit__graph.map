@@ -1,0 +1,4 @@
+<map id="AbstractFactory::ConstantFactory&lt; TResult, TArgs &gt;" name="AbstractFactory::ConstantFactory&lt; TResult, TArgs &gt;">
+<area shape="rect" id="node2" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="{AbstractFactory::Factory\l\&lt; TResult, TArgs...\&gt;\n||+ ~Factory()\l+ Create()\l}" alt="" coords="11,176,177,283"/>
+<area shape="rect" id="node3" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="A class template for abstract factories: objects that construct values based on their internal state..." alt="" coords="11,5,177,112"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Stack::operator=" name="Stack::operator=">
+<area shape="rect" id="node2" href="$d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c" title="Check whether stack is empty. " alt="" coords="174,5,274,32"/>
+<area shape="rect" id="node3" href="$d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49" title="Pop element off the stack. " alt="" coords="181,56,267,83"/>
+<area shape="rect" id="node4" href="$d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b" title="Return top element of the stack (but not pop&#45;ing it). " alt="" coords="183,107,265,133"/>
+</map>

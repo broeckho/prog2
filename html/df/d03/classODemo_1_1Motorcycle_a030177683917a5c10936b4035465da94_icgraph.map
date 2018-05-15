@@ -1,0 +1,6 @@
+<map id="ODemo::Motorcycle::brake" name="ODemo::Motorcycle::brake">
+<area shape="rect" id="node2" href="$df/d03/classODemo_1_1Motorcycle.html#ae28dde0f757e893537f6bd47ce8b9465" title="Brake to zero speed, keep engine running. " alt="" coords="200,12,368,39"/>
+<area shape="rect" id="node3" href="$df/d03/classODemo_1_1Motorcycle.html#ad7e711e50a045609e22ee0b1ea479a29" title="Stop the motorcycle engine. " alt="" coords="416,5,563,46"/>
+<area shape="rect" id="node4" href="$d8/d70/demos_8h.html#aa1474416b58237828f962cacad5543ce" title="Demo prog to demonstrate deep &amp; shallow copy operations. " alt="" coords="611,12,690,39"/>
+<area shape="rect" id="node5" href="$d4/de9/app__exec_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="739,12,789,39"/>
+</map>

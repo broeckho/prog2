@@ -1,0 +1,4 @@
+<map id="ODemo::Motorcycle::stopEngine" name="ODemo::Motorcycle::stopEngine">
+<area shape="rect" id="node2" href="$df/d03/classODemo_1_1Motorcycle.html#ae28dde0f757e893537f6bd47ce8b9465" title="Brake to zero speed, keep engine running. " alt="" coords="200,12,368,39"/>
+<area shape="rect" id="node3" href="$df/d03/classODemo_1_1Motorcycle.html#a030177683917a5c10936b4035465da94" title="Brake until given speed. " alt="" coords="416,5,563,46"/>
+</map>

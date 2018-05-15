@@ -1,0 +1,5 @@
+<map id="UA_CoMP::Container::SegmentedVector::capacity" name="UA_CoMP::Container::SegmentedVector::capacity">
+<area shape="rect" id="node2" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#ad881477fc10266a7b03a825c9563808e" title="Copy assignment (copies elements &amp; capacity). " alt="" coords="485,5,683,46"/>
+<area shape="rect" id="node3" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a6d70bb976cd0edb2acb5622a77dbbc10" title="Allocates aditional blocks to achieve requested capacity. " alt="" coords="246,51,431,93"/>
+<area shape="rect" id="node4" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a861a3ae69f9e697ad3637327fd680479" title="Copy constructor (copies elements &amp; capacity). " alt="" coords="480,80,688,136"/>
+</map>

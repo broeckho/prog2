@@ -1,0 +1,12 @@
+<map id="UA_CoMP::Num::AdaptiveQuadrature&lt; QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy &gt;" name="UA_CoMP::Num::AdaptiveQuadrature&lt; QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy &gt;">
+<area shape="rect" id="node11" href="$d9/d36/classUA__CoMP_1_1Num_1_1AdaptiveQuadrature.html" title="{UA_CoMP::Num::AdaptiveQuadrature\l\&lt; GaussLegendreSelect\&lt; N1 \&gt;\l::Rule, GaussLegendreSelect\l\&lt; N2 \&gt;::Rule, ConvergencePolicy,\l CellCountPolicy \&gt;\n|&#45; fConvergenceTolerance\l&#45; fInitialCellCount\l&#45; fCellCountLimit\l|+ AdaptiveQuadrature()\l+ rule1()\l+ rule2()\l+ evaluate()\l+ operator()()\l+ getConvergenceTolerance()\l+ getInitialCellCount()\l+ getCellCountLimit()\l+ setConvergenceTolerance()\l+ setInitialCellCount()\l+ setCellCountLimit()\l}" alt="" coords="475,808,719,1120"/>
+<area shape="rect" id="node2" href="$d1/d6e/classUA__CoMP_1_1Num_1_1AQRule1.html" title="{UA_CoMP::Num::AQRule1\l\&lt; QuadRule1 \&gt;\n||}" alt="" coords="131,275,313,367"/>
+<area shape="rect" id="node3" href="$d8/d22/classQuadRule1.html" title="Template parameter provides first quadrature rule for AdaptiveQuadrature. " alt="" coords="5,133,91,211"/>
+<area shape="rect" id="node4" href="$d1/d6e/classUA__CoMP_1_1Num_1_1AQRule1.html" title="Used to disambiguate rules in AdaptiveQuadrature. " alt="" coords="115,133,329,211"/>
+<area shape="rect" id="node8" href="$d1/d0a/classUA__CoMP_1_1Num_1_1AQRule2.html" title="Used to disambiguate rules in AdaptiveQuadrature. " alt="" coords="354,133,568,211"/>
+<area shape="rect" id="node6" href="$d1/d0a/classUA__CoMP_1_1Num_1_1AQRule2.html" title="{UA_CoMP::Num::AQRule2\l\&lt; QuadRule2 \&gt;\n||}" alt="" coords="370,275,552,367"/>
+<area shape="rect" id="node7" href="$dd/df7/classQuadRule2.html" title="Template parameter provides second quadrature rule for AdaptiveQuadrature. " alt="" coords="593,133,679,211"/>
+<area shape="rect" id="node9" href="$d3/d0b/classConvergencePolicy.html" title="Template parameter provides policy for managing convergence criterion in AdaptiveQuadrature. " alt="" coords="577,283,711,360"/>
+<area shape="rect" id="node10" href="$d6/d66/classCellCountPolicy.html" title="Template parameter provides policy for managing cell count in AdaptiveQuadrature. ..." alt="" coords="735,283,851,360"/>
+<area shape="rect" id="node12" href="$d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html" title="AGL (Adaptive GaussLegendre) Quadrature. " alt="" coords="484,1171,711,1277"/>
+</map>

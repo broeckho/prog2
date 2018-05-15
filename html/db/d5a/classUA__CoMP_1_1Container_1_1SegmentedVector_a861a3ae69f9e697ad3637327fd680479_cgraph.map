@@ -1,0 +1,6 @@
+<map id="UA_CoMP::Container::SegmentedVector::SegmentedVector" name="UA_CoMP::Container::SegmentedVector::SegmentedVector">
+<area shape="rect" id="node2" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a304c97249c0b83df66f95ebab4a49445" title="Returns number of elements that can be stored without allocating additional blocks. " alt="" coords="521,5,711,46"/>
+<area shape="rect" id="node3" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a4dc1678c7a2d7af0199b89007113b179" title="Adds element to end. " alt="" coords="261,99,467,141"/>
+<area shape="rect" id="node5" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a6d70bb976cd0edb2acb5622a77dbbc10" title="Allocates aditional blocks to achieve requested capacity. " alt="" coords="271,34,457,75"/>
+<area shape="rect" id="node4" href="$db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#aa90d31e81bc26c8da45b85f927dd46b5" title="Get next available chunk for element construction with placement new. " alt="" coords="515,99,717,141"/>
+</map>

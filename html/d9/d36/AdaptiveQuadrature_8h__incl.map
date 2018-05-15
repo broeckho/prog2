@@ -1,0 +1,5 @@
+<map id="AdaptiveQuadrature.h" name="AdaptiveQuadrature.h">
+<area shape="rect" id="node2" href="$dd/d50/AQ__Util_8h.html" title="Utilities for the implementation of the Adaptive Quadrature. " alt="" coords="21,80,99,107"/>
+<area shape="rect" id="node4" href="$d1/d26/CellCountViolation_8h.html" title="Predefined policies for handling a cell count violation. " alt="" coords="189,80,329,107"/>
+<area shape="rect" id="node9" href="$df/d92/Convergence_8h.html" title="Predefined convergence policies for the AdaptiveQuadrature template. " alt="" coords="406,80,516,107"/>
+</map>

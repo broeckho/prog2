@@ -1,0 +1,11 @@
+<map id="UA_CoMP::Num::AdaptiveQuadrature&lt; QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy &gt;" name="UA_CoMP::Num::AdaptiveQuadrature&lt; QuadRule1, QuadRule2, ConvergencePolicy, CellCountPolicy &gt;">
+<area shape="rect" id="node2" href="$d1/d6e/classUA__CoMP_1_1Num_1_1AQRule1.html" title="{UA_CoMP::Num::AQRule1\l\&lt; QuadRule1 \&gt;\n||}" alt="" coords="131,275,313,367"/>
+<area shape="rect" id="node3" href="$d8/d22/classQuadRule1.html" title="Template parameter provides first quadrature rule for AdaptiveQuadrature. " alt="" coords="5,133,91,211"/>
+<area shape="rect" id="node4" href="$d1/d6e/classUA__CoMP_1_1Num_1_1AQRule1.html" title="Used to disambiguate rules in AdaptiveQuadrature. " alt="" coords="115,133,329,211"/>
+<area shape="rect" id="node8" href="$d1/d0a/classUA__CoMP_1_1Num_1_1AQRule2.html" title="Used to disambiguate rules in AdaptiveQuadrature. " alt="" coords="354,133,568,211"/>
+<area shape="rect" id="node6" href="$d1/d0a/classUA__CoMP_1_1Num_1_1AQRule2.html" title="{UA_CoMP::Num::AQRule2\l\&lt; QuadRule2 \&gt;\n||}" alt="" coords="370,275,552,367"/>
+<area shape="rect" id="node7" href="$dd/df7/classQuadRule2.html" title="Template parameter provides second quadrature rule for AdaptiveQuadrature. " alt="" coords="593,133,679,211"/>
+<area shape="rect" id="node9" href="$d3/d0b/classConvergencePolicy.html" title="Template parameter provides policy for managing convergence criterion in AdaptiveQuadrature. " alt="" coords="577,283,711,360"/>
+<area shape="rect" id="node10" href="$d6/d66/classCellCountPolicy.html" title="Template parameter provides policy for managing cell count in AdaptiveQuadrature. ..." alt="" coords="735,283,851,360"/>
+<area shape="rect" id="node11" href="$df/de6/classdouble.html" title="{double\n||}" alt="" coords="875,283,935,360"/>
+</map>

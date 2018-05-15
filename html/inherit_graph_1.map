@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="AbstractFactory::Factory\l\&lt; Employee \&gt;" alt="" coords="6,38,173,79"/>
+<area shape="rect" id="node2" href="$d3/dac/classAbstractFactory_1_1PtreeEmployeeFactory.html" title="An employee factory implementation that uses Boost property trees to construct employee instances..." alt="" coords="222,5,434,46"/>
+<area shape="rect" id="node3" href="$df/d49/classAbstractFactory_1_1StdinEmployeeFactory.html" title="An employee factory implementation that uses standard input to construct employee instances..." alt="" coords="223,70,433,111"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ODemo::LandVehicle::operator=" name="ODemo::LandVehicle::operator=">
+<area shape="rect" id="node2" href="$d8/def/classODemo_1_1RoadVehicle.html#a5ea97658f72965e066fbc579977ecbae" title="Copy assignment operator. " alt="" coords="200,5,349,46"/>
+<area shape="rect" id="node3" href="$d3/dd4/classODemo_1_1PassengerRoadVehicle.html#a326db225000316c012c74aa1e208b5d4" title="Copy assignment. " alt="" coords="397,5,608,46"/>
+<area shape="rect" id="node4" href="$d6/d19/classODemo_1_1Bicycle.html#a7bbe81368dc71c0e799520ddcf8aafb7" title="Copy assignment. " alt="" coords="656,12,837,39"/>
+</map>

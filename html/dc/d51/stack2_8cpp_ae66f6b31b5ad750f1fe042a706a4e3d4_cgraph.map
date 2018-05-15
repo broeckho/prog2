@@ -1,0 +1,5 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$d5/d70/classStack_3_01std_1_1string_01_4.html#a06d6d9d51249be0ec19f1c891ae4d74c" title="Pop element off the stack. " alt="" coords="105,5,231,46"/>
+<area shape="rect" id="node3" href="$d5/d70/classStack_3_01std_1_1string_01_4.html#a026bb15aa9dd5fa46f8a2b3fcae754be" title="Pushes element onto stack. " alt="" coords="105,70,231,111"/>
+<area shape="rect" id="node4" href="$d5/d70/classStack_3_01std_1_1string_01_4.html#a77db48f722cde79aa3410c33f65c829e" title="Return top element of the stack (but not pop&#45;ing it). " alt="" coords="105,135,231,177"/>
+</map>

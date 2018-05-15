@@ -1,0 +1,8 @@
+<map id="app_hierarchies" name="app_hierarchies">
+<area shape="rect" id="node2" href="$d3/dd4/classODemo_1_1PassengerRoadVehicle.html#acc250a45783cd9efa601ee460e9f82ca" title="Take an additional passenger on board, if possible. " alt="" coords="168,5,379,46"/>
+<area shape="rect" id="node3" href="$dd/de3/classODemo_1_1Vehicle.html#a205bf77cb948c027021a262190ab7d72" title="Return vehicle information. " alt="" coords="200,71,347,97"/>
+<area shape="rect" id="node4" href="$dc/d0a/classODemo_1_1SailBoat.html#a7773a71ae310c8e81804549ebb0790c9" title="Return identification info. " alt="" coords="197,121,350,148"/>
+<area shape="rect" id="node5" href="$d6/d19/classODemo_1_1Bicycle.html#ae5d67fab3fdab9dc01e3b84f62af3f92" title="Display info on model and color of the bike. " alt="" coords="200,172,347,199"/>
+<area shape="rect" id="node6" href="$dc/d0a/classODemo_1_1SailBoat.html#a8975b4101a5f335bbc5a7f970fd2516c" title="Sailboat motion. " alt="" coords="191,223,355,249"/>
+<area shape="rect" id="node7" href="$db/da2/classODemo_1_1WaterVehicle.html#a0a951f1d878d0ceda76654a72978a684" title="Start sinking, even if you are already sinking. " alt="" coords="197,274,350,315"/>
+</map>

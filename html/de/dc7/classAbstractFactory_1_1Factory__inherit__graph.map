@@ -1,0 +1,7 @@
+<map id="AbstractFactory::Factory&lt; TResult, TArgs &gt;" name="AbstractFactory::Factory&lt; TResult, TArgs &gt;">
+<area shape="rect" id="node2" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="{AbstractFactory::Factory\l\&lt; TResult, TArgs...\&gt;\n||+ ~Factory()\l+ Create()\l}" alt="" coords="27,176,193,283"/>
+<area shape="rect" id="node4" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="{AbstractFactory::Factory\l\&lt; Employee \&gt;\n||+ ~Factory()\l+ Create()\l}" alt="" coords="234,176,400,283"/>
+<area shape="rect" id="node3" href="$d3/dd2/classAbstractFactory_1_1ConstantFactory.html" title="A factory class template that always returns a constant, pre&#45;defined value. " alt="" coords="5,349,184,470"/>
+<area shape="rect" id="node5" href="$d3/dac/classAbstractFactory_1_1PtreeEmployeeFactory.html" title="An employee factory implementation that uses Boost property trees to construct employee instances..." alt="" coords="208,334,427,485"/>
+<area shape="rect" id="node6" href="$df/d49/classAbstractFactory_1_1StdinEmployeeFactory.html" title="An employee factory implementation that uses standard input to construct employee instances..." alt="" coords="451,363,660,455"/>
+</map>

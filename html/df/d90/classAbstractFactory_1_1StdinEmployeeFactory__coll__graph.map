@@ -1,0 +1,4 @@
+<map id="AbstractFactory::StdinEmployeeFactory" name="AbstractFactory::StdinEmployeeFactory">
+<area shape="rect" id="node2" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="{AbstractFactory::Factory\l\&lt; Employee \&gt;\n||+ ~Factory()\l+ Create()\l}" alt="" coords="26,176,192,283"/>
+<area shape="rect" id="node3" href="$d1/d42/classAbstractFactory_1_1Factory.html" title="A class template for abstract factories: objects that construct values based on their internal state..." alt="" coords="26,5,192,112"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$df/d49/classAbstractFactory_1_1StdinEmployeeFactory.html#ae6c49766f93716f00ffa40c337529f04" title="Instructs this factory to create a value. " alt="" coords="104,5,315,46"/>
+<area shape="rect" id="node3" href="$d6/d94/abstract-factory_2main_8cpp.html#ac381c3f05b18dd42ba013e544f66dfab" title="Writes to standard output all information that pertains to the given employee. " alt="" coords="157,71,262,97"/>
+<area shape="rect" id="node4" href="$d6/d94/abstract-factory_2main_8cpp.html#ad16bf397ed9c8e3990ffb03290988382" title="Creates a Boost property tree that represents the given employee instance. " alt="" coords="177,121,241,148"/>
+</map>

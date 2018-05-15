@@ -1,0 +1,4 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$de/d33/classPimpl_1_1MemoryPool.html#abdea75fa8c5b30d5a88c2b454a8359dd" title="Allocates a region of memory that is &#39;size * sizeof(T)&#39; of bytes in size. " alt="" coords="104,5,248,46"/>
+<area shape="rect" id="node3" href="$de/d33/classPimpl_1_1MemoryPool.html#a8c06aa1f3f5393585bca2eab20758e38" title="Allocates a region of memory that is the given number of bytes in size. " alt="" coords="296,5,440,46"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="ODemo::Vehicle" name="ODemo::Vehicle">
+<area shape="rect" id="node2" href="$de/dbd/classODemo_1_1LandVehicle.html" title="A LandVehicle drives on land. " alt="" coords="37,175,184,355"/>
+<area shape="rect" id="node6" href="$db/da2/classODemo_1_1WaterVehicle.html" title="Abstract WaterVehicle class. " alt="" coords="209,161,361,370"/>
+<area shape="rect" id="node3" href="$d8/def/classODemo_1_1RoadVehicle.html" title="A RoadVehicle is any kind of vehicle that moves on the road. " alt="" coords="36,426,184,606"/>
+<area shape="rect" id="node4" href="$d3/dd4/classODemo_1_1PassengerRoadVehicle.html" title="A PassengerRoadVehicle transports one or more passengers. " alt="" coords="5,662,215,901"/>
+<area shape="rect" id="node5" href="$d6/d19/classODemo_1_1Bicycle.html" title="Represents a simple Bicycle. " alt="" coords="51,949,169,1203"/>
+<area shape="rect" id="node7" href="$dc/d0a/classODemo_1_1SailBoat.html" title="A simple SailBoat class. " alt="" coords="223,419,347,613"/>
+</map>

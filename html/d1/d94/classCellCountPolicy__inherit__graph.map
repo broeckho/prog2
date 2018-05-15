@@ -1,0 +1,5 @@
+<map id="CellCountPolicy" name="CellCountPolicy">
+<area shape="rect" id="node2" href="$d9/d36/classUA__CoMP_1_1Num_1_1AdaptiveQuadrature.html" title="{UA_CoMP::Num::AdaptiveQuadrature\l\&lt; GaussLegendreSelect\&lt; N1 \&gt;\l::Rule, GaussLegendreSelect\l\&lt; N2 \&gt;::Rule, ConvergencePolicy,\l CellCountPolicy \&gt;\n|&#45; fConvergenceTolerance\l&#45; fInitialCellCount\l&#45; fCellCountLimit\l|+ AdaptiveQuadrature()\l+ rule1()\l+ rule2()\l+ evaluate()\l+ operator()()\l+ getConvergenceTolerance()\l+ getInitialCellCount()\l+ getCellCountLimit()\l+ setConvergenceTolerance()\l+ setInitialCellCount()\l+ setCellCountLimit()\l}" alt="" coords="5,523,248,835"/>
+<area shape="rect" id="node4" href="$d9/d36/classUA__CoMP_1_1Num_1_1AdaptiveQuadrature.html" title="The AdaptiveQuadrature is a host class with policy classes QuadRule1, QuadRule2, ErrorPolicy and Conv..." alt="" coords="113,133,369,416"/>
+<area shape="rect" id="node3" href="$d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html" title="AGL (Adaptive GaussLegendre) Quadrature. " alt="" coords="13,885,240,992"/>
+</map>
