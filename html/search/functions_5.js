@@ -4,6 +4,5 @@ var searchData=
   ['freq',['freq',['../dc/d50/freq_8cpp.html#a151ce2f2a5d5e1a98d5ea8a79c1d39c0',1,'freq.cpp']]],
   ['fromstring',['FromString',['../d3/df7/classUA__CoMP_1_1Util_1_1StringUtils.html#a4f276ac29bf167bb4b209358be81daec',1,'UA_CoMP::Util::StringUtils']]],
   ['full',['full',['../d4/dc1/classStack.html#a2c5fb92431df1f0a06849e15861c3926',1,'Stack']]],
-  ['functionmap',['FunctionMap',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#af8d47b9b1379133dd1916dbfe33a4cdb',1,'UA_CoMP::Util::FunctionMap::FunctionMap()'],['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#aa814902bb759c5a68f598ce77ba99a70',1,'UA_CoMP::Util::FunctionMap::FunctionMap(std::initializer_list&lt; typename MapType::value_type &gt; l)']]],
   ['functiontracer',['FunctionTracer',['../de/dab/classUA__CoMP_1_1Misc_1_1FunctionTracer.html#a020d6592275e71e468b661b05d728243',1,'UA_CoMP::Misc::FunctionTracer::FunctionTracer(const std::string &amp;function_name)'],['../de/dab/classUA__CoMP_1_1Misc_1_1FunctionTracer.html#ac962dd6ceb41f5e6f63ccdb6f049199b',1,'UA_CoMP::Misc::FunctionTracer::FunctionTracer(const FunctionTracer &amp;)=delete']]]
 ];

@@ -141,7 +141,6 @@ var hierarchy =
     [ "UA_CoMP::Timekeeper::Timeable< C, D >", "dc/d20/classUA__CoMP_1_1Timekeeper_1_1Timeable.html", null ],
     [ "UA_CoMP::Timekeeper::TimeStamp", "db/def/classUA__CoMP_1_1Timekeeper_1_1TimeStamp.html", null ],
     [ "UA_CoMP::Timekeeper::Utils", "d0/d3f/structUA__CoMP_1_1Timekeeper_1_1Utils.html", null ],
-    [ "UA_CoMP::Util::FunctionMap< S >", "d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html", null ],
     [ "UA_CoMP::Util::StringUtils", "d3/df7/classUA__CoMP_1_1Util_1_1StringUtils.html", null ],
     [ "double", "df/de6/classdouble.html", null ],
     [ "T", null, [

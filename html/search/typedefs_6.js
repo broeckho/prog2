@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maptype',['MapType',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#ad937a70116722777b9fcf37e3df10f89',1,'UA_CoMP::Util::FunctionMap']]]
+  ['period',['period',['../d2/d02/classUA__CoMP_1_1Timekeeper_1_1ClockCLib.html#aaf2ef84811d8a169959da59e7d2b9739',1,'UA_CoMP::Timekeeper::ClockCLib']]]
 ];

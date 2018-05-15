@@ -10,6 +10,5 @@ var searchData=
   ['isdereferencable',['IsDereferencable',['../d2/d79/classUA__CoMP_1_1Container_1_1SVIterator.html#ac9e86cf8a4f073e93b9123c7eadd3998',1,'UA_CoMP::Container::SVIterator']]],
   ['isopen',['IsOpen',['../da/d7f/classRaii_1_1File.html#a9239bc5f263ffa2422fe2d100d09d900',1,'Raii::File']]],
   ['ispasttheend',['IsPastTheEnd',['../d2/d79/classUA__CoMP_1_1Container_1_1SVIterator.html#af590102f0903c3c6d1141e9345bfebb4',1,'UA_CoMP::Container::SVIterator']]],
-  ['isrunning',['IsRunning',['../d1/d65/classUA__CoMP_1_1Timekeeper_1_1Stopwatch.html#a2aafb5a0e0f39e565522b0a01bf124a1',1,'UA_CoMP::Timekeeper::Stopwatch']]],
-  ['isvalid',['IsValid',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#a16000950b936c70af1b9d40a1f7ba495',1,'UA_CoMP::Util::FunctionMap']]]
+  ['isrunning',['IsRunning',['../d1/d65/classUA__CoMP_1_1Timekeeper_1_1Stopwatch.html#a2aafb5a0e0f39e565522b0a01bf124a1',1,'UA_CoMP::Timekeeper::Stopwatch']]]
 ];

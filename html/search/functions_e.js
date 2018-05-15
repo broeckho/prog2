@@ -4,7 +4,6 @@ var searchData=
   ['randomreadfile',['RandomReadFile',['../d9/d33/classRaii_1_1RandomReadFile.html#ac8476cb34dad651a125c289345fffa20',1,'Raii::RandomReadFile']]],
   ['range',['Range',['../d5/d98/structRange.html#a0f53d859c0054e637f5c1c41307e6d9f',1,'Range']]],
   ['readchar',['ReadChar',['../da/d7f/classRaii_1_1File.html#a6b6a43ad75c186c887fa494ba216c7c7',1,'Raii::File']]],
-  ['register',['Register',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#ad5e06d32c3c0a005aeb1bf4cc1819876',1,'UA_CoMP::Util::FunctionMap']]],
   ['remove_5fpassenger',['remove_passenger',['../d3/dd4/classODemo_1_1PassengerRoadVehicle.html#a988b50b79e81467101dfcda48b108526',1,'ODemo::PassengerRoadVehicle']]],
   ['reserve',['reserve',['../db/d5a/classUA__CoMP_1_1Container_1_1SegmentedVector.html#a6d70bb976cd0edb2acb5622a77dbbc10',1,'UA_CoMP::Container::SegmentedVector']]],
   ['reset',['Reset',['../d1/d65/classUA__CoMP_1_1Timekeeper_1_1Stopwatch.html#a24e36e8126eae0608a72eab394d29026',1,'UA_CoMP::Timekeeper::Stopwatch']]],

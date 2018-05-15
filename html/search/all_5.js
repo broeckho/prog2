@@ -24,13 +24,9 @@ var searchData=
   ['freq_2ecpp',['freq.cpp',['../dc/d50/freq_8cpp.html',1,'']]],
   ['fromstring',['FromString',['../d3/df7/classUA__CoMP_1_1Util_1_1StringUtils.html#a4f276ac29bf167bb4b209358be81daec',1,'UA_CoMP::Util::StringUtils']]],
   ['full',['full',['../d4/dc1/classStack.html#a2c5fb92431df1f0a06849e15861c3926',1,'Stack']]],
-  ['functionmap',['FunctionMap',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#af8d47b9b1379133dd1916dbfe33a4cdb',1,'UA_CoMP::Util::FunctionMap::FunctionMap()'],['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#aa814902bb759c5a68f598ce77ba99a70',1,'UA_CoMP::Util::FunctionMap::FunctionMap(std::initializer_list&lt; typename MapType::value_type &gt; l)']]],
-  ['functionmap',['FunctionMap',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html',1,'UA_CoMP::Util']]],
-  ['functionmap_2eh',['FunctionMap.h',['../d7/d23/FunctionMap_8h.html',1,'']]],
-  ['functiontracer',['FunctionTracer',['../de/dab/classUA__CoMP_1_1Misc_1_1FunctionTracer.html',1,'UA_CoMP::Misc']]],
   ['functiontracer',['FunctionTracer',['../de/dab/classUA__CoMP_1_1Misc_1_1FunctionTracer.html#a020d6592275e71e468b661b05d728243',1,'UA_CoMP::Misc::FunctionTracer::FunctionTracer(const std::string &amp;function_name)'],['../de/dab/classUA__CoMP_1_1Misc_1_1FunctionTracer.html#ac962dd6ceb41f5e6f63ccdb6f049199b',1,'UA_CoMP::Misc::FunctionTracer::FunctionTracer(const FunctionTracer &amp;)=delete']]],
+  ['functiontracer',['FunctionTracer',['../de/dab/classUA__CoMP_1_1Misc_1_1FunctionTracer.html',1,'UA_CoMP::Misc']]],
   ['functiontracer_2ecpp',['FunctionTracer.cpp',['../db/d27/FunctionTracer_8cpp.html',1,'']]],
   ['functiontracer_2eh',['FunctionTracer.h',['../d4/df6/FunctionTracer_8h.html',1,'']]],
-  ['functiontype',['FunctionType',['../d1/d3d/classUA__CoMP_1_1Util_1_1FunctionMap.html#a969c3214f6e52c128a3a6073acb14d36',1,'UA_CoMP::Util::FunctionMap']]],
   ['functor_2dstate_2ecpp',['functor-state.cpp',['../d7/d51/functor-state_8cpp.html',1,'']]]
 ];
