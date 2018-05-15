@@ -10,20 +10,21 @@
 #  a copy of the GNU General Public License along with the software. If not,
 #  see <http://www.gnu.org/licenses/>.
 #
-#  Copyright 2016, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
+#  Copyright 2016, 2018, Jan Broeckhove, CoMP group, Universiteit Antwerpen.
 #
 #############################################################################
 
 #============================================================================
 # Build / install / smoke test:
 #============================================================================
-foreach( EXEC	    constcast
-                    constness
-                    exampleConst )
+foreach(EXEC
+		constcast
+        constness
+        exampleConst)
 
-	add_executable( ${EXEC}	${EXEC}.cpp )
-	install( TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION} )
-	add_test( NAME ${EXEC}  
+	add_executable(${EXEC}	${EXEC}.cpp)
+	install(TARGETS ${EXEC} RUNTIME DESTINATION ${BIN_INSTALL_LOCATION})
+	add_test(NAME ${EXEC}
             COMMAND ${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_LOCATION}/$<TARGET_FILE_NAME:${EXEC}> )
 			
 endforeach()

@@ -29,7 +29,7 @@ if(DOXYGEN_FOUND)
 	endif()
     
 	#=== setup ===          
-	set(DOXY_HTML_DIR  "html")
+	set(DOXY_HTML_DIR  ${CMAKE_CURRENT_BINARY_DIR}/html)
 	file(MAKE_DIRECTORY ${DOXY_HTML_DIR})
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/GobelijnLogo.png DESTINATION ${DOXY_HTML_DIR})
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mainpage.doxy.in    ${CMAKE_CURRENT_BINARY_DIR}/mainpage.doxy)

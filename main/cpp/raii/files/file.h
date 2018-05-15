@@ -116,9 +116,9 @@ public:
                 if (!IsOpen())
                         // File has been closed. Throw an exception.
                         throw WriteError();
-                int result = std::fputc(Value, m_file);
-                if (result == EOF) {}
-                throw WriteError();
+                if (std::fputc(Value, m_file) == EOF) {
+                        throw WriteError();
+                }
         }
 
 private:

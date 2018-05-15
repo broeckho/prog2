@@ -16,7 +16,6 @@
 
  \section Guidelines
  	 The project follows a number of guidelines:
- 	 \li The directory layout follows the Maven convention, adapted for C++.
  	 \li CMake is used to build programs, libraries, etc.
  	 \li API documentation is generated with Doxygen.
 	 \li For \subpage coco we follow (to some extent) Herb Sutter's guidelines.
@@ -25,7 +24,7 @@
 	 These web pages constitute the developer documentation for
 	 the Gobelijn project.
 	 \li User documentation still needs to written
-	 \li Installation documentation still needs to be written
+	 \li The file INSTALL.txt details the installation steps
 	 \li Developer documentation is generated using the doxygen tool
 
  \section License
