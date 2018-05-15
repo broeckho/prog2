@@ -68,7 +68,7 @@ set( LIBS   ${LIBS}   m )
 #----------------------------------------------------------------------------
 #set(BOOST_ROOT ${GOBELIJN_BOOST_ROOT})
 #set(Boost_NO_SYSTEM_PATHS ${GOBELIJN_BOOST_NO_SYSTEM_PATHS})
-find_package(Boost COMPONENTS filesystem thread date_time system QUIET)
+find_package(Boost COMPONENTS chrono date_time filesystem system QUIET)
 if(Boost_FOUND)
     include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
     set(LIBS   ${LIBS} ${Boost_LIBRARIES})
