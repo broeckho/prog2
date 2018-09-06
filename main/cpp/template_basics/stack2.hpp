@@ -16,6 +16,9 @@ template <>
 class Stack<std::string>
 {
 public:
+        /// Default constructor.
+        Stack() : elems(std::deque<std::string>()) {}
+
         /// Check whether stack is empty.
         /// \return     True iff empty.
         bool empty() const { return elems.empty(); }

@@ -18,7 +18,7 @@ public:
         T horner(const T& x) const;
 
 protected:
-        Polynomial() = default;
+        Polynomial() : vect(std::vector<T>()) {};
         std::vector<T> vect;
 };
 

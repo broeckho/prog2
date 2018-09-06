@@ -16,6 +16,9 @@ template <typename T, typename CONT = std::vector<T>>
 class Stack
 {
 public:
+        /// Default constructor.
+        Stack() : elems(CONT()) {}
+
         /// Check whether stack is empty.
         /// \return     True iff empty.
         bool empty() const { return elems.empty(); }

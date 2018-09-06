@@ -27,6 +27,8 @@ namespace Pimpl {
  */
 struct MemoryPool::MemoryPoolImpl
 {
+         MemoryPoolImpl() : pointers(std::vector<void*>()) {}
+
         // Remembers all pointers that have been allocated, so we can
         // deallocate them when the MemoryPool is destroyed.
         std::vector<void*> pointers;

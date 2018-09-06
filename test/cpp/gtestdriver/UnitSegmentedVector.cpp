@@ -43,7 +43,7 @@ public:
 
         using EventList = std::vector<EventType>;
 
-        TraceMemory() : m_counter(0) {}
+        TraceMemory() : m_counter(0), m_event_list(EventList()) {}
 
         void Allocated()
         {
@@ -73,23 +73,26 @@ private:
 class TestType
 {
 public:
-        TestType(int _i, const std::string& _str, TraceMemory& _t) : i(_i), str(_str), t(_t)
+        TestType(int _i, const std::string& _str, TraceMemory& _t) : i(_i), str(_str), array(new int[10]), t(_t)
         {
                 t.Allocated();
-                array = new int[10];
+                //array = new int[10];
         }
 
-        TestType(const TestType& other) : i(other.i), str(other.str), t(other.t)
+        TestType(const TestType& other) : i(other.i), str(other.str), array(new int[10]), t(other.t)
         {
                 t.Copied();
-                array = new int[10];
+                //array = new int[10];
         }
 
-        TestType(TestType&& other) : i(other.i), str(std::move(other.str)), array(other.array), t(other.t)
+        TestType(TestType&& other) noexcept
+                : i(other.i), str(std::move(other.str)), array(other.array), t(other.t)
         {
                 t.Moved();
                 other.array = nullptr;
         }
+
+        TestType& operator=(const TestType&) = delete;
 
         ~TestType()
         {

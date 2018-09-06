@@ -21,22 +21,16 @@
 
 namespace Raii {
 
-Buffer::Buffer(const Buffer& other) : m_bufSize(other.m_bufSize)
+Buffer::Buffer(const Buffer& other) : m_bufSize(other.m_bufSize), m_data(new char[m_bufSize])
 {
-        // Allocate a new (uninitialized) block of memory.
-        m_data = new char[m_bufSize];
         // Copies the given buffer's memory block.
         for (size_t i = 0; i < m_bufSize; i++)
                 m_data[i] = other.m_data[i];
 }
 
 Buffer::Buffer(Buffer&& other) noexcept
+        : m_bufSize(other.m_bufSize), m_data(other.m_data)
 {
-        // Set this buffer's size.
-        m_bufSize = other.m_bufSize;
-        // Move the given buffer's block of memory.
-        m_data = other.m_data;
-
         // Turn the moved buffer into an empty buffer, because we must leave
         // the argument in a valid (but otherwise indeterminate) state.
         other.m_bufSize = 0;

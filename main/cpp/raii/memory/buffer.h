@@ -34,11 +34,7 @@ public:
         Buffer() : m_bufSize(0), m_data(nullptr) {}
 
         /// Allocates a new buffer, which is the given number of bytes in size.
-        explicit Buffer(size_t bufferSize) : m_bufSize(bufferSize)
-        {
-                // Allocate a new block of memory, and initializes with all-zeroes.
-                m_data = new char[bufferSize]();
-        }
+        explicit Buffer(size_t bufferSize) : m_bufSize(bufferSize), m_data(new char[bufferSize]()) {}
 
         /// Creates a copy of the given buffer.
         Buffer(const Buffer& other);

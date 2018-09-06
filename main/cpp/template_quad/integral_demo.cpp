@@ -12,7 +12,9 @@
 #include "PowerFunctor.h"
 #include "SimpleRules.h"
 
-using std::bind1st;
+#include <functional>
+
+using std::bind;
 using std::cout;
 using std::endl;
 using std::function;
@@ -29,9 +31,9 @@ int main()
                 OscillatoryFunctor const ftor(-1.0, 20.0);
                 AGL_Quadrature<16, 32> quad(1.0e-7, 1, 1000);
 
-                function<double(double)> f1{bind1st(ftor.getIntegral(), 0.0)};
+                function<double(double)> f1{bind(ftor.getIntegral(), 0.0, std::placeholders::_1)};
                 function<double(double, double)> ff{make_integral(quad, ftor)};
-                function<double(double)> f2{bind1st(ff, 0.0)};
+                function<double(double)> f2{bind(ff, 0.0, std::placeholders::_1)};
 
                 const double d{abs_diff(0.0, 3.0, 0.1, f1, f2)};
                 cout << "abs diff for integral function is: " << d << endl;

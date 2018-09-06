@@ -16,6 +16,7 @@
  * @file
  * Tests for Quad.
  */
+
 #include <gtest/gtest.h>
 #include <vector>
 

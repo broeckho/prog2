@@ -16,6 +16,9 @@ template <typename T, typename ALLOC = std::allocator<T>, template <typename, ty
 class Stack
 {
 public:
+        /// Default constructor.
+        Stack() : elems(CONT<T, ALLOC>()) {}
+
         /// Check whether stack is empty.
         /// \return     True iff empty.
         bool empty() const { return elems.empty(); }

@@ -29,10 +29,11 @@ class RandInt
 public:
         /// Initialize seed and ranfe of generator.
         RandInt(unsigned int a, unsigned int b)
+                : m_mt(std::mt19937(std::random_device()())), m_dist(std::uniform_int_distribution<int>(a, b))
         {
-                std::random_device rd;
-                m_mt = std::mt19937(rd());
-                m_dist = std::uniform_int_distribution<int>(a, b);
+                //std::random_device rd;
+               // m_mt = std::mt19937(rd());
+               // m_dist = std::uniform_int_distribution<int>(a, b);
         }
 
         /// return random int within  range.

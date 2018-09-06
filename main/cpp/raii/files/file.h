@@ -53,9 +53,8 @@ public:
         File& operator=(const File&) = delete;
 
         /// Opens the file at the given path.
-        File(const char* path, const char* mode)
+        File(const char* path, const char* mode) : m_file(std::fopen(path, mode))
         {
-                m_file = std::fopen(path, mode);
                 if (m_file == nullptr) {
                         throw OpenError();
                 }
@@ -63,8 +62,8 @@ public:
 
         /// Creates a new file object from the file object's resources.
         File(File&& other) noexcept
+                : m_file(other.m_file)
         {
-                m_file = other.m_file;
                 other.m_file = nullptr;
         }
 

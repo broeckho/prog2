@@ -30,7 +30,7 @@ endif()
 #----------------------------------------------------------------------------
 # Compile flags
 #----------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 #
@@ -38,6 +38,7 @@ set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wall -Wno-unknown-pragmas")
 set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wno-array-bounds")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast" )
 set(CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g"   )
+set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wextra -pedantic -Weffc++")
 include_directories(${CMAKE_HOME_DIRECTORY}/main/cpp)
 
 #----------------------------------------------------------------------------
@@ -56,6 +57,8 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND NOT CMAKE_HOST_APPLE )
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fPIC")
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++1z")
 endif()
 
 #----------------------------------------------------------------------------
@@ -77,12 +80,12 @@ endif()
 #----------------------------------------------------------------------------
 # TCLAP Library (command line processing)
 #----------------------------------------------------------------------------
-include_directories( ${CMAKE_HOME_DIRECTORY}/main/resources/lib/tclap/include)
+include_directories(SYSTEM ${CMAKE_HOME_DIRECTORY}/main/resources/lib/tclap/include)
 
 #----------------------------------------------------------------------------
 # G3log
 #----------------------------------------------------------------------------
-include_directories(${CMAKE_HOME_DIRECTORY}/main/resources/lib/g3log/src)
+include_directories(SYSTEM ${CMAKE_HOME_DIRECTORY}/main/resources/lib/g3log/src)
 set(G3LOG_LIBRARIES            g3logger_shared) #lib_activeobject)
 set(G3LOG_LIBRARIES_STATIC     g3logger-static) #lib_activeobject)
 

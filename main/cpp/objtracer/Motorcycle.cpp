@@ -16,32 +16,34 @@ using namespace std;
 using UA_CoMP::Util::Exception;
 
 Motorcycle::Motorcycle()
-    : m_engine(new Engine(10.0)), m_body(new Body()), m_owner(nullptr), m_speed(0.0), m_direction(0.0)
+    : m_engine(new Engine(10.0)), m_body(new Body()), m_owner(nullptr), m_wheels(std::array<Wheel, 2>()), m_speed(0.0),
+    m_direction(0.0)
 {
         COMP_MISC_MEMBER_TRACER;
         m_wheels[0] = Wheel();
         m_wheels[1] = Wheel();
 }
 
-Motorcycle::Motorcycle(shared_ptr<Engine> const& enginePtr)
-    : m_engine(enginePtr), m_body(new Body()), m_owner(nullptr), m_speed(0.0), m_direction(0.0)
+Motorcycle::Motorcycle(const shared_ptr<Engine>& enginePtr)
+    : m_engine(enginePtr), m_body(new Body()), m_owner(nullptr), m_wheels(std::array<Wheel, 2>()), m_speed(0.0),
+    m_direction(0.0)
 {
         COMP_MISC_MEMBER_TRACER;
 }
 
-Motorcycle::Motorcycle(shared_ptr<Engine> const& enginePtr, const Person* ownerPtr)
-    : m_engine(enginePtr), m_body(new Body()), m_owner(ownerPtr), m_speed(0.0), m_direction(0.0)
+Motorcycle::Motorcycle(const shared_ptr<Engine>& enginePtr, const Person* ownerPtr)
+    : m_engine(enginePtr), m_body(new Body()), m_owner(ownerPtr), m_wheels(std::array<Wheel, 2>()), m_speed(0.0),
+    m_direction(0.0)
 {
         COMP_MISC_MEMBER_TRACER;
 }
 
-Motorcycle::Motorcycle(Motorcycle const& ori)
-    : m_body(new Body(*ori.m_body)), m_owner(ori.m_owner), m_speed(ori.m_speed), m_direction(ori.m_direction)
+Motorcycle::Motorcycle(const Motorcycle& ori)
+    : m_engine(nullptr), m_body(new Body(*ori.m_body)), m_owner(ori.m_owner), m_wheels(ori.m_wheels),
+    m_speed(ori.m_speed), m_direction(ori.m_direction)
 {
         COMP_MISC_MEMBER_TRACER;
-        if (ori.m_engine == nullptr) {
-                m_engine = nullptr;
-        } else {
+        if (ori.m_engine) {
                 m_engine = make_shared<Engine>(*ori.m_engine);
         }
 }
@@ -59,7 +61,7 @@ Motorcycle::Motorcycle(Motorcycle&& ori) noexcept
         ori.m_direction = 0.0;
 }
 
-Motorcycle& Motorcycle::operator=(Motorcycle const& rhs)
+Motorcycle& Motorcycle::operator=(const Motorcycle& rhs)
 {
         COMP_MISC_MEMBER_TRACER;
         if (this != &rhs) {

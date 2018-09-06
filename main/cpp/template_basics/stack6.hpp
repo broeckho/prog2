@@ -15,6 +15,9 @@ template <typename T, typename CONT = std::deque<T>>
 class Stack
 {
 public:
+        /// Default constructor.
+        Stack() : elems(CONT()) {}
+
         /// Assignment of one stack to another.
         /// \tparam T2  Template param for element type of rhs stack.
         /// \return     reference to the stack.

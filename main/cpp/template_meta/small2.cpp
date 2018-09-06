@@ -36,7 +36,7 @@ public:
         using pack_type = typename smaller<T1, T2>::type;
 
 public:
-        explicit pack_for_file_storage(size_t s) { m_data.resize(s); };
+        explicit pack_for_file_storage(size_t s) : m_data(s) {};
         void pack(T1 t1, size_t i) { m_data[i] = static_cast<pack_type>(t1); }
         void pack(T2 t2, size_t i) { m_data[i] = static_cast<pack_type>(t2); };
         pack_type peek(size_t i) const { return m_data[i]; }
