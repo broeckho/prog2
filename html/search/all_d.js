@@ -15,7 +15,7 @@ var searchData=
   ['plotter',['Plotter',['../d6/de6/classPlotter.html',1,'Plotter&lt; T &gt;'],['../d6/de6/classPlotter.html#a006e5f19395631cebeb1d9c949423af4',1,'Plotter::Plotter()']]],
   ['plotter_2ecpp',['plotter.cpp',['../d5/d1c/plotter_8cpp.html',1,'']]],
   ['plotter_2eh',['plotter.h',['../d6/df1/plotter_8h.html',1,'']]],
-  ['polynomial',['Polynomial',['../d8/dd4/classPolynomial.html',1,'Polynomial&lt; T &gt;'],['../d8/dd4/classPolynomial.html#aaaf6b8eda0506b874bb4983e2d5672f1',1,'Polynomial::Polynomial(const std::vector&lt; T &gt; &amp;vect)'],['../d8/dd4/classPolynomial.html#a1ba009aa9b7455ebbc1cb7780e47343d',1,'Polynomial::Polynomial()=default']]],
+  ['polynomial',['Polynomial',['../d8/dd4/classPolynomial.html',1,'Polynomial&lt; T &gt;'],['../d8/dd4/classPolynomial.html#aaaf6b8eda0506b874bb4983e2d5672f1',1,'Polynomial::Polynomial(const std::vector&lt; T &gt; &amp;vect)'],['../d8/dd4/classPolynomial.html#adcaeda50b2ea92b029b5adc6e7a6be49',1,'Polynomial::Polynomial()']]],
   ['polynomial_2ecpp',['polynomial.cpp',['../d4/d8b/polynomial_8cpp.html',1,'']]],
   ['polynomial_2eh',['polynomial.h',['../d1/dd4/polynomial_8h.html',1,'']]],
   ['polynomial_5fh',['POLYNOMIAL_H',['../d1/dd4/polynomial_8h.html#a773b68c5befa3cdd8288760036ba7015',1,'polynomial.h']]],

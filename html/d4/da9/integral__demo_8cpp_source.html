@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Gobelijn API documentation
-   &#160;<span id="projectnumber">- generated for commit 6f107ff</span>
+   &#160;<span id="projectnumber">- generated for commit 07edb25</span>
    </div>
   </td>
  </tr>
@@ -115,37 +115,39 @@ $(document).ready(function(){initNavTree('d4/da9/integral__demo_8cpp_source.html
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d3f/PowerFunctor_8h.html">PowerFunctor.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/df3/SimpleRules_8h.html">SimpleRules.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using</span> std::bind1st;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> std::cout;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> std::endl;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> std::function;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#ace3fa6041be6b7e53e2599782dcf9a06">UA_CoMP::Num::abs_diff</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html">UA_CoMP::Num::AGL_Quadrature</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html">UA_CoMP::Num::OscillatoryFunctor</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d4/da9/integral__demo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   24</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d4/da9/integral__demo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Verify Integral: &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;ComboApproximation and GaussLegendre 16 vs 32:&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <a class="code" href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html">OscillatoryFunctor</a> <span class="keyword">const</span> ftor(-1.0, 20.0);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <a class="code" href="../../d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html">AGL_Quadrature&lt;16, 32&gt;</a> quad(1.0e-7, 1, 1000);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                function&lt;double(double)&gt; f1{bind1st(ftor.<a class="code" href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html#a096c98ea40c3f43af80d643d08645338">getIntegral</a>(), 0.0)};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                function&lt;double(double, double)&gt; ff{<a class="code" href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#a3fa6aa1d195477fa94a9eccd61dbc65f">make_integral</a>(quad, ftor)};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                function&lt;double(double)&gt; f2{bind1st(ff, 0.0)};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> d{<a class="code" href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#ace3fa6041be6b7e53e2599782dcf9a06">abs_diff</a>(0.0, 3.0, 0.1, f1, f2)};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;abs diff for integral function is: &quot;</span> &lt;&lt; d &lt;&lt; endl;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> std::bind;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> std::cout;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> std::endl;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> std::function;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#ace3fa6041be6b7e53e2599782dcf9a06">UA_CoMP::Num::abs_diff</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html">UA_CoMP::Num::AGL_Quadrature</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html">UA_CoMP::Num::OscillatoryFunctor</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d4/da9/integral__demo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   26</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d4/da9/integral__demo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;Verify Integral: &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                cout &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;ComboApproximation and GaussLegendre 16 vs 32:&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html">OscillatoryFunctor</a> <span class="keyword">const</span> ftor(-1.0, 20.0);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <a class="code" href="../../d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html">AGL_Quadrature&lt;16, 32&gt;</a> quad(1.0e-7, 1, 1000);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                function&lt;double(double)&gt; f1{bind(ftor.<a class="code" href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html#a096c98ea40c3f43af80d643d08645338">getIntegral</a>(), 0.0, std::placeholders::_1)};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                function&lt;double(double, double)&gt; ff{<a class="code" href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#a3fa6aa1d195477fa94a9eccd61dbc65f">make_integral</a>(quad, ftor)};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                function&lt;double(double)&gt; f2{bind(ff, 0.0, std::placeholders::_1)};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">double</span> d{<a class="code" href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#ace3fa6041be6b7e53e2599782dcf9a06">abs_diff</a>(0.0, 3.0, 0.1, f1, f2)};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;abs diff for integral function is: &quot;</span> &lt;&lt; d &lt;&lt; endl;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="ttc" id="SimpleRules_8h_html"><div class="ttname"><a href="../../d1/df3/SimpleRules_8h.html">SimpleRules.h</a></div><div class="ttdoc">Elementary Quadrature Rules. </div></div>
 <div class="ttc" id="classUA__CoMP_1_1Num_1_1OscillatoryFunctor_html_a096c98ea40c3f43af80d643d08645338"><div class="ttname"><a href="../../d0/dbd/classUA__CoMP_1_1Num_1_1OscillatoryFunctor.html#a096c98ea40c3f43af80d643d08645338">UA_CoMP::Num::OscillatoryFunctor::getIntegral</a></div><div class="ttdeci">Integral getIntegral() const </div><div class="ttdoc">Return the analytic integral object. </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/def/OscillatoryFunctor_8h_source.html#l00058">OscillatoryFunctor.h:58</a></div></div>
 <div class="ttc" id="abs__diff_8h_html"><div class="ttname"><a href="../../d1/d29/abs__diff_8h.html">abs_diff.h</a></div><div class="ttdoc">Utilities. </div></div>
 <div class="ttc" id="namespaceUA__CoMP_1_1Num_html_a3fa6aa1d195477fa94a9eccd61dbc65f"><div class="ttname"><a href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#a3fa6aa1d195477fa94a9eccd61dbc65f">UA_CoMP::Num::make_integral</a></div><div class="ttdeci">Integral&lt; QuadAlgorithm, Integrand &gt; make_integral(QuadAlgorithm const &amp;quad, Integrand const &amp;ftor)</div><div class="ttdoc">Helper function that returns an Integral for a quadrature algorithm and a functor. </div><div class="ttdef"><b>Definition:</b> <a href="../../dc/db3/Integral_8h_source.html#l00052">Integral.h:52</a></div></div>
 <div class="ttc" id="classUA__CoMP_1_1Num_1_1AGL__Quadrature_html"><div class="ttname"><a href="../../d3/d1c/classUA__CoMP_1_1Num_1_1AGL__Quadrature.html">UA_CoMP::Num::AGL_Quadrature</a></div><div class="ttdoc">AGL (Adaptive GaussLegendre) Quadrature. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dee/AGL__Quadrature_8h_source.html#l00082">AGL_Quadrature.h:82</a></div></div>
-<div class="ttc" id="integral__demo_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="../../d4/da9/integral__demo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdoc">Demo use of the Integral wrapper. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da9/integral__demo_8cpp_source.html#l00024">integral_demo.cpp:24</a></div></div>
+<div class="ttc" id="integral__demo_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="../../d4/da9/integral__demo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdoc">Demo use of the Integral wrapper. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da9/integral__demo_8cpp_source.html#l00026">integral_demo.cpp:26</a></div></div>
 <div class="ttc" id="PowerFunctor_8h_html"><div class="ttname"><a href="../../da/d3f/PowerFunctor_8h.html">PowerFunctor.h</a></div><div class="ttdoc">Power functor. </div></div>
 <div class="ttc" id="Integral_8h_html"><div class="ttname"><a href="../../dc/db3/Integral_8h.html">Integral.h</a></div><div class="ttdoc">The Integral wrapper template. </div></div>
 <div class="ttc" id="namespaceUA__CoMP_1_1Num_html_ace3fa6041be6b7e53e2599782dcf9a06"><div class="ttname"><a href="../../d4/da6/namespaceUA__CoMP_1_1Num.html#ace3fa6041be6b7e53e2599782dcf9a06">UA_CoMP::Num::abs_diff</a></div><div class="ttdeci">double abs_diff(double b, double e, double h, function&lt; double(double)&gt; f1, function&lt; double(double)&gt; f2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd3/abs__diff_8cpp_source.html#l00016">abs_diff.cpp:16</a></div></div>
@@ -158,7 +160,7 @@ $(document).ready(function(){initNavTree('d4/da9/integral__demo_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a class="el" href="../../dir_a2a8aff9b00c67914e6daf05d7173af9.html">cpp</a></li><li class="navelem"><a class="el" href="../../dir_42601e73b4233d6d450de7735d278e54.html">template_quad</a></li><li class="navelem"><a class="el" href="../../d4/da9/integral__demo_8cpp.html">integral_demo.cpp</a></li>
-    <li class="footer">Generated on Wed May 23 2018 23:42:40 for Gobelijn API documentation by
+    <li class="footer">Generated on Thu Sep 6 2018 10:20:35 for Gobelijn API documentation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Gobelijn API documentation
-   &#160;<span id="projectnumber">- generated for commit 6f107ff</span>
+   &#160;<span id="projectnumber">- generated for commit 07edb25</span>
    </div>
   </td>
  </tr>
@@ -116,77 +116,80 @@ $(document).ready(function(){initNavTree('d4/d10/stack6_8hpp_source.html','../..
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span><a class="code" href="../../d4/dc1/classStack.html">Stack</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T2, <span class="keyword">typename</span> CONT2&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T, CONT&gt;</a>&amp; <a class="code" href="../../d4/dc1/classStack.html#a2399ce20c9c804b84817d5d522f044c2">operator=</a>(<a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T2, CONT2&gt;</a> <span class="keyword">const</span>&amp;);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">   26</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">elems</a>.empty(); }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">pop</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63">   19</a></span>&#160;        <a class="code" href="../../d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63">Stack</a>() : <a class="code" href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">elems</a>(CONT()) {}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T2, <span class="keyword">typename</span> CONT2&gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T, CONT&gt;</a>&amp; <a class="code" href="../../d4/dc1/classStack.html#a2399ce20c9c804b84817d5d522f044c2">operator=</a>(<a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T2, CONT2&gt;</a> <span class="keyword">const</span>&amp;);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">   29</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">empty</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">elems</a>.empty(); }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870">push</a>(<span class="keyword">const</span> T&amp; e);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        T <a class="code" href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">top</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        CONT <a class="code" href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">elems</a>; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// -------------------- Implementations ----------------------------------------</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T2, <span class="keyword">typename</span> CONT2&gt;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d4/dc1/classStack.html#a803ef3757b46b26c750c40125940039f">   47</a></span>&#160;<a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T, CONT&gt;</a>&amp; <a class="code" href="../../d4/dc1/classStack.html#a2399ce20c9c804b84817d5d522f044c2">Stack&lt;T, CONT&gt;::operator=</a>(<span class="keyword">const</span> <a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T2, CONT2&gt;</a>&amp; op2)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">void</span>*)<span class="keyword">this</span> == (<span class="keywordtype">void</span>*)&amp;op2) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T2, CONT2&gt;</a> tmp(op2);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        elems.clear();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">while</span> (!tmp.<a class="code" href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">empty</a>()) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                elems.push_front(tmp.<a class="code" href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">top</a>());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                tmp.<a class="code" href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">pop</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870">Stack&lt;T, CONT&gt;::push</a>(T <span class="keyword">const</span>&amp; elem)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        elems.push_back(elem);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">Stack&lt;T, CONT&gt;::pop</a>()</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (elems.empty()) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Stack&lt;&gt;::pop(): empty stack&quot;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        elems.pop_back();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;T <a class="code" href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">Stack&lt;T, CONT&gt;::top</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (elems.empty()) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Stack&lt;&gt;::top(): empty stack&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> elems.back();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
-<div class="ttc" id="classStack_html_a9783dc560d6c20fd58842ca01611fe49"><div class="ttname"><a href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">Stack::pop</a></div><div class="ttdeci">void pop()</div><div class="ttdoc">Pop element off the stack. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00040">stack1.hpp:40</a></div></div>
-<div class="ttc" id="classStack_html_afb92562e503be4a60f4bf35ccdf0d870"><div class="ttname"><a href="../../d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870">Stack::push</a></div><div class="ttdeci">void push(const T &amp;e)</div><div class="ttdoc">Pushes element onto stack. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00049">stack1.hpp:49</a></div></div>
-<div class="ttc" id="classStack_html_a2399ce20c9c804b84817d5d522f044c2"><div class="ttname"><a href="../../d4/dc1/classStack.html#a2399ce20c9c804b84817d5d522f044c2">Stack::operator=</a></div><div class="ttdeci">Stack&lt; T &gt; &amp; operator=(const Stack&lt; T2 &gt; &amp;rhs)</div><div class="ttdoc">Assignment of one stack to another. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d86/stack5_8hpp_source.html#l00046">stack5.hpp:46</a></div></div>
-<div class="ttc" id="classStack_html_a8a05053180431e1ba8d462bc4eba5342"><div class="ttname"><a href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">Stack::elems</a></div><div class="ttdeci">std::vector&lt; T &gt; elems</div><div class="ttdoc">Container for the stack elements. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00034">stack1.hpp:34</a></div></div>
-<div class="ttc" id="classStack_html_acd2dede1b88b54124c480fb333ca5e8c"><div class="ttname"><a href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">Stack::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdoc">Check whether stack is empty. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d10/stack6_8hpp_source.html#l00026">stack6.hpp:26</a></div></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">pop</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870">push</a>(<span class="keyword">const</span> T&amp; e);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        T <a class="code" href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">top</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        CONT <a class="code" href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">elems</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// -------------------- Implementations ----------------------------------------</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T2, <span class="keyword">typename</span> CONT2&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d4/dc1/classStack.html#a803ef3757b46b26c750c40125940039f">   50</a></span>&#160;<a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T, CONT&gt;</a>&amp; <a class="code" href="../../d4/dc1/classStack.html#a2399ce20c9c804b84817d5d522f044c2">Stack&lt;T, CONT&gt;::operator=</a>(<span class="keyword">const</span> <a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T2, CONT2&gt;</a>&amp; op2)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">void</span>*)<span class="keyword">this</span> == (<span class="keywordtype">void</span>*)&amp;op2) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="../../d4/dc1/classStack.html">Stack&lt;T2, CONT2&gt;</a> tmp(op2);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        elems.clear();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">while</span> (!tmp.<a class="code" href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">empty</a>()) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                elems.push_front(tmp.<a class="code" href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">top</a>());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                tmp.<a class="code" href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">pop</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870">Stack&lt;T, CONT&gt;::push</a>(T <span class="keyword">const</span>&amp; elem)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        elems.push_back(elem);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">Stack&lt;T, CONT&gt;::pop</a>()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (elems.empty()) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Stack&lt;&gt;::pop(): empty stack&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        elems.pop_back();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> CONT&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;T <a class="code" href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">Stack&lt;T, CONT&gt;::top</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (elems.empty()) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Stack&lt;&gt;::top(): empty stack&quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> elems.back();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="ttc" id="classStack_html_a9783dc560d6c20fd58842ca01611fe49"><div class="ttname"><a href="../../d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49">Stack::pop</a></div><div class="ttdeci">void pop()</div><div class="ttdoc">Pop element off the stack. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00043">stack1.hpp:43</a></div></div>
+<div class="ttc" id="classStack_html_afb92562e503be4a60f4bf35ccdf0d870"><div class="ttname"><a href="../../d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870">Stack::push</a></div><div class="ttdeci">void push(const T &amp;e)</div><div class="ttdoc">Pushes element onto stack. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00052">stack1.hpp:52</a></div></div>
+<div class="ttc" id="classStack_html_a2399ce20c9c804b84817d5d522f044c2"><div class="ttname"><a href="../../d4/dc1/classStack.html#a2399ce20c9c804b84817d5d522f044c2">Stack::operator=</a></div><div class="ttdeci">Stack&lt; T &gt; &amp; operator=(const Stack&lt; T2 &gt; &amp;rhs)</div><div class="ttdoc">Assignment of one stack to another. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d86/stack5_8hpp_source.html#l00049">stack5.hpp:49</a></div></div>
+<div class="ttc" id="classStack_html_a8a05053180431e1ba8d462bc4eba5342"><div class="ttname"><a href="../../d4/dc1/classStack.html#a8a05053180431e1ba8d462bc4eba5342">Stack::elems</a></div><div class="ttdeci">std::vector&lt; T &gt; elems</div><div class="ttdoc">Container for the stack elements. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00037">stack1.hpp:37</a></div></div>
+<div class="ttc" id="classStack_html_acd2dede1b88b54124c480fb333ca5e8c"><div class="ttname"><a href="../../d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c">Stack::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdoc">Check whether stack is empty. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d10/stack6_8hpp_source.html#l00029">stack6.hpp:29</a></div></div>
 <div class="ttc" id="classStack_html"><div class="ttname"><a href="../../d4/dc1/classStack.html">Stack</a></div><div class="ttdoc">Stack class using vector as element container. </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00015">stack1.hpp:15</a></div></div>
-<div class="ttc" id="classStack_html_af1393b8d71c1081cc38073329fca158b"><div class="ttname"><a href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">Stack::top</a></div><div class="ttdeci">T top() const </div><div class="ttdoc">Return top element of the stack (but not pop-ing it). </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00055">stack1.hpp:55</a></div></div>
+<div class="ttc" id="classStack_html_aefee698059467258bbd79045aca62a63"><div class="ttname"><a href="../../d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63">Stack::Stack</a></div><div class="ttdeci">Stack()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d10/stack6_8hpp_source.html#l00019">stack6.hpp:19</a></div></div>
+<div class="ttc" id="classStack_html_af1393b8d71c1081cc38073329fca158b"><div class="ttname"><a href="../../d4/dc1/classStack.html#af1393b8d71c1081cc38073329fca158b">Stack::top</a></div><div class="ttdeci">T top() const </div><div class="ttdoc">Return top element of the stack (but not pop-ing it). </div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da5/stack1_8hpp_source.html#l00058">stack1.hpp:58</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a class="el" href="../../dir_a2a8aff9b00c67914e6daf05d7173af9.html">cpp</a></li><li class="navelem"><a class="el" href="../../dir_1ebe72bed0390053d33014b3e772d5a1.html">template_basics</a></li><li class="navelem"><a class="el" href="../../d4/d10/stack6_8hpp.html">stack6.hpp</a></li>
-    <li class="footer">Generated on Wed May 23 2018 23:42:40 for Gobelijn API documentation by
+    <li class="footer">Generated on Thu Sep 6 2018 10:20:35 for Gobelijn API documentation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Gobelijn API documentation
-   &#160;<span id="projectnumber">- generated for commit 6f107ff</span>
+   &#160;<span id="projectnumber">- generated for commit 07edb25</span>
    </div>
   </td>
  </tr>
@@ -129,30 +129,31 @@ $(document).ready(function(){initNavTree('de/d13/RandInt_8h_source.html','../../
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a5d9fafcc4c61f9e15943cfc1b7f87953">   31</a></span>&#160;        <a class="code" href="../../d9/da9/classRandInt.html#a5d9fafcc4c61f9e15943cfc1b7f87953">RandInt</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> a, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> b)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                std::random_device rd;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <a class="code" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">m_mt</a> = std::mt19937(rd());</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <a class="code" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">m_dist</a> = std::uniform_int_distribution&lt;int&gt;(a, b);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a56a5c4ac80fe8abc2ec5b0b35e203ede">   39</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="../../d9/da9/classRandInt.html#a56a5c4ac80fe8abc2ec5b0b35e203ede">operator()</a>() { <span class="keywordflow">return</span> <a class="code" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">m_dist</a>(<a class="code" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">m_mt</a>); }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">   42</a></span>&#160;        std::mt19937 <a class="code" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">m_mt</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">   43</a></span>&#160;        std::uniform_int_distribution&lt;int&gt; <a class="code" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">m_dist</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                : <a class="code" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">m_mt</a>(std::mt19937(std::random_device()())), <a class="code" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">m_dist</a>(std::uniform_int_distribution&lt;int&gt;(a, b))</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="comment">//std::random_device rd;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;               <span class="comment">// m_mt = std::mt19937(rd());</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;               <span class="comment">// m_dist = std::uniform_int_distribution&lt;int&gt;(a, b);</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a56a5c4ac80fe8abc2ec5b0b35e203ede">   40</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="../../d9/da9/classRandInt.html#a56a5c4ac80fe8abc2ec5b0b35e203ede">operator()</a>() { <span class="keywordflow">return</span> <a class="code" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">m_dist</a>(<a class="code" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">m_mt</a>); }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">   43</a></span>&#160;        std::mt19937 <a class="code" href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">m_mt</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">   44</a></span>&#160;        std::uniform_int_distribution&lt;int&gt; <a class="code" href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">m_dist</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
 <div class="ttc" id="classRandInt_html_a5d9fafcc4c61f9e15943cfc1b7f87953"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a5d9fafcc4c61f9e15943cfc1b7f87953">RandInt::RandInt</a></div><div class="ttdeci">RandInt(unsigned int a, unsigned int b)</div><div class="ttdoc">Initialize seed and ranfe of generator. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00031">RandInt.h:31</a></div></div>
-<div class="ttc" id="classRandInt_html_a4c152da60769b6a78171f7206fe65252"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">RandInt::m_dist</a></div><div class="ttdeci">std::uniform_int_distribution&lt; int &gt; m_dist</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00043">RandInt.h:43</a></div></div>
+<div class="ttc" id="classRandInt_html_a4c152da60769b6a78171f7206fe65252"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a4c152da60769b6a78171f7206fe65252">RandInt::m_dist</a></div><div class="ttdeci">std::uniform_int_distribution&lt; int &gt; m_dist</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00044">RandInt.h:44</a></div></div>
 <div class="ttc" id="classRandInt_html"><div class="ttname"><a href="../../d9/da9/classRandInt.html">RandInt</a></div><div class="ttdoc">Produce random integer (int) values. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00027">RandInt.h:27</a></div></div>
-<div class="ttc" id="classRandInt_html_a56a5c4ac80fe8abc2ec5b0b35e203ede"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a56a5c4ac80fe8abc2ec5b0b35e203ede">RandInt::operator()</a></div><div class="ttdeci">int operator()()</div><div class="ttdoc">return random int within range. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00039">RandInt.h:39</a></div></div>
-<div class="ttc" id="classRandInt_html_a2c17b4667fbd69e6689586e079d88cd8"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">RandInt::m_mt</a></div><div class="ttdeci">std::mt19937 m_mt</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00042">RandInt.h:42</a></div></div>
+<div class="ttc" id="classRandInt_html_a56a5c4ac80fe8abc2ec5b0b35e203ede"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a56a5c4ac80fe8abc2ec5b0b35e203ede">RandInt::operator()</a></div><div class="ttdeci">int operator()()</div><div class="ttdoc">return random int within range. </div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00040">RandInt.h:40</a></div></div>
+<div class="ttc" id="classRandInt_html_a2c17b4667fbd69e6689586e079d88cd8"><div class="ttname"><a href="../../d9/da9/classRandInt.html#a2c17b4667fbd69e6689586e079d88cd8">RandInt::m_mt</a></div><div class="ttdeci">std::mt19937 m_mt</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d13/RandInt_8h_source.html#l00043">RandInt.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a class="el" href="../../dir_a2a8aff9b00c67914e6daf05d7173af9.html">cpp</a></li><li class="navelem"><a class="el" href="../../dir_d6b7177aef1299056fdcf3762196e55e.html">template_demo</a></li><li class="navelem"><a class="el" href="../../de/d13/RandInt_8h.html">RandInt.h</a></li>
-    <li class="footer">Generated on Wed May 23 2018 23:42:40 for Gobelijn API documentation by
+    <li class="footer">Generated on Thu Sep 6 2018 10:20:35 for Gobelijn API documentation by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

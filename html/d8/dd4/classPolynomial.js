@@ -1,7 +1,7 @@
 var classPolynomial =
 [
     [ "Polynomial", "d8/dd4/classPolynomial.html#aaaf6b8eda0506b874bb4983e2d5672f1", null ],
-    [ "Polynomial", "d8/dd4/classPolynomial.html#a1ba009aa9b7455ebbc1cb7780e47343d", null ],
+    [ "Polynomial", "d8/dd4/classPolynomial.html#adcaeda50b2ea92b029b5adc6e7a6be49", null ],
     [ "operator()", "d8/dd4/classPolynomial.html#a09d3cbc1c613fec76758ec68be23bc73", null ],
     [ "operator+", "d8/dd4/classPolynomial.html#a4f06c8c8d438f3abc8daf003cbd0d031", null ],
     [ "operator*", "d8/dd4/classPolynomial.html#ad2f3c5da7033dd78cadf4a011114691a", null ],

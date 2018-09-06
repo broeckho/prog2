@@ -1,5 +1,10 @@
 var classStack =
 [
+    [ "Stack", "d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63", null ],
+    [ "Stack", "d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63", null ],
+    [ "Stack", "d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63", null ],
+    [ "Stack", "d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63", null ],
+    [ "Stack", "d4/dc1/classStack.html#aefee698059467258bbd79045aca62a63", null ],
     [ "empty", "d4/dc1/classStack.html#acd2dede1b88b54124c480fb333ca5e8c", null ],
     [ "pop", "d4/dc1/classStack.html#a9783dc560d6c20fd58842ca01611fe49", null ],
     [ "push", "d4/dc1/classStack.html#afb92562e503be4a60f4bf35ccdf0d870", null ],
