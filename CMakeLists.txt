@@ -64,7 +64,7 @@ include(CMakeCPP.cmake)
 #============================================================================
 # Configuration for DOC: DOXYGEN
 #============================================================================
-if(STRIDE_INCLUDE_DOC)
+if(GOBELIJN_INCLUDE_DOC)
     find_package( Doxygen)
 endif()
 
@@ -121,7 +121,7 @@ message(STATUS "------> Boost_INCLUDE_DIRS          : ${Boost_INCLUDE_DIRS} "   
 message(STATUS "------> Boost_LIBRARIES             : ${Boost_LIBRARIES} "          )
 #
 message( STATUS "" )
-if ( STRIDE_INCLUDE_DOC )
+if ( GOBELIJN_INCLUDE_DOC )
     message( STATUS "------> DOXYGEN_FOUND               : ${DOXYGEN_FOUND} "          )
     message( STATUS "------> DOXYGEN_DOT_FOUND           : ${DOXYGEN_DOT_FOUND} "      )
     if ( DOXYGEN_FOUND )
