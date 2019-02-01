@@ -49,6 +49,7 @@ Buffer& Buffer::operator=(const Buffer& other)
 
         // Set this buffer's size.
         m_bufSize = other.m_bufSize;
+        m_data = new char[m_bufSize];
         // Allocate a new (uninitialized) block of memory.
         for (size_t i = 0; i < m_bufSize; i++)
                 // Copies the given buffer's memory block contents to this
